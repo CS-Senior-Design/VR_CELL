@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Menu.unity
     guid: 4fe2213f0c1618c4491c4d56c442df2a
   - enabled: 1
-    path: Assets/Scenes/Santy/Cell_sample.unity
-    guid: c52d6c29b6327504e80a82434aadd09f
-  - enabled: 1
     path: Assets/Room.unity
     guid: 742c30327d9608849bea35502a6059b3
   m_configObjects:
@@ -20,6 +17,8 @@ EditorBuildSettings:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: d5e242fef22d1e04ab3f064b024eaa1c,
       type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba,
+      type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 1ca594d323a955a48b5f11da960c91f6,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1a4c68ca72a83449f938d669337cb305,
       type: 2}
