@@ -15,9 +15,9 @@ MonoBehaviour:
   PromptToUpgradePackage: 1
   PromptToUpgradePreviewPackages: 1
   SkipPromptForVersion: 
-  StereoRenderingMode: 0
+  StereoRenderingMode: 1
   InitializationType: 1
-  EditorAppKey: application.generated.unity.vr_cell.exe
+  EditorAppKey: application.generated.unity.vr_cell.854463872.exe
   ActionManifestFileRelativeFilePath: 
   MirrorView: 2
   HasCopiedDefaults: 0
