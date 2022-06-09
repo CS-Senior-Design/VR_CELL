@@ -88,15 +88,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Velocity",
-                    "type": "Value",
-                    "id": "7598079c-66a9-416f-9985-bc44b7bd331c",
-                    "expectedControlType": "Vector3",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -207,17 +198,6 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Tracking State",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c6cd0834-efd7-4aba-a0ca-649eb3817d17",
-                    "path": "<XRController>{LeftHand}/deviceVelocity",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Velocity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -626,15 +606,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Velocity",
-                    "type": "Value",
-                    "id": "2eb84341-e075-4906-958a-daa7514e8a6d",
-                    "expectedControlType": "Vector3",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -745,17 +716,6 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Tracking State",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ad57b964-23df-4d3e-8e59-99fa1dce2440",
-                    "path": "<XRController>{RightHand}/deviceVelocity",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Velocity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
