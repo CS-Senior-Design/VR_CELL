@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpawnPrefab : MonoBehaviour
 {
     public GameObject Prefab;
-    public Transform player;
+    public GameObject player;
 
-    void SpawnItem()
+    public void SpawnItem()
     {
         var newItem = Instantiate(Prefab, new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z),Quaternion.identity);
     }
