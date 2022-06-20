@@ -16,6 +16,15 @@ public class WristMenu : MonoBehaviour
         
     }
 
+    public void spawnOrganelle(GameObject organelle)
+    {
+        var item = Instantiate(
+            organelle,
+            new Vector3(0,1,0),
+            Quaternion.identity
+        );
+    }
+
     public void MenuPressed(InputAction.CallbackContext context)
     {
         if (context.performed)
