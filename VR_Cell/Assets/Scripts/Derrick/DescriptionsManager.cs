@@ -4,73 +4,105 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DescriptionsManager : MonoBehaviour {
+public class DescriptionsManager : MonoBehaviour
+{
 
     public TMP_Text cellComponentText;
     public TMP_Text sentenceText;
-    private Queue<string> sentences;
-    private Queue<string> sentencesBin;
-    private Queue<string> cellComponents;
-    private Queue<string> cellComponentsBin;
+    public TMP_Text counter;
+    private Stack<string> sentences;
+    private Stack<string> sentencesBin;
+    private Stack<string> cellComponents;
+    private Stack<string> cellComponentsBin;
+    private int descriptionCounter;
+    private string sentence;
+    private string component;
 
     // Start is called before the first frame update
     void Start()
     {
-        sentences = new Queue<string>();
-        sentencesBin = new Queue<string>();
-        cellComponents = new Queue<string>();
-        cellComponentsBin = new Queue<string>();
+        sentences = new Stack<string>();
+        sentencesBin = new Stack<string>();
+        cellComponents = new Stack<string>();
+        cellComponentsBin = new Stack<string>();
     }
 
-    public void StartDescription(Descriptions description) {
+    public void StartDescription(Descriptions description)
+    {
         // Debug.Log("Starting description of component: " + description.cellComponent);
 
         sentences.Clear();
         sentencesBin.Clear();
         cellComponents.Clear();
         cellComponentsBin.Clear();
+        descriptionCounter = 0;
 
-        foreach(string s in description.sentences) {
-            sentences.Enqueue(s);
+        foreach (string s in description.sentences)
+        {
+            sentencesBin.Push(s);
         }
-        foreach(string s in description.cellComponents) {
-            cellComponents.Enqueue(s);
+        foreach (string s in description.cellComponents)
+        {
+            cellComponentsBin.Push(s);
+        }
+        foreach (string s in description.sentences)
+        {
+            string sent = sentencesBin.Pop();
+            sentences.Push(sent);
+        }
+        foreach (string s in description.cellComponents)
+        {
+            string sent = cellComponentsBin.Pop();
+            cellComponents.Push(sent);
         }
 
         DisplayNextSentence();
     }
 
-    public void DisplayNextSentence() {
-        if (sentences.Count == 0) {
+    public void DisplayNextSentence()
+    {
+        if (sentences.Count == 0)
+        {
             EndDescription();
             return;
         }
 
-        string sentence = sentences.Dequeue();
-        string component = cellComponents.Dequeue();
-        // Debug.Log(sentence);
+        sentencesBin.Push(sentence);
+        cellComponentsBin.Push(component);
+
+        sentence = sentences.Pop();
+        component = cellComponents.Pop();
+
+        descriptionCounter++;
+        counter.text = descriptionCounter.ToString() + "/30";
+
         sentenceText.text = sentence;
-        sentencesBin.Enqueue(sentence);
         cellComponentText.text = component;
-        cellComponentsBin.Enqueue(component);
     }
 
-    public void DisplayPreviousSentence() {
-        if (sentencesBin.Count == 0) {
+    public void DisplayPreviousSentence()
+    {
+        if (sentencesBin.Count == 0 || descriptionCounter == 1)
+        {
             EndDescription();
             return;
         }
 
-        string sentence = sentencesBin.Dequeue();
-        string component = cellComponentsBin.Dequeue();
-        // Debug.Log(sentence);
+        sentences.Push(sentence);
+        cellComponents.Push(component);
+
+        sentence = sentencesBin.Pop();
+        component = cellComponentsBin.Pop();
+
+        descriptionCounter--;
+        counter.text = descriptionCounter.ToString() + "/30";
+
         sentenceText.text = sentence;
-        sentences.Enqueue(sentence);
         cellComponentText.text = component;
-        cellComponents.Enqueue(component);
     }
 
-    void EndDescription() {
+    void EndDescription()
+    {
         Debug.Log("End of description.");
     }
 }
