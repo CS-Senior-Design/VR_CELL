@@ -1149,6 +1149,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Spawn Menu",
+            "id": "4c1aa199-e2a1-4d97-b950-50fb188437c9",
+            "actions": [
+                {
+                    "name": "Spawn Menu",
+                    "type": "Button",
+                    "id": "fc712008-3599-4de1-a10f-3c57f7e05313",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "50447894-1798-45e9-8068-24e52035ef86",
+                    "path": "<XRController>{LeftHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Spawn Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
