@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WristMenu : MonoBehaviour
+public class SpawnMenu : MonoBehaviour
 {
     public GameObject wristUI;
     public bool activeWristUI = true;
-    private GameObject item = null;
+    List<GameObject> spawnedObjects = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -18,25 +18,18 @@ public class WristMenu : MonoBehaviour
 
     public void spawnOrganelle(GameObject organelle)
     {
-        if (item == null)
-        {
-            item = Instantiate(
-                organelle,
-                new Vector3(0,1.3f,-2),
-                Quaternion.identity
-            );
-        }
-        else
-        {
-            Destroy(item);
-            item = Instantiate(
-                organelle,
-                new Vector3(0,1.3f,-2),
-                Quaternion.identity
-            );
-        }
-        
+        GameObject item = Instantiate(
+            organelle,
+            new Vector3(0,1.3f,-2),
+            Quaternion.identity
+        );
+        spawnedObjects.Add(item);
     }
+
+    public void spawnOrganelleHelper()
+    {
+        
+    } 
 
     public void MenuPressed(InputAction.CallbackContext context)
     {
@@ -54,7 +47,6 @@ public class WristMenu : MonoBehaviour
         {
             wristUI.SetActive(false);
             activeWristUI = false;
-            // make gameobjects in the inventory invisible
         }
         else if (!activeWristUI)
         {
