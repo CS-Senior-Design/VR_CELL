@@ -7,12 +7,34 @@ public class WristMenu : MonoBehaviour
 {
     public GameObject wristUI;
     public bool activeWristUI = true;
-
+    private GameObject item = null;
 
     // Start is called before the first frame update
     void Start()
     {
         DisplayWristUI();
+        
+    }
+
+    public void spawnOrganelle(GameObject organelle)
+    {
+        if (item == null)
+        {
+            item = Instantiate(
+                organelle,
+                new Vector3(0,1.3f,-2),
+                Quaternion.identity
+            );
+        }
+        else
+        {
+            Destroy(item);
+            item = Instantiate(
+                organelle,
+                new Vector3(0,1.3f,-2),
+                Quaternion.identity
+            );
+        }
         
     }
 
@@ -32,6 +54,7 @@ public class WristMenu : MonoBehaviour
         {
             wristUI.SetActive(false);
             activeWristUI = false;
+            // make gameobjects in the inventory invisible
         }
         else if (!activeWristUI)
         {

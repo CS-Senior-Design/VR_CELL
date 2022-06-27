@@ -1,0 +1,646 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7136906781022935691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7136906781022935695}
+  - component: {fileID: 7136906781022935694}
+  - component: {fileID: 7136906781022935689}
+  - component: {fileID: 7136906781022935688}
+  - component: {fileID: 7136906781022935692}
+  m_Layer: 5
+  m_Name: Test Canvas for UI trigger button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7136906781022935695
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781022935691}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7136906781132698033}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -4.039, y: 0.446}
+  m_SizeDelta: {x: 180, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &7136906781022935694
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781022935691}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &7136906781022935689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781022935691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!114 &7136906781022935688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781022935691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &7136906781022935692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781022935691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
+--- !u!1 &7136906781132698032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7136906781132698033}
+  - component: {fileID: 7136906781132698037}
+  - component: {fileID: 7136906781132698036}
+  - component: {fileID: 7136906781132698039}
+  - component: {fileID: 7136906781132698026}
+  - component: {fileID: 7136906781132698038}
+  m_Layer: 5
+  m_Name: Trigger Description Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7136906781132698033
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781132698032}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7136906781763185428}
+  m_Father: {fileID: 7136906781022935695}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 90, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7136906781132698037
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781132698032}
+  m_CullTransparentMesh: 1
+--- !u!114 &7136906781132698036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781132698032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.36078432, g: 0.8666667, b: 0.30588236, a: 0.9019608}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7136906781132698039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781132698032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7136906781132698036}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7136906781132698038}
+        m_TargetAssemblyTypeName: DescriptionsTrigger, Assembly-CSharp
+        m_MethodName: TriggerDescription
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7136906781132698026}
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7136906781132698026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781132698032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f3c6862c9b0c7439a7e648329e3cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}
+--- !u!114 &7136906781132698038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781132698032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd981fc5c28c6564e93f07bd820aeafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description:
+    cellComponents:
+    - Nucleus
+    - Nucleolus
+    - Nuclear Lamina
+    - Necleoplasm
+    - Ribosomes
+    - Proteins
+    - Proteins - Glycoprotein
+    - Proteins - Motor Protein
+    - Kinesin
+    - Ribonucleic Acid (RNA)
+    - Ribonucleic Acid (RNA) - mRNA
+    - Ribonucleic Acid (RNA) - tRNA
+    - Ribonucleic Acid (RNA) - rRNA
+    - Amino Acids
+    - Endoplasmic Reticulum - Rough
+    - Endoplasmic Reticulum - Smooth
+    - Vesicles
+    - Golgi Apparatus
+    - Lysosomes
+    - Vacuoles
+    - Mitochondria
+    - Peroxisomes
+    - Centrosomes
+    - Centrioles
+    - Microtubules
+    - Microfilaments
+    - Intermediate Filaments
+    - Cell Membrane
+    - Cytoplasm
+    - Cytosol
+    sentences:
+    - 'Size: ~5 micrometers. The nucleus of the cell is where our journey begins.
+      The most prominent organelle of the call, the nucleus contains all the genetic
+      information for the organism in the DNA packed inside its nuclear envelope.
+      It comprises of two main parts: the nuclear envelope (or nuclear membrane)
+      - a bilipid mambrane which surrounds the nucleus and separates its contents
+      from the rest of the cell - and the nuclear lamina which supports it structurally.
+      Along the nuclear membrane are nuclear pores, responsible for regulating the
+      entry and exit of cell materials into and out of the nucleus.'
+    - The nucleolus is the largest structure within the nucleus, and its main function
+      is to create ribosomes. The nucleolus responds to changes in the call, signaled
+      by chemical tags, and alters the rate at which it produces ribosomes to react
+      to the metabolic activity and growth rate of the cell. Apart from ribosome
+      creation, the nucleolus is also responsible for the formation of certain signal
+      recognition particles and has a role in the stress response of the cell.
+    - Lining the inside of the nucleus is the nuclear lamina. Composed of intermediate
+      filaments and other membrane proteins, its function is to structurally support
+      the nucleus. It also regulates DNA replication and cell division.
+    - The nucleoplasm is analogous to the cytoplasm of the cell, being comprised
+      of the various materials housed within the nuclear envelope, including the
+      chromosomes, nucleolus, ribosomes, and proteins used for important functions
+      in the nucleus.
+    - 'Ribosomes are molecular machines located all throughout the cell that assemble
+      proteins from the instructions encoded in mRNA, in a process known as translation.
+      Amino acids are carried by tRNA are linked together in an order specified by
+      the mRNA. A ribosome is composed of two pieces: the large (60S) and small (40S)
+      subunits. The "S" refers to the Svedberg unit, a unit of measurement based
+      on a particle''s sedimentation rate. Ribosomes originate in the nucleolus and
+      its subunits are created by uniting rRNA and a protein.'
+    - Proteins are the building blocks of life. They are molecules which make up
+      the various components of cells and perform a wide variety of functions that
+      ensure proper cell activity. Proteins are comprised of long chains of amino
+      acids, called polypeptides. The order of the amino acids indicate how the protein
+      is to be folded, and thus determines its final shape and activity. Proteins
+      are created by ribosomes all around the cell from mRNA copied from DNA in the
+      nucleus.
+    - Glycoproteins are attached to a carbohydrate. It is destined for somewhere
+      outside of the cell.
+    - Cell mobility generally requires interaction of the cytoskeleton with motor
+      proteins. Cytoskeleton elements and motor proteins work together with the plsama
+      membrane molecules to allow whole cells to move along fibers outside the cell.
+    - Kinesins are a kind of motor protein used to transport things around the cell.
+      They move along microtubule filaments in one direction, usually from the center
+      of the cell outward toward the outside.
+    - Ribonucleic Acid is a single-stranded chain of nucleotides which play a critical
+      role in coding and decoding for proteins and the expression of genes. It houses
+      genetic information, similar to DNA, but replaces thymind with uracil.
+    - Messenger RNA is responsible for the coding of a sequence of a gene. It is
+      read by a ribosome in order to synthesize a protein. Messenger RNA is created
+      in the nucleus via a process called transcription.
+    - Transfer RNA is RNA upon which amino acids are bound in order to interface
+      with the ribosome in the synthesis of a protein.
+    - Ribosomal RNA is non-coding RNA which makes up the primary component of the
+      ribosomes. It is transcribed from rDNA and then combined with ribosomal proteins
+      to form the large (60S) and small (40S) subunits. It is the component of the
+      ribosome that enables it to translate mRNA into proteins. It makes up about
+      80% of cellular RNA.
+    - Amino acids are the building blocks of proteins. Found all around the cytoplasm,
+      amino acids are carried by tRNA and catalyzed by ribosomes to create proteins.
+      The human body needs 20 different kinds of amino acids; 11 of which it can
+      produce itself. The rest of them -- referred to as essential amino acids --
+      need to be taken in from the outside, typically via one's diet.
+    - The rough endoplasmic reticulum (ER) is named as such because the surface of
+      the organelle is covered in ribosomes, which make proteins and feed them into
+      the hollow space inside the ER, called the lumen, where they are folded and
+      made into longer protein chains to be incorporated into cellular membranes
+      or secreted from the cell to be used elsewhere. If these proteins are not to
+      stay within the ER, they will be "picked up" by the cell's transport vesicles,
+      which are portions of the cell membrane that split off into spheres, to transport
+      materials around and out of the cell.
+    - The smooth ER has no ribosomes attached to its surface, but is still part of
+      the overall endoplasmic reticulum along with the rough ER. The smooth ER's
+      functions include carbohydrate and lipid creation, cell detoxification, and
+      finally -- and potentially most importantly -- serves as a store for calcium
+      ions in muscle cells. The function of calcium ion storage in muscle cells is
+      to trigger coordinated contractions of muscle fibers allowing for many cells
+      to work together to function as one system rather than merely a conglomerate
+      of individual cells. This process of many cells acting together to serve a
+      purpose greater than the sum of its parts leads to cell specialization and
+      the creation of systems of cells becoming tissues and organs.
+    - The vesicle is a simple structure defined by having a lipid bilayer. They form
+      naturally during typical cell processes and perform a variety of functions.
+      They are involved in the cell's metabolism, transport, and storage mechanisms.
+      Vesicles have the ability to fuse with the membranes of other cells and organelles
+      to assist in carrying out the roles of the cell. Vesicles are an umbrella term,
+      of which other organelles can fall under; vacuoles and lysosomes can also be
+      described as vesicles, however most commonly, vesicles are describing transport
+      vesicles. These are lipid bilayer structures which can move within the cell
+      to help move cell materials like proteins from one part of the cell to another,
+      like from the Endoplasmic Reticulum to the Golgi Apparatus in the Endomembrane
+      System.
+    - 'The golgi apparatus acts like the "post office" of the cell! Its main functions
+      are to sort, package, and chemically tag the lipids and proteins brought to
+      it by the cell''s vesicles so that they end up in the correct place, whether
+      inside the cell or outside of it. The golgi can be separated into its two sides;
+      the cis face and the trans face. The cis face sits on the side nearest to the
+      ER and receives the packages of lipids and proteins being transported from
+      the ER by the transport vesicles. Once inside the golgi, these proteins undergo
+      further modification and have phosphate groups added as tags to be used later
+      in order to decide where each proteins should end up. Finally, using these
+      chemical tags, the modified proteins and lipids are sorted and packaged into
+      another transport vesicle from the trans face of the golgi to be delivered
+      to other parts of the cell such as the lysosomes. '
+    - The lysosome acts as the cell's "garbage collectors" and works to break down
+      old and unnecessary cell materials so that they can be repurposed by the cell
+      and used again. These acidic organelles use digestive hydolytic enzymes which
+      break down large molecules such as complex proteins and carbohydrates into
+      smaller molecules like basic amino acids and simple sugars. In other cases,
+      the lysosome may ingest harmful bacteria so that it can be destroyed.
+    - Vacuoles are large vesicles derived from the endoplasmic reticulum and golgi
+      apparatus. Vacuoles are an integral part of a cell's endomembrane system. These
+      organelles perform a variety of functions in different kinds of cells. In animal
+      cells, vacuoles are small and help get rid of waste products. As food is digested,
+      wastes are released when the vacuoles fuse with a specialized region of the
+      plasma membrane that functions as an anal pore.
+    - The mitochondria are the "powerhouse" of the cell! These organelles are hypothesized
+      to have once been a self-sustaining prokaryotic cell which became an endosymbiont
+      of the eukaryotic cell that is the animal cell, meaning both the mitochondrion
+      and the eukaryotic cell found a mututalistic relationship as a result of the
+      mitochondrion becoming part of the cell. Some cell types, such as red blood
+      cells, contain no mitochondria while others, like liver cells, can have more
+      than 2000! The function of these organelles are to supply the chemical energy
+      needed to carry out cell functions, through the processing of adenosine triphosphate
+      (ATP); a molecule which energy-dense phosphate groups. These "units" of ATP
+      can then be used to power metabolic processes throughout the cell.
+    - A peroxisome is an organelle found within the cytoplasm that plays an important
+      role in lipid metabolism. Very long chains of fatty acids are broken down via
+      beta oxidation into medium chain fatty acids, which are then shipped to the
+      mitochondria to be broken down further into carbon dioxide and water.
+    - Many of the events of mitosis, which is the process in which a cell duplicates
+      all of its contents, depend on the mitotic spindle. In animal cells, the assembly
+      of spindle microtubules starts at the centrosome, a subcellular region containing
+      material that functions throughout the cell cycle to organize the cell's microtubules
+      and is important during cell division. Each centrosome contains two centrioles.
+    - In animal cells, microtubules grow out from a centrosome, a region that is
+      often located near the nucleus. These microtubules function as compression-resisting
+      girders of the cytoskeleton. Within the centrosome is a pair of centrioles,
+      each about 250nm in diameter. The two centrioles are at right angles to each
+      other, and each is made up of nine sets of three microtubules. The blue portions
+      of the centiole shown represent nontubulin proteins that connect the microtubule
+      triplets. Centrosomes with centioles help organize microtubule awssembly in
+      animal cells.
+    - "Microtubules are one of three types of fibers that make up the cytoskeleton.
+      They are shaped like hollow tubes and made up of proteins called tubulins.
+      A fubulin protein also called a dimer, is made up of two different polypeptides:
+      \u03B1-tubulin and \u03B2-tubulin.\nMicrotubules can grow in length by adding
+      tubulin dimers, and can also be dis-assembled and their tubulins used elsewhere
+      to build other microtubules throughout the cell.\nOverall, their function is
+      to serve as the backbone of the cell to help shape and support the cell. They
+      also serve as tracks along which organellles equipped with motor proteins can
+      move throughout the cell."
+    - 'Like microtubules, microfilaments seem to be present in all eukaryotic cells.
+      They are thinner, solid rods that play a structural role in bearing tension
+      forces (pulling forces) in the cell. In essence, they assist with cell movement
+      and are built from molecules of actin -- a globular protein.
+
+      A three-dimensional
+      network formed by microfilaments just to the inside of the plasma membrane
+      helps support the cell''s shape. This network gives the outer cytoplasmic layer
+      of a cell, called the cortex, the semisolid consistency of a gell, in contrast
+      with the more fluid state of the interior cytoplasm.'
+    - Intermediate filaments are named after their diameter, which is larger than
+      that of microfilaments, but smaller than the diameter of microtubules. They
+      are made up of proteins called keratins which make them more permanent structures
+      than microfilaments and microtubules. Because of their sturdiness, intermediate
+      filaments play an important role in reinforcing the shape of a cell and fixing
+      the position of certain organelles. For instance, the nucleus typically sits
+      within a cage made of intermediate filaments.
+    - "All cells are bounded by a selective barrier, called the plasma membrane --
+      or the cell membrane. This barrier is made up of glycerophospholipids; molecules
+      composed of glycerol (a phosphate group) and two fatty acid chains. Glycerol
+      is a three-carbon molecule that functions as the backbone of these membrane
+      lipids. \nThe cell membrane has two functions: first, to be a barrier keeping
+      the constituents of the cell in and unwanted substances out. Second, to be
+      a \"gate\" allowing the transport of essential nutrients into the cell and
+      movement of waste products out of the cell via vacuoles."
+    - The area between the cell membrane and the nucleus is referred to as the cytoplasm.
+      Often used interchangeably with cytosol, cytoplasm actually refers to all of
+      the space within the cell membrane, excluding the nucleus. Thus, all the other
+      organelles are also considered part of the cytoplasm.
+    - Cytosol, also known as the cytoplasmic matrix, refers to the liquid substance
+      upons which the organelles are embedded. In this simulation, it behaves roughly
+      like water, but in reality the consistency is more jelly-like.
+--- !u!1 &7136906781763185431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7136906781763185428}
+  - component: {fileID: 7136906781763185418}
+  - component: {fileID: 7136906781763185429}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7136906781763185428
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781763185431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7136906781132698033}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7136906781763185418
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781763185431}
+  m_CullTransparentMesh: 1
+--- !u!114 &7136906781763185429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136906781763185431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Open
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
