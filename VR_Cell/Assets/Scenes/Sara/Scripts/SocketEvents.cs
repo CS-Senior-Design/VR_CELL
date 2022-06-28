@@ -1,25 +1,34 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-// using UnityEngine.XR.Interaction.Toolkit;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
-// public class SocketEvents : MonoBehaviour
-// {
-//     // public GameObject organelle;
-//     // private Color defaultOrganelleColor;
+public class SocketEvents : MonoBehaviour
+{
+    public GameObject organelle;
+   
 
-//     void Awake()
-//     {
-//         // defaultOrganelleColor = organelle.Color;
-//         XRSocketInteractor socket = gameObject.GetComponent<XRSocketInteractor>();
-//         socket.onSelectEntered.AddListener(SelectedObject);
-//         // socket.onSelectExit.AddListener(ColorChange);
-//     }
+    void Awake()
+    {
+        XRSocketInteractor socket = gameObject.GetComponent<XRSocketInteractor>();
+        socket.onSelectEntered.AddListener(SelectedObject);
+        // socket.onSelectExit.AddListener(ColorChange);
+    }
 
-//     public void SelectedObject(XRBaseInteractable obj)
-//     {
-//         Debug.Log("object in socket 1");
-//     }
+    public void SelectedObject(XRBaseInteractable obj)
+    {
+        organelle.gameObject.SetActive(true);
+        SelectedObject selectedObject = obj.GameObject.GetComponent<SelectedObject>();
+
+        // if (selectedObject != null)
+        // {
+        //     organelle.add
+        // }
+        Debug.Log("object in socket 1");
+
+        
+        
+    }
 
     // public void ColorChange(XRBaseInteractable obj)
     // {
@@ -41,4 +50,4 @@
     //     organelle.color = defaultOrganelleColor;
     // }
 
-// }
+}
