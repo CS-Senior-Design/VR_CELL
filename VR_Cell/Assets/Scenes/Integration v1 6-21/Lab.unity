@@ -604,6 +604,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a305a30b41556e4ebaacd06b5a0bec9, type: 3}
+--- !u!1 &573358803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1812751369633260267, guid: 77382b4be9acd2348b3810899b4dd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080272831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &573358807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573358803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318aaaf6f502f7141ba33b4d182df28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socket: {fileID: 0}
 --- !u!114 &600738438 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7166890144671693423, guid: 3a305a30b41556e4ebaacd06b5a0bec9,
@@ -616,6 +635,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &632359512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1812751369390092481, guid: 77382b4be9acd2348b3810899b4dd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080272831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &632359516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632359512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318aaaf6f502f7141ba33b4d182df28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socket: {fileID: 0}
 --- !u!1 &650101422 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2475827682379684837, guid: cacb360a0bdf0af4b8a47cbe46c1ea4a,
@@ -647,6 +685,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 240318817}
     m_Modifications:
+    - target: {fileID: 1812751369390092483, guid: 77382b4be9acd2348b3810899b4dd0aa,
+        type: 3}
+      propertyPath: m_KeepSelectedTargetValid
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1812751370202169382, guid: 77382b4be9acd2348b3810899b4dd0aa,
         type: 3}
       propertyPath: m_RootOrder
@@ -752,6 +795,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1080272831}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1412359465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1812751369542964421, guid: 77382b4be9acd2348b3810899b4dd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080272831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1412359469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412359465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318aaaf6f502f7141ba33b4d182df28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socket: {fileID: 0}
 --- !u!1001 &1462164432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -919,6 +981,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8313471bf6226f54ab9018b4db5a947f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1514791437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1812751369911205374, guid: 77382b4be9acd2348b3810899b4dd0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080272831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1514791441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514791437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318aaaf6f502f7141ba33b4d182df28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socket: {fileID: 0}
 --- !u!1001 &1533343761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1211,8 +1292,8 @@ MonoBehaviour:
     m_ActionName: UI/Menu
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WristMenu, Assembly-CSharp
+      - m_Target: {fileID: 240318826}
+        m_TargetAssemblyTypeName: SpawnMenu, Assembly-CSharp
         m_MethodName: MenuPressed
         m_Mode: 0
         m_Arguments:

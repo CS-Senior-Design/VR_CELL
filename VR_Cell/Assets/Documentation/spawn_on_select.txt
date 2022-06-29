@@ -1,0 +1,18 @@
+Steps to make it possible to spawn ora=ganelles by selecting them while they are inside the cell:
+
+1) The parent that holds all the organelles should not have any rigid bodies or colliders or interactables
+
+2) Add the following components to the organelle  you want to be able to select and spawn
+    - Rigid Body (enable gravity and freeze both position and rotation)
+    - Mesh Collider (enable the convex check box)
+    - XR simple interactable
+
+3) On the XR Simple interactable component add an interactable event for 'select entered'
+    - Drag in the left hand controller (or whatever game object is holding the 'SpawnMenu' script)
+    - Select the 'SpawnMenu.spawnOrganelle' function
+    - Add the prefab for the model that you want to spawn
+
+4) The prefab for the model you want to spawn has to have the following:
+    - Rigid body (same as above)
+    - Mesh collider (same as above)
+    - XR Grab Interactable

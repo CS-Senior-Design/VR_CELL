@@ -24,12 +24,8 @@ public class SpawnMenu : MonoBehaviour
             Quaternion.identity
         );
         spawnedObjects.Add(item);
+        Debug.Log(spawnedObjects.Count);
     }
-
-    public void spawnOrganelleHelper()
-    {
-        
-    } 
 
     public void MenuPressed(InputAction.CallbackContext context)
     {
@@ -42,7 +38,6 @@ public class SpawnMenu : MonoBehaviour
 
     public void DisplayWristUI()
     {
-        Debug.Log("Hello");
         if (activeWristUI)
         {
             wristUI.SetActive(false);
