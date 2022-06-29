@@ -833,6 +833,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SpawnMenu, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2475827680856935438, guid: cacb360a0bdf0af4b8a47cbe46c1ea4a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4989629067369334378, guid: f523062ad262aff4eb2a609fc2e87223,
+        type: 3}
     - target: {fileID: 2475827681009935575, guid: cacb360a0bdf0af4b8a47cbe46c1ea4a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -852,8 +858,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1936248732338912116, guid: d3c1b80b539ca9d408dae01f55b386a8,
+      objectReference: {fileID: 1414469970209968381, guid: 3409120d7fc129e438a9e8a884e171ec,
         type: 3}
+    - target: {fileID: 2475827681611526905, guid: cacb360a0bdf0af4b8a47cbe46c1ea4a,
+        type: 3}
+      propertyPath: m_text
+      value: 'Golgi
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 2475827682379684837, guid: cacb360a0bdf0af4b8a47cbe46c1ea4a,
         type: 3}
       propertyPath: m_Name
