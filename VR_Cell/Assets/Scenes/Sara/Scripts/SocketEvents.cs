@@ -1,53 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using UnityEngine.XR.Interaction.Toolkit;
 
-public class SocketEvents : MonoBehaviour
-{
-    public GameObject organelle;
+// public class SocketEvents : MonoBehaviour
+// {
+//     public GameObject organelle;
    
 
-    void Awake()
-    {
-        XRSocketInteractor socket = gameObject.GetComponent<XRSocketInteractor>();
-        socket.onSelectEntered.AddListener(SelectedObject);
-        // socket.onSelectExit.AddListener(ColorChange);
-    }
+//     void Awake()
+//     {
+//         XRSocketInteractor socket = gameObject.GetComponent<XRSocketInteractor>();
+//         socket.onSelectEntered.AddListener(SelectedObject);
+//         // socket.onSelectExit.AddListener(ColorChange);
+//     }
 
-    public void SelectedObject(XRBaseInteractable obj)
-    {
-        organelle.gameObject.SetActive(true);
-        SelectedObject selectedObject = obj.GameObject.GetComponent<SelectedObject>();
+//     public void SelectedObject(XRBaseInteractable obj)
+//     {
+//         organelle.gameObject.SetActive(true);
+//         SelectedObject selectedObject = obj.GameObject.GetComponent<SelectedObject>();
 
-        // if (selectedObject != null)
-        // {
-        //     organelle.add
-        // }
-        Debug.Log("object in socket 1");
+//         // if (selectedObject != null)
+//         // {
+//         //     organelle.add
+//         // }
+//         Debug.Log("object in socket 1");
 
         
         
-    }
+//     }
 
-    // public void ColorChange(XRBaseInteractable obj)
-    // {
-    //     organelle.gameObject.SetActive(true);
-    //     ColorChange colorChange = obj.GameObject.GetComponent<ColorChange>();
+//     // public void ColorChange(XRBaseInteractable obj)
+//     // {
+//     //     organelle.gameObject.SetActive(true);
+//     //     ColorChange colorChange = obj.GameObject.GetComponent<ColorChange>();
 
-    //     if (colorChange != null)
-    //     {
-    //         organelle.color = colorChange.color;
-    //     }
-    //     else
-    //     {
-    //         organelle.color = defaultOrganelleColor;
-    //     }
-    // }
+//     //     if (colorChange != null)
+//     //     {
+//     //         organelle.color = colorChange.color;
+//     //     }
+//     //     else
+//     //     {
+//     //         organelle.color = defaultOrganelleColor;
+//     //     }
+//     // }
 
-    // public void SetDefaultColor(XRBaseInteractable obj)
-    // {
-    //     organelle.color = defaultOrganelleColor;
-    // }
+//     // public void SetDefaultColor(XRBaseInteractable obj)
+//     // {
+//     //     organelle.color = defaultOrganelleColor;
+//     // }
 
-}
+// }
