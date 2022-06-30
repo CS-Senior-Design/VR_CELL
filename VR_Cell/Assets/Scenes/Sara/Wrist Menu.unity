@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17370024, g: 0.21716648, b: 0.2992931, a: 1}
+  m_IndirectSpecularColor: {r: 0.17370038, g: 0.21716687, b: 0.29929376, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -469,7 +469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &135705317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,7 +857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155330768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.243, y: 0.829, z: 1.5}
+  m_LocalPosition: {x: 0.243, y: 0.829, z: 1}
   m_LocalScale: {x: 0.11052632, y: 0.07755691, z: 0.09933375}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2247,7 +2247,7 @@ PrefabInstance:
     - target: {fileID: 1266988526045241806, guid: d3c1b80b539ca9d408dae01f55b386a8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1266988526045241806, guid: d3c1b80b539ca9d408dae01f55b386a8,
         type: 3}
@@ -2416,7 +2416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611275312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.788}
+  m_LocalPosition: {x: 0, y: 0, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3790,7 +3790,7 @@ PrefabInstance:
     - target: {fileID: 7643979482783896578, guid: eb8133909119c5a4390a01959340d40f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.332
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7643979482783896578, guid: eb8133909119c5a4390a01959340d40f,
         type: 3}
@@ -3941,6 +3941,7 @@ GameObject:
   - component: {fileID: 1031510309}
   - component: {fileID: 1031510311}
   - component: {fileID: 1031510310}
+  - component: {fileID: 1031510312}
   m_Layer: 5
   m_Name: Slot 1
   m_TagString: Untagged
@@ -4028,6 +4029,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1031510312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031510308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9784007f886744f964c842c276b432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1192585248
 GameObject:
   m_ObjectHideFlags: 0
@@ -4120,7 +4133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192585248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.829, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0.829, z: 1}
   m_LocalScale: {x: 0.11052632, y: 0.07755691, z: 0.09933375}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6322,7 +6335,7 @@ GameObject:
   - component: {fileID: 2007582679}
   - component: {fileID: 2007582678}
   - component: {fileID: 2007582677}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Right Ray Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6562,7 +6575,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 8
+    m_Bits: 10
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -6641,7 +6654,7 @@ MonoBehaviour:
   m_SphereCastRadius: 0.1
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 96
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
   m_HoverToSelect: 0

@@ -54,7 +54,7 @@ public class WristMenu : MonoBehaviour
         {
             wristUI.SetActive(false);
             activeWristUI = false;
-            // make gameobjects in the inventory invisible
+            // make gameobjects in the inventory invisible  
         }
         else if (!activeWristUI)
         {
