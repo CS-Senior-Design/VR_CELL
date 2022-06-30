@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     void Awake() 
     {
         _inventory.SetActive(false);
-        // toggle = GetComponent<Toggle>();
+        toggle = GetComponent<Toggle>();
         toggle.onValueChanged.AddListener(ToggleInventory);
 
         if (toggle.isOn)
