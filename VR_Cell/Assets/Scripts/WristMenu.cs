@@ -49,12 +49,10 @@ public class WristMenu : MonoBehaviour
 
     public void DisplayWristUI()
     {
-        Debug.Log("Hello");
         if (activeWristUI)
         {
             wristUI.SetActive(false);
             activeWristUI = false;
-            // make gameobjects in the inventory invisible  
         }
         else if (!activeWristUI)
         {

@@ -6,6 +6,7 @@ public class WristUI : MonoBehaviour
 
     private Canvas _wristUICanvas;
     private InputAction _menu;
+    
     private void Start()
     {
         _wristUICanvas = GetComponent<Canvas>();

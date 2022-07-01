@@ -3,6 +3,7 @@
 // using UnityEngine;
 // using UnityEngine.UI;
 // using UnityEngine.InputSystem;
+// using UnityEngine.XR;
 // using UnityEngine.XR.Interaction.Toolkit;
 
 // public class Slot : MonoBehaviour
@@ -11,49 +12,33 @@
 //     public Image slotImage;
 //     Color originalColor;
 
-//     //Creates an enum that will determine if we're using the right or left controller
-//     public enum ControllerType
-//     {
-//         RightHand,
-//         LeftHand
-//     }
-
-//     //Stores the target controller from the editor
-//     public ControllerType targetController;
-
-//     //References our Input Actions that we are using
-//     public InputActionAsset inputAction;
-
-//     private InputAction _triggerPressed;
-
 //     // Start is called before the first frame update
 //     void Start()
 //     {
 //         slotImage = GetComponentInChildren<Image>();
 //         originalColor = slotImage.color;
-//         _triggerPressed = inputAction.FindActionMap("XRI " + targetController.ToString()).FindAction("Activate");
-//         _triggerPressed.Enable();
-//         _triggerPressed.performed += OnTriggerStay;
 //     }
 
 //     // Update is called once per frame
-//     private void OnTriggerStay(InputAction.CallbackContext context)
+//     private void OnTriggerStay(Collider other)
 //     {
+//         bool triggerValue;
+
 //         if (ItemInSlot != null)
 //             return;
 
-//         GameObject obj = context.gameObject;
+//         GameObject obj = other.gameObject;
 
-//         if (!isItem(obj))
+//         if (!IsItem(obj))
 //             return;
         
-//         if (_triggerPressed)
+//         if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
 //         {
 //             InsertItem(obj);
 //         }
 //     }
 
-//     bool isItem(GameObject obj)
+//     bool IsItem(GameObject obj)
 //     {
 //         return obj.GetComponent<Item>();
 //     }
