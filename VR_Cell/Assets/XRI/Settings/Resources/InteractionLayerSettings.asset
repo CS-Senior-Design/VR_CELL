@@ -15,9 +15,9 @@ MonoBehaviour:
   m_LayerNames:
   - Default
   - Interactable
-  - Teleport
+  - TeleportionArea
   - UI
-  - 
+  - TeleportationAnchor
   - 
   - 
   - 

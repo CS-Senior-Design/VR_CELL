@@ -48,19 +48,19 @@ public class TeleportationController: MonoBehaviour
         //This will find the Action Map of our target controller for Teleport Mode Activate.
         //It will enable it and then subscribe itself to our OnTeleportActivate function
         Debug.Log("XRI " + targetController.ToString());
-        _teleportActivate = inputAction.FindActionMap("XRI " + targetController.ToString()).FindAction("Teleport Mode Activate");
+        _teleportActivate = inputAction.FindActionMap("XRI " + targetController.ToString() + " Locomotion").FindAction("Teleport Mode Activate");
         _teleportActivate.Enable();
         _teleportActivate.performed += OnTeleportActivate;
 
         //This will find the Action Map of our target controller for Teleport Mode Cancel.
         //It will enable it and then subscribe itself to our OnTeleportCancel function
-        _teleportCancel = inputAction.FindActionMap("XRI " + targetController.ToString()).FindAction("Teleport Mode Cancel");
+        _teleportCancel = inputAction.FindActionMap("XRI " + targetController.ToString() + " Locomotion").FindAction("Teleport Mode Cancel");
         _teleportCancel.Enable();
         _teleportCancel.performed += OnTeleportCancel;
 
 
         //We grab this reference so we can use it to tell if the thumbstick is still being pressed
-        _thumbstickInputAction = inputAction.FindActionMap("XRI " + targetController.ToString()).FindAction("Move");
+        _thumbstickInputAction = inputAction.FindActionMap("XRI " + targetController.ToString() + " Locomotion").FindAction("Move");
         _thumbstickInputAction.Enable();
     }
 
