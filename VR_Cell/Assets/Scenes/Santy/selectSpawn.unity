@@ -18226,7 +18226,7 @@ GameObject:
   - component: {fileID: 7524276034289137247}
   - component: {fileID: 7524276034289137246}
   - component: {fileID: 7524276034289137245}
-  - component: {fileID: 7524276034289137244}
+  - component: {fileID: 7524276034289137248}
   m_Layer: 0
   m_Name: Rough_Endoplasmic_reticulum
   m_TagString: Untagged
@@ -20386,20 +20386,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7524276034289137244
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6628195626199296030}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: 5797197919497150440, guid: 12d2070821002214a89bff1c457e5314, type: 3}
 --- !u!114 &7524276034289137245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20523,6 +20509,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!64 &7524276034289137248
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628195626199296030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5797197919497150440, guid: 12d2070821002214a89bff1c457e5314, type: 3}
 --- !u!33 &7526789519855151970
 MeshFilter:
   m_ObjectHideFlags: 0
