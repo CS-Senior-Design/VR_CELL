@@ -19,11 +19,16 @@ public class TeleportationManager : MonoBehaviour
     private InteractionLayerMask initialInteractionLayers;
     private List<IXRInteractable> interactables = new List<IXRInteractable>();
 
+    private bool isPressed = false; 
+
     // Start is called before the first frame update
     void Start()
     {
+        // activate is the menu button
         activate.action.Enable();
+        // cancel is the grip
         cancel.action.Enable();
+        // d-pad
         thumbstick.action.Enable();
         // gripModeActivate.action.Enable();
 
@@ -40,8 +45,11 @@ public class TeleportationManager : MonoBehaviour
         if (!_isActive)
             return;
         
-        if (thumbstick.action.triggered)
+        if (activate.action.triggered)
+        {
+            Debug.Log("activate triggered");
             return;
+        }
 
         rayInteractor.GetValidTargets(interactables);
 
@@ -67,9 +75,11 @@ public class TeleportationManager : MonoBehaviour
             Debug.Log("Teleportation Anchor");
             request.destinationPosition = hit.transform.GetChild(0).transform.position;
         }
-
-        provider.QueueTeleportRequest(request);
-        TurnOffTeleport();
+        if (isPressed == false)
+        {
+            provider.QueueTeleportRequest(request);
+            TurnOffTeleport();
+        }
 
     }
 
@@ -77,6 +87,10 @@ public class TeleportationManager : MonoBehaviour
     {
         // if (gripModeActivate.action.phase != InputActionPhase.Performed)
         // {
+            if (isPressed == false)
+                isPressed = true;
+            else
+                isPressed = false;
             _isActive = true;
             rayInteractor.lineType = XRRayInteractor.LineType.ProjectileCurve;
             rayInteractor.interactionLayers = teleportationLayers;
@@ -91,6 +105,10 @@ public class TeleportationManager : MonoBehaviour
 
     private void TurnOffTeleport()
     {
+        if (isPressed == false)
+            isPressed = true;
+        else
+            isPressed = false;
         _isActive = false;
         rayInteractor.lineType = XRRayInteractor.LineType.StraightLine;
         rayInteractor.interactionLayers = initialInteractionLayers;
