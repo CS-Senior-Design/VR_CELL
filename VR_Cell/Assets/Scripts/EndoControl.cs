@@ -23,28 +23,7 @@ public class EndoControl : MonoBehaviour
     public GameObject _golgitrans;
     public GameObject _outgoingvesicle;
     
-    // item2.transform.localScale += new Vector3(100,100,100);
-
-    void Awake()
-    {
-        XRSocketInteractor socket1 = gameObject.GetComponent<XRSocketInteractor>();
-        socket1.onSelectEntered.AddListener(ProteinNucleolusInteraction);
-    }
-
-    public void ProteinNucleolusInteraction(XRBaseInteractable obj)
-    {
-        GameObject ribosome30 = Instantiate(
-                _ribosome30,
-                new Vector3(0.07f,1.3f,0.99f),
-                Quaternion.identity
-        );
-        // nucleolus
-        GameObject ribosome50 = Instantiate(
-            _ribosome50,
-            new Vector3(0.60f,1.3f,0.97f),
-            Quaternion.identity
-        );
-    }
+    // item2.transform.localScale += new Vector3(100,100,100)
 
     // Start is called before the first frame update
     public void Process( bool isForward)
@@ -93,7 +72,7 @@ public class EndoControl : MonoBehaviour
                 );
                 // next button should be greyed out here
 
-                // When they connect the two objects above the UI should move forward with a greyed out next button
+                // When they connect the two objects above the UI should move forward with a greyed out next button that doest click
 
                 break;
             }
