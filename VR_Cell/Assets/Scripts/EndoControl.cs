@@ -77,15 +77,6 @@ public class EndoControl : MonoBehaviour
                 );
                 spawnedObjects.Add(nucleolus);
 
-                // // add socket interactor to one of them
-                // XRSocketInteractor proteinSocket = protein.AddComponent<XRSocketInteractor>() as XRSocketInteractor;
-
-                // // add the organelle interaction script to socket interactor
-                // OrganelleInteractions script = proteinSocket.gameObject.AddComponent<OrganelleInteractions>() as OrganelleInteractions;
-
-                // // set the variables to spawn
-                // script._spawnItem1 = _protein;
-
                 // next button should be greyed out here
 
                 // When they connect the two objects above the UI should move forward with a greyed out next button that doest click
@@ -93,15 +84,61 @@ public class EndoControl : MonoBehaviour
                 break;
             }
 
+            // need an mRNA to connect to the full ribosome that is already spawned
             case 2:
             {
-                Debug.Log("work2");
+                if (!isForward)
+                {
+                    // destroy step 3 stuff
+                    Debug.Log("Destroy");
+                    // we can change panel to screen 2
+                }
+                // spawn mRNA
+                GameObject mrna = Instantiate(
+                    _mrna,
+                    new Vector3(0.60f,1.3f,0.97f),
+                    Quaternion.identity
+                );
                 break;
             }
 
+            // spawn a rough ER
             case 3:
             {
-                Debug.Log("work3");
+                if (!isForward)
+                {
+                    // destroy step 4 stuff
+                    Debug.Log("Destroy");
+                    // we can change panel to screen 3
+                }
+                // rough ER
+                GameObject rougher = Instantiate(
+                    _rougher,
+                    new Vector3(0.60f,1.3f,0.97f),
+                    Quaternion.identity
+                );
+                break;
+            }
+
+            // spwn golgi
+            
+            case 4:
+            {
+                if (!isForward)
+                {
+                    // destroy step 5 stuff
+                    Debug.Log("Destroy");
+                    // we can change panel to screen 4
+                }
+                // golgi
+                GameObject golgi = Instantiate(
+                    _golgi,
+                    new Vector3(0.60f,1.3f,0.97f),
+                    Quaternion.identity
+                );
+                // NEED to put small socket on CIS side to place glycoprotein
+                // it will move to the trans side
+                // once it reaches the trans side it will become an outgoing vesicle that maybe floats away or something
                 break;
             }
 
