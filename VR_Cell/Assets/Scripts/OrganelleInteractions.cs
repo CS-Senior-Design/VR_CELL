@@ -24,20 +24,9 @@ public class OrganelleInteractions : MonoBehaviour
                 new Vector3(0.07f,1.3f,0.99f),
                 Quaternion.identity
             );
-            // nucleolus
-            GameObject ribosome50 = Instantiate(
-                _spawnItem1,
-                new Vector3(0.60f,1.3f,0.97f),
-                Quaternion.identity
-            );
         }
         if (_spawnItem2)
         {
-            GameObject ribosome30 = Instantiate(
-                _spawnItem2,
-                new Vector3(0.07f,1.3f,0.99f),
-                Quaternion.identity
-            );
             // nucleolus
             GameObject ribosome50 = Instantiate(
                 _spawnItem2,

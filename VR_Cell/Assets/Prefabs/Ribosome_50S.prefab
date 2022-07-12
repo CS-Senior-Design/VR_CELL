@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2256952809553485135
+--- !u!1 &1893868153443356887
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4198527589426989495}
-  - component: {fileID: 3614059819476392687}
-  - component: {fileID: 737329319223897994}
-  - component: {fileID: 5935097923097403582}
-  - component: {fileID: 4294622731086337419}
-  - component: {fileID: -5537719689267142321}
+  - component: {fileID: 1893868153443356893}
+  - component: {fileID: 1893868153443356882}
+  - component: {fileID: 1893868153443356883}
+  - component: {fileID: 1893868153443356880}
+  - component: {fileID: 1893868153443356881}
+  - component: {fileID: 1893868153443356886}
   m_Layer: 0
   m_Name: Ribosome_50S
   m_TagString: Untagged
@@ -21,36 +21,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4198527589426989495
+--- !u!4 &1893868153443356893
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256952809553485135}
-  m_LocalRotation: {x: 0.7071068, y: -6.375355e-15, z: 0.00000010677015, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_GameObject: {fileID: 1893868153443356887}
+  m_LocalRotation: {x: -0, y: 0.000000075497894, z: 0.0000000754979, w: 1}
+  m_LocalPosition: {x: 6.7331805, y: -9.990764, z: 0.0402565}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3614059819476392687
+--- !u!33 &1893868153443356882
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256952809553485135}
+  m_GameObject: {fileID: 1893868153443356887}
   m_Mesh: {fileID: -4345669509890119192, guid: 12d2070821002214a89bff1c457e5314, type: 3}
---- !u!23 &737329319223897994
+--- !u!23 &1893868153443356883
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256952809553485135}
+  m_GameObject: {fileID: 1893868153443356887}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &5935097923097403582
+--- !u!54 &1893868153443356880
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256952809553485135}
+  m_GameObject: {fileID: 1893868153443356887}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -100,15 +100,15 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4294622731086337419
+--- !u!114 &1893868153443356881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256952809553485135}
+  m_GameObject: {fileID: 1893868153443356887}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
@@ -217,13 +217,13 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!64 &-5537719689267142321
+--- !u!64 &1893868153443356886
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256952809553485135}
+  m_GameObject: {fileID: 1893868153443356887}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

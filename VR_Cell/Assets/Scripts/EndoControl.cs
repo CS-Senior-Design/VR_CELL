@@ -70,6 +70,16 @@ public class EndoControl : MonoBehaviour
                     new Vector3(0.60f,1.3f,0.97f),
                     Quaternion.identity
                 );
+
+                // // add socket interactor to one of them
+                // XRSocketInteractor proteinSocket = protein.AddComponent<XRSocketInteractor>() as XRSocketInteractor;
+
+                // // add the organelle interaction script to socket interactor
+                // OrganelleInteractions script = proteinSocket.gameObject.AddComponent<OrganelleInteractions>() as OrganelleInteractions;
+
+                // // set the variables to spawn
+                // script._spawnItem1 = _protein;
+
                 // next button should be greyed out here
 
                 // When they connect the two objects above the UI should move forward with a greyed out next button that doest click
