@@ -14,6 +14,7 @@ public class QuizManager : MonoBehaviour
 
     private int questionCounter;
     private int numOfQuestions;
+    private Question currentQuestion;
     private string prompt;
     private string A, B, C, D;
 
@@ -39,6 +40,7 @@ public class QuizManager : MonoBehaviour
         {
             Question tempQuestion = questionStackBin.Pop();
             questionStack.Push(tempQuestion);
+            Debug.Log(tempQuestion.questionPrompt);
         }
 
         DisplayNextQuestion();
@@ -53,11 +55,17 @@ public class QuizManager : MonoBehaviour
         }
 
         // Insert logic here.
+        questionStackBin.Push(currentQuestion);
+        currentQuestion = questionStack.Pop();
 
         questionCounter++;
         questionNumber.text = "Question " + questionCounter.ToString() + "/" + numOfQuestions;
 
-
+        questionPrompt.text = currentQuestion.questionPrompt;
+        promptA.text = currentQuestion.questionOptions[0];
+        promptB.text = currentQuestion.questionOptions[1];
+        promptC.text = currentQuestion.questionOptions[2];
+        promptD.text = currentQuestion.questionOptions[3];
     }
 
     public void DisplayPreviousQuestion()
@@ -69,11 +77,17 @@ public class QuizManager : MonoBehaviour
         }
 
         // Insert logic here.
+        questionStack.Push(currentQuestion);
+        currentQuestion = questionStackBin.Pop();
 
         questionCounter--;
         questionNumber.text = "Question " + questionCounter.ToString() + "/" + numOfQuestions;
 
-        
+        questionPrompt.text = currentQuestion.questionPrompt;
+        promptA.text = currentQuestion.questionOptions[0];
+        promptB.text = currentQuestion.questionOptions[1];
+        promptC.text = currentQuestion.questionOptions[2];
+        promptD.text = currentQuestion.questionOptions[3];
     }
 
     void EndQuiz()
