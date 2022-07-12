@@ -22,6 +22,9 @@ public class EndoControl : MonoBehaviour
     public GameObject _golgicis;
     public GameObject _golgitrans;
     public GameObject _outgoingvesicle;
+
+    // global array to store all objects that are currently spawned
+    public List<GameObject> spawnedObjects = new List<GameObject>();
     
     // item2.transform.localScale += new Vector3(100,100,100)
 
@@ -64,12 +67,15 @@ public class EndoControl : MonoBehaviour
                     new Vector3(0.07f,1.3f,0.99f),
                     Quaternion.identity
                 );
+                // add it to the spawnedObjects array
+                spawnedObjects.Add(protein);
                 // nucleolus
                 GameObject nucleolus = Instantiate(
                     _nucleolus,
                     new Vector3(0.60f,1.3f,0.97f),
                     Quaternion.identity
                 );
+                spawnedObjects.Add(nucleolus);
 
                 // // add socket interactor to one of them
                 // XRSocketInteractor proteinSocket = protein.AddComponent<XRSocketInteractor>() as XRSocketInteractor;
