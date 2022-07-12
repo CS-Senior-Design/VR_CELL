@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using System.Linq;
 
+// This scrip will be placed on the socket component of the objects that have a socket
 public class OrganelleInteractions : MonoBehaviour
 {
     public GameObject _spawnItem1 = null;
@@ -11,21 +12,35 @@ public class OrganelleInteractions : MonoBehaviour
 
     void Awake()
     {
+        // get the socket component
         XRSocketInteractor socket = gameObject.GetComponent<XRSocketInteractor>();
+        // call the Interaction function when an object gets placed in the socket
         socket.onSelectEntered.AddListener(Interaction);
     }
 
     public void Interaction(XRBaseInteractable obj)
     {
-        Debug.Log("herererere");
+
+        // if this is the Golgi interaction, we want to do the animation of the enclosed glycoprotein going across the golgi
+        // we will know if this is that interaction because _spawnItem1 will be a tavle with a "golge" tag (literally golge)
+        foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+        {
+            if (_spawnItem1 == item)
+            {
+                return;
+            }
+        }
+
+        // look for any objects in the scene with the "EndoProcess" tag and destroy them
+        // this is important so that whenever an interaction happens, the two objects that interact will disappear leaving only the new item/s
         foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
         {
             Destroy(item);
         }
-        // if the object is a protein then we spawn ribosome halves
+        // the if statements are only to ensure we never try to instantiate a null game object
         if (_spawnItem1)
         {
-            GameObject ribosome30 = Instantiate(
+            GameObject item1 = Instantiate(
                 _spawnItem1,
                 new Vector3(0.07f,1.3f,0.99f),
                 Quaternion.identity
@@ -33,31 +48,12 @@ public class OrganelleInteractions : MonoBehaviour
         }
         if (_spawnItem2)
         {
-            // nucleolus
-            GameObject ribosome50 = Instantiate(
+            // spawn further to the right than the previosu object
+            GameObject item2 = Instantiate(
                 _spawnItem2,
                 new Vector3(0.60f,1.3f,0.97f),
                 Quaternion.identity
             );
-        }  
-        // once we spawn the object, we should destroy the old ones
-        // foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
-        // {
-        //     // when we get to the player, we access the endocontrol script
-        //     EndoControl endoScript = player.GetComponent<EndoControl>();
-        //     // now we delete everything in the spawnedObjects array in endo control
-        //     foreach (GameObject item in endoScript.spawnedObjects.Reverse<GameObject>())
-        //     {
-        //         GameObject temp = item;
-        //         endoScript.spawnedObjects.Remove(item);
-        //         temp.SetActive(false);
-        //         Debug.Log("Destroying the item");
-        //     }
-        //     // now add the newly spawned items into the array so they dont get destroyed
-        //     if (_spawnItem1)
-        //         endoScript.spawnedObjects.Add(_spawnItem1);
-        //     if (_spawnItem2)
-        //         endoScript.spawnedObjects.Add(_spawnItem2);
-        // }   
+        }    
     }
 }

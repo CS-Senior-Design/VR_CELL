@@ -19,8 +19,6 @@ public class EndoControl : MonoBehaviour
     public GameObject _rougher;
     public GameObject _vesiclegp;
     public GameObject _golgi;
-    public GameObject _golgicis;
-    public GameObject _golgitrans;
     public GameObject _outgoingvesicle;
 
     // global array to store all objects that are currently spawned
@@ -39,6 +37,11 @@ public class EndoControl : MonoBehaviour
                 // need to destroy objects from step 1 if they come from step 1
                 if (!isForward)
                 {
+                    // destroy all "EndoProcess" game objects from step 1
+                    foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+                    {
+                        Destroy(item);
+                    }
                     // destroy step 1 objects
                     Debug.Log("destroy step1 1 objects");
                     // we can change panel to screen 0 here
@@ -52,13 +55,16 @@ public class EndoControl : MonoBehaviour
                 if (isForward)
                 {
                     // don't nede to destroy anything
-                    Debug.Log("dont destroy anything");
+                    Debug.Log("Change Panel forward");
                     // we can change panel to screen 1 here
                 }
                 else
                 {
-                    // destroy step 2 stuf
-                    Debug.Log("destroy step 2 stuff");
+                    // destroy all "EndoProcess" game objects from step 2
+                    foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+                    {
+                        Destroy(item);
+                    }
                 }
                 // spawn step 1 stuff (protein and nucleolus)
                 // protein
@@ -87,11 +93,17 @@ public class EndoControl : MonoBehaviour
             // need an mRNA to connect to the full ribosome that is already spawned
             case 2:
             {
-                if (!isForward)
+                if (isForward)
                 {
-                    // destroy step 3 stuff
-                    Debug.Log("Destroy");
-                    // we can change panel to screen 2
+                    Debug.Log("Change panel forward");
+                }
+                else
+                {
+                    // destroy all "EndoProcess" game objects from step 3
+                    foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+                    {
+                        Destroy(item);
+                    }
                 }
                 // spawn mRNA
                 GameObject mrna = Instantiate(
@@ -105,11 +117,17 @@ public class EndoControl : MonoBehaviour
             // spawn a rough ER
             case 3:
             {
-                if (!isForward)
+                if (isForward)
                 {
-                    // destroy step 4 stuff
-                    Debug.Log("Destroy");
-                    // we can change panel to screen 3
+                    Debug.Log("Change panel forward");
+                }
+                else
+                {
+                    // destroy all "EndoProcess" game objects from step 4
+                    foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+                    {
+                        Destroy(item);
+                    }
                 }
                 // rough ER
                 GameObject rougher = Instantiate(
@@ -124,11 +142,9 @@ public class EndoControl : MonoBehaviour
             
             case 4:
             {
-                if (!isForward)
+                if (isForward)
                 {
-                    // destroy step 5 stuff
-                    Debug.Log("Destroy");
-                    // we can change panel to screen 4
+                    Debug.Log("Change panel forward");
                 }
                 // golgi
                 GameObject golgi = Instantiate(
@@ -136,9 +152,13 @@ public class EndoControl : MonoBehaviour
                     new Vector3(0.60f,1.3f,0.97f),
                     Quaternion.identity
                 );
-                // NEED to put small socket on CIS side to place glycoprotein
-                // it will move to the trans side
-                // once it reaches the trans side it will become an outgoing vesicle that maybe floats away or something
+                break;
+            }
+
+            // Final Panel telling the person they're finished
+            case 5:
+            {
+                Debug.Log("You're done");
                 break;
             }
 
