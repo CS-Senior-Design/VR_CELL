@@ -8,7 +8,7 @@ public class EndoControl : MonoBehaviour
 {
     // steo 0 is the welcome screen and empty table
     public int _step = 0;
-    private int _totalSteps = 3;
+    private int _totalSteps = 5;
     public GameObject _protein;
     public GameObject _nucleolus;
     public GameObject _ribosome30;
@@ -139,7 +139,6 @@ public class EndoControl : MonoBehaviour
             }
 
             // spwn golgi
-            
             case 4:
             {
                 if (isForward)
@@ -149,9 +148,10 @@ public class EndoControl : MonoBehaviour
                 // golgi
                 GameObject golgi = Instantiate(
                     _golgi,
-                    new Vector3(0.60f,1.3f,0.97f),
+                    new Vector3(0.07f,1.3f,0.99f),
                     Quaternion.identity
                 );
+                golgi.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
                 break;
             }
 

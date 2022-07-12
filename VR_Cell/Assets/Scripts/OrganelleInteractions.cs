@@ -23,7 +23,7 @@ public class OrganelleInteractions : MonoBehaviour
 
         // if this is the Golgi interaction, we want to do the animation of the enclosed glycoprotein going across the golgi
         // we will know if this is that interaction because _spawnItem1 will be a tavle with a "golge" tag (literally golge)
-        foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+        foreach(GameObject item in GameObject.FindGameObjectsWithTag("golge"))
         {
             if (_spawnItem1 == item)
             {

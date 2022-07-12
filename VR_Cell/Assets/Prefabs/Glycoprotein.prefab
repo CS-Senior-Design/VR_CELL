@@ -342,6 +342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74273bb751aa644cb7e8be7f52250d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnItem1: {fileID: 5162520522520224376, guid: 7f30170c7826aee4c9ce55c63891bfec,
+  _spawnItem1: {fileID: 821907710552206249, guid: 82e5096c3070d3945870e54e5d7e7649,
     type: 3}
   _spawnItem2: {fileID: 0}
