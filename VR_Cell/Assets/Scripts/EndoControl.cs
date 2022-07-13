@@ -8,7 +8,7 @@ public class EndoControl : MonoBehaviour
 {
     // steo 0 is the welcome screen and empty table
     public int _step = 0;
-    private int _totalSteps = 3;
+    private int _totalSteps = 5;
     public GameObject _protein;
     public GameObject _nucleolus;
     public GameObject _ribosome30;
@@ -19,9 +19,10 @@ public class EndoControl : MonoBehaviour
     public GameObject _rougher;
     public GameObject _vesiclegp;
     public GameObject _golgi;
-    public GameObject _golgicis;
-    public GameObject _golgitrans;
     public GameObject _outgoingvesicle;
+
+    // global array to store all objects that are currently spawned
+    public List<GameObject> spawnedObjects = new List<GameObject>();
     
     // item2.transform.localScale += new Vector3(100,100,100)
 
@@ -36,6 +37,11 @@ public class EndoControl : MonoBehaviour
                 // need to destroy objects from step 1 if they come from step 1
                 if (!isForward)
                 {
+                    // destroy all "EndoProcess" game objects from step 1
+                    foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+                    {
+                        Destroy(item);
+                    }
                     // destroy step 1 objects
                     Debug.Log("destroy step1 1 objects");
                     // we can change panel to screen 0 here
@@ -49,13 +55,16 @@ public class EndoControl : MonoBehaviour
                 if (isForward)
                 {
                     // don't nede to destroy anything
-                    Debug.Log("dont destroy anything");
+                    Debug.Log("Change Panel forward");
                     // we can change panel to screen 1 here
                 }
                 else
                 {
-                    // destroy step 2 stuf
-                    Debug.Log("destroy step 2 stuff");
+                    // destroy all "EndoProcess" game objects from step 2
+                    foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+                    {
+                        Destroy(item);
+                    }
                 }
                 // spawn step 1 stuff (protein and nucleolus)
                 // protein
@@ -64,21 +73,15 @@ public class EndoControl : MonoBehaviour
                     new Vector3(0.07f,1.3f,0.99f),
                     Quaternion.identity
                 );
+                // add it to the spawnedObjects array
+                spawnedObjects.Add(protein);
                 // nucleolus
                 GameObject nucleolus = Instantiate(
                     _nucleolus,
                     new Vector3(0.60f,1.3f,0.97f),
                     Quaternion.identity
                 );
-
-                // // add socket interactor to one of them
-                // XRSocketInteractor proteinSocket = protein.AddComponent<XRSocketInteractor>() as XRSocketInteractor;
-
-                // // add the organelle interaction script to socket interactor
-                // OrganelleInteractions script = proteinSocket.gameObject.AddComponent<OrganelleInteractions>() as OrganelleInteractions;
-
-                // // set the variables to spawn
-                // script._spawnItem1 = _protein;
+                spawnedObjects.Add(nucleolus);
 
                 // next button should be greyed out here
 
@@ -87,15 +90,75 @@ public class EndoControl : MonoBehaviour
                 break;
             }
 
+            // need an mRNA to connect to the full ribosome that is already spawned
             case 2:
             {
-                Debug.Log("work2");
+                if (isForward)
+                {
+                    Debug.Log("Change panel forward");
+                }
+                else
+                {
+                    // destroy all "EndoProcess" game objects from step 3
+                    foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+                    {
+                        Destroy(item);
+                    }
+                }
+                // spawn mRNA
+                GameObject mrna = Instantiate(
+                    _mrna,
+                    new Vector3(0.60f,1.3f,0.97f),
+                    Quaternion.identity
+                );
                 break;
             }
 
+            // spawn a rough ER
             case 3:
             {
-                Debug.Log("work3");
+                if (isForward)
+                {
+                    Debug.Log("Change panel forward");
+                }
+                else
+                {
+                    // destroy all "EndoProcess" game objects from step 4
+                    foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+                    {
+                        Destroy(item);
+                    }
+                }
+                // rough ER
+                GameObject rougher = Instantiate(
+                    _rougher,
+                    new Vector3(0.60f,1.3f,0.97f),
+                    Quaternion.identity
+                );
+                break;
+            }
+
+            // spwn golgi
+            case 4:
+            {
+                if (isForward)
+                {
+                    Debug.Log("Change panel forward");
+                }
+                // golgi
+                GameObject golgi = Instantiate(
+                    _golgi,
+                    new Vector3(0.07f,1.3f,0.99f),
+                    Quaternion.identity
+                );
+                golgi.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
+                break;
+            }
+
+            // Final Panel telling the person they're finished
+            case 5:
+            {
+                Debug.Log("You're done");
                 break;
             }
 
