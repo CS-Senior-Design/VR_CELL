@@ -2219,6 +2219,181 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3486898754069181065, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1180682726}
+    - target: {fileID: 3486898754069181065, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayPreviousSentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620993948848463734, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1180682726}
+    - target: {fileID: 3620993948848463734, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayNextSentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625271744475043324, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.data[0]
+      value: Click Next to Continue.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.data[1]
+      value: 'Protein (Spawn) + Nucleolus (Spawn)
+
+
+        Put these two components
+        together to make a ribosome.
+
+
+        (No Next Button)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.data[2]
+      value: 'Ribosome (Spawn)
+
+
+        You just created a ribosome!
+
+
+        Click
+        Next to Continue.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.data[3]
+      value: 'Ribosome + mRNA (spawn)
+
+
+        Put these two components together
+        to make a glyco-protein.
+
+
+        (No Next Button)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.data[4]
+      value: 'Glyco-protein (spawn)
+
+
+        You just created a glyco-protein
+
+
+        Click
+        Next to Continue.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.data[5]
+      value: 'Glyco-protein + ER (spawn)
+
+
+        Have glyco-protein interact with
+        the ER.
+
+
+        (No Next Button)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.data[6]
+      value: 'Vesicle w/ gp (spawn)
+
+
+        You now have a glyco-protein inside
+        a vesicle.
+
+
+        Click Next to Continue.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.data[7]
+      value: 'Vesicle w/ gp + golgi (spawn)
+
+
+        Now feed the vesicle into the
+        cis side of the golgi.
+
+
+        (No Next Button)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.sentences.Array.data[8]
+      value: "you are watching the vesicle go from the cis side to the trans side
+        of the golgi (animation)\n\nonce animation is done. \n\nClick Next to Continue."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.data[0]
+      value: Welcome To the Endomembrane System Process
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.data[1]
+      value: Step 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.data[2]
+      value: Step 1a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.data[3]
+      value: Step 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.data[4]
+      value: Step 2a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.data[5]
+      value: Step 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.data[6]
+      value: Step 3a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.data[7]
+      value: Step 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895503707182846166, guid: 96fb218c890d54d4089700fb0344c7a4,
+        type: 3}
+      propertyPath: description.cellComponents.Array.data[8]
+      value: Step 4a
+      objectReference: {fileID: 0}
     - target: {fileID: 8844452978123813259, guid: 96fb218c890d54d4089700fb0344c7a4,
         type: 3}
       propertyPath: m_Name
@@ -2267,12 +2442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &406658191 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8844452978123813259, guid: 96fb218c890d54d4089700fb0344c7a4,
-    type: 3}
-  m_PrefabInstance: {fileID: 406658187}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &508171291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,7 +3166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f3c6862c9b0c7439a7e648329e3cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 406658191}
+  panel: {fileID: 1796078637}
 --- !u!114 &698684163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3012,23 +3181,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description:
     cellComponents:
-    - Nucleus
-    - Nucleolus
+    - Welcome To the Endomembrane System Process
+    - Step 1
+    - Step 1a
+    - Step 2
+    - Step 2a
+    - Step 3
+    - Step 3a
+    - Step 4
+    - Step 4a
     sentences:
-    - 'Size: ~5 micrometers. The nucleus of the cell is where our journey begins.
-      The most prominent organelle of the call, the nucleus contains all the genetic
-      information for the organism in the DNA packed inside its nuclear envelope.
-      It comprises of two main parts: the nuclear envelope (or nuclear membrane)
-      - a bilipid mambrane which surrounds the nucleus and separates its contents
-      from the rest of the cell - and the nuclear lamina which supports it structurally.
-      Along the nuclear membrane are nuclear pores, responsible for regulating the
-      entry and exit of cell materials into and out of the nucleus.'
-    - The nucleolus is the largest structure within the nucleus, and its main function
-      is to create ribosomes. The nucleolus responds to changes in the call, signaled
-      by chemical tags, and alters the rate at which it produces ribosomes to react
-      to the metabolic activity and growth rate of the cell. Apart from ribosome
-      creation, the nucleolus is also responsible for the formation of certain signal
-      recognition particles and has a role in the stress response of the cell.
+    - Click Next to Continue.
+    - 'Protein (Spawn) + Nucleolus (Spawn)
+
+
+      Put these two components together
+      to make a ribosome.
+
+
+      (No Next Button)'
+    - 'Ribosome (Spawn)
+
+
+      You just created a ribosome!
+
+
+      Click Next to
+      Continue.'
+    - 'Ribosome + mRNA (spawn)
+
+
+      Put these two components together to make
+      a glyco-protein.
+
+
+      (No Next Button)'
+    - 'Glyco-protein (spawn)
+
+
+      You just created a glyco-protein
+
+
+      Click
+      Next to Continue.'
+    - 'Glyco-protein + ER (spawn)
+
+
+      Have glyco-protein interact with the ER.
+
+
+      (No
+      Next Button)'
+    - 'Vesicle w/ gp (spawn)
+
+
+      You now have a glyco-protein inside a vesicle.
+
+
+      Click
+      Next to Continue.'
+    - 'Vesicle w/ gp + golgi (spawn)
+
+
+      Now feed the vesicle into the cis side
+      of the golgi.
+
+
+      (No Next Button)'
+    - "you are watching the vesicle go from the cis side to the trans side of the
+      golgi (animation)\n\nonce animation is done. \n\nClick Next to Continue."
 --- !u!1 &728300415
 GameObject:
   m_ObjectHideFlags: 0
@@ -6211,6 +6432,12 @@ MonoBehaviour:
     type: 3}
   rayInteractor: {fileID: 1626644072}
   teleportationProvider: {fileID: 583327011}
+--- !u!1 &1796078637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7268617898798949, guid: 96fb218c890d54d4089700fb0344c7a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 406658187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1826761154
 GameObject:
   m_ObjectHideFlags: 0
