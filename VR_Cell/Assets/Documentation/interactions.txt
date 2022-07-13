@@ -1,0 +1,8 @@
+Steps to make the endomembrane steps work including spawning on socket interactions:
+
+1) Two scripts involved we have organelle interactions and endocontrol.
+2) To make a prefab of an organelle: 
+	- If it needs to have a socket add socket interactable as a child to the model and (add components below) add organelle interactions script as a component to the socket
+	add whatever needs to be spawned as parameters to that script in the editor.
+	If it does not need to have a socket then just add XR interactable (grab) and rigid body and mesh collider with is convex checked. also freeze transform and rotation on the rigid body component xyz.
+3) Whatever the UI panel is with the steps add the endocontrol script to it then to the prev and next button you will call "prev step" and "next step" to the onclick from endo control script.
