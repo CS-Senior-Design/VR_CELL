@@ -8,6 +8,9 @@ TagManager:
   - EndoProcess
   - golge
   - EndoController
+  - CinemachineTarget
+  - endoPanel
+  - newQuizPanel
   layers:
   - Default
   - TransparentFX
