@@ -36,11 +36,11 @@ public class OrganelleInteractions : MonoBehaviour
         //     item.SetActive(false);
         // }
 
-        EndoControlTest endoScript = null;
+        EndoControl endoScript = null;
         // get the object with the EndoController script
         foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoController"))
         {
-            endoScript = item.GetComponent<EndoControlTest>();
+            endoScript = item.GetComponent<EndoControl>();
         }   
         // if we don't find the script then print the reason
         if (endoScript == null)
@@ -84,7 +84,9 @@ public class OrganelleInteractions : MonoBehaviour
                 endoScript.nextStep();
             }
             // if this interaction is putting the vesicle glycoprotein on the Golgi then move to step 8
-            else if (endoScript._step == 7)
+            
+            // if this interaction is putting the vesicle glycoprotein on the Golgi then move to step 8
+            else if (endoScript._step == 8)
             {
                 endoScript.nextStep();
             }

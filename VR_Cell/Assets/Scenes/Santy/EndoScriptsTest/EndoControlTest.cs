@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using TMPro;
 
 
-public class EndoControlTest : MonoBehaviour
+public class EndoControl : MonoBehaviour
 {
     // steo 0 is the welcome screen and empty table
     [Header("Organelles To Spawn")]
@@ -100,6 +100,8 @@ public class EndoControlTest : MonoBehaviour
         _spawnedObjects.Add(_spawnedGolgi);
         // Rotate the golgi
         _spawnedGolgi.transform.Rotate(90.0f, 0.0f, -90.0f, Space.Self);
+        // Rotate the ER
+        _rougherSpawned.transform.Rotate(200.0f, 30.0f, 90.0f, Space.Self);
 
         // remove the (clone) from the name of the objects
         foreach(GameObject obj in _spawnedObjects)
@@ -396,6 +398,11 @@ public class EndoControlTest : MonoBehaviour
                 else
                 {
                     Debug.Log("Backwards");
+                    // hide all objects from step 7 if we are going forwards
+                    foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+                    {
+                        item.SetActive(false);
+                    }
                     // stop the animation
                     _playAnimation = false;
                     // change next button text to start review
@@ -403,6 +410,8 @@ public class EndoControlTest : MonoBehaviour
                 }
                 // make the vesicle glycoprotein visible whether moving forward or backwards
                 _vesiclegpSpawned.SetActive(true);
+                // put the vesicle back in default location
+                _vesiclegpSpawned.transform.position = _spawnRight;
                 // make the golgi visible
                 _spawnedGolgi.SetActive(true);
                 // need to hide the next button whether we are moving forward or backwards
@@ -419,6 +428,9 @@ public class EndoControlTest : MonoBehaviour
                 Debug.Log("Forward");  
                 // hide the vesiclegp
                 _vesiclegpSpawned.SetActive(false);
+                // show the animation vesicle and gp
+                _spawnedGolgi.GetComponent<Animation>().getEnter().SetActive(true);
+                _spawnedGolgi.GetComponent<Animation>().getExit().SetActive(true);
                 // show the next button
                 _nextButton.SetActive(true);
                 // we can change panel to screen 9 here

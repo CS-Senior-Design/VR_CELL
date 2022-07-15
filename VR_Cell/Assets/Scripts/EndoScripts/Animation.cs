@@ -56,11 +56,22 @@ public class Animation : MonoBehaviour
         _targetPositionFloat = new Vector3(transform.position.x - 0.25f,transform.position.y + 0.5f, transform.position.z);
     }
 
+    public GameObject getEnter()
+    {
+        return _enter;
+    }
+
+    public GameObject getExit()
+    {
+        return _exit;
+    }
+
     public void StartAnimation()
     {
         // only trigger the animation if neither of the animations are in progress
         if (_enterInProgress == false && _exitInProgress == false)
         {
+            Debug.Log("entered");
             // make the _enter object active
             _enter.SetActive(true);
             // make the _exit object inactive while the enter object is being animated
