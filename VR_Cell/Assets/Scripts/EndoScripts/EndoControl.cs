@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+/// Include the name space for TextMesh Pro
+using TMPro;
 
 
 public class EndoControl : MonoBehaviour
 {
     // steo 0 is the welcome screen and empty table
+    [Header("Organelles To Spawn")]
     public int _step = 0;
-    private int _totalSteps = 5;
+    private int _totalSteps = 6;
     public GameObject _protein;
     public GameObject _nucleolus;
     public GameObject _ribosome30;
@@ -21,8 +24,41 @@ public class EndoControl : MonoBehaviour
     public GameObject _golgi;
     public GameObject _outgoingvesicle;
 
+    // UI global variables
+    [Header("UI Variables")]
+    public GameObject _textArea;
+    public GameObject _backButton;
+    public GameObject _nextButton;
+    public GameObject _backButtonText;
+    public GameObject _nextButtonText;
+
+    // UI panel text variables
+    private string _panelText0 = "Step 0";
+    private string _panelText1 = "Step 1";
+    private string _panelText2 = "Step 2";
+    private string _panelText3 = "Step 3";
+    private string _panelText4 = "Step 4";
+    private string _panelText5 = "Step 5";
+    private string _panelText6 = "Step 6";
+    private string _startQuizText = "Quiz";
+
+
+
+
     // global array to store all objects that are currently spawned
     public List<GameObject> spawnedObjects = new List<GameObject>();
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            prevStep();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            nextStep();
+        }
+    }
     
     // item2.transform.localScale += new Vector3(100,100,100)
 
@@ -45,6 +81,9 @@ public class EndoControl : MonoBehaviour
                     // destroy step 1 objects
                     Debug.Log("destroy step1 1 objects");
                     // we can change panel to screen 0 here
+                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = _panelText0;
+                    // hide the back button
+                    _backButton.SetActive(false);
                 }
                 Debug.Log("work0");
                 break;
@@ -56,7 +95,6 @@ public class EndoControl : MonoBehaviour
                 {
                     // don't nede to destroy anything
                     Debug.Log("Change Panel forward");
-                    // we can change panel to screen 1 here
                 }
                 else
                 {
@@ -66,6 +104,11 @@ public class EndoControl : MonoBehaviour
                         Destroy(item);
                     }
                 }
+                // we can change panel to screen 1 here
+                _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = _panelText1;
+                // show the back button
+                _backButton.SetActive(true);
+
                 // spawn step 1 stuff (protein and nucleolus)
                 // protein
                 GameObject protein = Instantiate(
@@ -83,7 +126,7 @@ public class EndoControl : MonoBehaviour
                 );
                 spawnedObjects.Add(nucleolus);
 
-                // next button should be greyed out here
+                // next button should be inactive
 
                 // When they connect the two objects above the UI should move forward with a greyed out next button that doest click
 
@@ -105,6 +148,9 @@ public class EndoControl : MonoBehaviour
                         Destroy(item);
                     }
                 }
+                // we can change panel to screen 2 here
+                _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = _panelText2;
+
                 // spawn mRNA
                 GameObject mrna = Instantiate(
                     _mrna,
@@ -129,6 +175,9 @@ public class EndoControl : MonoBehaviour
                         Destroy(item);
                     }
                 }
+                // we can change panel to screen 3 here
+                _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = _panelText3;
+
                 // rough ER
                 GameObject rougher = Instantiate(
                     _rougher,
@@ -138,12 +187,17 @@ public class EndoControl : MonoBehaviour
                 break;
             }
 
-            // spwn golgi
+            // spawn golgi
             case 4:
             {
                 if (isForward)
                 {
                     Debug.Log("Change panel forward");
+                }
+                else
+                {
+                    // change next button text to start review
+                    _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Next";
                 }
                 // golgi
                 GameObject golgi = Instantiate(
@@ -151,6 +205,10 @@ public class EndoControl : MonoBehaviour
                     new Vector3(0.07f,1.3f,0.99f),
                     Quaternion.identity
                 );
+                // we can change panel to screen 4 here
+                _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = _panelText4;
+
+                // Rotate the golgi
                 golgi.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
                 break;
             }
@@ -159,6 +217,10 @@ public class EndoControl : MonoBehaviour
             case 5:
             {
                 Debug.Log("You're done");
+                // we can change panel to screen 5 here
+                _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = _panelText5;
+                // change next button text to start review
+                _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = _startQuizText;
                 break;
             }
 
@@ -172,6 +234,7 @@ public class EndoControl : MonoBehaviour
 
     public void nextStep()
     {
+        Debug.Log("hehehhehuehuehue");
         if (_step == _totalSteps)
             return;
         _step++;
