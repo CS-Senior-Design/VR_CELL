@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7540034220935654475}
   m_Layer: 0
   m_Name: Ribosomes_Rough_ER
-  m_TagString: Untagged
+  m_TagString: EndoProcess
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 1002534570437969583}
   m_Layer: 0
   m_Name: RoughER
-  m_TagString: Untagged
+  m_TagString: EndoProcess
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 4626048221703034493}
   m_LocalRotation: {x: -0.5464414, y: 0.44877827, z: 0.4487782, w: 0.5464413}
   m_LocalPosition: {x: -0.15431108, y: 0.23386057, z: 0.51681536}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3604391045475636288}

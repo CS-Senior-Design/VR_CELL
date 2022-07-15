@@ -1,0 +1,46 @@
+This UI for the Endomembrane Process does not destroy, but rather hides organelles when they're not being used.
+
+Steps to get it to work:
+
+1) Add 'EndoControlTest' script to the 'EndoWithUI' prefab
+
+2) Put the 'EndoController' tag on the 'TestEndoUI' prefab (or whatever you choose to put the 'EndoController' script on)
+
+3) Set all of the public variables using the prefabs
+    - the golgi uses the 'GolgiWholeAnimationTest' prefab
+
+4) All of the grabbable organelle prefabs need to have: 
+    - the 'EndoProcess' tag
+    - XR grab interactables
+    - rigid body with frozen position
+    - mesh collider
+
+5) Any organelle that needs to have a socket should have: 
+    - The same things as step 4 (Except the golgi, look at step 5)
+    - the socket as a child
+    - the socket should have the 'OrganelleInteractions' script
+        - Set the variables of that script to whatever needs to spawn when the object is combined with another object
+
+6) The golgi should have:
+    - 'EndoProcess' tag
+    - 'Animation' script directly attached
+    - The Enter Model should be 'VesicleGP_Animation' prefab
+        - this model has no colliders or rigid bodies or xr interactables because it is not meant to be interacted with
+    - The Exit Model should be 'GolgiVesicle_Anim' prefab
+        - this model has no colliders xr interactables because it is not meant to be interacted with, but it does have a rigid body with gravity disabled so that it can float away
+
+Notes:
+- If you want to change the position vector of where the organelles spawn:
+    - Go to EndoControlTest script
+    - Change the _spawnLeft and _spawnRight vectors
+
+- All of the text of each panel is stored in private global strings in 'EndoControlTest' script
+
+- If you want to move to the quiz module right after the Endomembrane process, then the place to integrate that would be in the 'EndoControlTest' script in the 'nextStep()' method. There is an if statement that will be triggered when you press next while on the last slide.
+
+
+
+
+
+    
+
