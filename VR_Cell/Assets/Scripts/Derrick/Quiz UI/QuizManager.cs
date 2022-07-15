@@ -33,28 +33,77 @@ public class QuizManager : MonoBehaviour
 
     private int numOfQuestions;
 
+    private int score;
+
     private Question currentQuestion;
 
     void Start()
     {
         questionStack = new Stack<Question>();
         questionStackBin = new Stack<Question>();
+        score = 0;
     }
 
-    public void checkAnswer()
+    public void checkAnswer(GameObject selectedButton)
     {
+        // If selected button is correct, add to score and mark the button green.
+        if (
+            selectedButton.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+            currentQuestion.questionAnswer
+        )
+        {
+            score++;
+            turnButtonGreen (selectedButton);
+        }
+        else
+        // Otherwise, find the correct button, mark that green, then mark selected button red.
+        {
+            if (
+                buttonA.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                currentQuestion.questionAnswer
+            )
+            {
+                turnButtonGreen (buttonA);
+            }
+            else if (
+                buttonB.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                currentQuestion.questionAnswer
+            )
+            {
+                turnButtonGreen (buttonB);
+            }
+            else if (
+                buttonC.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                currentQuestion.questionAnswer
+            )
+            {
+                turnButtonGreen (buttonC);
+            }
+            else if (
+                buttonD.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                currentQuestion.questionAnswer
+            )
+            {
+                turnButtonGreen (buttonD);
+            }
+
+            turnButtonRed (selectedButton);
+        }
     }
 
     public void turnButtonRed(GameObject _button)
     {
+        _button.GetComponent<Image>().color = Color.red;
     }
 
     public void turnButtonGreen(GameObject _button)
     {
+        _button.GetComponent<Image>().color = Color.green;
     }
 
     public void turnButtonWhite(GameObject _button)
     {
+        _button.GetComponent<Image>().color = Color.white;
     }
 
     public void StartQuiz(Question[] questions)
@@ -62,6 +111,7 @@ public class QuizManager : MonoBehaviour
         questionStack.Clear();
         questionStackBin.Clear();
         questionCounter = 0;
+        score = 0;
         numOfQuestions = 12;
 
         foreach (Question q in questions)
@@ -82,10 +132,11 @@ public class QuizManager : MonoBehaviour
     public void DisplayNextQuestion()
     {
         // On each new question, reset all button colors back to gray
-        // turnButtonWhite(buttonA);
-        // turnButtonWhite(buttonB);
-        // turnButtonWhite(buttonC);
-        // turnButtonWhite(buttonD);
+        turnButtonWhite (buttonA);
+        turnButtonWhite (buttonB);
+        turnButtonWhite (buttonC);
+        turnButtonWhite (buttonD);
+
         if (questionStack.Count == 0)
         {
             EndQuiz();
@@ -128,6 +179,12 @@ public class QuizManager : MonoBehaviour
 
     public void DisplayPreviousQuestion()
     {
+        // On each new question, reset all button colors back to gray
+        turnButtonWhite (buttonA);
+        turnButtonWhite (buttonB);
+        turnButtonWhite (buttonC);
+        turnButtonWhite (buttonD);
+
         if (questionStackBin.Count == 0 || questionCounter == 1)
         {
             EndQuiz();
@@ -170,5 +227,6 @@ public class QuizManager : MonoBehaviour
     void EndQuiz()
     {
         Debug.Log("End of Quiz.");
+        Debug.Log("Quiz score: " + score);
     }
 }
