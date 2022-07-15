@@ -227,6 +227,6 @@ public class QuizManager : MonoBehaviour
     void EndQuiz()
     {
         Debug.Log("End of Quiz.");
-        Debug.Log("Quiz score: " + score);
+        Debug.Log("Quiz score: " + score + "/" + numOfQuestions + " = " + (float)score / numOfQuestions * 100 + "%");
     }
 }
