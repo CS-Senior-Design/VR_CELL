@@ -259,12 +259,12 @@ PrefabInstance:
     - target: {fileID: 7806196475085027385, guid: 578b69bc030dff547bd8058c8523672f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7806196475085027385, guid: 578b69bc030dff547bd8058c8523672f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7806196475085027385, guid: 578b69bc030dff547bd8058c8523672f,
         type: 3}
@@ -537,6 +537,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DisplayPreviousSentence
       objectReference: {fileID: 0}
+    - target: {fileID: 3136663627455092730, guid: 3a305a30b41556e4ebaacd06b5a0bec9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3136894910785445232, guid: 3a305a30b41556e4ebaacd06b5a0bec9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -560,7 +565,7 @@ PrefabInstance:
     - target: {fileID: 4103652356715273256, guid: 3a305a30b41556e4ebaacd06b5a0bec9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 539.27
+      value: 538.8
       objectReference: {fileID: 0}
     - target: {fileID: 5392799014464301509, guid: 3a305a30b41556e4ebaacd06b5a0bec9,
         type: 3}
@@ -1824,6 +1829,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 1449719436590744920, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: questions.Array.data[5].questionOptions.Array.data[1]
+      value: Rough ER
+      objectReference: {fileID: 0}
     - target: {fileID: 1449719437308966290, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
         type: 3}
       propertyPath: m_Name
@@ -2003,6 +2013,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3600421875640687453, guid: c84f7cb015d50d041933d48ef7376ddf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3604109163742894341, guid: c84f7cb015d50d041933d48ef7376ddf,
         type: 3}
       propertyPath: m_TagString
@@ -2023,6 +2038,11 @@ PrefabInstance:
       propertyPath: panel
       value: 
       objectReference: {fileID: 1596972421}
+    - target: {fileID: 6503611846789331019, guid: c84f7cb015d50d041933d48ef7376ddf,
+        type: 3}
+      propertyPath: questions.Array.data[5].questionOptions.Array.data[1]
+      value: Rough ER
+      objectReference: {fileID: 0}
     - target: {fileID: 8470296921326515709, guid: c84f7cb015d50d041933d48ef7376ddf,
         type: 3}
       propertyPath: m_IsActive
