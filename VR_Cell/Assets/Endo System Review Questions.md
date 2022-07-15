@@ -1,5 +1,5 @@
 1) "How do transport vesicles integrate into the endomembrane system?"
-    - Transports proteins made throughout the endo process
+    - They move materials from the Endoplasmic Reticulum to the Golgi
 
 2) "The endomembrane system involves which organelles?
     - Nucleus, ER, Golgi, Vesicles, Lysosomes
