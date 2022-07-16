@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8658557947353946126}
   - component: {fileID: 8658557947353946127}
   - component: {fileID: 8658557947353946160}
-  - component: {fileID: 992718443373333275}
   m_Layer: 0
   m_Name: Full Ribosome 1
   m_TagString: EndoProcess
@@ -233,18 +232,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6963509134961148822, guid: 5a0b298f444abd944bcba4dfc7a7fa71, type: 3}
---- !u!114 &992718443373333275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8423993282524603747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b74273bb751aa644cb7e8be7f52250d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnItem1: {fileID: 1700798430603994709, guid: 4588e9f7193fa3f4e86513ab33b88e13,
-    type: 3}
-  _spawnItem2: {fileID: 0}
