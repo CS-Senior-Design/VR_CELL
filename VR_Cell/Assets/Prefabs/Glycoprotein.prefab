@@ -243,7 +243,6 @@ GameObject:
   - component: {fileID: 4324109402711860935}
   - component: {fileID: 4324109402711860984}
   - component: {fileID: 4324109402711860985}
-  - component: {fileID: 4324109402711860934}
   m_Layer: 0
   m_Name: Socket Interactor
   m_TagString: Untagged
@@ -308,7 +307,20 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8440076998078270470, guid: c84f7cb015d50d041933d48ef7376ddf,
+          type: 3}
+        m_TargetAssemblyTypeName: SocketUsed, Assembly-CSharp
+        m_MethodName: UpdateStep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -330,18 +342,3 @@ MonoBehaviour:
   m_SocketActive: 1
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1
---- !u!114 &4324109402711860934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4324109402711860932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b74273bb751aa644cb7e8be7f52250d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnItem1: {fileID: 821907710552206249, guid: 82e5096c3070d3945870e54e5d7e7649,
-    type: 3}
-  _spawnItem2: {fileID: 0}
