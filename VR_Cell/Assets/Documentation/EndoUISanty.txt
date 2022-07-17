@@ -2,9 +2,9 @@ This UI for the Endomembrane Process does not destroy, but rather hides organell
 
 Steps to get it to work:
 
-1) Add 'EndoControlTest' script to the 'EndoWithUI' prefab
+1) Add 'EndoControl' and 'SocketUsed' scripts to the 'EndoProcessesUI' prefab
 
-2) Put the 'EndoController' tag on the 'TestEndoUI' prefab (or whatever you choose to put the 'EndoController' script on)
+2) Put the 'EndoController' tag on the 'EndoProcessUI' prefab (or whatever you choose to put the 'EndoController' script on)
 
 3) Set all of the public variables using the prefabs
     - the golgi uses the 'GolgiWholeAnimationTest' prefab
@@ -18,8 +18,7 @@ Steps to get it to work:
 5) Any organelle that needs to have a socket should have: 
     - The same things as step 4 (Except the golgi, look at step 5)
     - the socket as a child
-    - the socket should have the 'OrganelleInteractions' script
-        - Set the variables of that script to whatever needs to spawn when the object is combined with another object
+    - SelectEntered needs to drag in the EndoProcessesUI prefab and the method called is 'UpdateStep()'
 
 6) The golgi should have:
     - 'EndoProcess' tag
@@ -31,12 +30,10 @@ Steps to get it to work:
 
 Notes:
 - If you want to change the position vector of where the organelles spawn:
-    - Go to EndoControlTest script
+    - Go to EndoControl script
     - Change the _spawnLeft and _spawnRight vectors
 
 - All of the text of each panel is stored in private global strings in 'EndoControlTest' script
-
-- If you want to move to the quiz module right after the Endomembrane process, then the place to integrate that would be in the 'EndoControlTest' script in the 'nextStep()' method. There is an if statement that will be triggered when you press next while on the last slide.
 
 
 

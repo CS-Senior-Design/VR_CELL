@@ -114,10 +114,9 @@ public class EndoControl : MonoBehaviour
     // make the spawn locations global in case we need to change them
     private Vector3 _spawnLeft = new Vector3(1.5f, 1.2f, -2f);
 
-    private Vector3 _spawnRight = new Vector3(-1.5f, 1.2f, -2f);
+    private Vector3 _spawnMiddle = new Vector3(0.0f, 1.2f, -2f);
 
-    // global array to store all objects that are currently spawned so we can access them and disable them when we need to
-    public List<GameObject> _spawnedObjects = new List<GameObject>();
+    private Vector3 _spawnRight = new Vector3(-1.5f, 1.2f, -2f);
 
     void Start()
     {
@@ -129,60 +128,6 @@ public class EndoControl : MonoBehaviour
 
         // make the next button visible
         _nextButton.SetActive(true);
-
-        // spawn all of the organelles and add them to the array
-        _proteinSpawned =
-            Instantiate(_protein, _spawnLeft, Quaternion.identity);
-        _spawnedObjects.Add (_proteinSpawned);
-        _nucleolusSpawned =
-            Instantiate(_nucleolus, _spawnRight, Quaternion.identity);
-        _spawnedObjects.Add (_nucleolusSpawned);
-        _ribosome30Spawned =
-            Instantiate(_ribosome30, _spawnLeft, Quaternion.identity);
-        _spawnedObjects.Add (_ribosome30Spawned);
-        _ribosome50Spawned =
-            Instantiate(_ribosome50, _spawnRight, Quaternion.identity);
-        _spawnedObjects.Add (_ribosome50Spawned);
-        _ribosomefullSpawned =
-            Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
-        _spawnedObjects.Add (_ribosomefullSpawned);
-        _mrnaSpawned = Instantiate(_mrna, _spawnRight, Quaternion.identity);
-        _spawnedObjects.Add (_mrnaSpawned);
-        _glycoproteinSpawned =
-            Instantiate(_glycoprotein, _spawnLeft, Quaternion.identity);
-        _spawnedObjects.Add (_glycoproteinSpawned);
-        _rougherSpawned =
-            Instantiate(_rougher, _spawnRight, Quaternion.identity);
-        _spawnedObjects.Add (_rougherSpawned);
-        _vesiclegpSpawned =
-            Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
-        _spawnedObjects.Add (_vesiclegpSpawned);
-        _spawnedGolgi = Instantiate(_golgi, _spawnLeft, Quaternion.identity);
-        _spawnedObjects.Add (_spawnedGolgi);
-
-        // Rotate the golgi
-        _spawnedGolgi.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
-
-        // Rotate the ER
-        _rougherSpawned.transform.Rotate(200.0f, 30.0f, 90.0f, Space.Self);
-
-        // remove the (clone) from the name of the objects
-        foreach (GameObject obj in _spawnedObjects)
-        {
-            obj.name = obj.name.Replace("(Clone)", "");
-        }
-
-        // make them all inactive
-        _proteinSpawned.SetActive(false);
-        _nucleolusSpawned.SetActive(false);
-        _ribosome30Spawned.SetActive(false);
-        _ribosome50Spawned.SetActive(false);
-        _ribosomefullSpawned.SetActive(false);
-        _mrnaSpawned.SetActive(false);
-        _glycoproteinSpawned.SetActive(false);
-        _rougherSpawned.SetActive(false);
-        _vesiclegpSpawned.SetActive(false);
-        _spawnedGolgi.SetActive(false);
     }
 
     void Update()
@@ -217,7 +162,7 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
 
                         // we can change panel to screen 0 here
@@ -258,7 +203,7 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
                     }
 
@@ -266,9 +211,12 @@ public class EndoControl : MonoBehaviour
                     _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
                         _panelText1;
 
-                    // make protein and nucleolus visible
-                    _proteinSpawned.SetActive(true);
-                    _nucleolusSpawned.SetActive(true);
+                    // spawn the protein and nucleolus 
+                    _proteinSpawned =
+                        Instantiate(_protein, _spawnLeft, Quaternion.identity);        
+                    _nucleolusSpawned =
+                        Instantiate(_nucleolus, _spawnRight, Quaternion.identity);
+            
                     break;
                 }
             // the user just spawned the two ribosome pieces so we need to prompt them to put them together
@@ -286,7 +234,7 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
                     }
                     else
@@ -300,16 +248,18 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
 
                         // hide the next button if moving backwards
                         _nextButton.SetActive(false);
                     }
 
-                    // make ribosome30 and ribosome50 visible whether moving forward or backwards
-                    _ribosome30Spawned.SetActive(true);
-                    _ribosome50Spawned.SetActive(true);
+                    // spawn ribosome30 and ribosome50
+                    _ribosome30Spawned =
+                        Instantiate(_ribosome30, _spawnLeft, Quaternion.identity);
+                    _ribosome50Spawned =
+                        Instantiate(_ribosome50, _spawnRight, Quaternion.identity);
 
                     // we can change panel to screen 2 here
                     _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
@@ -332,7 +282,7 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
                     }
                     else
@@ -346,12 +296,13 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
                     }
 
-                    // make the ribosome full visible whether moving forwards or backwards
-                    _ribosomefullSpawned.SetActive(true);
+                    // spawn the ribosome full
+                    _ribosomefullSpawned =
+                        Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
 
                     // show the next button whether we are moving forward or backwards
                     _nextButton.SetActive(true);
@@ -381,15 +332,16 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
 
-                        // make the ribosome full visible
-                        _ribosomefullSpawned.SetActive(true);
+                        // spawn the ribosome full
+                        _ribosomefullSpawned =
+                            Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
                     }
 
-                    // make the mRNA visible whether moving forward or backwards
-                    _mrnaSpawned.SetActive(true);
+                    // spawn the mRNA
+                    _mrnaSpawned = Instantiate(_mrna, _spawnRight, Quaternion.identity);
 
                     // hide the next button whether we are moving forward or backwards
                     _nextButton.SetActive(false);
@@ -415,7 +367,7 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
                     }
                     else
@@ -429,12 +381,13 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
                     }
 
-                    // make the glycoprotein visible whether moving forward or backwards
-                    _glycoproteinSpawned.SetActive(true);
+                    // spawn the glycoprotein
+                    _glycoproteinSpawned =
+                        Instantiate(_glycoprotein, _spawnLeft, Quaternion.identity);
 
                     // show the next button whether we are moving forward or backwards
                     _nextButton.SetActive(true);
@@ -464,15 +417,20 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
 
-                        // make the glycoprotein visible
-                        _glycoproteinSpawned.SetActive(true);
+                        // spawn the glycoprotein
+                        _glycoproteinSpawned =
+                            Instantiate(_glycoprotein, _spawnLeft, Quaternion.identity);
                     }
 
-                    // make the roughER visible whether moving forward or backwards
-                    _rougherSpawned.SetActive(true);
+                    // spawn the rough ER
+                    _rougherSpawned =
+                        Instantiate(_rougher, _spawnRight, Quaternion.identity);
+            
+                    // Rotate the ER
+                    _rougherSpawned.transform.Rotate(200.0f, 30.0f, 90.0f, Space.Self);
 
                     // show the next button whether we are moving forward or backwards
                     _nextButton.SetActive(false);
@@ -498,7 +456,7 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
                     }
                     else
@@ -512,12 +470,13 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
                     }
-
-                    // make the vesicle glycoprotein visible whether moving forward or backwards
-                    _vesiclegpSpawned.SetActive(true);
+                    
+                    // spawn the vesicle glycoprotein
+                    _vesiclegpSpawned =
+                        Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
 
                     // need the next button whether we are moving forward or backwards
                     _nextButton.SetActive(true);
@@ -527,7 +486,7 @@ public class EndoControl : MonoBehaviour
                         _panelText7;
                     break;
                 }
-            // the user just put together the roughER with the glycoprotein and now they have a vesicle glycoprotein
+            // the user has a vesicle glycoprotein right now and they need the golgi to spawn
             // text should say "put the vesicle glycoprotein on the golgi !"
             // need to spawn a golgi
             // don't need a next button because the user needs to put the vesicle glycoprotein on the golgi to move forward
@@ -536,16 +495,6 @@ public class EndoControl : MonoBehaviour
                     if (isForward)
                     {
                         Debug.Log("Forward");
-
-                        // hide all objects from step 7 if we are going forwards
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            item.SetActive(false);
-                        }
                     }
                     else
                     {
@@ -558,7 +507,7 @@ public class EndoControl : MonoBehaviour
                             GameObject.FindGameObjectsWithTag("EndoProcess")
                         )
                         {
-                            item.SetActive(false);
+                            Destroy(item);
                         }
 
                         // stop the animation
@@ -568,16 +517,16 @@ public class EndoControl : MonoBehaviour
                         _nextButtonText
                             .GetComponent<TMPro.TextMeshProUGUI>()
                             .text = "Next";
+
+                        // spawn the vesicle glycoprotein
+                        _vesiclegpSpawned =
+                            Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
                     }
 
-                    // make the vesicle glycoprotein visible whether moving forward or backwards
-                    _vesiclegpSpawned.SetActive(true);
+                    _spawnedGolgi = Instantiate(_golgi, _spawnMiddle, Quaternion.identity);
 
-                    // put the vesicle back in default location
-                    _vesiclegpSpawned.transform.position = _spawnRight;
-
-                    // make the golgi visible
-                    _spawnedGolgi.SetActive(true);
+                    // Rotate the golgi
+                    _spawnedGolgi.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
 
                     // need to hide the next button whether we are moving forward or backwards
                     _nextButton.SetActive(false);
@@ -593,8 +542,8 @@ public class EndoControl : MonoBehaviour
                     // since this is the last step we don't need to account for going backwards
                     Debug.Log("Forward");
 
-                    // hide the vesiclegp
-                    _vesiclegpSpawned.SetActive(false);
+                    // destroy the vesicle glycoprotein
+                    Destroy(_vesiclegpSpawned);
 
                     // show the next button
                     _nextButton.SetActive(true);
@@ -641,12 +590,12 @@ public class EndoControl : MonoBehaviour
             // Hide any organelles from the previous step
             foreach (GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
             {
-                item.SetActive(false);
+                Destroy(item);
             }
             // Set the panel to active = false
             foreach (GameObject item in GameObject.FindGameObjectsWithTag("endoPanel"))
             {
-                item.SetActive(false);
+                Destroy(item);
             }
             // set the panel active = true
             _quizPanel.SetActive(true);
