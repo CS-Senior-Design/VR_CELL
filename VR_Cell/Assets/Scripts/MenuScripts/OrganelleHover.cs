@@ -7,7 +7,7 @@ public class OrganelleHover : MonoBehaviour
     private bool _isMovingUp;
     private bool _isMovingDown;
     private float _yOffset = 0.08f;
-    private float animationSpeed = 0.7f;
+    private float animationSpeed = 0.2f;
     private Vector3 _startingPosition;
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,7 @@ public class OrganelleHover : MonoBehaviour
         Vector3 upperBound = new Vector3(startPosition.x, startPosition.y + _yOffset, startPosition.z);
 
         // set the animation spee
-        while (upperBound.y - gameObject.transform.position.y > 0.02f)
+        while (upperBound.y - gameObject.transform.position.y > 0.05f)
         {
             gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, upperBound, Time.deltaTime * animationSpeed);
             yield return null;
@@ -64,7 +64,7 @@ public class OrganelleHover : MonoBehaviour
         // get the lower bound
         Vector3 lowerBound = new Vector3(startPosition.x, startPosition.y - _yOffset, startPosition.z);
 
-        while ( gameObject.transform.position.y - lowerBound.y > 0.02f)
+        while ( gameObject.transform.position.y - lowerBound.y > 0.05f)
         {
             gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, lowerBound, Time.deltaTime * animationSpeed);
             yield return null;
