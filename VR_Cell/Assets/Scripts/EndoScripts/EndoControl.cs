@@ -561,6 +561,7 @@ public class EndoControl : MonoBehaviour
                     StartCoroutine(AnimationLoop());
                     break;
                 }
+            // the user is trying to go past the limits of the steps
             default:
                 {
                     Debug.Log("Can't move any more forward or backwards");

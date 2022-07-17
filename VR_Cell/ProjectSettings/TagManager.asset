@@ -12,6 +12,12 @@ TagManager:
   - endoPanel
   - newQuizPanel
   - menuLight
+  - transportProtein
+  - nucleolusImmersive
+  - nucleolusUI
+  - immersiveUIController
+  - golgiUI
+  - generatedRibosomes
   layers:
   - Default
   - TransparentFX

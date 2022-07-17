@@ -51,7 +51,6 @@ public class OrganelleHover : MonoBehaviour
         _isMovingUp = false;
 
         StartCoroutine(HoverDown());
-
     }
 
     // hover coroutine
@@ -71,5 +70,4 @@ public class OrganelleHover : MonoBehaviour
         }
         _isMovingDown = false;
     }
-
 }
