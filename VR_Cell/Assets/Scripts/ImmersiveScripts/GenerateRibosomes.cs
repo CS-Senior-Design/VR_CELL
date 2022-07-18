@@ -9,7 +9,7 @@ public class GenerateRibosomes : MonoBehaviour
     // take the ribosome prefab 
     public GameObject _ribosome;
     // animation speed 
-    public float _animationSpeed = 0.05f;
+    private float _animationSpeed = 0.07f;
     // gameobject list for the proteins
     public List<GameObject> _proteins = new List<GameObject>();
     // variable to track if the animation is complete
@@ -48,20 +48,20 @@ public class GenerateRibosomes : MonoBehaviour
     IEnumerator Generate()
     {
         // index to track the position on the _proteins array so we don't go out of bounds
-        int index = 0;
+        int index = _proteins.Count - 1;
         // play the animation indefinitely until the user tells us to stop
         while (_animationPlay == true)
         {
-            if (index == _proteins.Count)
+            if (index == -1)
             {
-                index = 0;
+                index = _proteins.Count - 1;
             }
             // spawn a ribosome
             GameObject ribosome = Instantiate(_ribosome, _startPosition, Quaternion.identity);
             // animate it towards the next protein
             StartCoroutine(RibosomeCreate(ribosome, _proteins[index].transform.position));
             yield return new WaitForSeconds(0.5f);
-            index++;
+            index--;
         }
         _animationComplete = true;
     }

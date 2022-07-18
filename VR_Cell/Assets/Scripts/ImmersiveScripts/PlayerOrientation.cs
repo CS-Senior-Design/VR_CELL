@@ -7,12 +7,9 @@ using UnityEngine;
 
 public class PlayerOrientation : MonoBehaviour
 {
-    public void setOrientation(string value)
+    public void setOrientation(GameObject ui)
     {
-        if (value == "nucleolus")
-        {
-            Debug.Log("here");
-            transform.Rotate(-9.501f, -173.954f, 0.071f);
-        }
+        Debug.Log("here");
+        transform.LookAt(ui.transform.position);
     }
 }
