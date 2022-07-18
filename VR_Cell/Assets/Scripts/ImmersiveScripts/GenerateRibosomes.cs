@@ -32,8 +32,8 @@ public class GenerateRibosomes : MonoBehaviour
         // start the coroutine
         _animationComplete = false;
         _animationPlay = true;
-        // set the _generatingRibosomes in the UI controller script to true
-        GameObject.FindGameObjectsWithTag("immersiveUIController")[0].GetComponent<DisplayUI>().setGeneratingRibosomes(true);
+        // set the _generatingRibosomes to true in the DisplayUI script on the nucleolus
+        GameObject.FindGameObjectsWithTag("nucleolusImmersive")[0].GetComponent<DisplayUI>().setGeneratingRibosomes(true);
         StartCoroutine(Generate());
     }
 
@@ -41,7 +41,8 @@ public class GenerateRibosomes : MonoBehaviour
     {
         // stop the coroutine
         _animationPlay = false;
-        GameObject.FindGameObjectsWithTag("immersiveUIController")[0].GetComponent<DisplayUI>().setGeneratingRibosomes(false);
+        // set the _generatingRibosomes to false in the DisplayUI script on the nucleolus
+        GameObject.FindGameObjectsWithTag("nucleolusImmersive")[0].GetComponent<DisplayUI>().setGeneratingRibosomes(false);
         Debug.Log("animation should stop");
     }
 

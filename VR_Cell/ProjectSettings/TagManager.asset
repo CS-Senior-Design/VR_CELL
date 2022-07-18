@@ -18,6 +18,7 @@ TagManager:
   - immersiveUIController
   - golgiUI
   - generatedRibosomes
+  - ERUI
   layers:
   - Default
   - TransparentFX
