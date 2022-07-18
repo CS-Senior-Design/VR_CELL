@@ -10,6 +10,10 @@ public class QuizManager : MonoBehaviour
 
     public TMP_Text questionPrompt;
 
+    public GameObject scorePanel;
+
+    public GameObject uiPanel;
+
     public TMP_Text
 
             promptA,
@@ -48,7 +52,12 @@ public class QuizManager : MonoBehaviour
     {
         // If selected button is correct, add to score and mark the button green.
         if (
-            selectedButton.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+            selectedButton
+                .gameObject
+                .transform
+                .GetChild(0)
+                .GetComponent<TMPro.TextMeshProUGUI>()
+                .text ==
             currentQuestion.questionAnswer
         )
         {
@@ -59,28 +68,48 @@ public class QuizManager : MonoBehaviour
         // Otherwise, find the correct button, mark that green, then mark selected button red.
         {
             if (
-                buttonA.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                buttonA
+                    .gameObject
+                    .transform
+                    .GetChild(0)
+                    .GetComponent<TMPro.TextMeshProUGUI>()
+                    .text ==
                 currentQuestion.questionAnswer
             )
             {
                 turnButtonGreen (buttonA);
             }
             else if (
-                buttonB.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                buttonB
+                    .gameObject
+                    .transform
+                    .GetChild(0)
+                    .GetComponent<TMPro.TextMeshProUGUI>()
+                    .text ==
                 currentQuestion.questionAnswer
             )
             {
                 turnButtonGreen (buttonB);
             }
             else if (
-                buttonC.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                buttonC
+                    .gameObject
+                    .transform
+                    .GetChild(0)
+                    .GetComponent<TMPro.TextMeshProUGUI>()
+                    .text ==
                 currentQuestion.questionAnswer
             )
             {
                 turnButtonGreen (buttonC);
             }
             else if (
-                buttonD.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                buttonD
+                    .gameObject
+                    .transform
+                    .GetChild(0)
+                    .GetComponent<TMPro.TextMeshProUGUI>()
+                    .text ==
                 currentQuestion.questionAnswer
             )
             {
@@ -224,9 +253,59 @@ public class QuizManager : MonoBehaviour
         }
     }
 
+    // Calculate final score, show results panel.
     void EndQuiz()
     {
         Debug.Log("End of Quiz.");
-        Debug.Log("Quiz score: " + score + "/" + numOfQuestions + " = " + (float)score / numOfQuestions * 100 + "%");
+
+        private float scorePercentage = (float)((score / numOfQuestions) * 100);
+        Debug.Log("Quiz score: " + scorePercentage + "%");
+
+        // Deactivate the uiPanel, activate the scorePanel, and push score info to it.
+        uiPanel.SetActive(false);
+        scorePanel.SetActive(true);
+
+        GameObject uiCanvas = scorePanel.transform.GetChild(0).gameObject;
+        TMP_Text postQuizResponse =
+            uiCanvas
+                .transform
+                .Find("Post-Quiz Response")
+                .gameObject
+                .GetComponent<TMP_Text>();
+        TMP_Text numQuestionsCorrect =
+            uiCanvas
+                .transform
+                .Find("Num Questions Correct")
+                .gameObject
+                .GetComponent<TMP_Text>();
+        TMP_Text overallScore =
+            uiCanvas
+                .transform
+                .Find("Overall Score")
+                .gameObject
+                .GetComponent<TMP_Text>();
+        TMP_Text timeSpent =
+            uiCanvas
+                .transform
+                .Find("Time Spent")
+                .gameObject
+                .GetComponent<TMP_Text>();
+
+        if (scorePercentage < 70)
+        {
+            postQuizResponse.text = "Would you like to try again?";
+        }
+        else if (scorePercentage < 90)
+        {
+            postQuizResponse.text = "Nicely done!";
+        }
+        else if (scorePercentage > 90)
+        {
+            postQuizResponse.text = "Great job, you're a master!";
+        }
+
+        numQuestionsCorrect.text = "Number of Correct Answers: " + score;
+        overallScore.text = "Overall Score: " + scorePercentage + "%";
+        timeSpent.text = "Time Spent: 00:00.0"; // TODO: Change to be dynamic
     }
 }

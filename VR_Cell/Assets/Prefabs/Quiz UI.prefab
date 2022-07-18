@@ -250,7 +250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1449719436559368840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1527,7 +1527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1449719437239657959
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2129,10 +2129,10 @@ RectTransform:
   m_Father: {fileID: 1449719436938484228}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -210, y: 50}
-  m_SizeDelta: {x: 200, y: 70}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: 450, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1449719437756816842
 CanvasRenderer:
@@ -2822,6 +2822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionNumber: {fileID: 1449719436680196432}
   questionPrompt: {fileID: 1449719437792221959}
+  scorePanel: {fileID: 0}
   promptA: {fileID: 1449719436772178669}
   promptB: {fileID: 1449719436548358950}
   promptC: {fileID: 1449719437070691170}
@@ -2848,7 +2849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1449719438089872065
 RectTransform:
   m_ObjectHideFlags: 0
