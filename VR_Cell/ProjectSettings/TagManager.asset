@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Whiteboard
   - EndoProcess
+  - golge
   layers:
   - Default
   - TransparentFX
