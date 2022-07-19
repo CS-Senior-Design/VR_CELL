@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8658557947353946126}
   - component: {fileID: 8658557947353946127}
   - component: {fileID: 8658557947353946160}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Full Ribosome 1
   m_TagString: EndoProcess
   m_Icon: {fileID: 0}

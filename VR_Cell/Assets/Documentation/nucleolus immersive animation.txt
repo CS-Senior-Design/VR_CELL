@@ -1,0 +1,21 @@
+steps to make the nucleolus ui and ribosome animation work together
+
+1) nucleolus model needs to have the following components:
+    - Mesh Collider (Convex == true)
+    - 'Generate Ribosomes' script
+        - the 'Ribosome' variable needs to be the 'Free_Ribosome' prefab in the prefabs/immersive folder
+            - The 'Free_Ribosome' prefab has an 'XR Grab Interactable' component, and you may need to set the 'Interaction Manager' variable to the 'XR Interaction Manager' on whatever 'player' is in the scene, otherwise the ribosomes won't be grabbable
+    - 'XR Simple Interactable' component
+        - under 'Interactable Events' we need to set the following:
+            - Hover Entered: Drag in the 'nucleolus' and select the 'DisplayUI.showUI' method. As a parameter you will pass in the UI panel that shows the nucleolus info. This is because when you hover over the nucleolus, the information panel should show up.
+            
+            - Select Entered (2 events): 
+                - Drag in the nucleolus and select the 'GenerateRibosomes.StopGenerate' method.
+                - Drag in the 'nucleolus' and select the 'DisplayUI.hideUI' method. As a parameter pass in the UI panel that tells you 'click on the nucleolus to stop generating ribosomes'. This is because as soon as we click on the nucleolus, we want to stop the ribosome animation, so it doesn't go forever.
+
+2) All of the transporter protein models (there's like 80 of them) need to have the 'transportProtein' tag
+
+3) The nucleolus information panel has a next button. That next button needs to have the following events happen 'On Click':
+    - Drag in the 'nucleolus' and select the 'DisplayUI.showUI' method. Pass in as a parameter the UI panel that tells you 'click on the nucleolus to stop generating ribosomes'. This is because as soon as we click next, we want to display this panel 
+    - Drag in the 'nucleolus' and select the 'DisplayUI.hideUI' method. Pass in the nucleolus information panel. This is because we want to hide the info panel as soon as we start the ribosome animation
+    - Drag in the nucleolus and select the 'GenerateRibosomes.StartGenerate' method. This is to start the ribosome animation.
