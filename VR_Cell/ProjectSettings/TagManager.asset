@@ -7,6 +7,18 @@ TagManager:
   - Whiteboard
   - EndoProcess
   - golge
+  - EndoController
+  - CinemachineTarget
+  - endoPanel
+  - newQuizPanel
+  - menuLight
+  - transportProtein
+  - nucleolusImmersive
+  - nucleolusUI
+  - immersiveUIController
+  - golgiUI
+  - generatedRibosomes
+  - ERUI
   layers:
   - Default
   - TransparentFX
@@ -15,7 +27,7 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - 
+  - Ribosome
   - 
   - 
   - 

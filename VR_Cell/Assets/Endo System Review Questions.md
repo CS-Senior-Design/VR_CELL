@@ -1,5 +1,5 @@
 1) "How do transport vesicles integrate into the endomembrane system?"
-    - Transports proteins made throughout the endo process
+    - They move materials from the Endoplasmic Reticulum to the Golgi
 
 2) "The endomembrane system involves which organelles?
     - Nucleus, ER, Golgi, Vesicles, Lysosomes
@@ -19,8 +19,8 @@
 7) "Produces rRNA, assembles both subunits of the ribosome together"
     - Nucleolus
 
-8) "One gene in our DNA codes for"
-    - One protein (not ex: nucleus, ribosome, RNA)
+8) ""Trash compactor" of the cell; breaks down damaged components and assist in the self-destruction of the cell, called apoptosis, in cases of extreme cell damage."
+    - Lysosomes (not ex: secretory vesicles, microtubules, nucleus)
 
 9) "T/F: Organelles are all static and stable"
     - False
@@ -32,4 +32,8 @@
     - Transport vesicle
 
 12) "Ribosomes read"
-    - RNA (not ex: DNA, amino acids)
+    - mRNA (not rRNA, tRNA, DNA)
+
+
+
+    questions about: centrisome, nucleus (nuclear pores - what can diffuse vs what needs assistance vs what can't get through)
