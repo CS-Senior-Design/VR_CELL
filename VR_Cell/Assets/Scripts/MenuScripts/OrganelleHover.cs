@@ -9,25 +9,42 @@ public class OrganelleHover : MonoBehaviour
     private float _yOffset = 0.08f;
     private float animationSpeed = 0.2f;
     private Vector3 _startingPosition;
+    Coroutine _animationUpCoroutine;
+    Coroutine _animationDownCoroutine;
     // Start is called before the first frame update
     void Start()
     {
         // call coroutine to hover the organelles until a button is pressed
         _isMovingDown = false;
         _isMovingUp = false;
+    }
 
-        _startingPosition = gameObject.transform.position;
+    public void TurnOffAnimation()
+    {
+        _isMovingDown = true;
+        _isMovingUp = true;
+        if (_animationUpCoroutine != null)
+            StopCoroutine(_animationUpCoroutine);
+        if (_animationDownCoroutine != null)
+            StopCoroutine(_animationDownCoroutine);
+    }
+
+    public void TurnOnAnimation()
+    {
+        _isMovingDown = false;
+        _isMovingUp = false;
     }
 
     void Update()
     {
         if (_isMovingDown == false && _isMovingUp == false)
         {
+            _startingPosition = gameObject.transform.position;
             float randomNumber = Random.Range(0, 10);
             if (randomNumber > 5)
-                StartCoroutine(HoverUp());
+                _animationUpCoroutine = StartCoroutine(HoverUp());
             else
-                StartCoroutine(HoverDown());
+                _animationDownCoroutine = StartCoroutine(HoverDown());
         }
     }
 
@@ -50,7 +67,7 @@ public class OrganelleHover : MonoBehaviour
     
         _isMovingUp = false;
 
-        StartCoroutine(HoverDown());
+        _animationDownCoroutine = StartCoroutine(HoverDown());
     }
 
     // hover coroutine
