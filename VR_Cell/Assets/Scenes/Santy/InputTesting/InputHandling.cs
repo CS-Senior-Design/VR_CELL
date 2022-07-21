@@ -43,21 +43,9 @@ public class InputHandling : MonoBehaviour
     // variable to track if the joystick is at the home position or not
     private bool _isHome = true;
 
-    // variables for the teleport coroutine
-    // if the ray is on an invalid object
-    private bool _isValidTarget = true;
-    // the initial layers that the rayInteractor was set to interact with
-    private InteractionLayerMask initialInteractionLayers;
-    // a list to store the available objects that the rayInteractor can interact with
-    private List<IXRInteractable> interactables = new List<IXRInteractable>();
-    // the ray interactor that we normally use
+    // variables to store the rayInteractors to swap between interactable and teleporting
     public GameObject rayInteractorNormal;
-    // the teleport ray interactor
     public GameObject rayInteractorTeleport;
-    // the locomotion system in the scene
-    public TeleportationProvider provider;
-    // the instance of the coroutine
-    private IEnumerator _teleport;
 
     // Start is called before the first frame update
     void Awake()
@@ -170,10 +158,17 @@ public class InputHandling : MonoBehaviour
         _rightPrimary2DAxisClickState = true;
     }
 
+    public void cancelTeleport()
+    {
+        rayInteractorNormal.SetActive(true);
+        rayInteractorTeleport.SetActive(false);
+    }
+
     public void RightGripPressed()
     {
         Debug.Log("Right Grip Button Pressed");
         _rightGripButtonState = true;
+        cancelTeleport();
     }
 
     public void RightGripReleased()
@@ -246,34 +241,31 @@ public class InputHandling : MonoBehaviour
         _isHome = false;
     }
 
-    IEnumerator TeleportRoutine()
-    {
-        int i = 0;
-        while(true)
-        {
-            Debug.Log(i++);
-        }
-    }
-
     public void RightPrimary2DAxisClickReleased()
     {
         Debug.Log("Right Primary 2D Axis Click Button Released");
         _rightPrimary2DAxisClickState = false;
-        //////////// teleport stuff
+        
         rayInteractorTeleport.SetActive(false);
         rayInteractorNormal.SetActive(true);
-        StopCoroutine(_teleport);
+    }
+
+    public void RightPrimary2DAxisHome()
+    {
+        Debug.Log("Right Primary 2D Axis Home Position");
+        _rightPrimary2DAxisClickState = false;
+        
+        rayInteractorTeleport.SetActive(false);
+        rayInteractorNormal.SetActive(true);
     }
 
     public void RightPrimary2DAxisUp()
     {
         Debug.Log("Right Primary 2D Axis Up");
         _isHome = false;
-        ////// teleport stuff
+
         rayInteractorNormal.SetActive(false);
         rayInteractorTeleport.SetActive(true);
-        //_teleport = TeleportRoutine();
-        //StartCoroutine(_teleport);
     }
 
     public void RightPrimary2DAxisLeft()
@@ -320,6 +312,7 @@ public class InputHandling : MonoBehaviour
         if (_isViveController == false && _controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out primary2DAxisValue) && (primary2DAxisValue - Vector2.zero).magnitude < 0.5f)
         {
             _isHome = true;
+            RightPrimary2DAxisHome();
         }
 
         // if the user touches presses the 2D axis and they have a vive
