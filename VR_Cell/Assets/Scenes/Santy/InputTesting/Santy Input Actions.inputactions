@@ -1,0 +1,309 @@
+{
+    "name": "Santy Input Actions",
+    "maps": [
+        {
+            "name": "LeftController",
+            "id": "499719b4-0bf9-4650-bc8b-1e0cf89c4d1e",
+            "actions": [
+                {
+                    "name": "Grab Object",
+                    "type": "Button",
+                    "id": "a64f9c69-507b-4db3-b19d-318657cfe362",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UI Select",
+                    "type": "Button",
+                    "id": "69989f94-1c82-4a18-9669-9f029f87e807",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SnapTurn",
+                    "type": "Value",
+                    "id": "68b1f46a-46e6-4abc-a794-fb2b15fc12ec",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "33595ba6-f48d-46a9-952a-504809130053",
+                    "path": "<ViveController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab Object",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a47fed9-d8aa-4ea9-9189-55543eebee00",
+                    "path": "<OpenVROculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab Object",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38650d57-b1f7-4fe9-ac9d-3816a8b61922",
+                    "path": "<ViveController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1f03fc9-e782-4d7a-a387-2bfc373e8192",
+                    "path": "<OpenVROculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca0dda7f-fe91-4f7f-824c-22d92bfbb0ed",
+                    "path": "<ViveController>{LeftHand}/trackpadClicked",
+                    "interactions": "Sector(directions=12)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SnapTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7f8a0e2-a9eb-43a1-8283-ea2d6f0214c7",
+                    "path": "<OpenVROculusTouchController>{LeftHand}/thumbstick",
+                    "interactions": "Sector(directions=12)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SnapTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "RightController",
+            "id": "2f3fedce-196d-408f-83bf-27c91d230731",
+            "actions": [
+                {
+                    "name": "Grab Object",
+                    "type": "Button",
+                    "id": "f9af7b1e-cd84-4a87-9cf2-c359876e1e72",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UI Select",
+                    "type": "Button",
+                    "id": "56eb6e0e-097e-49f2-a178-f262779f2b7e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SnapTurn",
+                    "type": "Value",
+                    "id": "36622dfe-06ed-43c6-bfb7-ab15af66b46a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Teleport Activate",
+                    "type": "Value",
+                    "id": "ad87f4c2-bd4d-40df-a2d1-b1e22b39c441",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Teleport Cancel",
+                    "type": "Button",
+                    "id": "4791eee7-e819-46b1-b8dc-675992820958",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ee11deea-b30c-4a97-862b-3a48f5fc8f9c",
+                    "path": "<ViveController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab Object",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa4a43f0-c4c1-41b0-b99a-19ac27ac8cc3",
+                    "path": "<OpenVROculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab Object",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19956ef2-d4e4-4a09-b42a-5225a6ac3c78",
+                    "path": "<ViveController>{RightHand}/trackpad",
+                    "interactions": "Sector(directions=12,sweepBehavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SnapTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "06b379a6-0f8b-440b-9841-1156ead80be5",
+                    "path": "<OpenVROculusTouchController>{RightHand}/thumbstick",
+                    "interactions": "Sector(directions=12,sweepBehavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SnapTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1689f897-7234-44fd-9231-c362b666dd16",
+                    "path": "<ViveController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "352bc73c-5bf8-4c4f-a29a-e6b434d886f4",
+                    "path": "<OpenVROculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0809015-7521-4d29-9cc2-14454ad53513",
+                    "path": "<ViveController>{RightHand}/trackpad",
+                    "interactions": "Sector(directions=1,sweepBehavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4cf0902d-e99e-409c-a98f-288b3af11da1",
+                    "path": "<OpenVROculusTouchController>{RightHand}/thumbstick",
+                    "interactions": "Sector(directions=1,sweepBehavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78aa312a-964b-42bb-9603-bf85ee7c20ac",
+                    "path": "<ViveController>/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3840c133-96b3-4303-873c-fc2a9f79d79d",
+                    "path": "<OpenVROculusTouchController>/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Wrist Menu",
+            "id": "ad339e7d-9590-4f30-b8e4-0d57fe095850",
+            "actions": [
+                {
+                    "name": "Open/Close Menu",
+                    "type": "Button",
+                    "id": "b893d252-7681-4a8a-abf7-fe356a94e2c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7642d9ba-d41b-4fa8-ad5b-785ed8584803",
+                    "path": "<OpenVROculusTouchController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open/Close Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b79c35e1-c967-4e67-8618-65f54c9327d1",
+                    "path": "<ViveController>{LeftHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open/Close Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
