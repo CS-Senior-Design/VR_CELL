@@ -340,16 +340,15 @@ public class InputHandling : MonoBehaviour
         // check if right trigger is pressed
         if (_controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out isPressed) && isPressed && _rightTriggerButtonState == false)
         {
-            StartCoroutine(teleportCoroutine());
-            //RightTriggerPressed();
+            //StartCoroutine(teleportCoroutine());
+            RightTriggerPressed();
         }
         // check if right trigger is released
         else if (_controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out isPressed) && isPressed == false && _rightTriggerButtonState == true)
         {
-            _isPressed = false;
-            TurnOffTeleport();
-            //OnTeleportCancel();
-            //RightTriggerReleased();
+            //_isPressed = false;
+            //TurnOffTeleport();
+            RightTriggerReleased();
         }
         // check if left trigger is pressed
         if (_controllersConnected && _leftHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out isPressed) && isPressed && _leftTriggerButtonState == false)
