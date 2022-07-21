@@ -1014,9 +1014,9 @@
             "actions": [
                 {
                     "name": "Teleport Select",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "02e43582-8973-4940-af06-dff6158e3df2",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -1062,8 +1062,8 @@
                 {
                     "name": "",
                     "id": "919c4a6c-22ed-4083-8e14-f30e91ff59fe",
-                    "path": "<XRController>{RightHand}/primary2DAxis",
-                    "interactions": "Sector(directions=1,sweepBehavior=3)",
+                    "path": "<XRController>{RightHand}/gripButton",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Teleport Select",
@@ -1215,6 +1215,65 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Spawn Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Custom Teleport",
+            "id": "38c5df45-22c3-4bf9-8976-df5c815c4cdf",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "c86e116f-8fa2-4113-b9c6-419c478e3df9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select Value",
+                    "type": "Value",
+                    "id": "374c03d8-c923-4904-a6bd-e3fc67ab40a1",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0e3c7f79-a871-4dd2-831b-c75957be165d",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "289adaa1-a16e-42a5-ae15-6ec6d60f1bd9",
+                    "path": "<OpenVROculusTouchController>{RightHand}/thumbstickTouched",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "828468e5-1cd6-44c1-8f3e-1fb6f05ce018",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "Sector(directions=1,sweepBehavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Value",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
