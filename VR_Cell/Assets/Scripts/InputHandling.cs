@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 
 public class InputHandling : MonoBehaviour
 {
     // global references to the controllers
-    private InputDevice _leftHandController;
-    private InputDevice _rightHandController;
+    private UnityEngine.XR.InputDevice _leftHandController;
+    private UnityEngine.XR.InputDevice _rightHandController;
     // global references to the controllers in their array so we can determine if they are connected
-    private List<InputDevice> _leftHandControllerArr = new List<InputDevice>();
-    private List<InputDevice> _rightHandControllerArr = new List<InputDevice>();
+    private List<UnityEngine.XR.InputDevice> _leftHandControllerArr = new List<UnityEngine.XR.InputDevice>();
+    private List<UnityEngine.XR.InputDevice> _rightHandControllerArr = new List<UnityEngine.XR.InputDevice>();
     // global variable to track if the controllers are connected
     private bool _controllersConnected = false;
     // global references to every button state so that we can detect changes
@@ -42,10 +43,88 @@ public class InputHandling : MonoBehaviour
     // variable to track if the joystick is at the home position or not
     private bool _isHome = true;
 
+    // variable to track if the teleport button is being held
+    private bool _teleportButtonDown = true;
+    // teleport variables
+    // [SerializeField] private InputActionProperty gripModeActivate;
+    
+    // whether the teleportation ray is active or not
+    private bool _isActive = false;
+    // detects whether the activate button is pressed
+    private bool _isPressed = false; 
+    // if the ray is on an invalid object
+    private bool _isValidTarget = true;
+    private InteractionLayerMask initialInteractionLayers;
+    private List<IXRInteractable> interactables = new List<IXRInteractable>();
+    public XRRayInteractor rayInteractorRightHand;
+    public InteractionLayerMask teleportationLayers;
+    public TeleportationProvider provider;
+
     // Start is called before the first frame update
     void Awake()
     {
-        
+
+    }
+
+    public IEnumerator teleportCoroutine()
+    {
+        // change the ray interactor to the teleport settings
+        rayInteractorRightHand.lineType = XRRayInteractor.LineType.ProjectileCurve;
+        rayInteractorRightHand.interactionLayers = teleportationLayers;
+        _isActive = true;
+        while(_isActive)
+        {
+            // get the valid targets 
+            rayInteractorRightHand.GetValidTargets(interactables);
+
+            // if the ray is pointing at non-interactable objects
+            if (interactables.Count == 0)
+            {
+                // set _isValidTarget to false
+                _isValidTarget = false;
+                continue;
+            }
+            // if the ray is pointing at interactable objects then set it to true
+            else 
+                _isValidTarget = true;
+
+            rayInteractorRightHand.TryGetCurrent3DRaycastHit(out RaycastHit hit);
+
+            TeleportRequest request = new TeleportRequest();
+
+            // if pointing at a teleportation area
+            if (interactables[0].interactionLayers == 4)
+            {
+                request.destinationPosition = hit.point;
+            }
+            // if pointing at a teleporation anchor
+            else if (interactables[0].interactionLayers == 16)
+            {
+                request.destinationPosition = hit.transform.GetChild(0).transform.position;
+            }
+            // if the ray is on an invalid object
+            else
+            {
+                _isValidTarget = false;
+            }
+            // if the activate button is pressed while in teleport mode it means we want to teleport
+            if (_isPressed == false)
+            {
+                provider.QueueTeleportRequest(request);
+                TurnOffTeleport();
+            }
+            yield return null;
+        }
+    }
+
+    private void TurnOffTeleport()
+    {
+        // the active button was "released"
+        _isPressed = false;
+        // the teleportation ray should be turned off
+        _isActive = false;
+        rayInteractorRightHand.lineType = XRRayInteractor.LineType.StraightLine;
+        rayInteractorRightHand.interactionLayers = initialInteractionLayers;
     }
 
     public void getLeftHandController()
@@ -261,12 +340,16 @@ public class InputHandling : MonoBehaviour
         // check if right trigger is pressed
         if (_controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out isPressed) && isPressed && _rightTriggerButtonState == false)
         {
-            RightTriggerPressed();
+            StartCoroutine(teleportCoroutine());
+            //RightTriggerPressed();
         }
         // check if right trigger is released
         else if (_controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out isPressed) && isPressed == false && _rightTriggerButtonState == true)
         {
-            RightTriggerReleased();
+            _isPressed = false;
+            TurnOffTeleport();
+            //OnTeleportCancel();
+            //RightTriggerReleased();
         }
         // check if left trigger is pressed
         if (_controllersConnected && _leftHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out isPressed) && isPressed && _leftTriggerButtonState == false)
