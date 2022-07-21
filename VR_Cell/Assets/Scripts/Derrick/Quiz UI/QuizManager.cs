@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -38,6 +39,8 @@ public class QuizManager : MonoBehaviour
     private int numOfQuestions;
 
     private int score;
+
+    private Stopwatch stopWatch;
 
     private Question currentQuestion;
 
@@ -142,6 +145,7 @@ public class QuizManager : MonoBehaviour
         questionCounter = 0;
         score = 0;
         numOfQuestions = 12;
+        stopWatch = System.Diagnostics.Stopwatch.StartNew();
 
         foreach (Question q in questions)
         {
@@ -152,7 +156,7 @@ public class QuizManager : MonoBehaviour
         {
             Question tempQuestion = questionStackBin.Pop();
             questionStack.Push (tempQuestion);
-            Debug.Log(tempQuestion.questionPrompt);
+            UnityEngine.Debug.Log(tempQuestion.questionPrompt);
         }
 
         DisplayNextQuestion();
@@ -254,58 +258,50 @@ public class QuizManager : MonoBehaviour
     }
 
     // Calculate final score, show results panel.
-    void EndQuiz()
+    public void EndQuiz()
     {
-        Debug.Log("End of Quiz.");
+        UnityEngine.Debug.Log("Ending quiz");
+        stopWatch.Stop();
+        var elapsedSeconds = stopWatch.Elapsed.TotalSeconds;
 
-        private float scorePercentage = (float)((score / numOfQuestions) * 100);
-        Debug.Log("Quiz score: " + scorePercentage + "%");
+        // Calculate final score percentage
+        float scorePercentage = (float)score / (float)numOfQuestions * 100;
+        UnityEngine.Debug.Log("Score: " + scorePercentage + "%");
 
-        // Deactivate the uiPanel, activate the scorePanel, and push score info to it.
+        // Show results panel, hide quiz panel
         uiPanel.SetActive(false);
         scorePanel.SetActive(true);
 
+        // Get references to panel info
         GameObject uiCanvas = scorePanel.transform.GetChild(0).gameObject;
-        TMP_Text postQuizResponse =
-            uiCanvas
-                .transform
-                .Find("Post-Quiz Response")
-                .gameObject
-                .GetComponent<TMP_Text>();
-        TMP_Text numQuestionsCorrect =
-            uiCanvas
-                .transform
-                .Find("Num Questions Correct")
-                .gameObject
-                .GetComponent<TMP_Text>();
-        TMP_Text overallScore =
-            uiCanvas
-                .transform
-                .Find("Overall Score")
-                .gameObject
-                .GetComponent<TMP_Text>();
-        TMP_Text timeSpent =
-            uiCanvas
-                .transform
-                .Find("Time Spent")
-                .gameObject
-                .GetComponent<TMP_Text>();
+        TMP_Text postQuizResponse = uiCanvas.transform.Find("Post-Quiz Response").gameObject.GetComponent<TMP_Text>();
+        TMP_Text numQuestionsCorrect = uiCanvas.transform.Find("Num Questions Correct").gameObject.GetComponent<TMP_Text>();
+        TMP_Text overallScore = uiCanvas.transform.Find("Overall Score").gameObject.GetComponent<TMP_Text>();
+        TMP_Text timeSpent = uiCanvas.transform.Find("Time Spent").gameObject.GetComponent<TMP_Text>();
 
+        // Set Post Quiz Response based on score percentage
         if (scorePercentage < 70)
         {
-            postQuizResponse.text = "Would you like to try again?";
+            postQuizResponse.text = "You're not quite there yet! Would you like to try again?";
+        }
+        else if (scorePercentage < 80)
+        {
+            postQuizResponse.text = "You're pretty good!";
         }
         else if (scorePercentage < 90)
         {
-            postQuizResponse.text = "Nicely done!";
+            postQuizResponse.text = "You're pretty great!";
         }
-        else if (scorePercentage > 90)
+        else
         {
-            postQuizResponse.text = "Great job, you're a master!";
+            postQuizResponse.text = "You're a master! Great job.";
         }
 
-        numQuestionsCorrect.text = "Number of Correct Answers: " + score;
-        overallScore.text = "Overall Score: " + scorePercentage + "%";
-        timeSpent.text = "Time Spent: 00:00.0"; // TODO: Change to be dynamic
+        // Set Num Questions Correct
+        numQuestionsCorrect.text = "You got " + score.ToString() + " out of " + numOfQuestions.ToString() + " questions correct!";
+        // Set Overall Score
+        overallScore.text = "Your overall score is " + scorePercentage.ToString("F2") + "%";
+        // Set Time Spent
+        timeSpent.text = "You spent " + elapsedSeconds.ToString("F2") + " seconds on the quiz!";
     }
 }

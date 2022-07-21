@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,137 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &135630593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8452194789113277733, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 530645489}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &135630598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135630593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f0a932bb39c294887b4e2371dea3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions:
+  - questionPrompt: How do transport vesicles integrate into the endomembrane system?
+    questionOptions:
+    - They move waste products out of the cell
+    - They bring materials from the Endoplasmic Reticulum to the Golgi
+    - They Encapsulate the cell to move it throughout the body
+    - They carry chemical tags to signal events to cell organelles
+    questionAnswer: They bring materials from the Endoplasmic Reticulum to the Golgi
+  - questionPrompt: The Endomembrane System involves which organelles?
+    questionOptions:
+    - Nucleus, Ribosomes, ER, Golgi
+    - Lysosomes, Peroxisomes, Centrosomes, Cytoplasm
+    - Nucleus, ER, Golgi, Vesicles, Lysosomes
+    - Mitochondria, Golgi, Nucleolus, Ribosomes
+    questionAnswer: Nucleus, ER, Golgi, Vesicles, Lysosomes
+  - questionPrompt: What is the most significant difference between the rough and
+      smooth Endoplasmic Reticulum?
+    questionOptions:
+    - Rough ER has ribosomes, smooth ER is absent
+    - Smooth ER has ribosomes, rough ER is absent
+    - Both are present in plant cells, whereas only the rough ER is found in animal
+      cells
+    - Smooth ER is located near the nucleus, whereas the rough ER is closer to the
+      edge of the cell
+    questionAnswer: Rough ER has ribosomes, smooth ER is absent
+  - questionPrompt: Which organelle modifies and sorts proteins & lipids that come
+      from the Endoplasmic Reticulum?
+    questionOptions:
+    - Lysosome
+    - Vesicle
+    - Golgi apparatus
+    - Peroxisome
+    questionAnswer: Golgi apparatus
+  - questionPrompt: 'Smooth or rough ER: stores calcium ions, detoxifies the cell.'
+    questionOptions:
+    - Smooth ER
+    - Rough ER
+    questionAnswer: Smooth ER
+  - questionPrompt: 'Smooth or rough ER: first part of the ER outside the nucleus;
+      makes glycoproteins.'
+    questionOptions:
+    - Smooth ER
+    - Rough ER
+    questionAnswer: Rough ER
+  - questionPrompt: Produces rRNA, assembles both subunits of the ribosome together.
+    questionOptions:
+    - Kinesin
+    - Nucleolus
+    - Mitochondria
+    - Cytosol
+    questionAnswer: Nucleolus
+  - questionPrompt: The "trash compactors" of the cell; breaks down damaged components
+      and assists in the self-destruction of the cell - called apoptosis - in cases
+      of extreme cell damage.
+    questionOptions:
+    - Nucleus
+    - Microtubules
+    - Secretory vesicles
+    - Lysosomes
+    questionAnswer: Lysosomes
+  - questionPrompt: 'True or false: organelles are mostly static and stable.'
+    questionOptions:
+    - True
+    - False
+    questionAnswer: False
+  - questionPrompt: Where would a protein be found first if it is to be excreted
+      from the cell?
+    questionOptions:
+    - Peroxisome
+    - Golgi Apparatus
+    - Lysosome
+    - Secretory vesicle
+    questionAnswer: Golgi Apparatus
+  - questionPrompt: This organelle shuttles proteins & lipids around the cell
+    questionOptions:
+    - Transport vesicles
+    - Endoplasmic reticulum
+    - Ribosomes
+    - Secretory vesicles
+    questionAnswer: Transport vesicles
+  - questionPrompt: Ribosomes read
+    questionOptions:
+    - rRNA
+    - mRNA
+    - tRNA
+    - DNA
+    questionAnswer: mRNA
+--- !u!114 &135630599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135630593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9710275a43ce4b642a2efc6a0e27e441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1930651769}
+--- !u!114 &135630600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135630593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9710275a43ce4b642a2efc6a0e27e441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 877320529}
 --- !u!1 &154768482
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +765,185 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a305a30b41556e4ebaacd06b5a0bec9, type: 3}
+--- !u!1001 &530645489
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1449719436559368837, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719436938484227, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966290, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_Name
+      value: Quiz UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.088
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449719437771460748, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: uiPanel
+      value: 
+      objectReference: {fileID: 1930651769}
+    - target: {fileID: 1449719437771460748, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: scorePanel
+      value: 
+      objectReference: {fileID: 877320529}
+    - target: {fileID: 2254749925218293269, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 135630598}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 135630600}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 135630599}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerQuiz
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ClosePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: OpenPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: QuizTrigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: QuizPanelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: QuizPanelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981013475221663948, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 31815bd5b6cf14f42b299cbac7c3a7c8, type: 3}
 --- !u!1 &573358803 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1812751369633260267, guid: 77382b4be9acd2348b3810899b4dd0aa,
@@ -687,6 +997,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2475827682379684837, guid: cacb360a0bdf0af4b8a47cbe46c1ea4a,
     type: 3}
   m_PrefabInstance: {fileID: 1462164432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &877320529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2254749925218293269, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 530645489}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &915720419 stripped
 MonoBehaviour:
@@ -1194,12 +1510,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12d2070821002214a89bff1c457e5314, type: 3}
---- !u!1 &1596972421 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1449719436559368837, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1449719437886627584}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1615285225 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4616240330911221879, guid: 578b69bc030dff547bd8058c8523672f,
@@ -1825,100 +2135,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1449719437886627584
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1449719436559368837, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719436559368837, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_TagString
-      value: newQuizPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719436590744917, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719436590744920, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: questions.Array.data[5].questionOptions.Array.data[1]
-      value: Rough ER
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966290, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_Name
-      value: Quiz UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.209
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.088
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719437308966293, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449719438140135112, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31815bd5b6cf14f42b299cbac7c3a7c8, type: 3}
+--- !u!1 &1930651769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1449719436559368837, guid: 31815bd5b6cf14f42b299cbac7c3a7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 530645489}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6503611846518270221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2045,17 +2267,22 @@ PrefabInstance:
         type: 3}
       propertyPath: _quizPanel
       value: 
-      objectReference: {fileID: 1596972421}
+      objectReference: {fileID: 1930651769}
     - target: {fileID: 5233257444520134635, guid: c84f7cb015d50d041933d48ef7376ddf,
         type: 3}
       propertyPath: m_Name
       value: EndoProcessUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5233257444520134635, guid: c84f7cb015d50d041933d48ef7376ddf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6503611846789331016, guid: c84f7cb015d50d041933d48ef7376ddf,
         type: 3}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 1596972421}
+      objectReference: {fileID: 1930651769}
     - target: {fileID: 6503611846789331019, guid: c84f7cb015d50d041933d48ef7376ddf,
         type: 3}
       propertyPath: questions.Array.data[5].questionOptions.Array.data[1]
