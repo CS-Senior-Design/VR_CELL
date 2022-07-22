@@ -85,8 +85,8 @@ public class InputHandling : MonoBehaviour
         checkMenuButton();
         check2DAxis();
         checkPrimaryButton();
-        // if they are holding down the trigger
-        if (_rightTriggerButtonState)
+        // if they are holding down the trigger do continuous movement
+        if (_rightTriggerButtonState && _isImmersive)
         {
             continuousMovement();
         }
