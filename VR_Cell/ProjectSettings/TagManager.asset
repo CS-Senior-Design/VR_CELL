@@ -21,6 +21,7 @@ TagManager:
   - ERUI
   - teleportArea
   - CameraOffset
+  - inventoryUI
   layers:
   - Default
   - TransparentFX

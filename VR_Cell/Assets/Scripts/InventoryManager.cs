@@ -15,19 +15,19 @@ public class InventoryManager : MonoBehaviour
 
     void Awake() 
     {
-        _inventory.SetActive(false);
         toggle = GetComponent<Toggle>();
         toggle.onValueChanged.AddListener(ToggleInventory);
-
+        /* 
         if (toggle.isOn)
             ToggleInventory(true);
+        */
 
     }
 
     public void ToggleInventory(bool on)
     {
 
-        if (on)
+        if (_inventory.activeSelf == false)
         {
             Debug.Log("Inventory on");
             _inventory.SetActive(true);
@@ -50,6 +50,7 @@ public class InventoryManager : MonoBehaviour
             socket2.GetComponent<SocketEvents>().hide();
             socket3.GetComponent<SocketEvents>().hide();
             socket4.GetComponent<SocketEvents>().hide();
+            
             
             // make all objects in the sockets visible again
             // for (int i = 0; i < organelles.Count; i++)

@@ -1,0 +1,34 @@
+How to get teleport working with Dpad Up:
+
+1) Player parent object needs to have: 
+	- The 'Input Handling' script attached
+	- 2 right hand XRRayInteractors, 1 for teleporting and 1 for object interaction. Make sure they are each restricted to their proper layers.
+
+2) In 'Input Handling' script, place the call to 'openTeleport()' method inside of the 'RightPrimary2DAxisUp()' method.
+	- this will switch the XRRayInteractor to the teleporting one while you are holding up on the dpad/joystick.
+
+3) In the same script, place a call to 'cancelTeleport()' inside of the 'RightPrimary2DAxisClickReleased()' method and the 'RightPrimary2DAxisHome()' method.
+	- this will switch the XRRayInteractor to the normal one when you release the DPad or bring the joystick back to home position in the center.
+
+4) In the same script, place a call to 'cancelTeleport()' inside of the 'RightGripPressed()' method. 
+	- this is just so that once you are in teleport mode, you have a binding to cancel it if you change your mind about teleporting.
+
+5) For the actual teleporting part, click on the teleporting XRRayInteractor on the unity editor and select the following:
+	-  Select Action 
+		- Use reference = true (checked)
+		- Reference = Custom Teleport/Select
+	- Select Action Value
+		- Use reference = true (checked)
+		- Reference = Custom Teleport/Select Value
+
+6) Lastly, make sure that the bindings are correct. 
+	- Open the action map and go to the 'Custom Teleport' Action Map.
+	- Select should be Action Type: Button with initial state checked
+		- 2 bindings:
+			- trackpadClicked [RightHand ViveController]
+			- triggerPressed [RightHand XR Controller]
+	- Select Value should be Action Type: Value with Control Type: Vector2
+		- 1 binding: 
+			- primary2DAxis [RightHand XR Controller]
+				- Sector: North, allow reentry
+	

@@ -56,7 +56,9 @@ public class InputHandling : MonoBehaviour
     // if you are using both controllers then set them both to false
     // if you are using no controllers then set them both to true
     [Header("Testing with 1 Controller")]
+    [Tooltip("Check if you are only using the right controller. Leave both unchecked if you're using both controllers.")]
     [SerializeField] public bool _isRightOnly = false;
+    [Tooltip("Check if you are only using the left controller. Leave both unchecked if you're using both controllers.")]
     [SerializeField] public bool _isLeftOnly = false;
 
     void Awake()
