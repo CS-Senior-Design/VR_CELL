@@ -14,6 +14,10 @@ If you want something to happen on a specific button/value then add the code und
 public class InputHandling : MonoBehaviour
 {
     // public variables to add on the editor
+    [Header("Which scene?")]
+    // variables to track whether we are in immersive or lab scene
+    [SerializeField] public bool _isImmersive;
+    // public variables to add on the editor
     [Header("XR Ray Interactors")]
     // variables to store the rayInteractors to swap between interactable and teleporting
     [SerializeField] public GameObject _rayInteractorNormal;
@@ -51,6 +55,8 @@ public class InputHandling : MonoBehaviour
     private GameObject _player;
     // variable to change how far back the playr is teleported when they step back
     private float _defaultStepBackDistance = 0.5f;
+    // how fast the player moves forward
+    private float _continuousMovementSensitivity = 1.0f;
 
     // variables for testing with only 1 controller
     // if you are using both controllers then set them both to false
@@ -79,6 +85,17 @@ public class InputHandling : MonoBehaviour
         checkMenuButton();
         check2DAxis();
         checkPrimaryButton();
+        // if they are holding down the trigger
+        if (_rightTriggerButtonState)
+        {
+            continuousMovement();
+        }
+    }
+
+    public void continuousMovement()
+    {
+        Debug.Log("Moving forward");
+        _player.transform.position +=  Camera.main.transform.forward * _continuousMovementSensitivity * Time.deltaTime;
     }
 
     public void teleportBackwards()
@@ -233,6 +250,13 @@ public class InputHandling : MonoBehaviour
     {
         Debug.Log("Right Trigger Button Pressed");
         _rightTriggerButtonState = true;
+
+        // we want the player to be able to move using the right trigger for continuous movement
+        // only do this in the immersive scene
+        if (_isImmersive)
+        {
+            continuousMovement();
+        }
     }
 
     public void RightTriggerReleased()
