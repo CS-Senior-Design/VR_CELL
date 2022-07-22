@@ -6762,6 +6762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayInteractorNormal: {fileID: 3721520028976455438}
   rayInteractorTeleport: {fileID: 1047165464}
+  _isRightOnly: 0
+  _isLeftOnly: 0
 --- !u!1 &3721520029815589408
 GameObject:
   m_ObjectHideFlags: 0
