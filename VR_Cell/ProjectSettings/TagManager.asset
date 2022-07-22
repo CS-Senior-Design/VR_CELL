@@ -19,6 +19,8 @@ TagManager:
   - golgiUI
   - generatedRibosomes
   - ERUI
+  - teleportArea
+  - CameraOffset
   layers:
   - Default
   - TransparentFX

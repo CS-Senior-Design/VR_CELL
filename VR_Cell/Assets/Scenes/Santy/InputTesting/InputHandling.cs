@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,8 +47,10 @@ public class InputHandling : MonoBehaviour
     private bool _is2DAxisLeftHome = true;
     // variable to track if we are using oculus or vive controller
     private bool _isViveController = false;
-    // variable to store the reference to the player
+    // variable to store the reference to the gameobject with the Player tag (xr origin)
     private GameObject _player;
+    // variable to change how far back the playr is teleported when they step back
+    private float _defaultStepBackDistance = 0.5f;
 
     // variables for testing with only 1 controller
     // if you are using both controllers then set them both to false
@@ -74,8 +77,39 @@ public class InputHandling : MonoBehaviour
         checkPrimaryButton();
     }
 
+    public void teleportBackwards()
+    {
+        Debug.Log("moving backwards!");
+        float x = _player.transform.position.x - Camera.main.transform.forward.x * _defaultStepBackDistance;
+        float z = _player.transform.position.z - Camera.main.transform.forward.z * _defaultStepBackDistance;
+        Vector3 tempPosition = new Vector3(x, _player.transform.position.y, z);
+        _player.transform.position = tempPosition;
+        /*
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(tempPosition, Vector3.down, 10.0f);
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.transform.tag == "teleportArea" || hit.transform.tag == "teleportAnchor")
+            {
+                _player.transform.position = tempPosition;
+                break;
+            }
+        }
+        */
+        /*
+        if (Physics.Raycast(tempPosition, -Vector3.up, out RaycastHit hit))
+        {
+            Debug.Log(hit.transform.tag);
+            if (hit.transform.tag.Contains("teleportArea"))
+                _player.transform.position = tempPosition;
+        }
+        */
+    }
+
     public void rotatePlayer(float rotation)
     {
+        // find the MainCamera and rotate it
+        //GameObject mainCamera = GameObject.FindGameObjectWithTag("CameraOffset");
         _player.transform.Rotate(0, rotation, 0);
     }
 
@@ -327,6 +361,9 @@ public class InputHandling : MonoBehaviour
     {
         Debug.Log("Right Primary 2D Axis Down");
         _is2DAxisRightHome = false;
+
+        // teleport backwards 
+        teleportBackwards();
     }
 
     public void RightPrimary2DAxisUp()
