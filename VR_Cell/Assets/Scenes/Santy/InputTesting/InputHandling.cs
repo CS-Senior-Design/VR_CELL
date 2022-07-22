@@ -44,16 +44,23 @@ public class InputHandling : MonoBehaviour
     // variable to track if the joystick is at the home position or not
     private bool _is2DAxisRightHome = true;
     private bool _is2DAxisLeftHome = true;
-
     // variable to track if we are using oculus or vive controller
     private bool _isViveController = false;
+    // variable to store the reference to the player
+    private GameObject _player;
 
-    // variable for testing with only 1 controller
-    // if you are using both then set them both to false
+    // variables for testing with only 1 controller
+    // if you are using both controllers then set them both to false
     // if you are using no controllers then set them both to true
     [Header("Testing with 1 Controller")]
-    [SerializeField] public bool _isRightOnly = true;
+    [SerializeField] public bool _isRightOnly = false;
     [SerializeField] public bool _isLeftOnly = false;
+
+    void Awake()
+    {
+        // get the player at the start of the program so we can do things like snap turning.
+        _player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     // check for input on every frame
     void Update()
@@ -65,6 +72,11 @@ public class InputHandling : MonoBehaviour
         checkMenuButton();
         check2DAxis();
         checkPrimaryButton();
+    }
+
+    public void rotatePlayer(float rotation)
+    {
+        _player.transform.Rotate(0, rotation, 0);
     }
 
     // switch from normal interactor to teleportation interactor
@@ -303,7 +315,7 @@ public class InputHandling : MonoBehaviour
 
     public void RightPrimary2DAxisHome()
     {
-        //Debug.Log("Right Primary 2D Axis Home Position");
+        Debug.Log("Right Primary 2D Axis Home Position");
         _rightPrimary2DAxisClickState = false;
         _is2DAxisRightHome = true;
 
@@ -330,12 +342,18 @@ public class InputHandling : MonoBehaviour
     {
         Debug.Log("Right Primary 2D Axis Left");
         _is2DAxisRightHome = false;
+
+        // rotate the player 90 degrees to the left
+        rotatePlayer(-45.0f);
     }
 
     public void RightPrimary2DAxisRight()
     {
         Debug.Log("Right Primary 2D Axis Right");
         _is2DAxisRightHome = false;
+
+        // rotate the player 90 degrees to the right
+        rotatePlayer(45.0f);
     }
 
     public void LeftPrimary2DAxisClickPressed()
@@ -352,7 +370,7 @@ public class InputHandling : MonoBehaviour
 
     public void LeftPrimary2DAxisHome()
     {
-        //Debug.Log("Left Primary 2D Axis Home Position");
+        Debug.Log("Left Primary 2D Axis Home Position");
         _leftPrimary2DAxisClickState = false;
         _is2DAxisLeftHome = true;
     }
@@ -407,7 +425,7 @@ public class InputHandling : MonoBehaviour
             RightPrimary2DAxisDown();
         }
         // if they reset the joystick to the home position
-        if (_isViveController == false && _controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out primary2DAxisValue) && (primary2DAxisValue - Vector2.zero).magnitude < 0.5f)
+        if (_isViveController == false && _controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out primary2DAxisValue) && (primary2DAxisValue).magnitude < 0.1f && _is2DAxisRightHome == false)
         {
             RightPrimary2DAxisHome();
         }
@@ -458,7 +476,7 @@ public class InputHandling : MonoBehaviour
             LeftPrimary2DAxisDown();
         }
         // if they reset the joystick to the home position
-        if (_isViveController == false && _controllersConnected && _leftHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out primary2DAxisValue) && (primary2DAxisValue - Vector2.zero).magnitude < 0.5f)
+        if (_isViveController == false && _controllersConnected && _leftHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out primary2DAxisValue) && (primary2DAxisValue).magnitude < 0.1f && _is2DAxisLeftHome == false)
         {
             LeftPrimary2DAxisHome();
         }
