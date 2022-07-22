@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Toggle toggle;
+    public GameObject toggleObject;
+    private Toggle toggle;
     public GameObject _inventory;
     public GameObject socket1;
     public GameObject socket2;
@@ -15,18 +16,16 @@ public class InventoryManager : MonoBehaviour
 
     void Awake() 
     {
-        toggle = GetComponent<Toggle>();
+        toggle = toggleObject.GetComponent<Toggle>();
         toggle.onValueChanged.AddListener(ToggleInventory);
-        /* 
+
         if (toggle.isOn)
             ToggleInventory(true);
-        */
-
     }
 
     public void ToggleInventory(bool on)
     {
-
+        Debug.Log("inventory button clicked");
         if (_inventory.activeSelf == false)
         {
             Debug.Log("Inventory on");
