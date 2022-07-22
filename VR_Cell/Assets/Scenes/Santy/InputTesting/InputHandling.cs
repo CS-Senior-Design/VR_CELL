@@ -16,8 +16,8 @@ public class InputHandling : MonoBehaviour
     // public variables to add on the editor
     [Header("XR Ray Interactors")]
     // variables to store the rayInteractors to swap between interactable and teleporting
-    [SerializeField] public GameObject rayInteractorNormal;
-    [SerializeField] public GameObject rayInteractorTeleport;
+    [SerializeField] public GameObject _rayInteractorNormal;
+    [SerializeField] public GameObject _rayInteractorTeleport;
 
     // global references to the controllers
     private UnityEngine.XR.InputDevice _leftHandController;
@@ -63,6 +63,8 @@ public class InputHandling : MonoBehaviour
     {
         // get the player at the start of the program so we can do things like snap turning.
         _player = GameObject.FindGameObjectWithTag("Player");
+        // hide the _rayInteractorTeleport at the start of the program
+        _rayInteractorTeleport.SetActive(false);
     }
 
     // check for input on every frame
@@ -116,15 +118,15 @@ public class InputHandling : MonoBehaviour
     // switch from normal interactor to teleportation interactor
     public void openTeleport()
     {
-        rayInteractorNormal.SetActive(false);
-        rayInteractorTeleport.SetActive(true);
+        _rayInteractorNormal.SetActive(false);
+        _rayInteractorTeleport.SetActive(true);
     }
 
     // switch from teleportation interactor to normal interactor
     public void cancelTeleport()
     {
-        rayInteractorNormal.SetActive(true);
-        rayInteractorTeleport.SetActive(false);
+        _rayInteractorNormal.SetActive(true);
+        _rayInteractorTeleport.SetActive(false);
     }
 
     // wrapper to get both controllers depending on if you toggled _isLeftOnly or _isRightOnly
