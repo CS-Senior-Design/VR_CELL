@@ -56,7 +56,7 @@ public class InputHandling : MonoBehaviour
     // variable to change how far back the playr is teleported when they step back
     private float _defaultStepBackDistance = 0.5f;
     // how fast the player moves forward
-    private float _continuousMovementSensitivity = 1.0f;
+    private float _continuousMovementSensitivity = 5.0f;
 
     // variables for testing with only 1 controller
     // if you are using both controllers then set them both to false
