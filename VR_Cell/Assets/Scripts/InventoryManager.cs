@@ -62,6 +62,7 @@ public class InventoryManager : MonoBehaviour
 
     void OnDestroy()
     {
-        toggle.onValueChanged.RemoveListener(ToggleInventory);
+        if (toggle != null)
+            toggle.onValueChanged.RemoveListener(ToggleInventory);
     }
 }

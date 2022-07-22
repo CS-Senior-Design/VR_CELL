@@ -17,7 +17,8 @@ public class WristUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        _menu.performed -= ToggleMenu;
+        if (_menu != null)
+            _menu.performed -= ToggleMenu;
     }
 
     public void ToggleMenu(InputAction.CallbackContext context)
