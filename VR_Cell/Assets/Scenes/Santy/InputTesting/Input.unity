@@ -6384,6 +6384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ce5233daef19747a6fc2d31a683336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isImmersive: 1
   _rayInteractorNormal: {fileID: 3721520028976455438}
   _rayInteractorTeleport: {fileID: 1047165464}
   _isRightOnly: 0
