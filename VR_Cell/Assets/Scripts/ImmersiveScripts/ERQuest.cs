@@ -13,7 +13,7 @@ public class ERQuest : MonoBehaviour
     // get the socket so we can easily activate and deactivate it and check what's inside it
     public XRSocketInteractor _socket;
     // variable to store the selected object
-    public GameObject _selectedObject;
+    private GameObject _selectedObject;
 
     // get the text gameobjects so we can change the texts of the UI
     public GameObject _textArea;

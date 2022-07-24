@@ -11,6 +11,12 @@ Script for getting input from the VR controller.
 If you want something to happen on a specific button/value then add the code under the respective method for that button/value. 
 */
 
+class ItemInfo
+{
+    public GameObject item;
+    public Vector3 initialScale;
+}
+
 public class InputHandling : MonoBehaviour
 {
     // public variables to add on the editor
@@ -58,6 +64,22 @@ public class InputHandling : MonoBehaviour
     // how fast the player moves forward
     private float _continuousMovementSensitivity = 5.0f;
 
+    // wrist menu (immersive) global variables
+    private GameObject _wristUIPanel;
+    private GameObject _inventoryPanel;
+    private GameObject _fastTravelPanel;
+    private bool _isWristMenuActive = false;
+    private bool _canGoBack = false;
+    
+    // inventory menu global variables
+    private List<GameObject> _inventorySockets = new List<GameObject>();
+    // dictionary to store the items in each socket in the right order
+    Dictionary < int, ItemInfo > _itemsInSockets = new Dictionary < int, ItemInfo > ();
+    // variable to track the last used socket index
+    private int _lastUsedSocket = 0;
+    // variable to track how many sockets there are total in the inventory
+    private int _totalInventorySockets;
+
     // variables for testing with only 1 controller
     // if you are using both controllers then set them both to false
     // if you are using no controllers then set them both to true
@@ -73,6 +95,33 @@ public class InputHandling : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         // hide the _rayInteractorTeleport at the start of the program
         _rayInteractorTeleport.SetActive(false);
+
+        // keeping track of wrist menu game objects
+        _wristUIPanel = GameObject.FindGameObjectWithTag("WristUI");
+        _inventoryPanel = GameObject.FindGameObjectWithTag("inventoryPanel");
+        _fastTravelPanel = GameObject.FindGameObjectWithTag("fastTravelUI");
+
+        // get all the sockets from the inventory into the list
+        foreach(GameObject socket in GameObject.FindGameObjectsWithTag("inventorySocket"))
+        {
+            // add the socket to the list
+            _inventorySockets.Add(socket);
+            // add the listeners to the socket
+            socket.GetComponent<XRSocketInteractor>().selectEntered.AddListener(SocketFilled);
+            socket.GetComponent<XRSocketInteractor>().selectExited.AddListener(SocketEmptied);
+        }
+        
+        // hide all the sockets at the start
+        foreach (GameObject socket in _inventorySockets)
+            socket.SetActive(false);
+
+        // get how many total sockets are in the inventory
+        _totalInventorySockets = _inventorySockets.Count;
+
+        // make all wrist panels hidden at the start
+        _wristUIPanel.SetActive(false);
+        _inventoryPanel.SetActive(false);
+        _fastTravelPanel.SetActive(false);
     }
 
     // check for input on every frame
@@ -85,10 +134,157 @@ public class InputHandling : MonoBehaviour
         checkMenuButton();
         check2DAxis();
         checkPrimaryButton();
+
         // if they are holding down the trigger do continuous movement
         if (_rightTriggerButtonState && _isImmersive)
         {
             continuousMovement();
+        }
+    }
+
+    public void SocketEmptied(SelectExitEventArgs obj)
+    {
+        Debug.Log("socket emptied");
+    }
+
+    public void SocketFilled(SelectEnterEventArgs obj)
+    {
+        GameObject item = obj.interactableObject.transform.gameObject;
+
+        // store the objects initial scale
+        Vector3 initialScale = item.transform.localScale;
+
+        // scale the item down so it fits better
+        item.transform.localScale = new Vector3(1, 1, 1);   
+
+        ItemInfo tempItem = new ItemInfo();
+        tempItem.item = item;
+        tempItem.initialScale = initialScale; 
+
+        _itemsInSockets[_lastUsedSocket] = tempItem;
+    }
+
+    public void nextInventorySocket()
+    {
+        Debug.Log("Changing to socket: " + _lastUsedSocket);
+        hideItemInSocket(_lastUsedSocket);
+        // if we press next while on the last socket just go back to the first one
+        if (_lastUsedSocket == _totalInventorySockets - 1)
+            _lastUsedSocket = 0;
+        // otherwise just increment
+        else
+            _lastUsedSocket++;
+        showItemInSocket(_lastUsedSocket);
+    }
+
+    public void prevInventorySocket()
+    {
+        Debug.Log("Changing to socket: " + _lastUsedSocket);
+        hideItemInSocket(_lastUsedSocket);
+        if (_lastUsedSocket == 0)
+            _lastUsedSocket = _totalInventorySockets - 1;
+        else
+            _lastUsedSocket--;
+        showItemInSocket(_lastUsedSocket);
+    }
+
+    public void hideItemInSocket(int socketIndex)
+    {
+        if (_itemsInSockets.ContainsKey(socketIndex))
+            _itemsInSockets[socketIndex].item.SetActive(false);
+    }
+
+    public void showItemInSocket(int socketIndex)
+    {
+        if (_itemsInSockets.ContainsKey(socketIndex))
+            _itemsInSockets[socketIndex].item.SetActive(true);
+    }
+
+    public void hideInventory()
+    {
+        // hide the current active socket and its item
+        hideItemInSocket(_lastUsedSocket);
+        _inventorySockets[_lastUsedSocket].SetActive(false);
+        _inventoryPanel.SetActive(false);
+    }
+
+    public void wristMenuToggle()
+    {
+        // if wrist menu is not active and user is not in a sub wrist menu
+        if (!_isWristMenuActive && !_canGoBack)
+        {
+            // activate main menu
+            _wristUIPanel.SetActive(true);
+
+            // hide sub menus
+            _inventoryPanel.SetActive(false);
+            _fastTravelPanel.SetActive(false);
+
+            // toggle variable keeps track of active state
+            _canGoBack = _isWristMenuActive = true;
+        }
+
+        // if user is in submenu hide every panel
+        else if (!_isWristMenuActive && _canGoBack)
+        {
+            _wristUIPanel.SetActive(false);
+            hideInventory();
+            _fastTravelPanel.SetActive(false);
+            _canGoBack = false;
+        }
+
+        // if user is on main wrist menu hide menu
+        else
+        {
+            _wristUIPanel.SetActive(false);
+            _isWristMenuActive = false;
+        }
+    }
+
+    public void showFastTravelMenu()
+    {
+        _wristUIPanel.SetActive(false);
+        _isWristMenuActive = false;
+        _fastTravelPanel.SetActive(true);
+        _canGoBack = true;
+    }
+
+    public void showInventoryMenu()
+    {
+        _wristUIPanel.SetActive(false);
+        _isWristMenuActive = false;
+        _inventoryPanel.SetActive(true);
+        _canGoBack = true;
+
+        // show the last used socket
+        Debug.Log("Count = " + _inventorySockets.Count);
+        _inventorySockets[_lastUsedSocket].SetActive(true);
+        Debug.Log("Last used socket " + _lastUsedSocket);
+    }
+
+    public void wristMenuBack()
+    {
+        // only go back if you are in the wrist main menu or submenu
+        if (_canGoBack)
+        {
+            if (_isWristMenuActive)
+            {
+                _wristUIPanel.SetActive(false);
+                _inventoryPanel.SetActive(false);
+                _fastTravelPanel.SetActive(false);
+
+                _isWristMenuActive = false;
+                _canGoBack = false;
+            }
+
+            else
+            {
+                _wristUIPanel.SetActive(true);
+                _inventoryPanel.SetActive(false);
+                _fastTravelPanel.SetActive(false);
+
+                _isWristMenuActive = true;
+            }
         }
     }
 
@@ -328,6 +524,9 @@ public class InputHandling : MonoBehaviour
     {
         Debug.Log("Left Menu Button Pressed");
         _leftMenuButtonState = true;
+
+        // wrist menu pops up
+        wristMenuToggle();
     }
 
     public void LeftMenuReleased()
@@ -450,6 +649,9 @@ public class InputHandling : MonoBehaviour
     {
         Debug.Log("Left Primary 2D Axis Left");
         _is2DAxisLeftHome = false;
+
+        // wrist menu back button
+        wristMenuBack();
     }
 
     public void LeftPrimary2DAxisRight()

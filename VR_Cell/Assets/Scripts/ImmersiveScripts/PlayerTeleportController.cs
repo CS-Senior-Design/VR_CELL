@@ -18,7 +18,6 @@ public class PlayerTeleportController : MonoBehaviour
 
     public void ToggleTeleportMenu(InputAction.CallbackContext context)
     {
-        Debug.Log("herersneohtu");
         if (_isShowing == true)
         {    
             gameObject.SetActive(false);
