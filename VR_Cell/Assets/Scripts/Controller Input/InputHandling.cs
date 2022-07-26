@@ -144,48 +144,80 @@ public class InputHandling : MonoBehaviour
 
     public void SocketEmptied(SelectExitEventArgs obj)
     {
-        Debug.Log("socket emptied");
+        // only count deselecting if the socket is active
+        if ( _inventorySockets[_lastUsedSocket].activeSelf == true )
+        {
+            // deparent the object
+            obj.interactableObject.transform.parent = null;
+            // change object to normal scale
+            _itemsInSockets[_lastUsedSocket].item.transform.localScale = _itemsInSockets[_lastUsedSocket].initialScale;
+            // remove the item from the dictionary
+            _itemsInSockets.Remove(_lastUsedSocket);    
+        }
     }
 
     public void SocketFilled(SelectEnterEventArgs obj)
     {
-        GameObject item = obj.interactableObject.transform.gameObject;
+        // If the object does not have the socket as the parent already
+        if (obj.interactableObject.transform.parent != _inventorySockets[_lastUsedSocket])
+        {    
+            GameObject item = obj.interactableObject.transform.gameObject;
 
-        // store the objects initial scale
-        Vector3 initialScale = item.transform.localScale;
+            // store the objects initial scale
+            Vector3 initialScale = item.transform.localScale;  
 
-        // scale the item down so it fits better
-        item.transform.localScale = new Vector3(1, 1, 1);   
+            // create the new item object
+            ItemInfo tempItem = new ItemInfo();
+            tempItem.item = item;
+            tempItem.initialScale = initialScale; 
 
-        ItemInfo tempItem = new ItemInfo();
-        tempItem.item = item;
-        tempItem.initialScale = initialScale; 
-
-        _itemsInSockets[_lastUsedSocket] = tempItem;
+            // scale the item down so it fits better
+            item.transform.localScale = new Vector3(2, 2, 2); 
+            // set the socket as the parent
+            item.transform.parent = _inventorySockets[_lastUsedSocket].transform;
+            // put the object in the dictionary
+            _itemsInSockets[_lastUsedSocket] = tempItem;
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void nextInventorySocket()
     {
         Debug.Log("Changing to socket: " + _lastUsedSocket);
-        hideItemInSocket(_lastUsedSocket);
+        //hideItemInSocket(_lastUsedSocket);
+        // current socket needs to be turned off when we go next
+        _inventorySockets[_lastUsedSocket].SetActive(false);
+
         // if we press next while on the last socket just go back to the first one
         if (_lastUsedSocket == _totalInventorySockets - 1)
             _lastUsedSocket = 0;
         // otherwise just increment
         else
             _lastUsedSocket++;
-        showItemInSocket(_lastUsedSocket);
+        
+        // set the new current socket to active
+        _inventorySockets[_lastUsedSocket].SetActive(true);
+        //showItemInSocket(_lastUsedSocket);
     }
 
     public void prevInventorySocket()
     {
         Debug.Log("Changing to socket: " + _lastUsedSocket);
-        hideItemInSocket(_lastUsedSocket);
+        //hideItemInSocket(_lastUsedSocket);
+        // current socket needs to be turned off when we go next
+        _inventorySockets[_lastUsedSocket].SetActive(false);
+
         if (_lastUsedSocket == 0)
             _lastUsedSocket = _totalInventorySockets - 1;
         else
             _lastUsedSocket--;
-        showItemInSocket(_lastUsedSocket);
+
+        // set the new current socket to active
+        _inventorySockets[_lastUsedSocket].SetActive(true);
+        //showItemInSocket(_lastUsedSocket);
     }
 
     public void hideItemInSocket(int socketIndex)
