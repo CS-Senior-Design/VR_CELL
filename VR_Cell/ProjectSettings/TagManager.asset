@@ -25,6 +25,9 @@ TagManager:
   - fastTravelUI
   - inventoryPanel
   - inventorySocket
+  - inventoryUI
+  - slotNumberText
+  - organelleNameTextSocket
   layers:
   - Default
   - TransparentFX
