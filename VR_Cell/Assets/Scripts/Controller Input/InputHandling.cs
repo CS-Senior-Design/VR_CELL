@@ -22,12 +22,10 @@ public class InputHandling : MonoBehaviour
     // public variables to add on the editor
     [Header("Which scene?")]
     // variables to track whether we are in immersive or lab scene
-    [SerializeField] public bool _isImmersive;
-    // public variables to add on the editor
-    [Header("XR Ray Interactors")]
+    [SerializeField] public bool _immersive;
     // variables to store the rayInteractors to swap between interactable and teleporting
-    [SerializeField] public GameObject _rayInteractorNormal;
-    [SerializeField] public GameObject _rayInteractorTeleport;
+    private GameObject _rayInteractorNormal;
+    private GameObject _rayInteractorTeleport;
 
     // global references to the controllers
     private UnityEngine.XR.InputDevice _leftHandController;
@@ -45,6 +43,7 @@ public class InputHandling : MonoBehaviour
     private bool _leftPrimary2DAxisClickState = false;
     private bool _leftPrimaryButtonState = false;
     private bool _leftPrimary2DAxisTouchState = false;
+    private float _leftTriggerValue = 0.0f;
     // right controller button states
     private bool _rightTriggerButtonState = false;
     private bool _rightGripButtonState = false;
@@ -52,6 +51,9 @@ public class InputHandling : MonoBehaviour
     private bool _rightPrimary2DAxisClickState = false;
     private bool _rightPrimaryButtonState = false;
     private bool _rightPrimary2DAxisTouchState = false;
+    private float _rightTriggerValue = 0.0f;   
+    // variable to be able to change at what point the trigger actuates
+    private float _triggerActuationValue = 0.01f;
     // variable to track if the joystick is at the home position or not
     private bool _is2DAxisRightHome = true;
     private bool _is2DAxisLeftHome = true;
@@ -62,7 +64,7 @@ public class InputHandling : MonoBehaviour
     // variable to change how far back the playr is teleported when they step back
     private float _defaultStepBackDistance = 0.5f;
     // how fast the player moves forward
-    private float _continuousMovementSensitivity = 5.0f;
+    private float _continuousMovementSensitivity = 10.0f;
 
     // wrist menu (immersive) global variables
     private GameObject _wristUIPanel;
@@ -80,6 +82,22 @@ public class InputHandling : MonoBehaviour
     // variable to track how many sockets there are total in the inventory
     private int _totalInventorySockets;
 
+    // store the teleport tube in a global variable
+    private GameObject _teleportTube;
+    // store the teleport tube's point in a global 
+    private GameObject _teleportTubePoint;
+    // original scale of the teleport tube
+    private Vector3 _teleportTubeOriginalScale;
+    // store the right hand controller in a global variable
+    private GameObject _rightHand;
+    // variable to change how quickly the teleport tube grows
+    private float _teleportTubeSensitivity = 2f;
+    
+    // variable to track if the user wants continuous movement or not
+    [Header("Movement")]
+    [Tooltip("Check if you want to be able to move around without having to teleport.")]
+    [SerializeField] public bool _continuousMovement = false;
+
     // variables for testing with only 1 controller
     // if you are using both controllers then set them both to false
     // if you are using no controllers then set them both to true
@@ -93,6 +111,9 @@ public class InputHandling : MonoBehaviour
     {
         // get the player at the start of the program so we can do things like snap turning.
         _player = GameObject.FindGameObjectWithTag("Player");
+        // get the ray interactors
+        _rayInteractorNormal = GameObject.FindGameObjectWithTag("rightRayInteractor");
+        _rayInteractorTeleport = GameObject.FindGameObjectWithTag("rightRayInteractorTeleport");
         // hide the _rayInteractorTeleport at the start of the program
         _rayInteractorTeleport.SetActive(false);
 
@@ -122,6 +143,17 @@ public class InputHandling : MonoBehaviour
         _wristUIPanel.SetActive(false);
         _inventoryPanel.SetActive(false);
         _fastTravelPanel.SetActive(false);
+
+        // get the right hand by tag
+        _rightHand = GameObject.FindGameObjectWithTag("rightHand");
+        // get the teleport tube by tag
+        _teleportTube = GameObject.FindGameObjectWithTag("teleportTube");
+        // get the teleport tube point by tag
+        _teleportTubePoint = GameObject.FindGameObjectWithTag("teleportTubePoint");
+        // hide the teleport tube at the start
+        _teleportTube.SetActive(false);
+        // store the original scale of the teleport tube
+        _teleportTubeOriginalScale = _teleportTube.transform.localScale;
     }
 
     // check for input on every frame
@@ -135,11 +167,53 @@ public class InputHandling : MonoBehaviour
         check2DAxis();
         checkPrimaryButton();
 
-        // if they are holding down the trigger do continuous movement
-        if (_rightTriggerButtonState && _isImmersive)
+        // if the user chooses to use continuous movement
+        if (_continuousMovement == true)
         {
-            continuousMovement();
+            // if they are holding down the right trigger do continuous movement forward
+            if (_rightTriggerValue >= 0.05f && _immersive)
+            {
+                continuousMovementForward();
+            }
+            
+            // if they are holding down the left trigger do continuous movement backward
+            if (_leftTriggerValue >= 0.05f && _immersive)
+            {
+                continuousMovementBackward();
+            }
         }
+        // if the user prefers to teleport
+        else
+        {
+            // if they are holding down the right trigger then show the teleport tube
+            if (_rightTriggerButtonState == true && _immersive)
+            {
+                tubeGrow();
+            }
+        }
+    }
+
+    public void tubeGrow()
+    {
+        // show the teleport tube
+        _teleportTube.SetActive(true);
+        // get the new scale
+        Vector3 newScale = new Vector3(_teleportTube.transform.localScale.x, _teleportTube.transform.localScale.y + _teleportTubeSensitivity, _teleportTube.transform.localScale.z);
+        
+        // grow the teleport tube
+        _teleportTube.transform.localScale = newScale;
+    }
+
+    public void tubeTeleport()
+    {
+        // get the position of the teleport tube point
+        Vector3 teleportTubePointPosition = _teleportTubePoint.transform.position;
+        // move the player to this position
+        _player.transform.position = teleportTubePointPosition;
+        // make tube the normal scale again
+        _teleportTube.transform.localScale = _teleportTubeOriginalScale;
+        // hide the teleport tube
+        _teleportTube.SetActive(false);
     }
 
     public void SocketEmptied(SelectExitEventArgs obj)
@@ -438,10 +512,18 @@ public class InputHandling : MonoBehaviour
         }
     }
 
-    public void continuousMovement()
+    // called from the update function
+    public void continuousMovementForward()
     {
-        Debug.Log("Moving forward");
-        _player.transform.position +=  Camera.main.transform.forward * _continuousMovementSensitivity * Time.deltaTime;
+        float sensitivity = _rightTriggerValue * _continuousMovementSensitivity;
+        _player.transform.position +=  Camera.main.transform.forward * sensitivity * Time.deltaTime;
+    }
+    
+    // called from the update function
+    public void continuousMovementBackward()
+    {
+        float sensitivity = _leftTriggerValue * _continuousMovementSensitivity;
+        _player.transform.position +=  -Camera.main.transform.forward * sensitivity * Time.deltaTime;
     }
 
     public void teleportBackwards()
@@ -596,19 +678,14 @@ public class InputHandling : MonoBehaviour
     {
         Debug.Log("Right Trigger Button Pressed");
         _rightTriggerButtonState = true;
-
-        // we want the player to be able to move using the right trigger for continuous movement
-        // only do this in the immersive scene
-        if (_isImmersive)
-        {
-            continuousMovement();
-        }
     }
 
     public void RightTriggerReleased()
     {
         Debug.Log("Right Trigger Button Released");
         _rightTriggerButtonState = false;
+        // move the player to the tube position
+        tubeTeleport();
     }
 
     public void LeftTriggerPressed()
@@ -651,11 +728,13 @@ public class InputHandling : MonoBehaviour
     public void RightTriggerChanged(float value)
     {
         Debug.Log("Right Trigger Value: " + value);
+        _rightTriggerValue = value;
     }
 
     public void LeftTriggerChanged(float value)
     {
         Debug.Log("Left Trigger Value: " + value);
+        _leftTriggerValue = value;
     }
 
     public void RightMenuPressed()
@@ -953,15 +1032,25 @@ public class InputHandling : MonoBehaviour
     public void checkTriggerValue()
     {
         float triggerValue;
-        // if the right trigger is pressed slightly but not all the way
-        if (_controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out triggerValue) && triggerValue > 0.1f && triggerValue < 1.0f)
+        // if the right trigger is pressed past a certain threshold
+        if (_controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out triggerValue) && triggerValue >= _triggerActuationValue)
         {
             RightTriggerChanged(triggerValue);
         }
+        // if the right trigger is released past a certain threshold
+        else if (_controllersConnected && _rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out triggerValue) && triggerValue < _triggerActuationValue)
+        {
+            _rightTriggerValue = 0.0f;
+        }
         // if the left trigger is pressed slightly but not all the way
-        if (_controllersConnected && _leftHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out triggerValue) && triggerValue > 0.0f && triggerValue < 1.0f)
+        if (_controllersConnected && _leftHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out triggerValue) && triggerValue >= _triggerActuationValue)
         {
             LeftTriggerChanged(triggerValue);
+        }
+        // if the left trigger is released past a certain threshold
+        else if (_controllersConnected && _leftHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out triggerValue) && triggerValue < _triggerActuationValue)
+        {
+            _leftTriggerValue = 0.0f;
         }
     }
 
