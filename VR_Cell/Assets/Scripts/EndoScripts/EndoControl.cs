@@ -15,44 +15,26 @@ public class EndoControl : MonoBehaviour
 
     public GameObject _quizPanel;
     public GameObject _protein;
-
     public GameObject _nucleolus;
-
     public GameObject _ribosome30;
-
     public GameObject _ribosome50;
-
     public GameObject _ribosomefull;
-
     public GameObject _mrna;
-
     public GameObject _glycoprotein;
-
     public GameObject _rougher;
-
     public GameObject _vesiclegp;
-
     public GameObject _golgi;
 
     // store the spawned objects in global variables
     private GameObject _proteinSpawned;
-
     private GameObject _nucleolusSpawned;
-
     private GameObject _ribosome30Spawned;
-
     private GameObject _ribosome50Spawned;
-
     private GameObject _ribosomefullSpawned;
-
     private GameObject _mrnaSpawned;
-
     private GameObject _glycoproteinSpawned;
-
     private GameObject _rougherSpawned;
-
     private GameObject _vesiclegpSpawned;
-
     private GameObject _spawnedGolgi;
 
     // variable to track if the animation should play
@@ -61,29 +43,137 @@ public class EndoControl : MonoBehaviour
     // UI global variables
     [Header("UI Variables")]
     public GameObject _textArea;
-
     public GameObject _backButton;
-
     public GameObject _nextButton;
-
     public GameObject _nextButtonText;
 
 
     // UI panel text variables
-    private string
-        _panelText0 = "Step 0 - Welcome to the endomembrane process...!";
+    private List<string> endoUIStrings = new List<string>() {
+        //0
+        "Welcome to the Cell Tour! Whenever you are ready, press the start button below to begin.",
+
+        //1
+        "We begin our tour in the cytoplasm, the space in-between the nucleus and the cell membrane. " +
+        "All of the cell's components that are not in the nucleus reside here, suspended in fluid " +
+        "called cytosol. The endomembrane system consists of all the cell's components that are " +
+        "divided by membranes into specialized functional units called organelles. " +
+        "Over the course of the tour, we will be creating proteins that will be shipped outside of the cell.",
+
+        //2
+        "Our first stop on the tour of these organelles is the nucleus. The nucleus is the largest " +
+        "and most conspicuous organelle distinguishable in an animal cell. It contains almost all " +
+        "of the cell's DNA, with which it can create ribosomes and proteins needed for cell function. " +
+        "It is enclosed within the nuclear envelope, a double membrane, with each membrane composed of " +
+        "a lipid bilayer. Scattered along the surface of the nucleus are nuclear pores, complexes of " +
+        "proteins that regulate what can go in and out of the nucleus.",
+
+        //3
+        "Your first task is to create a ribosome, which is the component responsible for reading " +
+        "genetic information in the form of mRNA and piecing together the protein for which it codes.\n" +
+        "Collect a protein that will be used to create the ribosomal subunits.",
+
+        //4
+        "Within the nucleus, DNA is wrapped into discrete units called chromosomes. " +
+        "Each chromosome is composed of one long DNA molecule and proteins that assist in coiling, " +
+        "expressing or repressing certain areas that individual cells need for their function or stage in life. " +
+        "Such a complex of proteins and DNA is called the chromatin.",
+
+        //5
+        "Additionally within the nucleus resides a large structure called the nucleolus, where rRNA " +
+        "and a bunch of proteins are arranged to form two different sizes of subunits that make up a complete ribosome." +
+        "Take the protein you grabbed earlier and feed it into the nuceolus to form the ribosome subunits.",
+
+        //6
+        "As we make our way outside of the nucleus, notice the largest network of membranes in the cell, the endoplasmic reticulum. " +
+        "It is comprised of two distinct, yet connected regions that differ in function: the rough and the smooth endoplasmic reticulum. " +
+        "The rough endoplasmic reticulum is called so because it is covered on the outside in ribosomes, lending a \"rough\" appearance. " +
+        "Its membrane, which separates the inside of the ER- called the ER lumen- with the cytosol, is continuous with the nuclear envelope " +
+        "and is where secretory protein and cell membrane production primarily occurs. The smooth ER's surface lacks ribosomes, and houses " +
+        "enzymes used in the production of lipids vital for organism function, as well as in detoxification of drugs and poisons. \n" +
+        "Combine the two subunits together to form a ribosome.",
+
+        //7
+        "Great! Now that we have a ribosome, all we need is a strand of mRNA in order to create a protein. Ribosomes that are found " +
+        "floating in the cytosol are called free ribosomes, and those attached to the rough ER and nuclear membrane are called bound " +
+        "ribosomes. Most proteins made by free ribosomes function in the cytosol, while those made by bound ribosomes are usually " +
+        "shipped to other organelles such as lysosomes, or to be exported out of the cell.\n" +
+        "Pick up a strand of mRNA and feed it into the ribosome in order to create a protein.",
+
+        //8
+        "When a ribosome comes into contact with mRNA, it begins the process of protein translation. " +
+        "During translation, mRNA is read by the ribosome and decoded into a specific chain of amino acids, called a polypeptide." +
+        "The polypeptide will then fold into a specific shape that will define its function as a protein.\n" +
+        "Take the protein created by the ribosome.",
+
+        //9
+        "Proteins that are created in the rough ER are shipped via membraned bubbles called transport vesicles from the rough ER " +
+        "to the golgi apparatus. The rough ER buds off from a special region known as the transitional ER to form vesicles that are " +
+        "then carried to their destination along a highway of tubes - called microtubules- via motor proteins.",
+
+        //10
+        "Microtubules are just one of a number of structures that make up the cytoskeleton, the network of fibers that provide support " +
+        "for the cell and provide the means by which cells and their components move.",
+        
+        //11
+        "Microtubules are the highway of the cell, providing the means by which organelles move and get from one part of the cell " +
+        "to the other via motor proteins. They also provide structure to the cell itself, resisting compressing forces " +
+        "to keep the cell from being crushed. Special arrangements of microtubules make up cilia and flagella in eukaryotic cells. " +
+        "Microfilaments, on the other hand, provide structure by bearing tension to keep the cell from being torn open. " +
+        "They are what allows muscle cells to contract.",
+
+        //12
+        "Intermediate filaments - named so because they are in-between the sizes of microtubules and microfilaments - " +
+        "are more permanent fixtures of cells that provide rigidity and help a cell retain its original shape. " + 
+        "This is useful for maintaining the shape of macro structures in an organism, like cartilage, skin, nails, and hair.",
+
+        //13
+        "The golgi apparatus functions like the postal service of the cell. This organelle, shaped like a stack of pancakes, " +
+        "takes in products from the ER and processes them to ship to other components of the cell. " +
+        "The stacks, called \"cisternae\", travel from one side of the golgi- the \"cis\" side- to the other - the \"trans\" side- " +
+        "modifying their contents as they travel to prepare for delivery to their destination, whether it be another cell " +
+        "component or outside as a secretory protein.\n" +
+        "Place the vesicle in the cis side of the Golgi Apparatus.",
+
+        //14
+        "Upon reaching the trans side of the golgi, the cisternae will break off into vesicles that will be carried to their " +
+        "destination. If the cell is in charge of insulin production, for instance, the completed insulin will be carried " +
+        "from the golgi to the cell membrane where the insulin will be released outside of the cell. Otherwise, various " +
+        "markers placed on the vesicle and around the cell components allow the vesicle to be carried to the appropriate " +
+        "cell component, such as a lysosome.\n" +
+        "Last stop! Deliver the final product to a late endosome to create a lysosome.",
+
+        //15
+        "The final two membraned organelles are the vacuoles and lysosomes. Vacuoles are membraned organelles that carry " +
+        "out different functions in different kinds of cells. In plant cells, a massive vacuole occupies most of the space " +
+        "of the cell. In animal cells, they can carry food and other enzymes into the cell that are needed. Some protists " +
+        "use them to pump water outside of the cell to maintain equilibrium.",
+
+        //16
+        "Lysosomes are the clean-up crew of the cell. They carry digestive enzymes that allow the cell to recycle damaged " +
+        "organelles and digest macromolecules into nutrients for the cell to use. To digest the food incoming from vacuoles, " +
+        "lysosomes will fuse with the vacuole, releasing its contents inside to digest whatever is inside. Lysosomes are formed " +
+        "when endosomes-- an organelle associated with the trans Golgi network-- fuse with vesicles containing lysosomal enzymes," +
+        " in the final part of a system called the endocytic pathway.\n" +
+        "Use the lysosome to break down the damaged mitochondria.",
+
+        //17
+        "This brings us to the end of the tour! We hope you now have a better idea of the internal workings of the cell. " +
+        "You may now take the After Action Review quiz to test your knowledge of the endomembrane system, or you can continue " +
+        "to explore the different parts of the cell, including those not covered in this tour."
+    };
 
     private string
-        _panelText1 =
-            "Step 1 - Put the nucleolus and protein together to create the ribosome pieces!";
+        _panelText0 = "Welcome to the tour!";
 
     private string
-        _panelText2 =
-            "Step 2 - Put the two ribosome pieces together to create a full ribosome!";
+        _panelText1 = "Combine the nucleolus and the protein!";
 
     private string
-        _panelText3 =
-            "Step 3 - Nice job putting the ribosome together! Press next to get an mRNA!";
+        _panelText2 = "Place the subunits together to complete the ribosome!";
+
+    private string
+        _panelText3 = "You just created a ribosome! Click next to continue!";
 
     private string
         _panelText4 =
@@ -142,6 +232,13 @@ public class EndoControl : MonoBehaviour
         }
     }
 
+    void ClearEndoProcessObjects()
+    {
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
+        {
+            Destroy(item);
+        }
+    }
     // punction to move between all steps
     public void Process(bool isForward)
     {
@@ -156,14 +253,7 @@ public class EndoControl : MonoBehaviour
                     if (!isForward)
                     {
                         // hide all "EndoProcess" game objects from step 1
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
+                        ClearEndoProcessObjects();
 
                         // we can change panel to screen 0 here
                         _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
@@ -171,12 +261,28 @@ public class EndoControl : MonoBehaviour
 
                         // hide the back button
                         _backButton.SetActive(false);
-
                         // make the next button visible
                         _nextButton.SetActive(true);
                     }
                     break;
                 }
+
+            // 
+            //  case 1:
+            //     {
+            //         if (isForward)
+            //             Debug.Log("Forward");
+            //         else
+            //             Debug.Log("Backwards");
+            //         ClearEndoProcessObjects();
+
+            //         _nextButton.SetActive(true);
+
+            //         _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
+            //             _panelText3;
+            //         break;
+            //     }
+
             // spawn the protein and nucleolus
             // dont need the next button because putting the objects together moves to step 2
             // putting the protein and nucleolus together should spawn the ribosome pieces
@@ -197,14 +303,7 @@ public class EndoControl : MonoBehaviour
                         Debug.Log("Backwards");
 
                         // hide all "EndoProcess" game objects from step 2
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
+                        ClearEndoProcessObjects();
                     }
 
                     // we can change panel to screen 1 here
@@ -213,44 +312,25 @@ public class EndoControl : MonoBehaviour
 
                     // spawn the protein and nucleolus 
                     _proteinSpawned =
-                        Instantiate(_protein, _spawnLeft, Quaternion.identity);        
+                        Instantiate(_protein, _spawnLeft, Quaternion.identity);
                     _nucleolusSpawned =
                         Instantiate(_nucleolus, _spawnRight, Quaternion.identity);
-            
+
                     break;
                 }
             // the user just spawned the two ribosome pieces so we need to prompt them to put them together
             // still don't need a next button because putting the two ribosome pieces together moves to step 3
             case 2:
                 {
+                    ClearEndoProcessObjects();
+
                     if (isForward)
                     {
                         Debug.Log("Forward");
-
-                        // hide all "EndoProcess" game objects from step 1
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
                     }
                     else
                     {
                         Debug.Log("Backwards");
-
-                        // hide all "EndoProcess" game objects from step 3
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
-
                         // hide the next button if moving backwards
                         _nextButton.SetActive(false);
                     }
@@ -271,34 +351,12 @@ public class EndoControl : MonoBehaviour
             // we need a next button now
             case 3:
                 {
+                    ClearEndoProcessObjects();
+
                     if (isForward)
-                    {
                         Debug.Log("Forward");
-
-                        // hide all objects from step 2 if we are going forward
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
-                    }
                     else
-                    {
                         Debug.Log("Backwards");
-
-                        // hide all objects from step 4 if we are going backwards
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
-                    }
 
                     // spawn the ribosome full
                     _ribosomefullSpawned =
@@ -326,14 +384,7 @@ public class EndoControl : MonoBehaviour
                         Debug.Log("Backwards");
 
                         // hide all objects from step 5 if we are going backwards
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
+                        ClearEndoProcessObjects();
 
                         // spawn the ribosome full
                         _ribosomefullSpawned =
@@ -356,34 +407,12 @@ public class EndoControl : MonoBehaviour
             // need next button
             case 5:
                 {
+                    ClearEndoProcessObjects();
+
                     if (isForward)
-                    {
                         Debug.Log("Forward");
-
-                        // hide all objects from step 4 if we are going forwards
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
-                    }
                     else
-                    {
                         Debug.Log("Backwards");
-
-                        // hide all objects from step 6 if we are going backwards
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
-                    }
 
                     // spawn the glycoprotein
                     _glycoproteinSpawned =
@@ -411,14 +440,7 @@ public class EndoControl : MonoBehaviour
                         Debug.Log("Backwards");
 
                         // hide all objects from step 6 if we are going backwards
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
+                        ClearEndoProcessObjects();
 
                         // spawn the glycoprotein
                         _glycoproteinSpawned =
@@ -428,7 +450,7 @@ public class EndoControl : MonoBehaviour
                     // spawn the rough ER
                     _rougherSpawned =
                         Instantiate(_rougher, _spawnRight, Quaternion.identity);
-            
+
                     // Rotate the ER
                     _rougherSpawned.transform.Rotate(200.0f, 30.0f, 90.0f, Space.Self);
 
@@ -450,30 +472,16 @@ public class EndoControl : MonoBehaviour
                         Debug.Log("Forward");
 
                         // hide all objects from step 6 if we are going forwards
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
+                        ClearEndoProcessObjects();
                     }
                     else
                     {
                         Debug.Log("Backwards");
 
                         // hide all objects from step 6 if we are going backwards
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
+                        ClearEndoProcessObjects();
                     }
-                    
+
                     // spawn the vesicle glycoprotein
                     _vesiclegpSpawned =
                         Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
@@ -501,14 +509,7 @@ public class EndoControl : MonoBehaviour
                         Debug.Log("Backwards");
 
                         // hide all objects from step 7 if we are going forwards
-                        foreach (GameObject
-                            item
-                            in
-                            GameObject.FindGameObjectsWithTag("EndoProcess")
-                        )
-                        {
-                            Destroy(item);
-                        }
+                        ClearEndoProcessObjects();
 
                         // stop the animation
                         _playAnimation = false;
@@ -562,11 +563,25 @@ public class EndoControl : MonoBehaviour
                     break;
                 }
             // the user is trying to go past the limits of the steps
+
+            case 10:
+                break;
+
+            case 11:
+                break;
+
+            case 12:
+                break;
+
+            case 13:
+                break;
+
+            case 14:
+                break;
+
             default:
-                {
-                    Debug.Log("Can't move any more forward or backwards");
-                    break;
-                }
+                Debug.Log("Can't move any more forward or backwards");
+                break;
         }
     }
 
@@ -589,10 +604,8 @@ public class EndoControl : MonoBehaviour
             _playAnimation = false;
 
             // Hide any organelles from the previous step
-            foreach (GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
-            {
-                Destroy(item);
-            }
+            ClearEndoProcessObjects();
+
             // Set the panel to active = false
             foreach (GameObject item in GameObject.FindGameObjectsWithTag("endoPanel"))
             {
