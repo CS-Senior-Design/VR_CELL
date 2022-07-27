@@ -28,6 +28,11 @@ TagManager:
   - inventoryUI
   - slotNumberText
   - organelleNameTextSocket
+  - rightHand
+  - teleportTube
+  - teleportTubePoint
+  - rightRayInteractor
+  - rightRayInteractorTeleport
   layers:
   - Default
   - TransparentFX
