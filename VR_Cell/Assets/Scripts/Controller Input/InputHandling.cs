@@ -339,7 +339,7 @@ public class InputHandling : MonoBehaviour
     public void hideInventory()
     {
         // hide the current active socket and its item
-        hideItemInSocket(_lastUsedSocket);
+        //hideItemInSocket(_lastUsedSocket);
         _inventorySockets[_lastUsedSocket].SetActive(false);
         _inventoryPanel.SetActive(false);
     }
