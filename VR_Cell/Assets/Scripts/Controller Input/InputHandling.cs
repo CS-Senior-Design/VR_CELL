@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
@@ -19,6 +20,21 @@ class ItemInfo
 
 public class InputHandling : MonoBehaviour
 {
+    /* Variables that the user can change to affect gameplay */
+    // variable to change how far back the playr is teleported when they step back
+    private float _defaultStepBackDistance = 0.5f;
+    // how fast the player moves forward
+    private float _continuousMovementSensitivity = 10.0f;
+    // variable to be able to change at what point the trigger actuates
+    private float _triggerActuationValue = 0.01f;
+    // variable to change how quickly the teleport tube grows
+    private float _teleportTubeSensitivity = 2f;
+    // variable to track if the user wants continuous movement or not
+    [Header("Movement")]
+    [Tooltip("Check if you want to be able to move around without having to teleport.")]
+    [SerializeField] public bool _continuousMovement = false;
+    /* -------------------------------------------------------- */
+
     // public variables to add on the editor
     [Header("Which scene?")]
     // variables to track whether we are in immersive or lab scene
@@ -52,8 +68,6 @@ public class InputHandling : MonoBehaviour
     private bool _rightPrimaryButtonState = false;
     private bool _rightPrimary2DAxisTouchState = false;
     private float _rightTriggerValue = 0.0f;   
-    // variable to be able to change at what point the trigger actuates
-    private float _triggerActuationValue = 0.01f;
     // variable to track if the joystick is at the home position or not
     private bool _is2DAxisRightHome = true;
     private bool _is2DAxisLeftHome = true;
@@ -61,15 +75,12 @@ public class InputHandling : MonoBehaviour
     private bool _isViveController = false;
     // variable to store the reference to the gameobject with the Player tag (xr origin)
     private GameObject _player;
-    // variable to change how far back the playr is teleported when they step back
-    private float _defaultStepBackDistance = 0.5f;
-    // how fast the player moves forward
-    private float _continuousMovementSensitivity = 10.0f;
 
     // wrist menu (immersive) global variables
     private GameObject _wristUIPanel;
     private GameObject _inventoryPanel;
     private GameObject _fastTravelPanel;
+    private GameObject _settingsPanel;
     private bool _isWristMenuActive = false;
     private bool _canGoBack = false;
     
@@ -90,13 +101,14 @@ public class InputHandling : MonoBehaviour
     private Vector3 _teleportTubeOriginalScale;
     // store the right hand controller in a global variable
     private GameObject _rightHand;
-    // variable to change how quickly the teleport tube grows
-    private float _teleportTubeSensitivity = 2f;
-    
-    // variable to track if the user wants continuous movement or not
-    [Header("Movement")]
-    [Tooltip("Check if you want to be able to move around without having to teleport.")]
-    [SerializeField] public bool _continuousMovement = false;
+
+    // store the reference to the settings buttons and sliders in global variables
+    private Toggle _movementToggle;
+    private GameObject _movementToggleIndicator;
+    private GameObject _continuousText;
+    private GameObject _teleportText;
+    private Slider _movementSensitivitySlider;
+    private Slider _teleportSensitivitySlider;
 
     // variables for testing with only 1 controller
     // if you are using both controllers then set them both to false
@@ -109,51 +121,14 @@ public class InputHandling : MonoBehaviour
 
     void Awake()
     {
-        // get the player at the start of the program so we can do things like snap turning.
-        _player = GameObject.FindGameObjectWithTag("Player");
-        // get the ray interactors
-        _rayInteractorNormal = GameObject.FindGameObjectWithTag("rightRayInteractor");
-        _rayInteractorTeleport = GameObject.FindGameObjectWithTag("rightRayInteractorTeleport");
-        // hide the _rayInteractorTeleport at the start of the program
-        _rayInteractorTeleport.SetActive(false);
-
-        // keeping track of wrist menu game objects
-        _wristUIPanel = GameObject.FindGameObjectWithTag("WristUI");
-        _inventoryPanel = GameObject.FindGameObjectWithTag("inventoryPanel");
-        _fastTravelPanel = GameObject.FindGameObjectWithTag("fastTravelUI");
-
-        // get all the sockets from the inventory into the list
-        foreach(GameObject socket in GameObject.FindGameObjectsWithTag("inventorySocket"))
-        {
-            // add the socket to the list
-            _inventorySockets.Add(socket);
-            // add the listeners to the socket
-            socket.GetComponent<XRSocketInteractor>().selectEntered.AddListener(SocketFilled);
-            socket.GetComponent<XRSocketInteractor>().selectExited.AddListener(SocketEmptied);
-        }
+        // get the ray interactors so we can switch between interaction and teleportation
+        initializeRayInteractors();
         
-        // hide all the sockets at the start
-        foreach (GameObject socket in _inventorySockets)
-            socket.SetActive(false);
+        // initialize all the wrist ui elements
+        initializeWristUIElements();
 
-        // get how many total sockets are in the inventory
-        _totalInventorySockets = _inventorySockets.Count;
-
-        // make all wrist panels hidden at the start
-        _wristUIPanel.SetActive(false);
-        _inventoryPanel.SetActive(false);
-        _fastTravelPanel.SetActive(false);
-
-        // get the right hand by tag
-        _rightHand = GameObject.FindGameObjectWithTag("rightHand");
-        // get the teleport tube by tag
-        _teleportTube = GameObject.FindGameObjectWithTag("teleportTube");
-        // get the teleport tube point by tag
-        _teleportTubePoint = GameObject.FindGameObjectWithTag("teleportTubePoint");
-        // hide the teleport tube at the start
-        _teleportTube.SetActive(false);
-        // store the original scale of the teleport tube
-        _teleportTubeOriginalScale = _teleportTube.transform.localScale;
+        // initialize the teleport tube 
+        initializeTeleportTube();
     }
 
     // check for input on every frame
@@ -167,6 +142,13 @@ public class InputHandling : MonoBehaviour
         check2DAxis();
         checkPrimaryButton();
 
+        // check if the user is using locomotion and perform the appropriate actions
+        checkUserLocomotion();
+    }
+
+    // checks if the user is pressing any of the inputs that trigger movement
+    public void checkUserLocomotion()
+    {
         // if the user chooses to use continuous movement
         if (_continuousMovement == true)
         {
@@ -191,6 +173,164 @@ public class InputHandling : MonoBehaviour
                 tubeGrow();
             }
         }
+    }
+
+    // initializees the teleport ray interactor to be inactive
+    public void initializeRayInteractors()
+    {
+        // get the player at the start of the program so we can do things like snap turning.
+        _player = GameObject.FindGameObjectWithTag("Player");
+        // get the ray interactors
+        _rayInteractorNormal = GameObject.FindGameObjectWithTag("rightRayInteractor");
+        _rayInteractorTeleport = GameObject.FindGameObjectWithTag("rightRayInteractorTeleport");
+        // hide the _rayInteractorTeleport at the start of the program
+        _rayInteractorTeleport.SetActive(false);
+    }
+
+    // initializes the teleport tube to be inactive
+    public void initializeTeleportTube()
+    {
+        // get the right hand by tag
+        _rightHand = GameObject.FindGameObjectWithTag("rightHand");
+        // get the teleport tube by tag
+        _teleportTube = GameObject.FindGameObjectWithTag("teleportTube");
+        // get the teleport tube point by tag
+        _teleportTubePoint = GameObject.FindGameObjectWithTag("teleportTubePoint");
+        // hide the teleport tube at the start
+        _teleportTube.SetActive(false);
+        // store the original scale of the teleport tube
+        _teleportTubeOriginalScale = _teleportTube.transform.localScale;
+    }
+
+    // initializes the wrist ui elements to be inactive at start and gets the references to settings buttons and sliders
+    public void initializeWristUIElements()
+    {
+        // keeping track of wrist menu game objects
+        _wristUIPanel = GameObject.FindGameObjectWithTag("WristUI");
+        _inventoryPanel = GameObject.FindGameObjectWithTag("inventoryPanel");
+        _fastTravelPanel = GameObject.FindGameObjectWithTag("fastTravelUI");
+        _settingsPanel = GameObject.FindGameObjectWithTag("settingsPanel");
+
+        // settings 
+        GameObject movementToggleGameObject = GameObject.FindGameObjectWithTag("movementToggle");
+        // get the toggle component
+        _movementToggle = movementToggleGameObject.GetComponent<Toggle>();
+        // add a listener for changes to the toggle state
+        _movementToggle.onValueChanged.AddListener(delegate { 
+                OnMovementToggleValueChanged(); 
+            });
+        // get the toggle indicator
+        _movementToggleIndicator = GameObject.FindGameObjectWithTag("movementToggleIndicator");
+        // if the toggle is off at the start then hide the indicator
+        if (_movementToggle.isOn == false)
+            _movementToggleIndicator.SetActive(false);
+        // get the movement text
+        _continuousText = GameObject.FindGameObjectWithTag("continuousText");
+        _teleportText = GameObject.FindGameObjectWithTag("teleportText");
+        // if the toggle is off at the start then set the text to teleportation
+        if (_movementToggle.isOn == false)
+        {
+            // set the correct text
+            _continuousText.SetActive(false);
+        }
+        else
+        {
+            // set the correct text
+            _teleportText.SetActive(false);
+        }
+        
+        // get the movement sensitivity slider
+        GameObject movementSensitivitySliderGameObject = GameObject.FindGameObjectWithTag("movementSensitivitySlider");
+        // get the slider component
+        _movementSensitivitySlider = movementSensitivitySliderGameObject.GetComponent<Slider>();
+        // add a listener for changes to the slider value
+        _movementSensitivitySlider.onValueChanged.AddListener(delegate { 
+                OnMovementSensitivitySliderValueChanged(); 
+            });
+        // if the _movementToggle is off then hide the slider
+        if (_movementToggle.isOn == false)
+            _movementSensitivitySlider.gameObject.SetActive(false);
+
+        // get the teleport sensitivity slider
+        GameObject teleportSensitivitySliderGameObject = GameObject.FindGameObjectWithTag("teleportTubeSensitivitySlider");
+        // get the slider component
+        _teleportSensitivitySlider = teleportSensitivitySliderGameObject.GetComponent<Slider>();
+        // add a listener for changes to the slider value
+        _teleportSensitivitySlider.onValueChanged.AddListener(delegate { 
+                OnTeleportSensitivitySliderValueChanged(); 
+            });
+        // if the _movementToggle is on then hide the slider
+        if (_movementToggle.isOn == true)
+            _teleportSensitivitySlider.gameObject.SetActive(false);
+
+        // get all the sockets from the inventory into the list
+        foreach(GameObject socket in GameObject.FindGameObjectsWithTag("inventorySocket"))
+        {
+            // add the socket to the list
+            _inventorySockets.Add(socket);
+            // add the listeners to the socket
+            socket.GetComponent<XRSocketInteractor>().selectEntered.AddListener(SocketFilled);
+            socket.GetComponent<XRSocketInteractor>().selectExited.AddListener(SocketEmptied);
+        }
+        
+        // hide all the sockets at the start
+        foreach (GameObject socket in _inventorySockets)
+            socket.SetActive(false);
+
+        // get how many total sockets are in the inventory
+        _totalInventorySockets = _inventorySockets.Count;
+
+        // make all wrist panels hidden at the start
+        _wristUIPanel.SetActive(false);
+        _inventoryPanel.SetActive(false);
+        _fastTravelPanel.SetActive(false);
+        _settingsPanel.SetActive(false);
+    }
+
+    public void OnTeleportSensitivitySliderValueChanged()
+    {
+        // get the value of the slider
+        _teleportTubeSensitivity = _teleportSensitivitySlider.value;
+    }
+
+    // when the user changes the movement sensitivity slider
+    public void OnMovementSensitivitySliderValueChanged()
+    {
+        // get the value of the slider
+        float value = _movementSensitivitySlider.value;
+        // set the movement sensitivity to the value of the slider
+        _continuousMovementSensitivity = value;
+    }
+
+    // when the user changes the movement in the settings
+    void OnMovementToggleValueChanged()
+    {
+        // set the continuous movement to the toggle state
+        _continuousMovement = _movementToggle.isOn;
+        // if the toggle is on then show the indicator
+        if (_movementToggle.isOn == true)
+        {
+            _movementToggleIndicator.SetActive(true);
+            // hide the continuous movement slider
+            _movementSensitivitySlider.gameObject.SetActive(true);
+            // show the teleport sensitivity slider
+            _teleportSensitivitySlider.gameObject.SetActive(false);
+            // set the correct text
+            _continuousText.SetActive(true);
+            _teleportText.SetActive(false);
+        }
+        else
+        {
+            _movementToggleIndicator.SetActive(false);
+            // show the continuous movement slider
+            _movementSensitivitySlider.gameObject.SetActive(false);
+            // hide the teleport sensitivity slider
+            _teleportSensitivitySlider.gameObject.SetActive(true);
+            // set the correct text
+            _teleportText.SetActive(true);
+            _continuousText.SetActive(false);
+        }
+        Debug.Log("Continuous Movement: " + _continuousMovement);
     }
 
     public void tubeGrow()
@@ -429,6 +569,7 @@ public class InputHandling : MonoBehaviour
             // hide sub menus
             _inventoryPanel.SetActive(false);
             _fastTravelPanel.SetActive(false);
+            _settingsPanel.SetActive(false);
 
             // toggle variable keeps track of active state
             _canGoBack = _isWristMenuActive = true;
@@ -438,8 +579,12 @@ public class InputHandling : MonoBehaviour
         else if (!_isWristMenuActive && _canGoBack)
         {
             _wristUIPanel.SetActive(false);
+            // hide inventory panel
             hideInventory();
+            // hide the fast travel panel
             _fastTravelPanel.SetActive(false);
+            // hide settings panel
+            _settingsPanel.SetActive(false);
             _canGoBack = false;
         }
 
@@ -449,6 +594,14 @@ public class InputHandling : MonoBehaviour
             _wristUIPanel.SetActive(false);
             _isWristMenuActive = false;
         }
+    }
+
+    public void showSettingsMenu()
+    {
+        _wristUIPanel.SetActive(false);
+        _isWristMenuActive = false;
+        _settingsPanel.SetActive(true);
+        _canGoBack = true;
     }
 
     public void showFastTravelMenu()
@@ -496,6 +649,7 @@ public class InputHandling : MonoBehaviour
                 _wristUIPanel.SetActive(false);
                 _inventoryPanel.SetActive(false);
                 _fastTravelPanel.SetActive(false);
+                _settingsPanel.SetActive(false);
 
                 _isWristMenuActive = false;
                 _canGoBack = false;
@@ -506,6 +660,7 @@ public class InputHandling : MonoBehaviour
                 _wristUIPanel.SetActive(true);
                 _inventoryPanel.SetActive(false);
                 _fastTravelPanel.SetActive(false);
+                _settingsPanel.SetActive(false);
 
                 _isWristMenuActive = true;
             }

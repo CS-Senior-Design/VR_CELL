@@ -33,6 +33,14 @@ TagManager:
   - teleportTubePoint
   - rightRayInteractor
   - rightRayInteractorTeleport
+  - settingsPanel
+  - movementToggle
+  - movementToggleIndicator
+  - movementSensitivitySlider
+  - teleportTubeSensitivitySlider
+  - movementText
+  - continuousText
+  - teleportText
   layers:
   - Default
   - TransparentFX
