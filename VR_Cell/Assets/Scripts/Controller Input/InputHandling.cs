@@ -361,6 +361,7 @@ public class InputHandling : MonoBehaviour
         // only count deselecting if the socket is active
         if ( _inventorySockets[_lastUsedSocket].activeSelf == true )
         {
+            Debug.Log("object deselected");
             // deparent the object
             obj.interactableObject.transform.parent = null;
             // change object to normal scale
@@ -387,8 +388,9 @@ public class InputHandling : MonoBehaviour
     public void SocketFilled(SelectEnterEventArgs obj)
     {
         // If the object does not have the socket as the parent already
-        if (obj.interactableObject.transform.parent != _inventorySockets[_lastUsedSocket])
+        if (_itemsInSockets.ContainsKey(_lastUsedSocket) == false)
         {    
+            Debug.Log("should not be here");
             GameObject item = obj.interactableObject.transform.gameObject;
 
             // store the objects initial scale
@@ -476,8 +478,6 @@ public class InputHandling : MonoBehaviour
 
     public void nextInventorySocket()
     {
-        Debug.Log("Changing to socket: " + _lastUsedSocket);
-        //hideItemInSocket(_lastUsedSocket);
         // current socket needs to be turned off when we go next
         _inventorySockets[_lastUsedSocket].SetActive(false);
 
@@ -504,13 +504,11 @@ public class InputHandling : MonoBehaviour
             GameObject organelleName = GameObject.FindGameObjectWithTag("organelleNameTextSocket");
             organelleName.GetComponent<TMPro.TextMeshProUGUI>().text = "";
         }
-        //showItemInSocket(_lastUsedSocket);
+        Debug.Log("Changing to socket: " + _lastUsedSocket);
     }
 
     public void prevInventorySocket()
     {
-        Debug.Log("Changing to socket: " + _lastUsedSocket);
-        //hideItemInSocket(_lastUsedSocket);
         // current socket needs to be turned off when we go next
         _inventorySockets[_lastUsedSocket].SetActive(false);
 
@@ -535,7 +533,7 @@ public class InputHandling : MonoBehaviour
             GameObject organelleName = GameObject.FindGameObjectWithTag("organelleNameTextSocket");
             organelleName.GetComponent<TMPro.TextMeshProUGUI>().text = "";
         }
-        //showItemInSocket(_lastUsedSocket);
+        Debug.Log("Changing to socket: " + _lastUsedSocket);
     }
 
     public void hideItemInSocket(int socketIndex)
