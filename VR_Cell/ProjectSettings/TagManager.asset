@@ -41,6 +41,7 @@ TagManager:
   - movementText
   - continuousText
   - teleportText
+  - organelleAnchor
   layers:
   - Default
   - TransparentFX
