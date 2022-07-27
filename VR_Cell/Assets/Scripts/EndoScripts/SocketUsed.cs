@@ -8,10 +8,10 @@ public class SocketUsed : MonoBehaviour
     {
         EndoControl endoScript = null;
         // get the object with the EndoController script
-        foreach(GameObject item in GameObject.FindGameObjectsWithTag("EndoController"))
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("EndoController"))
         {
             endoScript = item.GetComponent<EndoControl>();
-        }   
+        }
         // if we don't find the script then print the reason
         if (endoScript == null)
         {
@@ -19,31 +19,24 @@ public class SocketUsed : MonoBehaviour
         }
         // if we find the script then depending on what step we are on we may want to move to the next panel from here
         else
-        {           
-            // if this interaction was putting the nucleolus and protein together then move to step 2
-            if (endoScript._step == 1)
+        {
+            switch (endoScript._step)
             {
-                endoScript.nextStep();
-            }
-            // if this interaction was putting the two ribosomes together then move to step 3
-            else if (endoScript._step == 2)
-            {
-                endoScript.nextStep();
-            }
-            // if this interaction was putting the mRNA and ribosome together then move to step 5
-            else if (endoScript._step == 4)
-            {
-                endoScript.nextStep();
-            }
-            // if this interaction is putting the glycoprotein on the Rough ER then move to step 7
-            else if (endoScript._step == 6)
-            {
-                endoScript.nextStep();
-            }            
-            // if this interaction is putting the vesicle glycoprotein on the Golgi then move to step 8
-            else if (endoScript._step == 8)
-            {
-                endoScript.nextStep();
+                case 1: // putting the nucleolus and protein together -> move to step 2
+                    endoScript.nextStep();
+                    break;
+                case 2: // combining two ribosome parts together -> move to step 3
+                    endoScript.nextStep();
+                    break;
+                case 4: // putting the mRNA and ribosome together -> move to step 5
+                    endoScript.nextStep();
+                    break;
+                case 6: // putting the glycoprotein on the RER -> move to step 7
+                    endoScript.nextStep();
+                    break;
+                case 8: // putting the vesicle glycoprotein on the Golgi -> move to step 8
+                    endoScript.nextStep();
+                    break;
             }
         }
     }
