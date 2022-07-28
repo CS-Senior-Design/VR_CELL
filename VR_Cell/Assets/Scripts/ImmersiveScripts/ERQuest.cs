@@ -15,6 +15,8 @@ public class ERQuest : MonoBehaviour
     // variable to store the selected object
     private GameObject _selectedObject;
 
+    public GameObject _arrow;
+
     // get the text gameobjects so we can change the texts of the UI
     public GameObject _textArea;
     public GameObject _nextButton;
@@ -57,6 +59,17 @@ public class ERQuest : MonoBehaviour
         _socket.selectEntered.AddListener(SelectedObject);
         // the socket needs to be inactive
         _socket.gameObject.SetActive(false);
+        hideArrow();
+    }
+
+    public void hideArrow()
+    {
+        _arrow.SetActive(false);
+    }
+
+    public void showArrow()
+    {
+        _arrow.SetActive(true);
     }
 
     public void nextStep()
@@ -89,6 +102,15 @@ public class ERQuest : MonoBehaviour
     {
         _curStep = -1;
         displayCanvas();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            nextStep();
+        }
     }
 
     // when something gets placed in the socket
@@ -168,6 +190,7 @@ public class ERQuest : MonoBehaviour
                 _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Next";
                 // the socket needs to be inactive
                 _socket.gameObject.SetActive(false);
+                hideArrow();
                 break;
             }
 
@@ -180,6 +203,7 @@ public class ERQuest : MonoBehaviour
                 _nextButton.SetActive(false);
                 // the socket needs to be active
                 _socket.gameObject.SetActive(true);
+                showArrow();
                 break;
             }
 
@@ -201,6 +225,7 @@ public class ERQuest : MonoBehaviour
                 _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Restart";
                 // show the button again
                 _nextButton.SetActive(true);
+                hideArrow();
                 // display the roughER UI
                 break;
             }
@@ -213,6 +238,7 @@ public class ERQuest : MonoBehaviour
                 _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Try Again";
                 // the socket needs to be inactive
                 _socket.gameObject.SetActive(false);
+                hideArrow();
                 break;
             }
 
