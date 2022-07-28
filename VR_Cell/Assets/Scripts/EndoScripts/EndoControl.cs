@@ -11,7 +11,7 @@ public class EndoControl : MonoBehaviour
     [Header("Organelles To Spawn")]
     public int _step = 0;
 
-    private int _totalSteps = 9;
+    private int _totalSteps = 17;
 
     public GameObject _quizPanel;
     public GameObject _protein;
@@ -79,7 +79,7 @@ public class EndoControl : MonoBehaviour
         "expressing or repressing certain areas that individual cells need for their function or stage in life. " +
         "Such a complex of proteins and DNA is called the chromatin.",
 
-        //5 > Highlight chromatin > spawn nucleus
+        //5 > Highlight chromatin > spawn nucleolus
         "Additionally within the nucleus resides a large structure called the nucleolus, where rRNA " +
         "and a bunch of proteins are arranged to form two different sizes of subunits that make up a complete ribosome." +
         "Take the protein you grabbed earlier and feed it into the nuceolus to form the ribosome subunits.",
@@ -100,7 +100,7 @@ public class EndoControl : MonoBehaviour
         "shipped to other organelles such as lysosomes, or to be exported out of the cell.\n" +
         "Pick up a strand of mRNA and feed it into the ribosome in order to create a protein.",
 
-        //8
+        //8 > spawn glycoprotein
         "When a ribosome comes into contact with mRNA, it begins the process of protein translation. " +
         "During translation, mRNA is read by the ribosome and decoded into a specific chain of amino acids, called a polypeptide." +
         "The polypeptide will then fold into a specific shape that will define its function as a protein.\n" +
@@ -242,6 +242,7 @@ public class EndoControl : MonoBehaviour
     // punction to move between all steps
     public void Process(bool isForward)
     {
+        Debug.Log("Step " + _step);
         //Display text for each step
         _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = endoUIStrings[_step];
 
@@ -272,26 +273,16 @@ public class EndoControl : MonoBehaviour
                 if (isForward)
                 {
                     Debug.Log("Forward");
-
-                    // show the back button if moving forward
                     _backButton.SetActive(true);
-
-                    // hide the next button if moving forward
-                    _nextButton.SetActive(false);
+                    _nextButton.SetActive(true);
+                    ClearEndoProcessObjects();
                 }
                 else
                 {
                     Debug.Log("Backwards");
-
-                    // hide all "EndoProcess" game objects from step 2
-                    ClearEndoProcessObjects();
                 }
 
-                // spawn the protein and nucleolus 
-                _proteinSpawned =
-                    Instantiate(_protein, _spawnLeft, Quaternion.identity);
-                _nucleolusSpawned =
-                    Instantiate(_nucleolus, _spawnRight, Quaternion.identity);
+                // highlight cytoplasm
 
                 break;
 
@@ -311,11 +302,6 @@ public class EndoControl : MonoBehaviour
                     _nextButton.SetActive(false);
                 }
 
-                // spawn ribosome30 and ribosome50
-                _ribosome30Spawned =
-                    Instantiate(_ribosome30, _spawnLeft, Quaternion.identity);
-                _ribosome50Spawned =
-                    Instantiate(_ribosome50, _spawnRight, Quaternion.identity);
 
                 break;
             // this panel will just say "nice you just created a full ribosome...press next to continue (to spawn the mRNA)"
@@ -335,32 +321,15 @@ public class EndoControl : MonoBehaviour
                 // show the next button whether we are moving forward or backwards
                 _nextButton.SetActive(true);
 
+                _proteinSpawned =
+                    Instantiate(_protein, _spawnLeft, Quaternion.identity);
+
                 break;
             // spawn the mRNA
             // the panel should say "put the mRNA together with the ribosome to create a glycoprotein"
             // we don't need a next button here since putting the ribosome and mRNA together moves us forward
             case 4:
-                if (isForward)
-                {
-                    Debug.Log("Forward");
-                }
-                else
-                {
-                    Debug.Log("Backwards");
-
-                    // hide all objects from step 5 if we are going backwards
-                    ClearEndoProcessObjects();
-
-                    // spawn the ribosome full
-                    _ribosomefullSpawned =
-                        Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
-                }
-
-                // spawn the mRNA
-                _mrnaSpawned = Instantiate(_mrna, _spawnRight, Quaternion.identity);
-
-                // hide the next button whether we are moving forward or backwards
-                _nextButton.SetActive(false);
+                
 
                 break;
 
@@ -368,23 +337,30 @@ public class EndoControl : MonoBehaviour
             // text should say "nice you just created a glycoprotein...press next to interact with the roughER!"
             // need next button
             case 5:
-                {
-                    ClearEndoProcessObjects();
+                ClearEndoProcessObjects();
 
-                    if (isForward)
-                        Debug.Log("Forward");
-                    else
-                        Debug.Log("Backwards");
+                if (isForward)
+                    Debug.Log("Forward");
+                else
+                    Debug.Log("Backwards");
+                
+                _nucleolusSpawned =
+                    Instantiate(_nucleolus, _spawnRight, Quaternion.identity);
 
-                    // spawn the glycoprotein
-                    _glycoproteinSpawned =
-                        Instantiate(_glycoprotein, _spawnLeft, Quaternion.identity);
+                // spawn the glycoprotein
+                _glycoproteinSpawned =
+                    Instantiate(_glycoprotein, _spawnLeft, Quaternion.identity);
 
-                    // show the next button whether we are moving forward or backwards
-                    _nextButton.SetActive(true);
+                // show the next button whether we are moving forward or backwards
+                _nextButton.SetActive(true);
 
-                    break;
-                }
+                                // spawn ribosome30 and ribosome50
+                _ribosome30Spawned =
+                    Instantiate(_ribosome30, _spawnLeft, Quaternion.identity);
+                _ribosome50Spawned =
+                    Instantiate(_ribosome50, _spawnRight, Quaternion.identity);
+
+                break;
             // they just created a glycoprotein
             // text should say "place the glycoprotein in the Rough ER to continue"
             // don't need a next button since the interaction moves us forward
@@ -420,7 +396,38 @@ public class EndoControl : MonoBehaviour
             // text should say "Now that you have a vesicle glycoprotein, press next to take it to the golgi!"
             // need next button
             case 7:
+                if (isForward)
+                {
+                    Debug.Log("Forward");
+                }
+                else
+                {
+                    Debug.Log("Backwards");
+
+                    // hide all objects from step 5 if we are going backwards
+                    ClearEndoProcessObjects();
+
+                    // spawn the ribosome full
+                    _ribosomefullSpawned =
+                        Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
+                }
+
+                // spawn the mRNA
+                _mrnaSpawned = Instantiate(_mrna, _spawnRight, Quaternion.identity);
+
+                // hide the next button whether we are moving forward or backwards
+                _nextButton.SetActive(false);
+
+
+                
+                break;
+            // the user has a vesicle glycoprotein right now and they need the golgi to spawn
+            // text should say "put the vesicle glycoprotein on the golgi !"
+            // need to spawn a golgi
+            // don't need a next button because the user needs to put the vesicle glycoprotein on the golgi to move forward
+            case 8:
                 ClearEndoProcessObjects();
+
                 if (isForward)
                 {
                     Debug.Log("Forward");
@@ -436,73 +443,30 @@ public class EndoControl : MonoBehaviour
 
                 // need the next button whether we are moving forward or backwards
                 _nextButton.SetActive(true);
-                
-                break;
-            // the user has a vesicle glycoprotein right now and they need the golgi to spawn
-            // text should say "put the vesicle glycoprotein on the golgi !"
-            // need to spawn a golgi
-            // don't need a next button because the user needs to put the vesicle glycoprotein on the golgi to move forward
-            case 8:
-                {
-                    if (isForward)
-                    {
-                        Debug.Log("Forward");
-                    }
-                    else
-                    {
-                        Debug.Log("Backwards");
 
-                        // hide all objects from step 7 if we are going forwards
-                        ClearEndoProcessObjects();
-
-                        // stop the animation
-                        _playAnimation = false;
-
-                        // change next button text to start review
-                        _nextButtonText
-                            .GetComponent<TMPro.TextMeshProUGUI>()
-                            .text = "Next";
-
-                        // spawn the vesicle glycoprotein
-                        _vesiclegpSpawned =
-                            Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
-                    }
-
-                    _spawnedGolgi = Instantiate(_golgi, _spawnMiddle, Quaternion.identity);
-
-                    // Rotate the golgi
-                    _spawnedGolgi.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
-
-                    // need to hide the next button whether we are moving forward or backwards
-                    _nextButton.SetActive(false);
-
-                    break;
-                }
+               
             // They just put the vesicle glycoprotein on the golgi and now the animation should play indefinitely
             case 9:
-                {
-                    // since this is the last step we don't need to account for going backwards
-                    Debug.Log("Forward");
+                // since this is the last step we don't need to account for going backwards
+                Debug.Log("Forward");
 
-                    // destroy the vesicle glycoprotein
-                    Destroy(_vesiclegpSpawned);
+                // destroy the vesicle glycoprotein
+                Destroy(_vesiclegpSpawned);
 
-                    // show the next button
-                    _nextButton.SetActive(true);
+                // show the next button
+                _nextButton.SetActive(true);
 
-                    // change next button text to "start Review" or somethinig similar
-                    _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _startQuizText;
+                // change next button text to "start Review" or somethinig similar
+                _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text =
+                    _startQuizText;
 
-                    // play the animation on loop
-                    _playAnimation = true;
-                    StartCoroutine(AnimationLoop());
-                    break;
-                }
+                // play the animation on loop
+                _playAnimation = true;
+                StartCoroutine(AnimationLoop());
+                break;
             // the user is trying to go past the limits of the steps
 
             case 10:
-                Debug.Log("Step " + _step);
                 _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = endoUIStrings[_step];
 
                 if (isForward)
@@ -523,6 +487,38 @@ public class EndoControl : MonoBehaviour
                 break;
 
             case 13:
+                 if (isForward)
+                {
+                    Debug.Log("Forward");
+                }
+                else
+                {
+                    Debug.Log("Backwards");
+
+                    // hide all objects from step 7 if we are going forwards
+                    ClearEndoProcessObjects();
+
+                    // stop the animation
+                    _playAnimation = false;
+
+                    // change next button text to start review
+                    _nextButtonText
+                        .GetComponent<TMPro.TextMeshProUGUI>()
+                        .text = "Next";
+
+                    // spawn the vesicle glycoprotein
+                    _vesiclegpSpawned =
+                        Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
+                }
+
+                _spawnedGolgi = Instantiate(_golgi, _spawnMiddle, Quaternion.identity);
+
+                // Rotate the golgi
+                _spawnedGolgi.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
+
+                // need to hide the next button whether we are moving forward or backwards
+                _nextButton.SetActive(false);
+
                 break;
 
             case 14:
