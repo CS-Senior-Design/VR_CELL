@@ -50,41 +50,41 @@ public class EndoControl : MonoBehaviour
 
     // UI panel text variables
     private List<string> endoUIStrings = new List<string>() {
-        //0
+        //0 > Start button
         "Welcome to the Cell Tour! Whenever you are ready, press the start button below to begin.",
 
-        //1
+        //1 > Highlight cytoplasm
         "We begin our tour in the cytoplasm, the space in-between the nucleus and the cell membrane. " +
         "All of the cell's components that are not in the nucleus reside here, suspended in fluid " +
         "called cytosol. The endomembrane system consists of all the cell's components that are " +
         "divided by membranes into specialized functional units called organelles. " +
         "Over the course of the tour, we will be creating proteins that will be shipped outside of the cell.",
 
-        //2
-        "Our first stop on the tour of these organelles is the nucleus. The nucleus is the largest " +
-        "and most conspicuous organelle distinguishable in an animal cell. It contains almost all " +
+        //2 > Highlight Nucleus
+        "Our first stop on the tour of these organelles is the nucleus. The nucleus is the " +
+        "most conspicuous organelle distinguishable in an animal cell. It contains almost all " +
         "of the cell's DNA, with which it can create ribosomes and proteins needed for cell function. " +
         "It is enclosed within the nuclear envelope, a double membrane, with each membrane composed of " +
         "a lipid bilayer. Scattered along the surface of the nucleus are nuclear pores, complexes of " +
         "proteins that regulate what can go in and out of the nucleus.",
 
-        //3
+        //3 > Spawn protein
         "Your first task is to create a ribosome, which is the component responsible for reading " +
         "genetic information in the form of mRNA and piecing together the protein for which it codes.\n" +
         "Collect a protein that will be used to create the ribosomal subunits.",
 
-        //4
+        //4 > Highlight chromatin
         "Within the nucleus, DNA is wrapped into discrete units called chromosomes. " +
         "Each chromosome is composed of one long DNA molecule and proteins that assist in coiling, " +
         "expressing or repressing certain areas that individual cells need for their function or stage in life. " +
         "Such a complex of proteins and DNA is called the chromatin.",
 
-        //5
+        //5 > Highlight chromatin > spawn nucleus
         "Additionally within the nucleus resides a large structure called the nucleolus, where rRNA " +
         "and a bunch of proteins are arranged to form two different sizes of subunits that make up a complete ribosome." +
         "Take the protein you grabbed earlier and feed it into the nuceolus to form the ribosome subunits.",
 
-        //6
+        //6 > highlight endoplasmic reticulum
         "As we make our way outside of the nucleus, notice the largest network of membranes in the cell, the endoplasmic reticulum. " +
         "It is comprised of two distinct, yet connected regions that differ in function: the rough and the smooth endoplasmic reticulum. " +
         "The rough endoplasmic reticulum is called so because it is covered on the outside in ribosomes, lending a \"rough\" appearance. " +
@@ -93,7 +93,7 @@ public class EndoControl : MonoBehaviour
         "enzymes used in the production of lipids vital for organism function, as well as in detoxification of drugs and poisons. \n" +
         "Combine the two subunits together to form a ribosome.",
 
-        //7
+        //7 > highlight ribosomes > spawn mRNA
         "Great! Now that we have a ribosome, all we need is a strand of mRNA in order to create a protein. Ribosomes that are found " +
         "floating in the cytosol are called free ribosomes, and those attached to the rough ER and nuclear membrane are called bound " +
         "ribosomes. Most proteins made by free ribosomes function in the cytosol, while those made by bound ribosomes are usually " +
@@ -163,41 +163,41 @@ public class EndoControl : MonoBehaviour
         "to explore the different parts of the cell, including those not covered in this tour."
     };
 
-    private string
-        _panelText0 = "Welcome to the tour!";
+    // private string
+    //     _panelText0 = "Welcome to the tour!";
 
-    private string
-        _panelText1 = "Combine the nucleolus and the protein!";
+    // private string
+    //     _panelText1 = "Combine the nucleolus and the protein!";
 
-    private string
-        _panelText2 = "Place the subunits together to complete the ribosome!";
+    // private string
+    //     _panelText2 = "Place the subunits together to complete the ribosome!";
 
-    private string
-        _panelText3 = "You just created a ribosome! Click next to continue!";
+    // private string
+    //     _panelText3 = "You just created a ribosome! Click next to continue!";
 
-    private string
-        _panelText4 =
-            "Step 4 - Put the mRNA and ribosome together to create a glycoprotein!";
+    // private string
+    //     _panelText4 =
+    //         "Step 4 - Put the mRNA and ribosome together to create a glycoprotein!";
 
-    private string
-        _panelText5 =
-            "Step 5 - Nice you just created a glycoprotein...press next to interact with the roughER!";
+    // private string
+    //     _panelText5 =
+    //         "Step 5 - Nice you just created a glycoprotein...press next to interact with the roughER!";
 
-    private string
-        _panelText6 =
-            "Step 5 - Place the glycoprotein through the ER to encapsulate it in a vesicle!";
+    // private string
+    //     _panelText6 =
+    //         "Step 5 - Place the glycoprotein through the ER to encapsulate it in a vesicle!";
 
-    private string
-        _panelText7 =
-            "Now that you have a vesicle glycoprotein, press next to take it to the golgi!";
+    // private string
+    //     _panelText7 =
+    //         "Now that you have a vesicle glycoprotein, press next to take it to the golgi!";
 
-    private string
-        _panelText8 =
-            "Step 8 - Place the vesicle glycoprotein on the cis side of the golgi to continue";
+    // private string
+    //     _panelText8 =
+    //         "Step 8 - Place the vesicle glycoprotein on the cis side of the golgi to continue";
 
-    private string
-        _panelText9 =
-            "Step 9 - Watch as the glycoprotein gets absorbed by the golgi and travels to the trans side of the golgi, leaving in a vesicle to go to the cell membrane or something!";
+    // private string
+    //     _panelText9 =
+    //         "Step 9 - Watch as the glycoprotein gets absorbed by the golgi and travels to the trans side of the golgi, leaving in a vesicle to go to the cell membrane or something!";
 
     private string _startQuizText = "Quiz";
 
@@ -211,7 +211,7 @@ public class EndoControl : MonoBehaviour
     void Start()
     {
         // put welcome text on the panel 0
-        _textArea.GetComponent<TextMeshProUGUI>().text = _panelText0;
+        _textArea.GetComponent<TextMeshProUGUI>().text = endoUIStrings[0];
 
         // hide the back button
         _backButton.SetActive(false);
@@ -242,166 +242,128 @@ public class EndoControl : MonoBehaviour
     // punction to move between all steps
     public void Process(bool isForward)
     {
+        //Display text for each step
+        _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = endoUIStrings[_step];
+
+        //Depending on step, spawn or highlight objects
         switch (_step)
         {
             // welcome screen
-            // don't need back button
-            // need next button
+            // hide back button
+            // show next button
             case 0:
+                // no step before this
+                if (!isForward)
                 {
-                    // only need to account for going backwards, since there is no step before this
-                    if (!isForward)
-                    {
-                        // hide all "EndoProcess" game objects from step 1
-                        ClearEndoProcessObjects();
+                    // hide all "EndoProcess" game objects from step 1
+                    ClearEndoProcessObjects();
 
-                        // we can change panel to screen 0 here
-                        _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                            _panelText0;
-
-                        // hide the back button
-                        _backButton.SetActive(false);
-                        // make the next button visible
-                        _nextButton.SetActive(true);
-                    }
-                    break;
+                    // hide the back button
+                    _backButton.SetActive(false);
+                    // make the next button visible
+                    _nextButton.SetActive(true);
                 }
-
-            // 
-            //  case 1:
-            //     {
-            //         if (isForward)
-            //             Debug.Log("Forward");
-            //         else
-            //             Debug.Log("Backwards");
-            //         ClearEndoProcessObjects();
-
-            //         _nextButton.SetActive(true);
-
-            //         _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-            //             _panelText3;
-            //         break;
-            //     }
+                break;
 
             // spawn the protein and nucleolus
             // dont need the next button because putting the objects together moves to step 2
             // putting the protein and nucleolus together should spawn the ribosome pieces
             case 1:
+                if (isForward)
                 {
-                    if (isForward)
-                    {
-                        Debug.Log("Forward");
+                    Debug.Log("Forward");
 
-                        // show the back button if moving forward
-                        _backButton.SetActive(true);
+                    // show the back button if moving forward
+                    _backButton.SetActive(true);
 
-                        // hide the next button if moving forward
-                        _nextButton.SetActive(false);
-                    }
-                    else
-                    {
-                        Debug.Log("Backwards");
-
-                        // hide all "EndoProcess" game objects from step 2
-                        ClearEndoProcessObjects();
-                    }
-
-                    // we can change panel to screen 1 here
-                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _panelText1;
-
-                    // spawn the protein and nucleolus 
-                    _proteinSpawned =
-                        Instantiate(_protein, _spawnLeft, Quaternion.identity);
-                    _nucleolusSpawned =
-                        Instantiate(_nucleolus, _spawnRight, Quaternion.identity);
-
-                    break;
+                    // hide the next button if moving forward
+                    _nextButton.SetActive(false);
                 }
+                else
+                {
+                    Debug.Log("Backwards");
+
+                    // hide all "EndoProcess" game objects from step 2
+                    ClearEndoProcessObjects();
+                }
+
+                // spawn the protein and nucleolus 
+                _proteinSpawned =
+                    Instantiate(_protein, _spawnLeft, Quaternion.identity);
+                _nucleolusSpawned =
+                    Instantiate(_nucleolus, _spawnRight, Quaternion.identity);
+
+                break;
+
             // the user just spawned the two ribosome pieces so we need to prompt them to put them together
             // still don't need a next button because putting the two ribosome pieces together moves to step 3
             case 2:
+                ClearEndoProcessObjects();
+
+                if (isForward)
                 {
-                    ClearEndoProcessObjects();
-
-                    if (isForward)
-                    {
-                        Debug.Log("Forward");
-                    }
-                    else
-                    {
-                        Debug.Log("Backwards");
-                        // hide the next button if moving backwards
-                        _nextButton.SetActive(false);
-                    }
-
-                    // spawn ribosome30 and ribosome50
-                    _ribosome30Spawned =
-                        Instantiate(_ribosome30, _spawnLeft, Quaternion.identity);
-                    _ribosome50Spawned =
-                        Instantiate(_ribosome50, _spawnRight, Quaternion.identity);
-
-                    // we can change panel to screen 2 here
-                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _panelText2;
-
-                    break;
+                    Debug.Log("Forward");
                 }
+                else
+                {
+                    Debug.Log("Backwards");
+                    // hide the next button if moving backwards
+                    _nextButton.SetActive(false);
+                }
+
+                // spawn ribosome30 and ribosome50
+                _ribosome30Spawned =
+                    Instantiate(_ribosome30, _spawnLeft, Quaternion.identity);
+                _ribosome50Spawned =
+                    Instantiate(_ribosome50, _spawnRight, Quaternion.identity);
+
+                break;
             // this panel will just say "nice you just created a full ribosome...press next to continue (to spawn the mRNA)"
             // we need a next button now
             case 3:
-                {
-                    ClearEndoProcessObjects();
+                ClearEndoProcessObjects();
 
-                    if (isForward)
-                        Debug.Log("Forward");
-                    else
-                        Debug.Log("Backwards");
+                if (isForward)
+                    Debug.Log("Forward");
+                else
+                    Debug.Log("Backwards");
 
-                    // spawn the ribosome full
-                    _ribosomefullSpawned =
-                        Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
+                // spawn the ribosome full
+                _ribosomefullSpawned =
+                    Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
 
-                    // show the next button whether we are moving forward or backwards
-                    _nextButton.SetActive(true);
+                // show the next button whether we are moving forward or backwards
+                _nextButton.SetActive(true);
 
-                    // we can change panel to screen 3 here
-                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _panelText3;
-                    break;
-                }
+                break;
             // spawn the mRNA
             // the panel should say "put the mRNA together with the ribosome to create a glycoprotein"
             // we don't need a next button here since putting the ribosome and mRNA together moves us forward
             case 4:
+                if (isForward)
                 {
-                    if (isForward)
-                    {
-                        Debug.Log("Forward");
-                    }
-                    else
-                    {
-                        Debug.Log("Backwards");
-
-                        // hide all objects from step 5 if we are going backwards
-                        ClearEndoProcessObjects();
-
-                        // spawn the ribosome full
-                        _ribosomefullSpawned =
-                            Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
-                    }
-
-                    // spawn the mRNA
-                    _mrnaSpawned = Instantiate(_mrna, _spawnRight, Quaternion.identity);
-
-                    // hide the next button whether we are moving forward or backwards
-                    _nextButton.SetActive(false);
-
-                    // we can change panel to screen 4 here
-                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _panelText4;
-                    break;
+                    Debug.Log("Forward");
                 }
+                else
+                {
+                    Debug.Log("Backwards");
+
+                    // hide all objects from step 5 if we are going backwards
+                    ClearEndoProcessObjects();
+
+                    // spawn the ribosome full
+                    _ribosomefullSpawned =
+                        Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
+                }
+
+                // spawn the mRNA
+                _mrnaSpawned = Instantiate(_mrna, _spawnRight, Quaternion.identity);
+
+                // hide the next button whether we are moving forward or backwards
+                _nextButton.SetActive(false);
+
+                break;
+
             // they just put the mRNA and ribosome together and now they have a glycoprotein
             // text should say "nice you just created a glycoprotein...press next to interact with the roughER!"
             // need next button
@@ -421,79 +383,61 @@ public class EndoControl : MonoBehaviour
                     // show the next button whether we are moving forward or backwards
                     _nextButton.SetActive(true);
 
-                    // we can change panel to screen 5 here
-                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _panelText5;
                     break;
                 }
             // they just created a glycoprotein
             // text should say "place the glycoprotein in the Rough ER to continue"
             // don't need a next button since the interaction moves us forward
             case 6:
+                if (isForward)
                 {
-                    if (isForward)
-                    {
-                        Debug.Log("Forward");
-                    }
-                    else
-                    {
-                        Debug.Log("Backwards");
-
-                        // hide all objects from step 6 if we are going backwards
-                        ClearEndoProcessObjects();
-
-                        // spawn the glycoprotein
-                        _glycoproteinSpawned =
-                            Instantiate(_glycoprotein, _spawnLeft, Quaternion.identity);
-                    }
-
-                    // spawn the rough ER
-                    _rougherSpawned =
-                        Instantiate(_rougher, _spawnRight, Quaternion.identity);
-
-                    // Rotate the ER
-                    _rougherSpawned.transform.Rotate(200.0f, 30.0f, 90.0f, Space.Self);
-
-                    // show the next button whether we are moving forward or backwards
-                    _nextButton.SetActive(false);
-
-                    // we can change panel to screen 6 here
-                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _panelText6;
-                    break;
+                    Debug.Log("Forward");
                 }
+                else
+                {
+                    Debug.Log("Backwards");
+
+                    // hide all objects from step 6 if we are going backwards
+                    ClearEndoProcessObjects();
+
+                    // spawn the glycoprotein
+                    _glycoproteinSpawned =
+                        Instantiate(_glycoprotein, _spawnLeft, Quaternion.identity);
+                }
+
+                // spawn the rough ER
+                _rougherSpawned =
+                    Instantiate(_rougher, _spawnRight, Quaternion.identity);
+
+                // Rotate the ER
+                _rougherSpawned.transform.Rotate(200.0f, 30.0f, 90.0f, Space.Self);
+
+                // show the next button whether we are moving forward or backwards
+                _nextButton.SetActive(false);
+
+                break;
             // the user just put together the roughER with the glycoprotein and now they have a vesicle glycoprotein
             // text should say "Now that you have a vesicle glycoprotein, press next to take it to the golgi!"
             // need next button
             case 7:
+                ClearEndoProcessObjects();
+                if (isForward)
                 {
-                    if (isForward)
-                    {
-                        Debug.Log("Forward");
-
-                        // hide all objects from step 6 if we are going forwards
-                        ClearEndoProcessObjects();
-                    }
-                    else
-                    {
-                        Debug.Log("Backwards");
-
-                        // hide all objects from step 6 if we are going backwards
-                        ClearEndoProcessObjects();
-                    }
-
-                    // spawn the vesicle glycoprotein
-                    _vesiclegpSpawned =
-                        Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
-
-                    // need the next button whether we are moving forward or backwards
-                    _nextButton.SetActive(true);
-
-                    // we can change panel to screen 7 here
-                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _panelText7;
-                    break;
+                    Debug.Log("Forward");
                 }
+                else
+                {
+                    Debug.Log("Backwards");
+                }
+
+                // spawn the vesicle glycoprotein
+                _vesiclegpSpawned =
+                    Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
+
+                // need the next button whether we are moving forward or backwards
+                _nextButton.SetActive(true);
+                
+                break;
             // the user has a vesicle glycoprotein right now and they need the golgi to spawn
             // text should say "put the vesicle glycoprotein on the golgi !"
             // need to spawn a golgi
@@ -532,9 +476,6 @@ public class EndoControl : MonoBehaviour
                     // need to hide the next button whether we are moving forward or backwards
                     _nextButton.SetActive(false);
 
-                    // we can change panel to screen 8 here
-                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _panelText8;
                     break;
                 }
             // They just put the vesicle glycoprotein on the golgi and now the animation should play indefinitely
@@ -549,10 +490,6 @@ public class EndoControl : MonoBehaviour
                     // show the next button
                     _nextButton.SetActive(true);
 
-                    // we can change panel to screen 9 here
-                    _textArea.GetComponent<TMPro.TextMeshProUGUI>().text =
-                        _panelText9;
-
                     // change next button text to "start Review" or somethinig similar
                     _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text =
                         _startQuizText;
@@ -565,6 +502,18 @@ public class EndoControl : MonoBehaviour
             // the user is trying to go past the limits of the steps
 
             case 10:
+                Debug.Log("Step " + _step);
+                _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = endoUIStrings[_step];
+
+                if (isForward)
+                    Debug.Log("Forward");
+                else
+                    Debug.Log("Backwards");
+                ClearEndoProcessObjects();
+
+                _nextButton.SetActive(true);
+                _backButton.SetActive(true);
+
                 break;
 
             case 11:
