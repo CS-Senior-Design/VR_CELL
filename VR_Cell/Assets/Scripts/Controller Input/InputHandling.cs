@@ -838,7 +838,8 @@ public class InputHandling : MonoBehaviour
         Debug.Log("Right Trigger Button Released");
         _rightTriggerButtonState = false;
         // move the player to the tube position
-        tubeTeleport();
+        if (!_continuousMovement)
+            tubeTeleport();
     }
 
     public void LeftTriggerPressed()

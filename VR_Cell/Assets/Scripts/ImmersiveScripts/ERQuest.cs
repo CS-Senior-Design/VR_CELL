@@ -126,6 +126,8 @@ public class ERQuest : MonoBehaviour
             _selectedObject = args.interactableObject.transform.gameObject;
             // get the position of the ribosome
             Vector3 ribosomePosition = args.interactableObject.transform.position;
+            // make sure the empty game objects are active
+            _targetObjectOutside.SetActive(true);
             // set all the starting and ending positions based on the socket position
             _startingPositionRNA = _mRNA.transform.position;
             _endingPositionRNA = _targetObjectInside.transform.position;
@@ -173,6 +175,8 @@ public class ERQuest : MonoBehaviour
         GameObject protein = Instantiate(_packagedProteinGrab, proteinPosition, Quaternion.identity);
         // make it visible
         protein.SetActive(true);
+        // hide the empty game object
+        _targetObjectOutside.SetActive(false);
         // destroy the ribosome
         Destroy(_selectedObject);
     }

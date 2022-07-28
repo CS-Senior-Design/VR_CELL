@@ -927,7 +927,7 @@ PrefabInstance:
     - target: {fileID: 9031261192128201879, guid: 7235b7e303f933342afbe9036289fbaf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9031261192128201879, guid: 7235b7e303f933342afbe9036289fbaf,
         type: 3}
@@ -5239,7 +5239,7 @@ Transform:
   - {fileID: 1386406713}
   - {fileID: 335381583}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &531870320
 PrefabInstance:
@@ -11755,7 +11755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285771357}
   m_LocalRotation: {x: 0.0005753867, y: 0.07683748, z: -0.014303881, w: 0.99694085}
-  m_LocalPosition: {x: 0.3371, y: 0.0427, z: -0.016}
+  m_LocalPosition: {x: 0.3363, y: 0.0162, z: -0.016}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -15649,7 +15649,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1749879305
 PrefabInstance:
@@ -16795,7 +16795,7 @@ PrefabInstance:
     - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
         type: 3}
@@ -16846,6 +16846,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562690, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 599142202213624496}
+    - target: {fileID: 4581690842739562690, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8869740033154946689, guid: 4be7c098433f7584d86ebe016eb56b2a,
         type: 3}
