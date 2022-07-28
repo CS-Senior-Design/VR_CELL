@@ -35,6 +35,10 @@ public class InputHandling : MonoBehaviour
     [SerializeField] public bool _continuousMovement = false;
     /* -------------------------------------------------------- */
 
+    [Header("Inventory Type")]
+    [Tooltip("Check if you want original inventory.")]
+    [SerializeField] public bool _oldInventory = true;
+
     // public variables to add on the editor
     [Header("Which scene?")]
     // variables to track whether we are in immersive or lab scene

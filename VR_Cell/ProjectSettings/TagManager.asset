@@ -42,6 +42,7 @@ TagManager:
   - continuousText
   - teleportText
   - organelleAnchor
+  - socketImage
   layers:
   - Default
   - TransparentFX
