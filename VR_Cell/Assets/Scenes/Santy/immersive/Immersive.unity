@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06361731, g: 0.052071244, b: 0.056788962, a: 1}
+  m_IndirectSpecularColor: {r: 0.06361822, g: 0.052069563, b: 0.056787517, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11305,6 +11305,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221572455}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1223924004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1702193707}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1237797063
 GameObject:
   m_ObjectHideFlags: 0
@@ -15372,6 +15378,95 @@ Transform:
   m_Father: {fileID: 811428316}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1702193707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4331686814042140451}
+    m_Modifications:
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.9890504
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.9890504
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.9890504
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00081938
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00040229
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0006074
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000007450581
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000044703484
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581690842739562688, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869740033154946689, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_Name
+      value: Vesicle GP
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869740033154946689, guid: 4be7c098433f7584d86ebe016eb56b2a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4be7c098433f7584d86ebe016eb56b2a, type: 3}
 --- !u!1001 &1712129611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15538,7 +15633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9ffcac705e3f543955e1a07e00d165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startInVR: 0
+  startInVR: 1
   xrOrigin: {fileID: 599142202873808258}
   desktopPlayer: {fileID: 715084114}
 --- !u!4 &1746443114
@@ -15746,19 +15841,7 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4331686814042140454}
-        m_TargetAssemblyTypeName: GolgiUI, Assembly-CSharp
-        m_MethodName: nextStep
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -73501,6 +73584,7 @@ Transform:
   - {fileID: 1759272195}
   - {fileID: 1204070828}
   - {fileID: 1422744903}
+  - {fileID: 1223924004}
   m_Father: {fileID: 2076991349}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -245.906, z: 0}
@@ -73544,6 +73628,9 @@ MonoBehaviour:
   _socket: {fileID: 1759272196}
   _targetObjectInside: {fileID: 1204070827}
   _targetObjectOutside: {fileID: 1422744902}
+  _proteinGPanimation: {fileID: 4685465528734212652, guid: add4d11d3b6b95a4ebc9f276d0824c36,
+    type: 3}
+  _proteinSpawned: {fileID: 0}
   _vesicle: {fileID: 1309900654458315047, guid: b2dc063eff92753489f2a175ccbc79bf,
     type: 3}
   _vesicleGrab: {fileID: 3912682076245250864, guid: fd460f975ba0a0849a85e7bf957aacde,

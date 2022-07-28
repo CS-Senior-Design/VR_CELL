@@ -17,10 +17,13 @@ public class GolgiUI : MonoBehaviour
     public XRSocketInteractor _socket;
     public GameObject _targetObjectInside;
     public GameObject _targetObjectOutside;
+    public GameObject _proteinGPanimation;
+    public GameObject _proteinSpawned;
     public GameObject _vesicle;
     public GameObject _vesicleGrab;
     private GameObject _vesicleSpawned;
     private GameObject _selectedObject;
+    private Vector3 _startingPositionProtein;
     private Vector3 _endingPositionProtein;
     private Vector3 _startingPositionVesicle;
     private Vector3 _endingPositionVesicle;
@@ -88,9 +91,12 @@ public class GolgiUI : MonoBehaviour
             case 3: 
             {
                 // the socket needs to be inactive
-                _socket.gameObject.SetActive(false);
+                //_socket.gameObject.SetActive(false);
+                // spawn the animation protein
+                _proteinSpawned = Instantiate(_proteinGPanimation, _startingPositionProtein, Quaternion.identity);
                 // spawn the mrna and protein
                 _vesicleSpawned = Instantiate(_vesicle, _startingPositionVesicle, Quaternion.identity);
+
                 // hide it to begin with
                 _vesicleSpawned.SetActive(false);
                 // animation of mRNA going through the ribosome and then a packaged protein coming out
@@ -124,13 +130,16 @@ public class GolgiUI : MonoBehaviour
 
     IEnumerator GolgiAnimation()
     {
-        while ((_selectedObject.transform.position - _endingPositionProtein).sqrMagnitude > 0.008f)
+        Debug.Log("before while");
+        while ((_proteinSpawned.transform.position - _endingPositionProtein).sqrMagnitude > 0.008f)
         {
-            _selectedObject.transform.position = Vector3.Lerp(_selectedObject.transform.position, _endingPositionProtein, Time.deltaTime * _animationSpeed);
+            Debug.Log("Moving the protein into the golgi.");
+            _proteinSpawned.transform.position = Vector3.Lerp(_proteinSpawned.transform.position, _endingPositionProtein, Time.deltaTime * _animationSpeed);
             yield return null;
         }
+        Debug.Log("after while");
         // destroy the protein
-        Destroy(_selectedObject);
+        Destroy(_proteinSpawned);
         // start the vesicle animation
         StartCoroutine(VesicleAnimation());
     }
@@ -141,6 +150,7 @@ public class GolgiUI : MonoBehaviour
         _vesicleSpawned.SetActive(true);
         while ((_vesicleSpawned.transform.position - _endingPositionVesicle).sqrMagnitude > 0.008f)
         {
+            Debug.Log("Moving the vesicle out of the golgi.");
             _vesicleSpawned.transform.position = Vector3.Lerp(_vesicleSpawned.transform.position, _endingPositionVesicle, Time.deltaTime * _animationSpeed);
             yield return null;
         }
@@ -189,11 +199,16 @@ public class GolgiUI : MonoBehaviour
             // get the position of the protein
             Vector3 proteinPosition = args.interactableObject.transform.position;
             // hide the socket
-            _socket.gameObject.SetActive(false);
+            //_socket.gameObject.SetActive(false);
+    
             // set all the starting and ending positions based on the socket position
+            _startingPositionProtein = proteinPosition;
             _endingPositionProtein = _targetObjectInside.transform.position;
             _startingPositionVesicle = _targetObjectInside.transform.position;
             _endingPositionVesicle = _targetObjectOutside.transform.position;
+
+            // destroy the selected object
+            Destroy(_selectedObject);
             nextStep();
         }
         // if they tried to put something else in the socket

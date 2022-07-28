@@ -880,13 +880,11 @@ public class InputHandling : MonoBehaviour
 
     public void RightTriggerChanged(float value)
     {
-        Debug.Log("Right Trigger Value: " + value);
         _rightTriggerValue = value;
     }
 
     public void LeftTriggerChanged(float value)
     {
-        Debug.Log("Left Trigger Value: " + value);
         _leftTriggerValue = value;
     }
 
