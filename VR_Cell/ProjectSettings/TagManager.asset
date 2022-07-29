@@ -50,6 +50,7 @@ TagManager:
   - controlPanel
   - mainMenuButton
   - cellMembraneStation
+  - membraneFastTravelButton
   layers:
   - Default
   - TransparentFX

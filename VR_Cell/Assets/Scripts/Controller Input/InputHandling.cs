@@ -118,6 +118,9 @@ public class InputHandling : MonoBehaviour
     private TMP_Dropdown _snapTurnDropdown;
     private Toggle _snapTurnToggle;
     private GameObject _snapTurnToggleIndicator;
+    // variable to store reference to the cell membrane station
+    private GameObject _membraneStation;
+    private GameObject _membraneFastTravelButton;
 
     // variables for testing with only 1 controller
     // if you are using both controllers then set them both to false
@@ -141,6 +144,9 @@ public class InputHandling : MonoBehaviour
 
         // initialize the teleport tube 
         initializeTeleportTube();
+
+        // hide cell membrane station on start
+        initializeMembraneStation();
     }
 
     // check for input on every frame
@@ -159,6 +165,18 @@ public class InputHandling : MonoBehaviour
 
         // ensure that the objects in the sockets are right in the center at all times
         centerItemsInSockets();
+    }
+
+    public void showMembraneStation()
+    {
+        _membraneStation.SetActive(true);
+        _membraneFastTravelButton.SetActive(true);
+    }
+
+    public void initializeMembraneStation()
+    {
+        _membraneStation = GameObject.FindGameObjectWithTag("cellMembraneStation");
+        _membraneStation.SetActive(false);
     }
 
     public void setCanMove(bool canMove)
@@ -249,6 +267,8 @@ public class InputHandling : MonoBehaviour
         _fastTravelPanel = GameObject.FindGameObjectWithTag("fastTravelUI");
         _settingsPanel = GameObject.FindGameObjectWithTag("settingsPanel");
         _controlsUI = GameObject.FindGameObjectWithTag("controlPanel");
+        _membraneFastTravelButton = GameObject.FindGameObjectWithTag("membraneFastTravelButton");
+        _membraneFastTravelButton.SetActive(false);
 
         // settings 
         GameObject movementToggleGameObject = GameObject.FindGameObjectWithTag("movementToggle");
