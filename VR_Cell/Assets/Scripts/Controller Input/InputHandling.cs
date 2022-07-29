@@ -550,7 +550,7 @@ public class InputHandling : MonoBehaviour
         }
         else if (fullName.Contains("golgi") || fullName.Contains("Golgi"))
         {
-            return "Golgi";
+            return "Vesicle";
         }
         else if (fullName.Contains("vesicle") || fullName.Contains("Vesicle"))
         {

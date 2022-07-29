@@ -183,6 +183,16 @@ public class GolgiUI : MonoBehaviour
         }
     }
 
+    IEnumerator WaitForSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        // destroy the selected object
+        Destroy(_selectedObject);
+        // hide the socket
+        _socket.gameObject.SetActive(false);
+        nextStep();
+    }
+
     // when something gets placed in the socket
     public void SelectedObject(SelectEnterEventArgs args)
     {
@@ -196,6 +206,8 @@ public class GolgiUI : MonoBehaviour
             Debug.Log("Vesicle GP placed in the socket");
             // store the selected object
             _selectedObject = args.interactableObject.transform.gameObject;
+            // snap the protein to the socket
+            _selectedObject.transform.position = _socket.transform.position;
             // get the position of the protein
             Vector3 proteinPosition = args.interactableObject.transform.position;
             // hide the socket
@@ -207,9 +219,8 @@ public class GolgiUI : MonoBehaviour
             _startingPositionVesicle = _targetObjectInside.transform.position;
             _endingPositionVesicle = _targetObjectOutside.transform.position;
 
-            // destroy the selected object
-            Destroy(_selectedObject);
-            nextStep();
+            // wait 1 second before moving on
+            StartCoroutine(WaitForSeconds(1.0f));
         }
         // if they tried to put something else in the socket
         else

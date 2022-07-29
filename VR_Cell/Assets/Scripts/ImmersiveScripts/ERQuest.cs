@@ -104,15 +104,6 @@ public class ERQuest : MonoBehaviour
         displayCanvas();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            nextStep();
-        }
-    }
-
     // when something gets placed in the socket
     public void SelectedObject(SelectEnterEventArgs args)
     {
@@ -124,6 +115,8 @@ public class ERQuest : MonoBehaviour
             Debug.Log("Ribosome placed in the socket");
             // store the selected object
             _selectedObject = args.interactableObject.transform.gameObject;
+            // put the ribosome right in the center of the socket
+            _selectedObject.transform.position = _socket.transform.position;
             // get the position of the ribosome
             Vector3 ribosomePosition = args.interactableObject.transform.position;
             // make sure the empty game objects are active
@@ -239,6 +232,8 @@ public class ERQuest : MonoBehaviour
             {
                 // set the text of the canvas to step 0 text
                 _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = _stepCheat;
+                // show the next button
+                _nextButton.SetActive(true);
                 _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Try Again";
                 // the socket needs to be inactive
                 _socket.gameObject.SetActive(false);
