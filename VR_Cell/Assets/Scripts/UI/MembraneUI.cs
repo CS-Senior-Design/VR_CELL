@@ -16,6 +16,7 @@ public class MembraneUI : MonoBehaviour
     public GameObject _textArea;
     public GameObject _nextButton;
     public GameObject _nextButtonText;
+    public GameObject _membraneFastTravelSocket;
 
     public GameObject _lysosome;
     private GameObject _vesicle;
@@ -85,7 +86,7 @@ public class MembraneUI : MonoBehaviour
 
         _inputScript.setSnapTurn(true);
         int i = 0;
-        float snap = 1.0f;
+        float snap = 10f;
         int limit = (int)170.0f / (int)snap;
         while (i < limit)
         {
@@ -93,6 +94,7 @@ public class MembraneUI : MonoBehaviour
             i++;
             yield return null;
         }
+        _inputScript.setSnapTurn(false);
         // now slowly bring up a lysosome
         // instantiate it
         GameObject lysosome = Instantiate(_lysosome, _lysosomeDownPosition, Quaternion.identity);

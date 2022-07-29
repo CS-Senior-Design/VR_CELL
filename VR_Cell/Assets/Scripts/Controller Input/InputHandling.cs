@@ -782,33 +782,16 @@ public class InputHandling : MonoBehaviour
         _player.transform.position +=  -Camera.main.transform.forward * sensitivity * Time.deltaTime;
     }
 
-    public void teleportBackwards()
+    public void stepBack()
     {
-        Debug.Log("moving backwards!");
-        float x = _player.transform.position.x - Camera.main.transform.forward.x * _defaultStepBackDistance;
-        float z = _player.transform.position.z - Camera.main.transform.forward.z * _defaultStepBackDistance;
-        Vector3 tempPosition = new Vector3(x, _player.transform.position.y, z);
-        _player.transform.position = tempPosition;
-        /*
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(tempPosition, Vector3.down, 10.0f);
-        foreach (RaycastHit hit in hits)
+        if (_canMove == true)
         {
-            if (hit.transform.tag == "teleportArea" || hit.transform.tag == "teleportAnchor")
-            {
-                _player.transform.position = tempPosition;
-                break;
-            }
+            Debug.Log("moving backwards!");
+            float x = _player.transform.position.x - Camera.main.transform.forward.x * _defaultStepBackDistance;
+            float z = _player.transform.position.z - Camera.main.transform.forward.z * _defaultStepBackDistance;
+            Vector3 tempPosition = new Vector3(x, _player.transform.position.y, z);
+            _player.transform.position = tempPosition;
         }
-        */
-        /*
-        if (Physics.Raycast(tempPosition, -Vector3.up, out RaycastHit hit))
-        {
-            Debug.Log(hit.transform.tag);
-            if (hit.transform.tag.Contains("teleportArea"))
-                _player.transform.position = tempPosition;
-        }
-        */
     }
 
     public void setSnapTurn(bool snapTurn)
@@ -1079,7 +1062,7 @@ public class InputHandling : MonoBehaviour
         _is2DAxisRightHome = false;
 
         // teleport backwards 
-        teleportBackwards();
+        stepBack();
     }
 
     public void RightPrimary2DAxisUp()
