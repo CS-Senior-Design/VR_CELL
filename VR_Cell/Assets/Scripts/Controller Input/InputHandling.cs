@@ -144,7 +144,8 @@ public class InputHandling : MonoBehaviour
         initializeTeleportTube();
 
         // hide cell membrane station on start
-        initializeMembraneStation();
+        if (_immersive)
+            initializeMembraneStation();
     }
 
     // check for input on every frame
@@ -262,11 +263,19 @@ public class InputHandling : MonoBehaviour
         // keeping track of wrist menu game objects
         _wristUIPanel = GameObject.FindGameObjectWithTag("WristUI");
         _inventoryPanel = GameObject.FindGameObjectWithTag("inventoryPanel");
-        _fastTravelPanel = GameObject.FindGameObjectWithTag("fastTravelUI");
+
+        if (_immersive)
+            _fastTravelPanel = GameObject.FindGameObjectWithTag("fastTravelUI");
+        
         _settingsPanel = GameObject.FindGameObjectWithTag("settingsPanel");
         _controlsUI = GameObject.FindGameObjectWithTag("controlPanel");
-        _membraneFastTravelButton = GameObject.FindGameObjectWithTag("membraneFastTravelButton");
-        _membraneFastTravelButton.SetActive(false);
+
+        if (_immersive)
+        {
+            _membraneFastTravelButton = GameObject.FindGameObjectWithTag("membraneFastTravelButton");
+            _membraneFastTravelButton.SetActive(false);
+        }
+        
 
         // settings 
         GameObject movementToggleGameObject = GameObject.FindGameObjectWithTag("movementToggle");
@@ -366,7 +375,10 @@ public class InputHandling : MonoBehaviour
         // make all wrist panels hidden at the start
         _wristUIPanel.SetActive(false);
         _inventoryPanel.SetActive(false);
-        _fastTravelPanel.SetActive(false);
+
+        if (_immersive)
+            _fastTravelPanel.SetActive(false);  
+        
         _settingsPanel.SetActive(false);
         _controlsUI.SetActive(false);
     }
@@ -687,7 +699,10 @@ public class InputHandling : MonoBehaviour
         // hide sub menus
         _wristUIPanel.SetActive(false);
         _inventoryPanel.SetActive(false);
-        _fastTravelPanel.SetActive(false);
+
+        if (_immersive)
+            _fastTravelPanel.SetActive(false);
+
         _settingsPanel.SetActive(false);
     }
 
@@ -710,12 +725,17 @@ public class InputHandling : MonoBehaviour
             _wristUIPanel.SetActive(false);
             // hide inventory panel
             hideInventory();
-            // hide the fast travel panel
-            _fastTravelPanel.SetActive(false);
+
+            // hide the fast travel panel/ controls menu
+            if (_immersive)
+            {
+                _fastTravelPanel.SetActive(false);
+                _controlsUI.SetActive(false);
+            }
+                
             // hide settings panel
             _settingsPanel.SetActive(false);
-            // Hide the controls menu
-            _controlsUI.SetActive(false);
+
             _canGoBack = false;
         }
 
@@ -748,6 +768,7 @@ public class InputHandling : MonoBehaviour
     {
         _wristUIPanel.SetActive(false);
         _isWristMenuActive = false;
+        _settingsPanel.SetActive(false);
         _controlsUI.SetActive(true);
         _canGoBack = true;
     }
@@ -795,7 +816,10 @@ public class InputHandling : MonoBehaviour
             {
                 _wristUIPanel.SetActive(true);
                 hideInventory();
-                _fastTravelPanel.SetActive(false);
+
+                if (_immersive)
+                    _fastTravelPanel.SetActive(false);
+
                 _settingsPanel.SetActive(false);
                 _controlsUI.SetActive(false);
                 _isWristMenuActive = true;
