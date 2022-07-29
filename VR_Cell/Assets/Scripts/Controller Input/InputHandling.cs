@@ -1127,7 +1127,7 @@ public class InputHandling : MonoBehaviour
 
     public void LeftPrimary2DAxisUp()
     {
-        Debug.Log("Left Primary 2D Axis Up");t
+        Debug.Log("Left Primary 2D Axis Up");
         _is2DAxisLeftHome = false;
 
         // wrist menu pops up
