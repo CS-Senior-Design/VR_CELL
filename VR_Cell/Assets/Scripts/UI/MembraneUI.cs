@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MembraneUI : MonoBehaviour
 {
@@ -121,12 +122,14 @@ public class MembraneUI : MonoBehaviour
             yield return null;
         }
         // once the vesicle is on you, we want to move together with the vesicle back to vesicleStart
-        while ((_vesicle.transform.position - _vesicleStartPosition).sqrMagnitude > 1.0f)
+        while ((_vesicle.transform.position - _vesicleStartPosition).sqrMagnitude > 5.0f)
         {
             _vesicle.transform.position = Vector3.Lerp(_vesicle.transform.position, _vesicleStartPosition, Time.deltaTime * _animationSpeed/2);
             _player.transform.position = Vector3.Lerp(_player.transform.position, _vesicleStartPosition, Time.deltaTime * _animationSpeed/2);
             yield return null;
         }
+        // go to main menu
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void displayCanvas()

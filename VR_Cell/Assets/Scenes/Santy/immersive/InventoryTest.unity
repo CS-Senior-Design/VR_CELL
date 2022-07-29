@@ -38065,7 +38065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ce5233daef19747a6fc2d31a683336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _continuousMovement: 1
   _immersive: 1
   _isRightOnly: 0
   _isLeftOnly: 0
