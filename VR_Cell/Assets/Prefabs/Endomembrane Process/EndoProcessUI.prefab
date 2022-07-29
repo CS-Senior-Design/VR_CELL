@@ -1079,20 +1079,21 @@ MonoBehaviour:
     type: 3}
   _nucleolus: {fileID: 3443082391720685917, guid: 0019de5ffe3581046ba953b7676b8ce7,
     type: 3}
-  _ribosome30: {fileID: 3059927442414654835, guid: 1a5c5711587d263408e6cfbc14f8ac8a,
-    type: 3}
-  _ribosome50: {fileID: 1893868153443356887, guid: 4739a23c66e634344a4f3c96506c1a4c,
-    type: 3}
+  _ribosome40: {fileID: 0}
+  _ribosome60: {fileID: 0}
   _ribosomefull: {fileID: 8423993282524603747, guid: 8a32280c470de4c4aa75c6111e8fbae7,
     type: 3}
   _mrna: {fileID: 7527382036972342164, guid: e4eb69a3c0cf0264c8a6a66410a06fa4, type: 3}
   _glycoprotein: {fileID: 3513717309258133845, guid: d99efb8f9751bb243aabdf49f9e6d309,
     type: 3}
-  _rougher: {fileID: 4626048221703034493, guid: fbd78548e5846d945b04c6728b84413c,
-    type: 3}
+  _rER: {fileID: 0}
+  _vesicleEmpty: {fileID: 0}
   _vesiclegp: {fileID: 821907710552206249, guid: 82e5096c3070d3945870e54e5d7e7649,
     type: 3}
   _golgi: {fileID: 4332863031200193577, guid: 4528d052f425de74f8b7b5a3663c6996, type: 3}
+  _endosome: {fileID: 0}
+  _lysosome: {fileID: 0}
+  _damagedMitochondria: {fileID: 0}
   _textArea: {fileID: 3493942501187994743}
   _backButton: {fileID: 3816895431426528422}
   _nextButton: {fileID: 2919626176781737219}
