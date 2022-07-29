@@ -35,15 +35,13 @@ public class InputHandling : MonoBehaviour
     // variable to change the snap turn angle
     private float _snapTurnAngle = 10f;
     // variable to track if the user wants continuous movement or not
-    [Header("Movement")]
-    [Tooltip("Check if you want to be able to move around without having to teleport.")]
-    [SerializeField] public bool _continuousMovement = false;
+    private bool _continuousMovement = true;
     /* -------------------------------------------------------- */
 
     // public variables to add on the editor
     [Header("Which scene?")]
     // variables to track whether we are in immersive or lab scene
-    [SerializeField] public bool _immersive;
+    [SerializeField] private bool _immersive;
     // variables to store the rayInteractors to swap between interactable and teleporting
     private GameObject _rayInteractorNormal;
     private GameObject _rayInteractorTeleport;
