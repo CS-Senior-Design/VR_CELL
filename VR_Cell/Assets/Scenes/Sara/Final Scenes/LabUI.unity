@@ -8358,7 +8358,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 3
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -8952,10 +8952,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5903702322522979589}
-        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
-        m_MethodName: OpenPanel
-        m_Mode: 1
+      - m_Target: {fileID: 5903702322522979588}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8964,13 +8964,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5903702322522979585}
+      - m_Target: {fileID: 5903702322522979589}
         m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OpenPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9024,7 +9024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f3c6862c9b0c7439a7e648329e3cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 1360433912424492774}
+  panel: {fileID: 7513454108546592776}
 --- !u!114 &5903702322608421412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10251,7 +10251,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 3
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -12387,18 +12387,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6466814280986320013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8197244219610101257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f7fa2736458cd54982af24f1122f85c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &6466814281106886112
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18243,7 +18231,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8197244219610101258}
-  - component: {fileID: 6466814280986320013}
   m_Layer: 0
   m_Name: WristUI
   m_TagString: Untagged
