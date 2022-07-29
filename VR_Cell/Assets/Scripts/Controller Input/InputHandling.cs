@@ -678,11 +678,6 @@ public class InputHandling : MonoBehaviour
             // activate main menu
             _wristUIPanel.SetActive(true);
 
-            // hide sub menus
-            _inventoryPanel.SetActive(false);
-            _fastTravelPanel.SetActive(false);
-            _settingsPanel.SetActive(false);
-
             // toggle variable keeps track of active state
             _canGoBack = true;
             _isWristMenuActive = true;
@@ -706,9 +701,6 @@ public class InputHandling : MonoBehaviour
         {
             _wristUIPanel.SetActive(false);
             _isWristMenuActive = false;
-            _inventoryPanel.SetActive(false);
-            _fastTravelPanel.SetActive(false);
-            _settingsPanel.SetActive(false);
             _canGoBack = false;
         }
     }
@@ -764,10 +756,6 @@ public class InputHandling : MonoBehaviour
             if (_isWristMenuActive)
             {
                 _wristUIPanel.SetActive(false);
-                _inventoryPanel.SetActive(false);
-                _fastTravelPanel.SetActive(false);
-                _settingsPanel.SetActive(false);
-
                 _isWristMenuActive = false;
                 _canGoBack = false;
             }
@@ -775,7 +763,7 @@ public class InputHandling : MonoBehaviour
             else
             {
                 _wristUIPanel.SetActive(true);
-                _inventoryPanel.SetActive(false);
+                hideInventory();
                 _fastTravelPanel.SetActive(false);
                 _settingsPanel.SetActive(false);
 
