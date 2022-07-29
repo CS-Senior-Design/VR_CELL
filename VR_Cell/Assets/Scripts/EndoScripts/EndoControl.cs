@@ -11,33 +11,39 @@ public class EndoControl : MonoBehaviour
     [Header("Organelles To Spawn")]
     public int _step = 0;
 
-    private int _totalSteps = 17;
+    private int _totalSteps = 19;
 
     public GameObject _quizPanel;
     public GameObject _protein;
     public GameObject _nucleolus;
-    public GameObject _ribosome30;
-    public GameObject _ribosome50;
+    public GameObject _ribosome40;
+    public GameObject _ribosome60;
     public GameObject _ribosomefull;
     public GameObject _mrna;
     public GameObject _glycoprotein;
-    public GameObject _rougher;
+    public GameObject _rER;
+    public GameObject _vesicleEmpty;
     public GameObject _vesiclegp;
     public GameObject _golgi;
+    public GameObject _endosome;
+    public GameObject _lysosome;
+    public GameObject _damagedMitochondria;
 
     // store the spawned objects in global variables
     private GameObject _proteinSpawned;
     private GameObject _nucleolusSpawned;
-    private GameObject _ribosome30Spawned;
-    private GameObject _ribosome50Spawned;
+    private GameObject _ribosome40Spawned;
+    private GameObject _ribosome60Spawned;
     private GameObject _ribosomefullSpawned;
     private GameObject _mrnaSpawned;
     private GameObject _glycoproteinSpawned;
-    private GameObject _rougherSpawned;
+    private GameObject _rERSpawned;
+    private GameObject _vesicleEmptySpawned;
     private GameObject _vesiclegpSpawned;
-    private GameObject _spawnedGolgi;
-    private GameObject _lysosome;
-    private GameObject _damagedMitochondria;
+    private GameObject _golgiSpawned;
+    private GameObject _endosomeSpawned;
+    private GameObject _lysosomeSpawned;
+    private GameObject _damagedMitochondriaSpawn;
 
     // variable to track if the animation should play
     private bool _playAnimation;
@@ -81,55 +87,62 @@ public class EndoControl : MonoBehaviour
         "expressing or repressing certain areas that individual cells need for their function or stage in life. " +
         "Such a complex of proteins and DNA is called the chromatin.",
 
-        //5 > Highlight chromatin > spawn nucleolus
+        //5 > Highlight nucleolus > spawn nucleolus > player gives nucleolus protein
         "Additionally within the nucleus resides a large structure called the nucleolus, where rRNA " +
         "and a bunch of proteins are arranged to form two different sizes of subunits that make up a complete ribosome." +
         "Take the protein you grabbed earlier and feed it into the nucleolus to form the ribosome subunits.",
 
-        //6 > highlight endoplasmic reticulum > spawn ribosome
+        //6 > Highlight endoplasmic reticulum
         "As we make our way outside of the nucleus, notice the largest network of membranes in the cell, the endoplasmic reticulum. " +
-        "It is comprised of two distinct, yet connected regions that differ in function: the rough and the smooth endoplasmic reticulum. " +
-        "The rough endoplasmic reticulum is called so because it is covered on the outside in ribosomes, lending a \"rough\" appearance. " +
-        "Its membrane, which separates the inside of the ER- called the ER lumen- with the cytosol, is continuous with the nuclear envelope " +
-        "and is where secretory protein and cell membrane production primarily occurs. The smooth ER's surface lacks ribosomes, and houses " +
-        "enzymes used in the production of lipids vital for organism function, as well as in detoxification of drugs and poisons. \n" +
+        "It is comprised of two distinct, yet connected regions that differ in function: the rough and the smooth endoplasmic reticulum. ",
+
+        //7 > highlight RER
+        "The rough endoplasmic reticulum is called so because it is covered on the outside in ribosomes, " +
+        "lending a \"rough\" appearance. Its membrane, which separates the inside of the ER- called the " +
+        "ER lumen- with the cytosol, is continuous with the nuclear envelope and is where secretory protein " + 
+        "and cell membrane production primarily occurs.",
+        
+        //8 > highlight SER > player combines subunits
+        "The smooth ER's surface lacks ribosomes, and houses enzymes used in the production of lipids " +
+        "vital for organism function, as well as in detoxification of drugs and poisons. \n" +
         "Combine the two subunits together to form a ribosome.",
 
-        //7 > highlight ribosomes > spawn mRNA
+        //9 > highlight ribosomes > spawn mRNA
         "Great! Now that we have a ribosome, all we need is a strand of mRNA in order to create a protein. Ribosomes that are found " +
         "floating in the cytosol are called free ribosomes, and those attached to the rough ER and nuclear membrane are called bound " +
         "ribosomes. Most proteins made by free ribosomes function in the cytosol, while those made by bound ribosomes are usually " +
         "shipped to other organelles such as lysosomes, or to be exported out of the cell.\n" +
         "Pick up a strand of mRNA and feed it into the ribosome in order to create a protein.",
 
-        //8 > spawn glycoprotein
+        //10 > spawn protein variant
         "When a ribosome comes into contact with mRNA, it begins the process of protein translation. " +
         "During translation, mRNA is read by the ribosome and decoded into a specific chain of amino acids, called a polypeptide." +
         "The polypeptide will then fold into a specific shape that will define its function as a protein.\n" +
         "Take the protein created by the ribosome.",
 
-        //9
+        //11 > spawn vesicle
         "Proteins that are created in the rough ER are shipped via membraned bubbles called transport vesicles from the rough ER " +
-        "to the golgi apparatus. The rough ER buds off from a special region known as the transitional ER to form vesicles that are " +
-        "then carried to their destination along a highway of tubes - called microtubules- via motor proteins.",
+        "to the golgi apparatus. The vesicles bud off from a special region known as the transitional ER and are " +
+        "then carried to their destination along a highway of tubes - called microtubules- via motor proteins.\n" +
+        "Place the protein inside a transport vesicle.",
 
-        //10
+        //12 > highlight cytoskeleton
         "Microtubules are just one of a number of structures that make up the cytoskeleton, the network of fibers that provide support " +
         "for the cell and provide the means by which cells and their components move.",
         
-        //11
+        //13 > highlight microtubules
         "Microtubules are the highway of the cell, providing the means by which organelles move and get from one part of the cell " +
         "to the other via motor proteins. They also provide structure to the cell itself, resisting compressing forces " +
         "to keep the cell from being crushed. Special arrangements of microtubules make up cilia and flagella in eukaryotic cells. " +
         "Microfilaments, on the other hand, provide structure by bearing tension to keep the cell from being torn open. " +
         "They are what allows muscle cells to contract.",
 
-        //12
+        //14 > highlight filaments
         "Intermediate filaments - named so because they are in-between the sizes of microtubules and microfilaments - " +
         "are more permanent fixtures of cells that provide rigidity and help a cell retain its original shape. " + 
         "This is useful for maintaining the shape of macro structures in an organism, like cartilage, skin, nails, and hair.",
 
-        //13
+        //15 > highlight golgi > player places vesicle in golgi
         "The golgi apparatus functions like the postal service of the cell. This organelle, shaped like a stack of pancakes, " +
         "takes in products from the ER and processes them to ship to other components of the cell. " +
         "The stacks, called \"cisternae\", travel from one side of the golgi- the \"cis\" side- to the other - the \"trans\" side- " +
@@ -137,21 +150,22 @@ public class EndoControl : MonoBehaviour
         "component or outside as a secretory protein.\n" +
         "Place the vesicle in the cis side of the Golgi Apparatus.",
 
-        //14
+        //16 > play animation
         "Upon reaching the trans side of the golgi, the cisternae will break off into vesicles that will be carried to their " +
         "destination. If the cell is in charge of insulin production, for instance, the completed insulin will be carried " +
         "from the golgi to the cell membrane where the insulin will be released outside of the cell. Otherwise, various " +
         "markers placed on the vesicle and around the cell components allow the vesicle to be carried to the appropriate " +
         "cell component, such as a lysosome.\n" +
-        "Last stop! Deliver the final product to a late endosome to create a lysosome.",
+        "Collect the final product!",
 
-        //15
+        //17 > highlight vacuoles > spawn endosome > player fuses endosome and vesiclegp
         "The final two membraned organelles are the vacuoles and lysosomes. Vacuoles are membraned organelles that carry " +
         "out different functions in different kinds of cells. In plant cells, a massive vacuole occupies most of the space " +
         "of the cell. In animal cells, they can carry food and other enzymes into the cell that are needed. Some protists " +
-        "use them to pump water outside of the cell to maintain equilibrium.",
+        "use them to pump water outside of the cell to maintain equilibrium.\n" +
+        "Last stop! Deliver the final product to a late endosome to create a lysosome.",
 
-        //16
+        //18 > highlight lysosome > spawn damaged mitochondria > player fuses lysosome and mito 
         "Lysosomes are the clean-up crew of the cell. They carry digestive enzymes that allow the cell to recycle damaged " +
         "organelles and digest macromolecules into nutrients for the cell to use. To digest the food incoming from vacuoles, " +
         "lysosomes will fuse with the vacuole, releasing its contents inside to digest whatever is inside. Lysosomes are formed " +
@@ -159,47 +173,11 @@ public class EndoControl : MonoBehaviour
         " in the final part of a system called the endocytic pathway.\n" +
         "Use the lysosome to break down the damaged mitochondria.",
 
-        //17
+        //19 > player can start quiz
         "This brings us to the end of the tour! We hope you now have a better idea of the internal workings of the cell. " +
         "You may now take the After Action Review quiz to test your knowledge of the endomembrane system, or you can continue " +
         "to explore the different parts of the cell, including those not covered in this tour."
     };
-
-    // private string
-    //     _panelText0 = "Welcome to the tour!";
-
-    // private string
-    //     _panelText1 = "Combine the nucleolus and the protein!";
-
-    // private string
-    //     _panelText2 = "Place the subunits together to complete the ribosome!";
-
-    // private string
-    //     _panelText3 = "You just created a ribosome! Click next to continue!";
-
-    // private string
-    //     _panelText4 =
-    //         "Step 4 - Put the mRNA and ribosome together to create a glycoprotein!";
-
-    // private string
-    //     _panelText5 =
-    //         "Step 5 - Nice you just created a glycoprotein...press next to interact with the roughER!";
-
-    // private string
-    //     _panelText6 =
-    //         "Step 5 - Place the glycoprotein through the ER to encapsulate it in a vesicle!";
-
-    // private string
-    //     _panelText7 =
-    //         "Now that you have a vesicle glycoprotein, press next to take it to the golgi!";
-
-    // private string
-    //     _panelText8 =
-    //         "Step 8 - Place the vesicle glycoprotein on the cis side of the golgi to continue";
-
-    // private string
-    //     _panelText9 =
-    //         "Step 9 - Watch as the glycoprotein gets absorbed by the golgi and travels to the trans side of the golgi, leaving in a vesicle to go to the cell membrane or something!";
 
     private string _startQuizText = "Quiz";
 
@@ -250,33 +228,27 @@ public class EndoControl : MonoBehaviour
     // Decides what to do at each step
     public void Process(bool isForward)
     {
+        //Debugging
         Debug.Log("Step " + _step);
+        if(isForward) {
+            Debug.Log("Forwards");
+        } else {
+            Debug.Log("Backwards");
+        }
+
         //Display text for each step
         _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = endoUIStrings[_step];
 
         //Depending on step, spawn or highlight objects
         switch (_step)
         {
-            // welcome screen
-            // hide back button
-            // show next button
-            case 0:
+            case 0: //welcome
+
                 _backButton.SetActive(false);
                 _nextButton.SetActive(true);
                 break;
 
-            // spawn the protein and nucleolus
-            // dont need the next button because putting the objects together moves to step 2
-            // putting the protein and nucleolus together should spawn the ribosome pieces
-            case 1:
-                if (isForward)
-                {
-                    Debug.Log("Forward");
-                }
-                else
-                {
-                    Debug.Log("Backwards");
-                }
+            case 1: //highlight cytoplasm
 
                 // highlight cytoplasm
 
@@ -285,54 +257,27 @@ public class EndoControl : MonoBehaviour
 
                 break;
 
-            // the user just spawned the two ribosome pieces so we need to prompt them to put them together
-            // still don't need a next button because putting the two ribosome pieces together moves to step 3
-            case 2:
-
-                if (isForward)
-                {
-                    Debug.Log("Forward");
-                }
-                else
-                {
-                    Debug.Log("Backwards");
-                }
+            case 2: //highlight nucleus
                 
-                //Highlight nucleus
+                // highlight nucleus
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
 
                 break;
-            // this panel will just say "nice you just created a full ribosome...press next to continue (to spawn the mRNA)"
-            // we need a next button now
+
             case 3: //spawn protein
                 ClearEndoProcessObjects();
-
-                if (isForward)
-                    Debug.Log("Forward");
-                else
-                    Debug.Log("Backwards");
-
-                // show the next button whether we are moving forward or backwards
-                _nextButton.SetActive(false);
 
                 _proteinSpawned =
                     Instantiate(_protein, _spawnLeft, Quaternion.identity);
 
+                _backButton.SetActive(true);
+                _nextButton.SetActive(false);
+
                 break;
-            // spawn the mRNA
-            // the panel should say "put the mRNA together with the ribosome to create a glycoprotein"
-            // we don't need a next button here since putting the ribosome and mRNA together moves us forward
-            case 4:
-                if (isForward)
-                {
-                    Debug.Log("Forward");
-                } 
-                else 
-                {
-                    Debug.Log("Backwards");
-                }
+
+            case 4: //Highlight chromatin
 
                 //highlight chromatin
 
@@ -340,185 +285,198 @@ public class EndoControl : MonoBehaviour
                 _nextButton.SetActive(true);
                 break;
 
-            // they just put the mRNA and ribosome together and now they have a glycoprotein
-            // text should say "nice you just created a glycoprotein...press next to interact with the roughER!"
-            // need next button
-            case 5: //highlight chromatin > spawn nucleolus 
+            case 5: //highlight nucleolus > spawn nucleolus > player feeds protein to nucleolus
 
-                if (isForward) {
-                    Debug.Log("Forward");
-                } else {
-                    Debug.Log("Backwards");
+                if (!isForward) {
                     ClearEndoProcessObjects();
                     _proteinSpawned =
                         Instantiate(_protein, _spawnLeft, Quaternion.identity);
                 }
-                
-                //highlight chromatin
 
+                //highlight nucleolus
+
+                //spawn nucleolus for player to give protein
                 _nucleolusSpawned =
                     Instantiate(_nucleolus, _spawnMiddle, Quaternion.identity);
 
+                //wait for player to combine nucleolus and protein
                 _nextButton.SetActive(false);
 
                 break;
-            // they just created a glycoprotein
-            // text should say "place the glycoprotein in the Rough ER to continue"
-            // don't need a next button since the interaction moves us forward
+
             case 6: //highlight ER
-                _ribosome30Spawned =
-                    Instantiate(_ribosome30, _spawnLeft, Quaternion.identity);
-                _ribosome50Spawned =
-                    Instantiate(_ribosome50, _spawnRight, Quaternion.identity);
-                    
-                if (isForward)
-                {
-                    Debug.Log("Forward");
-                }
-                else
-                {
-                    Debug.Log("Backwards");
 
-                    // hide all objects from step 6 if we are going backwards
-                    ClearEndoProcessObjects();
+                //highlight ER
 
-                    // spawn the glycoprotein
-                    _glycoproteinSpawned =
-                        Instantiate(_glycoprotein, _spawnLeft, Quaternion.identity);
-                }
-
-                // show the next button whether we are moving forward or backwards
-                _nextButton.SetActive(false);
+                _backButton.SetActive(true);
+                _nextButton.SetActive(true);
 
                 break;
-            // the user just put together the roughER with the glycoprotein and now they have a vesicle glycoprotein
-            // text should say "Now that you have a vesicle glycoprotein, press next to take it to the golgi!"
-            // need next button
-            case 7:
-                if (isForward)
-                {
-                    Debug.Log("Forward");
-                }
-                else
-                {
-                    Debug.Log("Backwards");
 
-                    // hide all objects from step 5 if we are going backwards
-                    ClearEndoProcessObjects();
+            case 7: //highlight RER
 
-                    // spawn the ribosome full
-                    _ribosomefullSpawned =
-                        Instantiate(_ribosomefull, _spawnLeft, Quaternion.identity);
-                }
+                //highlight RER
 
-                // spawn the mRNA
-                _mrnaSpawned = Instantiate(_mrna, _spawnRight, Quaternion.identity);
-
-                // hide the next button whether we are moving forward or backwards
-                _nextButton.SetActive(false);
+                _backButton.SetActive(true);
+                _nextButton.SetActive(true);
                 
                 break;
-            // the user has a vesicle glycoprotein right now and they need the golgi to spawn
-            // text should say "put the vesicle glycoprotein on the golgi !"
-            // need to spawn a golgi
-            // don't need a next button because the user needs to put the vesicle glycoprotein on the golgi to move forward
-            case 8:
+
+            case 8: //highlight SER > player combines subunits
                 ClearEndoProcessObjects();
 
-                if (isForward)
+                if (!isForward)
                 {
-                    Debug.Log("Forward");
-                }
-                else
-                {
-                    Debug.Log("Backwards");
+                    ClearEndoProcessObjects();
+                    //spawn ribosome subunits in case player does not have them
+                    _ribosome40Spawned =
+                        Instantiate(_ribosome40, _spawnLeft, Quaternion.identity);
+                    _ribosome60Spawned =
+                        Instantiate(_ribosome60, _spawnRight, Quaternion.identity);
                 }
 
-                // spawn the vesicle glycoprotein
-                _vesiclegpSpawned =
-                    Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
+                //highlight SER
 
-                // need the next button whether we are moving forward or backwards
-                _nextButton.SetActive(true);
+                //wait for player to combine ribosome subunits
+                _nextButton.SetActive(false);
+
                 break;
                
-            // They just put the vesicle glycoprotein on the golgi and now the animation should play indefinitely
-            case 9:
-                // since this is the last step we don't need to account for going backwards
-                Debug.Log("Forward");
+            case 9: //highlight ribosomes > spawn mRNA > player feeds mrna to ribosome
 
-                // destroy the vesicle glycoprotein
-                Destroy(_vesiclegpSpawned);
+                if (!isForward) {
+                    ClearEndoProcessObjects();
+                    //spawn ribosome for player
+                    _ribosomefullSpawned = 
+                        Instantiate(_ribosomefull, _spawnRight, Quaternion.identity);
+                }
 
-                // show the next button
-                _nextButton.SetActive(true);
+                //highlight ribosomes
+                
+                _mrnaSpawned =
+                    Instantiate(_mrna, _spawnLeft, Quaternion.identity);
 
-                // change next button text to "start Review" or somethinig similar
-                _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text =
-                    _startQuizText;
+                //wait for player to combine mRNA and ribosome
+                _nextButton.SetActive(false);
 
-                // play the animation on loop
-                _playAnimation = true;
-                StartCoroutine(AnimationLoop());
                 break;
-            // the user is trying to go past the limits of the steps
 
-            case 10:
-                _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = endoUIStrings[_step];
+            case 10: //spawn protein variant
 
-                if (isForward)
-                    Debug.Log("Forward");
-                else
-                    Debug.Log("Backwards");
-                ClearEndoProcessObjects();
+                if (!isForward) {
+                    ClearEndoProcessObjects();
+                }
+
+                _glycoproteinSpawned =
+                    Instantiate(_glycoprotein,_spawnRight, Quaternion.identity);
+
+                //wait for player to pick up protein
+                _nextButton.SetActive(false);
+
+                break;
+
+            case 11: //spawn vesicle > player places protein in vesicle
+
+                if (!isForward) {
+                    ClearEndoProcessObjects();
+                    _glycoproteinSpawned =
+                        Instantiate(_glycoprotein,_spawnRight, Quaternion.identity);
+                }
+
+                _vesicleEmptySpawned =
+                    Instantiate(_vesicleEmpty, _spawnMiddle, Quaternion.identity);
+
+                //wait for player to place protein in vesicle
+                _nextButton.SetActive(false);
+
+                break;
+
+            case 12: //highlight cytoskeleton
+
+                //highlight cytoskeleton
 
                 _nextButton.SetActive(true);
                 _backButton.SetActive(true);
 
                 break;
 
-            case 11:
+            case 13: //highlight microtubules
+
+                //highlight microtubules
+
+                _nextButton.SetActive(true);
+                _backButton.SetActive(true);
+
                 break;
 
-            case 12:
+            case 14: //highlight filaments
+
+                //highlight filaments
+
+                _backButton.SetActive(true);
+
                 break;
+            
+            case 15: //highlight golgi > spawn golgi > player places vesicle in golgi
 
-            case 13:
-                 if (isForward)
-                {
-                    Debug.Log("Forward");
-                }
-                else
-                {
-                    Debug.Log("Backwards");
-
-                    // hide all objects from step 7 if we are going forwards
+                if (!isForward) {
                     ClearEndoProcessObjects();
 
-                    // stop the animation
                     _playAnimation = false;
-
-                    // change next button text to start review
-                    _nextButtonText
-                        .GetComponent<TMPro.TextMeshProUGUI>()
-                        .text = "Next";
 
                     // spawn the vesicle glycoprotein
                     _vesiclegpSpawned =
                         Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
                 }
 
-                _spawnedGolgi = Instantiate(_golgi, _spawnMiddle, Quaternion.identity);
+                _golgiSpawned = Instantiate(_golgi, _spawnMiddle, Quaternion.identity);
 
                 // Rotate the golgi
-                _spawnedGolgi.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
+                _golgiSpawned.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
 
-                // need to hide the next button whether we are moving forward or backwards
+                _nextButton.SetActive(true);
+ 
+                break;
+            
+            case 16: //play animation
+
+                _golgiSpawned.GetComponent<Animation>().StartAnimation();
+                // _playAnimation = true;
+                // StartCoroutine(AnimationLoop());
+
+                //highlight filaments
+
+                //wait for player to collect vesicle
                 _nextButton.SetActive(false);
 
                 break;
 
-            case 14:
+            case 17: //highlight vacuoles
+
+                //highlight vacuoles
+
+                _nextButton.SetActive(true);
+                _backButton.SetActive(true);
+                break;
+            
+            case 18: //highlight filaments
+                if (!isForward) {
+                    //change next button back to next
+                    _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Next";
+                } 
+
+                //highlight filaments
+
+                _nextButton.SetActive(true);
+                _backButton.SetActive(true);
+                break;
+
+            case 19: //end tour
+
+                // set next button text
+                _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text =
+                    _startQuizText;
+
                 break;
 
             default:
@@ -533,7 +491,7 @@ public class EndoControl : MonoBehaviour
         while (_playAnimation == true)
         {
             // run the animation for testing purposes
-            _spawnedGolgi.GetComponent<Animation>().StartAnimation();
+            _golgiSpawned.GetComponent<Animation>().StartAnimation();
             yield return null;
         }
     }

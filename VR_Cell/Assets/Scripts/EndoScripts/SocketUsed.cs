@@ -6,12 +6,9 @@ public class SocketUsed : MonoBehaviour
 {
     public void UpdateStep()
     {
-        EndoControl endoScript = null;
+        EndoControl endoScript = GameObject.FindGameObjectWithTag("EndoController").GetComponent<EndoControl>();
         // get the object with the EndoController script
-        foreach (GameObject item in GameObject.FindGameObjectsWithTag("EndoController"))
-        {
-            endoScript = item.GetComponent<EndoControl>();
-        }
+        
         // if we don't find the script then print the reason
         if (endoScript == null)
         {
