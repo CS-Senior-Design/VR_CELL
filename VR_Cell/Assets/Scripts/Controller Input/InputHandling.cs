@@ -86,6 +86,7 @@ public class InputHandling : MonoBehaviour
     private GameObject _inventoryPanel;
     private GameObject _fastTravelPanel;
     private GameObject _settingsPanel;
+    private GameObject _controlsUI;
     private bool _isWristMenuActive = false;
     private bool _canGoBack = false;
     
@@ -247,6 +248,7 @@ public class InputHandling : MonoBehaviour
         _inventoryPanel = GameObject.FindGameObjectWithTag("inventoryPanel");
         _fastTravelPanel = GameObject.FindGameObjectWithTag("fastTravelUI");
         _settingsPanel = GameObject.FindGameObjectWithTag("settingsPanel");
+        _controlsUI = GameObject.FindGameObjectWithTag("controlPanel");
 
         // settings 
         GameObject movementToggleGameObject = GameObject.FindGameObjectWithTag("movementToggle");
@@ -348,6 +350,7 @@ public class InputHandling : MonoBehaviour
         _inventoryPanel.SetActive(false);
         _fastTravelPanel.SetActive(false);
         _settingsPanel.SetActive(false);
+        _controlsUI.SetActive(false);
     }
 
     public void OnSnapTurnToggleValueChanged()
@@ -693,6 +696,8 @@ public class InputHandling : MonoBehaviour
             _fastTravelPanel.SetActive(false);
             // hide settings panel
             _settingsPanel.SetActive(false);
+            // Hide the controls menu
+            _controlsUI.SetActive(false);
             _canGoBack = false;
         }
 
@@ -718,6 +723,14 @@ public class InputHandling : MonoBehaviour
         _wristUIPanel.SetActive(false);
         _isWristMenuActive = false;
         _fastTravelPanel.SetActive(true);
+        _canGoBack = true;
+    }
+
+    public void showControlsMenu()
+    {
+        _wristUIPanel.SetActive(false);
+        _isWristMenuActive = false;
+        _controlsUI.SetActive(true);
         _canGoBack = true;
     }
 
@@ -766,7 +779,7 @@ public class InputHandling : MonoBehaviour
                 hideInventory();
                 _fastTravelPanel.SetActive(false);
                 _settingsPanel.SetActive(false);
-
+                _controlsUI.SetActive(false);
                 _isWristMenuActive = true;
             }
         }
