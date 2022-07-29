@@ -2081,6 +2081,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndoProcessUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5374879182325868385, guid: c84f7cb015d50d041933d48ef7376ddf,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6503611846789331016, guid: c84f7cb015d50d041933d48ef7376ddf,
         type: 3}
       propertyPath: panel
