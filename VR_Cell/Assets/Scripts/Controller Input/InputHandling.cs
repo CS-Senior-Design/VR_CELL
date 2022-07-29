@@ -1000,11 +1000,6 @@ public class InputHandling : MonoBehaviour
     {
         Debug.Log("Left Menu Button Pressed");
         _leftMenuButtonState = true;
-
-        // wrist menu pops up
-        // we disable it for the final animation so they can't fast travel their way out of it
-        if (_canMove == true)
-            wristMenuToggle();
     }
 
     public void LeftMenuReleased()
@@ -1119,8 +1114,13 @@ public class InputHandling : MonoBehaviour
 
     public void LeftPrimary2DAxisUp()
     {
-        Debug.Log("Left Primary 2D Axis Up");
+        Debug.Log("Left Primary 2D Axis Up");t
         _is2DAxisLeftHome = false;
+
+        // wrist menu pops up
+        // we disable it for the final animation so they can't fast travel their way out of it
+        if (_canMove == true)
+            wristMenuToggle();
     }
 
     public void LeftPrimary2DAxisLeft()
