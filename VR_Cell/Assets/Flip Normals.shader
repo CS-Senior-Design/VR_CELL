@@ -6,7 +6,7 @@ Shader "Custom/ShowInsides" {
             
             Tags { "RenderType" = "Opaque" }
             
-            Cull Front
+            Cull Off
             
             CGPROGRAM
             
