@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
+using TMPro;
 
 /* 
 Script for getting input from the VR controller. 
@@ -29,6 +30,10 @@ public class InputHandling : MonoBehaviour
     private float _triggerActuationValue = 0.01f;
     // variable to change how quickly the teleport tube grows
     private float _teleportTubeSensitivity = 2f;
+    // variable to toggle snap turn on and off
+    private bool _snapTurn = true;
+    // variable to change the snap turn angle
+    private float _snapTurnAngle = 10f;
     // variable to track if the user wants continuous movement or not
     [Header("Movement")]
     [Tooltip("Check if you want to be able to move around without having to teleport.")]
@@ -109,6 +114,9 @@ public class InputHandling : MonoBehaviour
     private GameObject _teleportText;
     private Slider _movementSensitivitySlider;
     private Slider _teleportSensitivitySlider;
+    private TMP_Dropdown _snapTurnDropdown;
+    private Toggle _snapTurnToggle;
+    private GameObject _snapTurnToggleIndicator;
 
     // variables for testing with only 1 controller
     // if you are using both controllers then set them both to false
@@ -118,6 +126,9 @@ public class InputHandling : MonoBehaviour
     [SerializeField] public bool _isRightOnly = false;
     [Tooltip("Check if you are only using the left controller. Leave both unchecked if you're using both controllers.")]
     [SerializeField] public bool _isLeftOnly = false;
+
+    // variable to be able to freeze and unfreeze the player
+    private bool _canMove = true;
 
     void Awake()
     {
@@ -144,33 +155,59 @@ public class InputHandling : MonoBehaviour
 
         // check if the user is using locomotion and perform the appropriate actions
         checkUserLocomotion();
+
+        // ensure that the objects in the sockets are right in the center at all times
+        centerItemsInSockets();
+    }
+
+    public void setCanMove(bool canMove)
+    {
+        _canMove = canMove;
+    }
+
+    public void centerItemsInSockets()
+    {
+        Dictionary<int, ItemInfo>.KeyCollection keys = _itemsInSockets.Keys;
+        foreach (int key in keys)
+        {
+            if (_itemsInSockets[key].item.activeSelf)
+            {
+                // set the correct parent for the item
+                _itemsInSockets[key].item.transform.parent = _inventorySockets[key].transform;
+                // set the item to the correct position at the center of the socket
+                _itemsInSockets[key].item.transform.localPosition = new Vector3(0, 0, 0);
+            }      
+        }
     }
 
     // checks if the user is pressing any of the inputs that trigger movement
     public void checkUserLocomotion()
     {
-        // if the user chooses to use continuous movement
-        if (_continuousMovement == true)
+        if (_canMove == true)
         {
-            // if they are holding down the right trigger do continuous movement forward
-            if (_rightTriggerValue >= 0.05f && _immersive)
+            // if the user chooses to use continuous movement
+            if (_continuousMovement == true)
             {
-                continuousMovementForward();
+                // if they are holding down the right trigger do continuous movement forward
+                if (_rightTriggerValue >= 0.05f && _immersive)
+                {
+                    continuousMovementForward();
+                }
+                
+                // if they are holding down the left trigger do continuous movement backward
+                if (_leftTriggerValue >= 0.05f && _immersive)
+                {
+                    continuousMovementBackward();
+                }
             }
-            
-            // if they are holding down the left trigger do continuous movement backward
-            if (_leftTriggerValue >= 0.05f && _immersive)
+            // if the user prefers to teleport
+            else
             {
-                continuousMovementBackward();
-            }
-        }
-        // if the user prefers to teleport
-        else
-        {
-            // if they are holding down the right trigger then show the teleport tube
-            if (_rightTriggerButtonState == true && _immersive)
-            {
-                tubeGrow();
+                // if they are holding down the right trigger then show the teleport tube
+                if (_rightTriggerButtonState == true && _immersive)
+                {
+                    tubeGrow();
+                }
             }
         }
     }
@@ -263,6 +300,32 @@ public class InputHandling : MonoBehaviour
         if (_movementToggle.isOn == true)
             _teleportSensitivitySlider.gameObject.SetActive(false);
 
+        // get the snap turn toggle
+        _snapTurnToggle = GameObject.FindGameObjectWithTag("snapToggle").GetComponent<Toggle>();
+        // add listener for changes to the snap turn toggle
+        _snapTurnToggle.onValueChanged.AddListener(delegate { 
+                OnSnapTurnToggleValueChanged(); 
+        });
+        // get the snap turn toggle indicator
+        _snapTurnToggleIndicator = GameObject.FindGameObjectWithTag("snapToggleIndicator");
+        // get the dropdown
+        _snapTurnDropdown = GameObject.FindGameObjectWithTag("snapDropdown").GetComponent<TMP_Dropdown>();
+        // add listener to dropdown
+        _snapTurnDropdown.onValueChanged.AddListener(delegate {
+            DropdownValueChanged();
+        });
+
+        // if the snap turn toggle is off at the start then hide the indicator
+        if (_snapTurnToggle.isOn == false)
+        {
+            // disable snap turn
+            _snapTurn = false;
+            // hide the indicator
+            _snapTurnToggleIndicator.SetActive(false);
+            // hide the dropdown
+            _snapTurnDropdown.gameObject.SetActive(false);
+        }
+
         // get all the sockets from the inventory into the list
         foreach(GameObject socket in GameObject.FindGameObjectsWithTag("inventorySocket"))
         {
@@ -286,6 +349,46 @@ public class InputHandling : MonoBehaviour
         _fastTravelPanel.SetActive(false);
         _settingsPanel.SetActive(false);
     }
+
+    public void OnSnapTurnToggleValueChanged()
+    {
+        // if the snap turn toggle is on then show the indicator
+        if (_snapTurnToggle.isOn)
+        {
+            // show the indicator to signify that it's on
+            _snapTurnToggleIndicator.SetActive(true);
+            // show the dropdoown menu of possible snap angles
+            _snapTurnDropdown.gameObject.SetActive(true);
+            // enable snap turning
+            _snapTurn = true;
+        }
+        // if the snap turn toggle is off then hide the indicator
+        else
+        {
+            // hide the indicator to signify that it's off
+            _snapTurnToggleIndicator.SetActive(false);
+            // hide the dropdown menu of possible snap angles
+            _snapTurnDropdown.gameObject.SetActive(false);
+            // disable snap turning
+            _snapTurn = false;
+        }
+    }
+
+    //Ouput the new value of the Dropdown into Text
+    public void DropdownValueChanged()
+    {
+        if (_snapTurnDropdown.value == 0)
+            _snapTurnAngle = 15.0f;
+        else if (_snapTurnDropdown.value == 1)
+            _snapTurnAngle = 30.0f;
+        else if (_snapTurnDropdown.value == 2)
+            _snapTurnAngle = 45.0f;
+        else if (_snapTurnDropdown.value == 3)
+            _snapTurnAngle = 90.0f;   
+        else if (_snapTurnDropdown.value == 4)
+            _snapTurnAngle = 180.0f;
+    }
+
 
     public void OnTeleportSensitivitySliderValueChanged()
     {
@@ -402,7 +505,7 @@ public class InputHandling : MonoBehaviour
             tempItem.initialScale = initialScale; 
 
             // scale the item down so it fits better
-            item.transform.localScale = new Vector3(2, 2, 2); 
+            //item.transform.localScale = new Vector3(2, 2, 2); 
             // set the socket as the parent
             item.transform.parent = _inventorySockets[_lastUsedSocket].transform;
             // put the object in the dictionary
@@ -458,7 +561,7 @@ public class InputHandling : MonoBehaviour
         }
         else if (fullName.Contains("golgi") || fullName.Contains("Golgi"))
         {
-            return "Golgi";
+            return "Vesicle";
         }
         else if (fullName.Contains("vesicle") || fullName.Contains("Vesicle"))
         {
@@ -679,40 +782,28 @@ public class InputHandling : MonoBehaviour
         _player.transform.position +=  -Camera.main.transform.forward * sensitivity * Time.deltaTime;
     }
 
-    public void teleportBackwards()
+    public void stepBack()
     {
-        Debug.Log("moving backwards!");
-        float x = _player.transform.position.x - Camera.main.transform.forward.x * _defaultStepBackDistance;
-        float z = _player.transform.position.z - Camera.main.transform.forward.z * _defaultStepBackDistance;
-        Vector3 tempPosition = new Vector3(x, _player.transform.position.y, z);
-        _player.transform.position = tempPosition;
-        /*
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(tempPosition, Vector3.down, 10.0f);
-        foreach (RaycastHit hit in hits)
+        if (_canMove == true)
         {
-            if (hit.transform.tag == "teleportArea" || hit.transform.tag == "teleportAnchor")
-            {
-                _player.transform.position = tempPosition;
-                break;
-            }
+            Debug.Log("moving backwards!");
+            float x = _player.transform.position.x - Camera.main.transform.forward.x * _defaultStepBackDistance;
+            float z = _player.transform.position.z - Camera.main.transform.forward.z * _defaultStepBackDistance;
+            Vector3 tempPosition = new Vector3(x, _player.transform.position.y, z);
+            _player.transform.position = tempPosition;
         }
-        */
-        /*
-        if (Physics.Raycast(tempPosition, -Vector3.up, out RaycastHit hit))
-        {
-            Debug.Log(hit.transform.tag);
-            if (hit.transform.tag.Contains("teleportArea"))
-                _player.transform.position = tempPosition;
-        }
-        */
+    }
+
+    public void setSnapTurn(bool snapTurn)
+    {
+        _snapTurn = snapTurn;
     }
 
     public void rotatePlayer(float rotation)
     {
         // find the MainCamera and rotate it
-        //GameObject mainCamera = GameObject.FindGameObjectWithTag("CameraOffset");
-        _player.transform.Rotate(0, rotation, 0);
+        if (_snapTurn == true)
+            _player.transform.Rotate(0, rotation, 0);
     }
 
     // switch from normal interactor to teleportation interactor
@@ -838,7 +929,8 @@ public class InputHandling : MonoBehaviour
         Debug.Log("Right Trigger Button Released");
         _rightTriggerButtonState = false;
         // move the player to the tube position
-        tubeTeleport();
+        if (!_continuousMovement)
+            tubeTeleport();
     }
 
     public void LeftTriggerPressed()
@@ -880,13 +972,11 @@ public class InputHandling : MonoBehaviour
 
     public void RightTriggerChanged(float value)
     {
-        Debug.Log("Right Trigger Value: " + value);
         _rightTriggerValue = value;
     }
 
     public void LeftTriggerChanged(float value)
     {
-        Debug.Log("Left Trigger Value: " + value);
         _leftTriggerValue = value;
     }
 
@@ -972,7 +1062,7 @@ public class InputHandling : MonoBehaviour
         _is2DAxisRightHome = false;
 
         // teleport backwards 
-        teleportBackwards();
+        stepBack();
     }
 
     public void RightPrimary2DAxisUp()
@@ -989,8 +1079,8 @@ public class InputHandling : MonoBehaviour
         Debug.Log("Right Primary 2D Axis Left");
         _is2DAxisRightHome = false;
 
-        // rotate the player 90 degrees to the left
-        rotatePlayer(-45.0f);
+        // rotate the player to the left
+        rotatePlayer(-_snapTurnAngle);
     }
 
     public void RightPrimary2DAxisRight()
@@ -998,8 +1088,8 @@ public class InputHandling : MonoBehaviour
         Debug.Log("Right Primary 2D Axis Right");
         _is2DAxisRightHome = false;
 
-        // rotate the player 90 degrees to the right
-        rotatePlayer(45.0f);
+        // rotate the player to the right
+        rotatePlayer(_snapTurnAngle);
     }
 
     public void LeftPrimary2DAxisClickPressed()

@@ -41,6 +41,12 @@ TagManager:
   - movementText
   - continuousText
   - teleportText
+  - organelleAnchor
+  - socketImage
+  - snapToggle
+  - snapToggleIndicator
+  - snapDropdown
+  - playerParent
   layers:
   - Default
   - TransparentFX
