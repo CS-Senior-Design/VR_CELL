@@ -46,6 +46,7 @@ TagManager:
   - snapToggle
   - snapToggleIndicator
   - snapDropdown
+  - playerParent
   layers:
   - Default
   - TransparentFX

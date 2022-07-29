@@ -127,6 +127,9 @@ public class InputHandling : MonoBehaviour
     [Tooltip("Check if you are only using the left controller. Leave both unchecked if you're using both controllers.")]
     [SerializeField] public bool _isLeftOnly = false;
 
+    // variable to be able to freeze and unfreeze the player
+    private bool _canMove = true;
+
     void Awake()
     {
         // get the ray interactors so we can switch between interaction and teleportation
@@ -157,6 +160,11 @@ public class InputHandling : MonoBehaviour
         centerItemsInSockets();
     }
 
+    public void setCanMove(bool canMove)
+    {
+        _canMove = canMove;
+    }
+
     public void centerItemsInSockets()
     {
         Dictionary<int, ItemInfo>.KeyCollection keys = _itemsInSockets.Keys;
@@ -175,28 +183,31 @@ public class InputHandling : MonoBehaviour
     // checks if the user is pressing any of the inputs that trigger movement
     public void checkUserLocomotion()
     {
-        // if the user chooses to use continuous movement
-        if (_continuousMovement == true)
+        if (_canMove == true)
         {
-            // if they are holding down the right trigger do continuous movement forward
-            if (_rightTriggerValue >= 0.05f && _immersive)
+            // if the user chooses to use continuous movement
+            if (_continuousMovement == true)
             {
-                continuousMovementForward();
+                // if they are holding down the right trigger do continuous movement forward
+                if (_rightTriggerValue >= 0.05f && _immersive)
+                {
+                    continuousMovementForward();
+                }
+                
+                // if they are holding down the left trigger do continuous movement backward
+                if (_leftTriggerValue >= 0.05f && _immersive)
+                {
+                    continuousMovementBackward();
+                }
             }
-            
-            // if they are holding down the left trigger do continuous movement backward
-            if (_leftTriggerValue >= 0.05f && _immersive)
+            // if the user prefers to teleport
+            else
             {
-                continuousMovementBackward();
-            }
-        }
-        // if the user prefers to teleport
-        else
-        {
-            // if they are holding down the right trigger then show the teleport tube
-            if (_rightTriggerButtonState == true && _immersive)
-            {
-                tubeGrow();
+                // if they are holding down the right trigger then show the teleport tube
+                if (_rightTriggerButtonState == true && _immersive)
+                {
+                    tubeGrow();
+                }
             }
         }
     }
@@ -798,6 +809,11 @@ public class InputHandling : MonoBehaviour
                 _player.transform.position = tempPosition;
         }
         */
+    }
+
+    public void setSnapTurn(bool snapTurn)
+    {
+        _snapTurn = snapTurn;
     }
 
     public void rotatePlayer(float rotation)
