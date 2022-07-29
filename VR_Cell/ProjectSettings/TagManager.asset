@@ -48,6 +48,8 @@ TagManager:
   - snapDropdown
   - playerParent
   - controlPanel
+  - mainMenuButton
+  - cellMembraneStation
   layers:
   - Default
   - TransparentFX
