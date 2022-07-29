@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06361731, g: 0.052071244, b: 0.056788962, a: 1}
+  m_IndirectSpecularColor: {r: 0.06361822, g: 0.052069563, b: 0.056787517, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8886,7 +8886,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910745297}
   m_LocalRotation: {x: -0.000000006312657, y: -0.7708885, z: 0.000000110886745, w: 0.6369702}
-  m_LocalPosition: {x: 0.0091622425, y: -0.051999412, z: -0.19357775}
+  m_LocalPosition: {x: 0.0091622425, y: 0.04, z: -0.19357775}
   m_LocalScale: {x: 0.3333332, y: 0.33333334, z: 0.3333332}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37383,10 +37383,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a906e67e-bd91-4269-942a-8292c809b09d
     m_ActionName: Custom/Color
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 263fb73d-e945-4bc9-b9ee-d2f0cb32b1f6
-    m_ActionName: UI/Menu
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: b96beff1-5783-4a7c-ba8b-2bdb768bcdfe
