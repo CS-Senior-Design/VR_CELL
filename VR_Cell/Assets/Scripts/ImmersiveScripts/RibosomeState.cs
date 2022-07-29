@@ -18,6 +18,6 @@ public class RibosomeState : MonoBehaviour
 
     public void setRibosomeScale()
     {
-        transform.localScale = new Vector3(100f, 100f, 100f);
+        transform.localScale = new Vector3(25f, 25f, 25f);
     }
 }

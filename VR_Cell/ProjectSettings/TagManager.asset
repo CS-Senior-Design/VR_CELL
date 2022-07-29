@@ -43,6 +43,9 @@ TagManager:
   - teleportText
   - organelleAnchor
   - socketImage
+  - snapToggle
+  - snapToggleIndicator
+  - snapDropdown
   layers:
   - Default
   - TransparentFX
