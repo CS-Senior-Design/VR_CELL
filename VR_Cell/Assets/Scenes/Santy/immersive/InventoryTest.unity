@@ -25877,6 +25877,7 @@ MonoBehaviour:
   _textArea: {fileID: 188341069993292738}
   _nextButton: {fileID: 1123395022}
   _nextButtonText: {fileID: 131690391}
+  _membraneFastTravelSocket: {fileID: 188341071556761624}
   _lysosome: {fileID: 7513081686785763402, guid: 385a19b84ee08654683bb1b4b7d7610f,
     type: 3}
   _lysosomeUp: {fileID: 1809610170}
@@ -37383,19 +37384,7 @@ MonoBehaviour:
     m_ActionId: a906e67e-bd91-4269-942a-8292c809b09d
     m_ActionName: Custom/Color
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 599142201912000080}
-        m_TargetAssemblyTypeName: WristMenu, Assembly-CSharp
-        m_MethodName: MenuPressed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 263fb73d-e945-4bc9-b9ee-d2f0cb32b1f6
     m_ActionName: UI/Menu
   - m_PersistentCalls:

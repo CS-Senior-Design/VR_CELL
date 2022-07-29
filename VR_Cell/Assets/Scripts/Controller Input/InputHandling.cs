@@ -659,6 +659,17 @@ public class InputHandling : MonoBehaviour
         _inventoryPanel.SetActive(false);
     }
 
+    public void hideWristMenus()
+    {
+        _isWristMenuActive = false;
+        _canGoBack = false;
+        // hide sub menus
+        _wristUIPanel.SetActive(false);
+        _inventoryPanel.SetActive(false);
+        _fastTravelPanel.SetActive(false);
+        _settingsPanel.SetActive(false);
+    }
+
     public void wristMenuToggle()
     {
         // if wrist menu is not active and user is not in a sub wrist menu
@@ -673,7 +684,8 @@ public class InputHandling : MonoBehaviour
             _settingsPanel.SetActive(false);
 
             // toggle variable keeps track of active state
-            _canGoBack = _isWristMenuActive = true;
+            _canGoBack = true;
+            _isWristMenuActive = true;
         }
 
         // if user is in submenu hide every panel
@@ -694,6 +706,10 @@ public class InputHandling : MonoBehaviour
         {
             _wristUIPanel.SetActive(false);
             _isWristMenuActive = false;
+            _inventoryPanel.SetActive(false);
+            _fastTravelPanel.SetActive(false);
+            _settingsPanel.SetActive(false);
+            _canGoBack = false;
         }
     }
 
@@ -998,7 +1014,9 @@ public class InputHandling : MonoBehaviour
         _leftMenuButtonState = true;
 
         // wrist menu pops up
-        wristMenuToggle();
+        // we disable it for the final animation so they can't fast travel their way out of it
+        if (_canMove == true)
+            wristMenuToggle();
     }
 
     public void LeftMenuReleased()

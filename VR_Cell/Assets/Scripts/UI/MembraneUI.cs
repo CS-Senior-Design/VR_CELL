@@ -78,6 +78,10 @@ public class MembraneUI : MonoBehaviour
 
     IEnumerator AnimatePlayer()
     {
+        // teleport player to be on top of the membrane socket
+        _player.transform.position = _membraneFastTravelSocket.transform.position;
+        // hide all the wrist menus in case they are up
+        _inputScript.hideWristMenus();
         // wait for 5 seconds while the player reads the text
         yield return new WaitForSeconds(5.0f);
         // start by slowly rotating the player 180 degrees
