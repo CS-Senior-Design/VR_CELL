@@ -35,15 +35,13 @@ public class InputHandling : MonoBehaviour
     // variable to change the snap turn angle
     private float _snapTurnAngle = 10f;
     // variable to track if the user wants continuous movement or not
-    [Header("Movement")]
-    [Tooltip("Check if you want to be able to move around without having to teleport.")]
-    [SerializeField] public bool _continuousMovement = false;
+    private bool _continuousMovement = true;
     /* -------------------------------------------------------- */
 
     // public variables to add on the editor
     [Header("Which scene?")]
     // variables to track whether we are in immersive or lab scene
-    [SerializeField] public bool _immersive;
+    [SerializeField] private bool _immersive;
     // variables to store the rayInteractors to swap between interactable and teleporting
     private GameObject _rayInteractorNormal;
     private GameObject _rayInteractorTeleport;
@@ -86,6 +84,7 @@ public class InputHandling : MonoBehaviour
     private GameObject _inventoryPanel;
     private GameObject _fastTravelPanel;
     private GameObject _settingsPanel;
+    private GameObject _controlsUI;
     private bool _isWristMenuActive = false;
     private bool _canGoBack = false;
     
@@ -117,6 +116,9 @@ public class InputHandling : MonoBehaviour
     private TMP_Dropdown _snapTurnDropdown;
     private Toggle _snapTurnToggle;
     private GameObject _snapTurnToggleIndicator;
+    // variable to store reference to the cell membrane station
+    private GameObject _membraneStation;
+    private GameObject _membraneFastTravelButton;
 
     // variables for testing with only 1 controller
     // if you are using both controllers then set them both to false
@@ -140,6 +142,10 @@ public class InputHandling : MonoBehaviour
 
         // initialize the teleport tube 
         initializeTeleportTube();
+
+        // hide cell membrane station on start
+        if (_immersive)
+            initializeMembraneStation();
     }
 
     // check for input on every frame
@@ -158,6 +164,18 @@ public class InputHandling : MonoBehaviour
 
         // ensure that the objects in the sockets are right in the center at all times
         centerItemsInSockets();
+    }
+
+    public void showMembraneStation()
+    {
+        _membraneStation.SetActive(true);
+        _membraneFastTravelButton.SetActive(true);
+    }
+
+    public void initializeMembraneStation()
+    {
+        _membraneStation = GameObject.FindGameObjectWithTag("cellMembraneStation");
+        _membraneStation.SetActive(false);
     }
 
     public void setCanMove(bool canMove)
@@ -245,8 +263,19 @@ public class InputHandling : MonoBehaviour
         // keeping track of wrist menu game objects
         _wristUIPanel = GameObject.FindGameObjectWithTag("WristUI");
         _inventoryPanel = GameObject.FindGameObjectWithTag("inventoryPanel");
-        _fastTravelPanel = GameObject.FindGameObjectWithTag("fastTravelUI");
+
+        if (_immersive)
+            _fastTravelPanel = GameObject.FindGameObjectWithTag("fastTravelUI");
+        
         _settingsPanel = GameObject.FindGameObjectWithTag("settingsPanel");
+        _controlsUI = GameObject.FindGameObjectWithTag("controlPanel");
+
+        if (_immersive)
+        {
+            _membraneFastTravelButton = GameObject.FindGameObjectWithTag("membraneFastTravelButton");
+            _membraneFastTravelButton.SetActive(false);
+        }
+        
 
         // settings 
         GameObject movementToggleGameObject = GameObject.FindGameObjectWithTag("movementToggle");
@@ -346,8 +375,12 @@ public class InputHandling : MonoBehaviour
         // make all wrist panels hidden at the start
         _wristUIPanel.SetActive(false);
         _inventoryPanel.SetActive(false);
-        _fastTravelPanel.SetActive(false);
+
+        if (_immersive)
+            _fastTravelPanel.SetActive(false);  
+        
         _settingsPanel.SetActive(false);
+        _controlsUI.SetActive(false);
     }
 
     public void OnSnapTurnToggleValueChanged()
@@ -659,6 +692,20 @@ public class InputHandling : MonoBehaviour
         _inventoryPanel.SetActive(false);
     }
 
+    public void hideWristMenus()
+    {
+        _isWristMenuActive = false;
+        _canGoBack = false;
+        // hide sub menus
+        _wristUIPanel.SetActive(false);
+        _inventoryPanel.SetActive(false);
+
+        if (_immersive)
+            _fastTravelPanel.SetActive(false);
+
+        _settingsPanel.SetActive(false);
+    }
+
     public void wristMenuToggle()
     {
         // if wrist menu is not active and user is not in a sub wrist menu
@@ -667,13 +714,9 @@ public class InputHandling : MonoBehaviour
             // activate main menu
             _wristUIPanel.SetActive(true);
 
-            // hide sub menus
-            _inventoryPanel.SetActive(false);
-            _fastTravelPanel.SetActive(false);
-            _settingsPanel.SetActive(false);
-
             // toggle variable keeps track of active state
-            _canGoBack = _isWristMenuActive = true;
+            _canGoBack = true;
+            _isWristMenuActive = true;
         }
 
         // if user is in submenu hide every panel
@@ -682,10 +725,17 @@ public class InputHandling : MonoBehaviour
             _wristUIPanel.SetActive(false);
             // hide inventory panel
             hideInventory();
-            // hide the fast travel panel
-            _fastTravelPanel.SetActive(false);
+
+            // hide the fast travel panel/ controls menu
+            if (_immersive)
+            {
+                _fastTravelPanel.SetActive(false);
+                _controlsUI.SetActive(false);
+            }
+                
             // hide settings panel
             _settingsPanel.SetActive(false);
+
             _canGoBack = false;
         }
 
@@ -694,6 +744,7 @@ public class InputHandling : MonoBehaviour
         {
             _wristUIPanel.SetActive(false);
             _isWristMenuActive = false;
+            _canGoBack = false;
         }
     }
 
@@ -710,6 +761,15 @@ public class InputHandling : MonoBehaviour
         _wristUIPanel.SetActive(false);
         _isWristMenuActive = false;
         _fastTravelPanel.SetActive(true);
+        _canGoBack = true;
+    }
+
+    public void showControlsMenu()
+    {
+        _wristUIPanel.SetActive(false);
+        _isWristMenuActive = false;
+        _settingsPanel.SetActive(false);
+        _controlsUI.SetActive(true);
         _canGoBack = true;
     }
 
@@ -748,10 +808,6 @@ public class InputHandling : MonoBehaviour
             if (_isWristMenuActive)
             {
                 _wristUIPanel.SetActive(false);
-                _inventoryPanel.SetActive(false);
-                _fastTravelPanel.SetActive(false);
-                _settingsPanel.SetActive(false);
-
                 _isWristMenuActive = false;
                 _canGoBack = false;
             }
@@ -759,10 +815,13 @@ public class InputHandling : MonoBehaviour
             else
             {
                 _wristUIPanel.SetActive(true);
-                _inventoryPanel.SetActive(false);
-                _fastTravelPanel.SetActive(false);
-                _settingsPanel.SetActive(false);
+                hideInventory();
 
+                if (_immersive)
+                    _fastTravelPanel.SetActive(false);
+
+                _settingsPanel.SetActive(false);
+                _controlsUI.SetActive(false);
                 _isWristMenuActive = true;
             }
         }
@@ -996,9 +1055,6 @@ public class InputHandling : MonoBehaviour
     {
         Debug.Log("Left Menu Button Pressed");
         _leftMenuButtonState = true;
-
-        // wrist menu pops up
-        wristMenuToggle();
     }
 
     public void LeftMenuReleased()
@@ -1115,6 +1171,11 @@ public class InputHandling : MonoBehaviour
     {
         Debug.Log("Left Primary 2D Axis Up");
         _is2DAxisLeftHome = false;
+
+        // wrist menu pops up
+        // we disable it for the final animation so they can't fast travel their way out of it
+        if (_canMove == true)
+            wristMenuToggle();
     }
 
     public void LeftPrimary2DAxisLeft()

@@ -10,6 +10,8 @@ public class GolgiUI : MonoBehaviour
 
     private float _animationSpeed = 0.8f;
 
+    private InputHandling _inputScript;
+
     public GameObject _textArea;
     public GameObject _nextButton;
     public GameObject _nextButtonText;
@@ -44,6 +46,8 @@ public class GolgiUI : MonoBehaviour
         _socket.selectEntered.AddListener(SelectedObject);
         // the socket needs to be inactive
         _socket.gameObject.SetActive(false);
+        // get the input handling script
+        _inputScript = GameObject.FindGameObjectWithTag("playerParent").GetComponent<InputHandling>();
     }
 
     public void displayCanvas()
@@ -160,6 +164,8 @@ public class GolgiUI : MonoBehaviour
         GameObject vesicle = Instantiate(_vesicleGrab, vesiclePosition, Quaternion.identity);
         // make it visible
         vesicle.SetActive(true);
+        // show the membrane station
+        _inputScript.showMembraneStation();
     }
 
     public void nextStep()

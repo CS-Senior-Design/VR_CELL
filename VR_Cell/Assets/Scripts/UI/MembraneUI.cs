@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MembraneUI : MonoBehaviour
 {
@@ -78,6 +79,11 @@ public class MembraneUI : MonoBehaviour
 
     IEnumerator AnimatePlayer()
     {
+        // hide all the wrist menus in case they are up
+        _inputScript.hideWristMenus();
+
+        _player.transform.position = _membraneFastTravelSocket.transform.position;
+        
         // wait for 5 seconds while the player reads the text
         yield return new WaitForSeconds(5.0f);
         // start by slowly rotating the player 180 degrees
@@ -94,6 +100,8 @@ public class MembraneUI : MonoBehaviour
             i++;
             yield return null;
         }
+        // teleport player to be on top of the membrane socket
+        Camera.main.transform.position = _membraneFastTravelSocket.transform.position;
         _inputScript.setSnapTurn(false);
         // now slowly bring up a lysosome
         // instantiate it
@@ -114,12 +122,14 @@ public class MembraneUI : MonoBehaviour
             yield return null;
         }
         // once the vesicle is on you, we want to move together with the vesicle back to vesicleStart
-        while ((_vesicle.transform.position - _vesicleStartPosition).sqrMagnitude > 1.0f)
+        while ((_vesicle.transform.position - _vesicleStartPosition).sqrMagnitude > 5.0f)
         {
             _vesicle.transform.position = Vector3.Lerp(_vesicle.transform.position, _vesicleStartPosition, Time.deltaTime * _animationSpeed/2);
             _player.transform.position = Vector3.Lerp(_player.transform.position, _vesicleStartPosition, Time.deltaTime * _animationSpeed/2);
             yield return null;
         }
+        // go to main menu
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void displayCanvas()

@@ -47,6 +47,10 @@ TagManager:
   - snapToggleIndicator
   - snapDropdown
   - playerParent
+  - controlPanel
+  - mainMenuButton
+  - cellMembraneStation
+  - membraneFastTravelButton
   layers:
   - Default
   - TransparentFX
