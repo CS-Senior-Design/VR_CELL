@@ -54,6 +54,7 @@ public class EndoControl : MonoBehaviour
     public GameObject _backButton;
     public GameObject _nextButton;
     public GameObject _nextButtonText;
+    public GameObject _title;
 
 
     // UI panel text variables
@@ -222,7 +223,8 @@ public class EndoControl : MonoBehaviour
 
     public void EnableNextButton()
     {
-        _nextButton.SetActive(true);
+        _nextButton.SetActive(true);        
+        Debug.Log("ello");
     }
 
     // Decides what to do at each step
@@ -233,10 +235,12 @@ public class EndoControl : MonoBehaviour
         if(isForward) {
             Debug.Log("Forwards");
         } else {
+            ClearEndoProcessObjects();
             Debug.Log("Backwards");
         }
 
         //Display text for each step
+        _title.GetComponent<TMPro.TextMeshProUGUI>().text = ""+_step;
         _textArea.GetComponent<TMPro.TextMeshProUGUI>().text = endoUIStrings[_step];
 
         //Depending on step, spawn or highlight objects
@@ -273,7 +277,7 @@ public class EndoControl : MonoBehaviour
                     Instantiate(_protein, _spawnLeft, Quaternion.identity);
 
                 _backButton.SetActive(true);
-                _nextButton.SetActive(false);
+                _nextButton.SetActive(true);
 
                 break;
 
@@ -283,6 +287,7 @@ public class EndoControl : MonoBehaviour
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
+
                 break;
 
             case 5: //highlight nucleolus > spawn nucleolus > player feeds protein to nucleolus
@@ -325,15 +330,12 @@ public class EndoControl : MonoBehaviour
             case 8: //highlight SER > player combines subunits
                 ClearEndoProcessObjects();
 
-                if (!isForward)
-                {
-                    ClearEndoProcessObjects();
-                    //spawn ribosome subunits in case player does not have them
-                    _ribosome40Spawned =
-                        Instantiate(_ribosome40, _spawnLeft, Quaternion.identity);
-                    _ribosome60Spawned =
-                        Instantiate(_ribosome60, _spawnRight, Quaternion.identity);
-                }
+                ClearEndoProcessObjects();
+                //spawn ribosome subunits in case player does not have them
+                _ribosome40Spawned =
+                    Instantiate(_ribosome40, _spawnLeft, Quaternion.identity);
+                _ribosome60Spawned =
+                    Instantiate(_ribosome60, _spawnRight, Quaternion.identity);
 
                 //highlight SER
 

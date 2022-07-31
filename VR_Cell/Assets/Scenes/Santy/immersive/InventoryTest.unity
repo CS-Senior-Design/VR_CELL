@@ -69925,8 +69925,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a4a954a8d9eb74f80b3050b18afde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ribosome1: {fileID: 0}
-  _ribosome2: {fileID: 0}
+  _ribosome1: {fileID: 810311562123709082, guid: c6d56a11ba4ee3b44b162756e93ad497,
+    type: 3}
+  _ribosome2: {fileID: 5653482848844080322, guid: d2893f2e0c1f7fc489e5154a1014a37a,
+    type: 3}
   _proteins: []
 --- !u!114 &3448189768892255201
 MonoBehaviour:

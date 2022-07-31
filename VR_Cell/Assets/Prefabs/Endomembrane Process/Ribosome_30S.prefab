@@ -76,10 +76,10 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8440076998078270470, guid: c84f7cb015d50d041933d48ef7376ddf,
+      - m_Target: {fileID: 2113584455682816249, guid: c84f7cb015d50d041933d48ef7376ddf,
           type: 3}
-        m_TargetAssemblyTypeName: SocketUsed, Assembly-CSharp
-        m_MethodName: UpdateStep
+        m_TargetAssemblyTypeName: EndoControl, Assembly-CSharp
+        m_MethodName: EnableNextButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -140,8 +140,8 @@ Transform:
   m_GameObject: {fileID: 3059927442414654835}
   m_LocalRotation: {x: -0, y: 0.000000075497894, z: 0.0000000754979, w: 1}
   m_LocalPosition: {x: 6.7331805, y: -9.990764, z: 0.0402565}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3059927441579012422}
   m_Father: {fileID: 0}

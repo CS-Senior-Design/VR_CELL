@@ -76,10 +76,10 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8440076998078270470, guid: c84f7cb015d50d041933d48ef7376ddf,
+      - m_Target: {fileID: 2113584455682816249, guid: c84f7cb015d50d041933d48ef7376ddf,
           type: 3}
-        m_TargetAssemblyTypeName: SocketUsed, Assembly-CSharp
-        m_MethodName: UpdateStep
+        m_TargetAssemblyTypeName: EndoControl, Assembly-CSharp
+        m_MethodName: nextStep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
