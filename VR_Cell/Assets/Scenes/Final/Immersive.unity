@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0634916, g: 0.05203714, b: 0.056693327, a: 1}
+  m_IndirectSpecularColor: {r: 0.06349341, g: 0.052037787, b: 0.05669043, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!224 &9779085 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1512045130837586372, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+    type: 3}
+  m_PrefabInstance: {fileID: 7502938424315224604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &863750227 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1290146392812787676, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+    type: 3}
+  m_PrefabInstance: {fileID: 7502938424315224604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &948189302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +142,96 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 60993569935750137, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721144868406, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721212373598, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721320586618, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721484310787, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721540438741, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721601985820, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721690087826, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721947133658, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721947424472, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379721982338793, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722121196709, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722159748810, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722203556306, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722364733672, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722505293096, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722642677566, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722643302470, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
     - target: {fileID: 176379722654351954, guid: feed3f4dfa8794542a29bbde546ff5ad,
         type: 3}
       propertyPath: m_Name
@@ -189,6 +291,436 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722678366464, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722870053927, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722886897522, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379722973752349, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379723028989630, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379723052271035, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 176379723233852593, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 181764201950917896, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 266484476421473235, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 275570142332348038, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 303877048896680167, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 306337647434890873, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 379805020204727654, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 513546950331457555, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 560733595483805025, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 570720078482225931, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 876673784434097189, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089282167773678911, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105936965730301720, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206402627264406729, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362743750098679385, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404450432671297998, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430925086783631506, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1478774391365310095, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524909845199182791, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632249491578772484, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689675927297859759, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892852802566067738, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966507963184080088, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121018031518841698, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389049058216637480, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598994544643377305, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2672146072744772985, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2735832030298405618, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746810402608574760, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016751445353004134, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025288792287055242, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196033546898987827, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 3286616741171774048, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308048846246966869, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434634735324971323, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614218557263503343, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 3871394624090487284, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024322826949782532, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144304493166463695, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255029068561731449, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279886571147414359, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399106437847608948, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418729599806291595, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475717756198050543, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569879600420896661, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670523549516907272, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850037256722923163, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029575805517685927, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109630548295604584, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193879179256086875, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197046958004758393, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325544795782121807, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411853047930202806, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434654182944344994, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676640850337921625, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758353725024764226, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951338255586107254, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 5990628676311414246, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051041656429635588, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112131852414215379, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513994769264435307, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533390460320577302, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777910861906033955, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970718135127072075, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993902204843749994, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046378889080059927, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049271871703011355, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124317867884915866, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178184669926157561, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617584824677062489, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724401852397232886, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752686688433990406, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181827792050740362, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314117823461048589, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809874285681639316, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860628485370538269, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962465797008275490, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011692756947486545, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166202283570312697, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
+      objectReference: {fileID: 0}
+    - target: {fileID: 9209670847275666475, guid: feed3f4dfa8794542a29bbde546ff5ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: transportProtein
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feed3f4dfa8794542a29bbde546ff5ad, type: 3}
@@ -361,6 +893,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!224 &1064582337 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3690762978431487739, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+    type: 3}
+  m_PrefabInstance: {fileID: 7502938424315224604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1078959829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -497,6 +1035,46 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3894894187209612683, guid: fbc653cea2efaf94489366b72ffb4ba8,
+        type: 3}
+      propertyPath: m_TeleportAnchorTransform
+      value: 
+      objectReference: {fileID: 1780423518}
+    - target: {fileID: 3894894187381746920, guid: fbc653cea2efaf94489366b72ffb4ba8,
+        type: 3}
+      propertyPath: m_TeleportAnchorTransform
+      value: 
+      objectReference: {fileID: 1410094093}
+    - target: {fileID: 3894894188260604510, guid: fbc653cea2efaf94489366b72ffb4ba8,
+        type: 3}
+      propertyPath: m_TeleportAnchorTransform
+      value: 
+      objectReference: {fileID: 863750227}
+    - target: {fileID: 3894894188381732568, guid: fbc653cea2efaf94489366b72ffb4ba8,
+        type: 3}
+      propertyPath: m_TeleportAnchorTransform
+      value: 
+      objectReference: {fileID: 1064582337}
+    - target: {fileID: 3894894188439064318, guid: fbc653cea2efaf94489366b72ffb4ba8,
+        type: 3}
+      propertyPath: m_TeleportAnchorTransform
+      value: 
+      objectReference: {fileID: 1256118832}
+    - target: {fileID: 3894894188440404146, guid: fbc653cea2efaf94489366b72ffb4ba8,
+        type: 3}
+      propertyPath: m_TeleportAnchorTransform
+      value: 
+      objectReference: {fileID: 1693087682}
+    - target: {fileID: 3894894188678535083, guid: fbc653cea2efaf94489366b72ffb4ba8,
+        type: 3}
+      propertyPath: m_TeleportAnchorTransform
+      value: 
+      objectReference: {fileID: 9779085}
+    - target: {fileID: 3894894188845303286, guid: fbc653cea2efaf94489366b72ffb4ba8,
+        type: 3}
+      propertyPath: m_TeleportAnchorTransform
+      value: 
+      objectReference: {fileID: 1229733165}
     - target: {fileID: 4493999826498817872, guid: fbc653cea2efaf94489366b72ffb4ba8,
         type: 3}
       propertyPath: m_Name
@@ -565,6 +1143,36 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1146030148}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1229733165 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4084252831658146413, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+    type: 3}
+  m_PrefabInstance: {fileID: 7502938424315224604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1256118832 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1437562324673836603, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+    type: 3}
+  m_PrefabInstance: {fileID: 7502938424315224604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1410094093 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4368760093907931294, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+    type: 3}
+  m_PrefabInstance: {fileID: 7502938424315224604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1693087682 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4453138039768787810, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+    type: 3}
+  m_PrefabInstance: {fileID: 7502938424315224604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1780423518 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 153356760912474913, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+    type: 3}
+  m_PrefabInstance: {fileID: 7502938424315224604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7502938424315224604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -572,6 +1180,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1437562324673836602, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+        type: 3}
+      propertyPath: m_Name
+      value: lysosome_anchor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437562324673836603, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4484999310282676210, guid: 2cb3b3a62df1e4d4a99475a2c7f0f487,
         type: 3}
       propertyPath: m_RootOrder
