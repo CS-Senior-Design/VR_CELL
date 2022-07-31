@@ -5,8 +5,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+class ObjectMaterial
+{
+    public GameObject item;
+    public Material mat;
+}
+    
+
 public class EndoControl : MonoBehaviour
 {
+    private List<ObjectMaterial> _highlightedObjects = new List<ObjectMaterial>();
     // steo 0 is the welcome screen and empty table
     [Header("Organelles To Spawn")]
     public int _step = 0;
@@ -47,6 +55,8 @@ public class EndoControl : MonoBehaviour
 
     // variable to track if the animation should play
     private bool _playAnimation;
+    private bool _shouldBlink;
+    private List<IEnumerator> currHighlight = new List<IEnumerator>();
 
     // UI global variables
     [Header("UI Variables")]
@@ -55,6 +65,9 @@ public class EndoControl : MonoBehaviour
     public GameObject _nextButton;
     public GameObject _nextButtonText;
     public GameObject _title;
+
+    [Header("Highlight Color")]
+    public Material _highlightMaterial;
 
 
     // UI panel text variables
@@ -227,6 +240,37 @@ public class EndoControl : MonoBehaviour
         Debug.Log("ello");
     }
 
+    public void StartHighLightCoroutines(string tag) {
+        int i = 0;
+
+        foreach(GameObject item in GameObject.FindGameObjectsWithTag(tag)) {
+            Material ogMaterial = item.GetComponent<Renderer>().material;
+            ObjectMaterial temp = new ObjectMaterial();
+            temp.item = item;
+            temp.mat = ogMaterial;
+            _highlightedObjects.Add(temp);
+            currHighlight.Add(HighlightAnimation(item));
+            StartCoroutine(currHighlight[i]);
+            i++;
+        }
+    }
+
+    public void StopHighLightCoroutines() {
+        int i = 0;
+        foreach(IEnumerator item in currHighlight) {
+            StopCoroutine(item);
+            i++;
+        }
+        // put all objects back to original material
+        foreach(ObjectMaterial item in _highlightedObjects)
+        {
+            item.item.GetComponent<Renderer>().material = item.mat;
+        }
+        _highlightedObjects.Clear();
+        currHighlight.Clear();
+    } 
+
+
     // Decides what to do at each step
     public void Process(bool isForward)
     {
@@ -254,7 +298,7 @@ public class EndoControl : MonoBehaviour
 
             case 1: //highlight cytoplasm
 
-                // highlight cytoplasm
+                StartHighLightCoroutines("Cytoplasm");
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -262,8 +306,9 @@ public class EndoControl : MonoBehaviour
                 break;
 
             case 2: //highlight nucleus
-                
-                // highlight nucleus
+
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Nucleus");
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -272,6 +317,8 @@ public class EndoControl : MonoBehaviour
 
             case 3: //spawn protein
                 ClearEndoProcessObjects();
+                
+                StopHighLightCoroutines();
 
                 _proteinSpawned =
                     Instantiate(_protein, _spawnLeft, Quaternion.identity);
@@ -283,7 +330,8 @@ public class EndoControl : MonoBehaviour
 
             case 4: //Highlight chromatin
 
-                //highlight chromatin
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Chromatin");
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -298,7 +346,8 @@ public class EndoControl : MonoBehaviour
                         Instantiate(_protein, _spawnLeft, Quaternion.identity);
                 }
 
-                //highlight nucleolus
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Nucleolus");
 
                 //spawn nucleolus for player to give protein
                 _nucleolusSpawned =
@@ -311,7 +360,9 @@ public class EndoControl : MonoBehaviour
 
             case 6: //highlight ER
 
-                //highlight ER
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("RER");
+                StartHighLightCoroutines("SER");
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -320,7 +371,8 @@ public class EndoControl : MonoBehaviour
 
             case 7: //highlight RER
 
-                //highlight RER
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("RER");
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -330,14 +382,15 @@ public class EndoControl : MonoBehaviour
             case 8: //highlight SER > player combines subunits
                 ClearEndoProcessObjects();
 
-                ClearEndoProcessObjects();
+                
                 //spawn ribosome subunits in case player does not have them
                 _ribosome40Spawned =
                     Instantiate(_ribosome40, _spawnLeft, Quaternion.identity);
                 _ribosome60Spawned =
                     Instantiate(_ribosome60, _spawnRight, Quaternion.identity);
 
-                //highlight SER
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("SER");
 
                 //wait for player to combine ribosome subunits
                 _nextButton.SetActive(false);
@@ -353,7 +406,8 @@ public class EndoControl : MonoBehaviour
                         Instantiate(_ribosomefull, _spawnRight, Quaternion.identity);
                 }
 
-                //highlight ribosomes
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Ribosomes");
                 
                 _mrnaSpawned =
                     Instantiate(_mrna, _spawnLeft, Quaternion.identity);
@@ -369,11 +423,13 @@ public class EndoControl : MonoBehaviour
                     ClearEndoProcessObjects();
                 }
 
-                _glycoproteinSpawned =
-                    Instantiate(_glycoprotein,_spawnRight, Quaternion.identity);
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Ribosomes");
 
-                //wait for player to pick up protein
-                _nextButton.SetActive(false);
+                _glycoproteinSpawned =
+                    Instantiate(_glycoprotein, _spawnRight, Quaternion.identity);
+
+                _nextButton.SetActive(true);
 
                 break;
 
@@ -382,8 +438,11 @@ public class EndoControl : MonoBehaviour
                 if (!isForward) {
                     ClearEndoProcessObjects();
                     _glycoproteinSpawned =
-                        Instantiate(_glycoprotein,_spawnRight, Quaternion.identity);
+                        Instantiate(_glycoprotein, _spawnRight, Quaternion.identity);
                 }
+
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Vesicles");
 
                 _vesicleEmptySpawned =
                     Instantiate(_vesicleEmpty, _spawnMiddle, Quaternion.identity);
@@ -395,7 +454,11 @@ public class EndoControl : MonoBehaviour
 
             case 12: //highlight cytoskeleton
 
-                //highlight cytoskeleton
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Centrosome");
+                StartHighLightCoroutines("Microtubules");
+                StartHighLightCoroutines("Microfilaments");
+                StartHighLightCoroutines("IntermediateFilaments");
 
                 _nextButton.SetActive(true);
                 _backButton.SetActive(true);
@@ -404,7 +467,8 @@ public class EndoControl : MonoBehaviour
 
             case 13: //highlight microtubules
 
-                //highlight microtubules
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Microtubules");
 
                 _nextButton.SetActive(true);
                 _backButton.SetActive(true);
@@ -413,9 +477,11 @@ public class EndoControl : MonoBehaviour
 
             case 14: //highlight filaments
 
-                //highlight filaments
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("IntermediateFilaments");
 
                 _backButton.SetActive(true);
+                _nextButton.SetActive(true);
 
                 break;
             
@@ -431,6 +497,9 @@ public class EndoControl : MonoBehaviour
                         Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
                 }
 
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("GolgiApparatus");
+
                 _golgiSpawned = Instantiate(_golgi, _spawnMiddle, Quaternion.identity);
 
                 // Rotate the golgi
@@ -442,11 +511,12 @@ public class EndoControl : MonoBehaviour
             
             case 16: //play animation
 
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("GolgiApparatus");
+
                 _golgiSpawned.GetComponent<Animation>().StartAnimation();
                 // _playAnimation = true;
                 // StartCoroutine(AnimationLoop());
-
-                //highlight filaments
 
                 //wait for player to collect vesicle
                 _nextButton.SetActive(false);
@@ -456,24 +526,32 @@ public class EndoControl : MonoBehaviour
             case 17: //highlight vacuoles
 
                 //highlight vacuoles
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Vacuole");
+
+                _endosomeSpawned = 
+                    Instantiate(_endosome, _spawnMiddle, Quaternion.identity);
 
                 _nextButton.SetActive(true);
                 _backButton.SetActive(true);
                 break;
             
-            case 18: //highlight filaments
+            case 18: //highlight lysosome
                 if (!isForward) {
                     //change next button back to next
                     _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Next";
                 } 
 
-                //highlight filaments
+                StopHighLightCoroutines();
+                StartHighLightCoroutines("Lysosome");
 
                 _nextButton.SetActive(true);
                 _backButton.SetActive(true);
                 break;
 
             case 19: //end tour
+
+                StopHighLightCoroutines();
 
                 // set next button text
                 _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text =
@@ -496,6 +574,29 @@ public class EndoControl : MonoBehaviour
             _golgiSpawned.GetComponent<Animation>().StartAnimation();
             yield return null;
         }
+    }
+
+    IEnumerator HighlightAnimation(GameObject itemToBlink)
+    {
+        _shouldBlink = true;
+        // store default material for passed gameobject
+        Renderer objectRend = itemToBlink.GetComponent<Renderer>();
+        Material ogMaterial = objectRend.material;
+        float duration = 2.0f;
+
+        while (_shouldBlink == true)
+        {
+            // line to change to material one
+            // float lerp = Mathf.PingPong(Time.time, duration) / duration;
+            // objectRend.material.Lerp(ogMaterial, _highlightMaterial, lerp);
+            objectRend.material = _highlightMaterial;
+            yield return new WaitForSeconds(1.0f);
+            objectRend.material = ogMaterial;
+            yield return new WaitForSeconds(1.0f);
+
+            yield return null;
+        }
+        
     }
 
     public void nextStep()

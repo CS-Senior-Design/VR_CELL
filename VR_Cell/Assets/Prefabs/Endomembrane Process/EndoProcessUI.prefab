@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76826f7c576f961499427518a04729fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _step: 0
+  _step: 1
   _quizPanel: {fileID: 0}
   _protein: {fileID: 2608432938099297987, guid: 41e38f6125fbd4f4eb414173556ea811,
     type: 3}
@@ -260,6 +260,7 @@ MonoBehaviour:
   _nextButton: {fileID: 9038775854117265938}
   _nextButtonText: {fileID: 6561146647567227767}
   _title: {fileID: 172881208717604986}
+  _highlightMaterial: {fileID: 0}
 --- !u!114 &1132038146627602265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,7 +1403,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: We begin our tour in the cytoplasm, the space in-between the nucleus and
+    the cell membrane. All of the cell's components that are not in the nucleus reside
+    here, suspended in fluid called cytosol. The endomembrane system consists of
+    all the cell's components that are divided by membranes into specialized functional
+    units called organelles. Over the course of the tour, we will be creating proteins
+    that will be shipped outside of the cell.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

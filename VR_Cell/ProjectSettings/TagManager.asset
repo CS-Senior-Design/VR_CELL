@@ -51,6 +51,25 @@ TagManager:
   - mainMenuButton
   - cellMembraneStation
   - membraneFastTravelButton
+  - Cytoplasm
+  - Cytoskeleton
+  - EndoplasmicReticulum
+  - RER
+  - SER
+  - GolgiApparatus
+  - Lysosome
+  - Centrosome
+  - Microtubules
+  - Vacuole
+  - IntermediateFilaments
+  - Nucleus
+  - Nucleolus
+  - Chromatin
+  - Ribosomes
+  - Mitochondria
+  - Peroxisome
+  - Microfilaments
+  - Vesicles
   layers:
   - Default
   - TransparentFX
@@ -60,7 +79,7 @@ TagManager:
   - UI
   - Interactable
   - Ribosome
-  - 
+  - LabCell
   - 
   - 
   - 
