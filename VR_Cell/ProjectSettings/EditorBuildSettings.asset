@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 4fe2213f0c1618c4491c4d56c442df2a
+    path: Assets/Scenes/Final/Menu.unity
+    guid: f7fce7b2d455c7247b246df5b6d956c4
   - enabled: 1
-    path: Assets/Scenes/Integration v1 6-21/Lab.unity
-    guid: 3b1ce32699783774d92f6158ea4e2099
+    path: Assets/Scenes/Final/FinalLab.unity
+    guid: 2b3e2f84447c13d4e999b1f38734fc92
   - enabled: 1
-    path: Assets/Scenes/Michael/Immersive.unity
-    guid: f0f353e0a809e294ea2c051faad1140b
+    path: Assets/Scenes/Final/Immersive.unity
+    guid: 0d8c2be763077934eb1703a414070c60
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

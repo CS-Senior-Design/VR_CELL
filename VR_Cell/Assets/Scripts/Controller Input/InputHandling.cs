@@ -21,6 +21,8 @@ class ItemInfo
 
 public class InputHandling : MonoBehaviour
 {
+    // variable to check if we are in the menu scene
+    public bool _isMenuScene = false;
     /* Variables that the user can change to affect gameplay */
     // variable to change how far back the playr is teleported when they step back
     private float _defaultStepBackDistance = 0.5f;
@@ -1174,7 +1176,7 @@ public class InputHandling : MonoBehaviour
 
         // wrist menu pops up
         // we disable it for the final animation so they can't fast travel their way out of it
-        if (_canMove == true)
+        if (_canMove == true && _isMenuScene == false)
             wristMenuToggle();
     }
 

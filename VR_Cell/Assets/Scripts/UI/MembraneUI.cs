@@ -100,6 +100,7 @@ public class MembraneUI : MonoBehaviour
             i++;
             yield return null;
         }
+        _player.transform.position = _membraneFastTravelSocket.transform.position;
         // teleport player to be on top of the membrane socket
         Camera.main.transform.position = _membraneFastTravelSocket.transform.position;
         _inputScript.setSnapTurn(false);
@@ -116,6 +117,7 @@ public class MembraneUI : MonoBehaviour
         }
         // once it's up, animate bring the vesicle in
         _vesicle = lysosome.transform.GetChild(2).gameObject;
+
         while ((_vesicle.transform.position - _vesicleEndPosition).sqrMagnitude > 1.0f)
         {
             _vesicle.transform.position = Vector3.Lerp(_vesicle.transform.position, _vesicleEndPosition, Time.deltaTime * _animationSpeed/2);
