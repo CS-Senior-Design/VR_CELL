@@ -79,38 +79,32 @@ public class EndoControl : MonoBehaviour
     // UI panel text variables
     private List<string> endoUIStrings = new List<string>() {
         //0 > Start button
-        "Welcome to the Cell Tour! Whenever you are ready, press the start button below to begin.",
+        "Welcome to the Cell Tour!\n\nPress 'next' to begin.",
 
         //1 > Highlight cytoplasm
-        "We begin our tour in the cytoplasm, the space in-between the nucleus and the cell membrane. " +
-        "All of the cell's components that are not in the nucleus reside here, suspended in fluid " +
-        "called cytosol. The endomembrane system consists of all the cell's components that are " +
-        "divided by membranes into specialized functional units called organelles. " +
-        "Over the course of the tour, we will be creating proteins that will be shipped outside of the cell.",
+        "We begin in the cytoplasm, which is the gelatinous fluid-filled space in-between the nucleus and the cell membrane. All of the non-nuclear cell components reside here.\n\n",
+        // "The endomembrane system consists of all the cell's components that are " +
+        // "divided by membranes into specialized functional units called organelles. " +
+        // "Over the course of the tour, we will be creating proteins that will be shipped outside of the cell.",
 
         //2 > Highlight Nucleus
-        "Our first stop on the tour of these organelles is the nucleus. The nucleus is the " +
-        "most conspicuous organelle distinguishable in an animal cell. It contains almost all " +
-        "of the cell's DNA, with which it can create ribosomes and proteins needed for cell function. " +
-        "It is enclosed within the nuclear envelope, a double membrane, with each membrane composed of " +
-        "a lipid bilayer. Scattered along the surface of the nucleus are nuclear pores, complexes of " +
-        "proteins that regulate what can go in and out of the nucleus.",
+        "The first organelle we will look at is the nucleus. It contains almost all of the genetic material in the cell in the form of DNA.",
 
-        //3 > Spawn protein
-        "Your first task is to create a ribosome, which is the component responsible for reading " +
-        "genetic information in the form of mRNA and piecing together the protein for which it codes.\n" +
-        "Collect a protein that will be used to create the ribosomal subunits.",
-
-        //4 > Highlight chromatin
+        //3 > Highlight chromatin
         "Within the nucleus, DNA is wrapped into discrete units called chromosomes. " +
         "Each chromosome is composed of one long DNA molecule and proteins that assist in coiling, " +
         "expressing or repressing certain areas that individual cells need for their function or stage in life. " +
-        "Such a complex of proteins and DNA is called the chromatin.",
+        "\nSuch a complex of proteins and DNA is called the chromatin.",
 
-        //5 > Highlight nucleolus > spawn nucleolus > player gives nucleolus protein
+        //4 > Highlight nucleolus > spawn nucleolus > player gives nucleolus protein
         "Additionally within the nucleus resides a large structure called the nucleolus, where rRNA " +
-        "and a bunch of proteins are arranged to form two different sizes of subunits that make up a complete ribosome." +
-        "Take the protein you grabbed earlier and feed it into the nucleolus to form the ribosome subunits.",
+        "and some proteins are put together to form the two ribosome subunits." +
+        "\nPress 'next' to begin the process of creating a ribosome!",
+
+        //5 > Spawn protein
+        "A ribosome is the component responsible for turning " +
+        "genetic information in the form of mRNA into a protein!\n" +
+        "Feed the protein to the nucleolus to create the ribosome subunits!",
 
         //6 > Highlight endoplasmic reticulum
         "As we make our way outside of the nucleus, notice the largest network of membranes in the cell, the endoplasmic reticulum. " +
@@ -397,8 +391,16 @@ public class EndoControl : MonoBehaviour
 
                 break;
 
-            case 3: //spawn protein
-                ClearEndoProcessObjects();
+            case 5: //spawn protein
+                if (!isForward)
+                {
+                    ClearEndoProcessObjects();
+                    //spawn nucleolus for player to give protein
+                    _nucleolusSpawned =
+                        Instantiate(_nucleolus, _spawnRight + new Vector3(0, 0.15f, 0), Quaternion.identity);
+                    // add the EndoProcess tag
+                    _nucleolusSpawned.tag = "EndoProcess";
+                }
                 
                 StopHighLightCoroutines();
 
@@ -406,11 +408,11 @@ public class EndoControl : MonoBehaviour
                     Instantiate(_protein, _spawnLeft, Quaternion.identity);
 
                 _backButton.SetActive(true);
-                _nextButton.SetActive(true);
+                _nextButton.SetActive(false);
 
                 break;
 
-            case 4: //Highlight chromatin
+            case 3: //Highlight chromatin
 
                 StopHighLightCoroutines();
                 StartHighLightCoroutines(_allTags["Chromatin"]);
@@ -420,12 +422,12 @@ public class EndoControl : MonoBehaviour
 
                 break;
 
-            case 5: //highlight nucleolus > spawn nucleolus > player feeds protein to nucleolus
+            case 4: //highlight nucleolus > spawn nucleolus > player feeds protein to nucleolus
 
                 if (!isForward) {
                     ClearEndoProcessObjects();
-                    _proteinSpawned =
-                        Instantiate(_protein, _spawnLeft, Quaternion.identity);
+                    // _proteinSpawned =
+                    //     Instantiate(_protein, _spawnLeft, Quaternion.identity);
                 }
 
                 StopHighLightCoroutines();
@@ -433,12 +435,12 @@ public class EndoControl : MonoBehaviour
 
                 //spawn nucleolus for player to give protein
                 _nucleolusSpawned =
-                    Instantiate(_nucleolus, _spawnMiddle + new Vector3(0, 0.15f, 0), Quaternion.identity);
+                    Instantiate(_nucleolus, _spawnRight + new Vector3(0, 0.15f, 0), Quaternion.identity);
                 // add the EndoProcess tag
                 _nucleolusSpawned.tag = "EndoProcess";
 
                 //wait for player to combine nucleolus and protein
-                _nextButton.SetActive(false);
+                _nextButton.SetActive(true);
 
                 break;
 
