@@ -3,7 +3,17 @@ guid: b42a650b4f854294883f89a7cfad1212
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pad_body
+    second: {fileID: 2100000, guid: 79fe6ec654a0ac14dae4cb59799cf3f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: screen.001
+    second: {fileID: 2100000, guid: 905a30c2d6f8ccf41bf33a0fbf0e992e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
