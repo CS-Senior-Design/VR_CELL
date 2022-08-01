@@ -3060,6 +3060,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3776096053830214709, guid: 957b333f0c9e62b458e7482d6e60bf47,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776096054765483580, guid: 957b333f0c9e62b458e7482d6e60bf47,
+        type: 3}
+      propertyPath: uiPanel
+      value: 
+      objectReference: {fileID: 1732709489}
     - target: {fileID: 4081961705603442835, guid: 957b333f0c9e62b458e7482d6e60bf47,
         type: 3}
       propertyPath: m_Name
@@ -10402,6 +10412,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1732709489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3776096053830214709, guid: 957b333f0c9e62b458e7482d6e60bf47,
+    type: 3}
+  m_PrefabInstance: {fileID: 512802014}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1737505510
 GameObject:
   m_ObjectHideFlags: 0
