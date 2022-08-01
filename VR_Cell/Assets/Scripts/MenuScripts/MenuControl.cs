@@ -26,6 +26,10 @@ public class MenuControl : MonoBehaviour
         _cellMembraneMaterial = _cellMembrane.GetComponent<Renderer>().material.color;
         //get original board material
         _boardMaterial = _labBoard.GetComponent<Renderer>().material.color;
+
+        _boardTitleText.GetComponent<TMPro.TextMeshProUGUI>().text = "Pick a mode!";
+        //Change the board text 
+        _boardText.GetComponent<TMPro.TextMeshProUGUI>().text = "Choose between Immersive Mode and Lab Mode.";
     }
     
     // function to call on cell hover
