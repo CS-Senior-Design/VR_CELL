@@ -9158,7 +9158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5606987690257922122}
-  - component: {fileID: 5357802401347357639}
+  - component: {fileID: -1873127075928811941}
   m_Layer: 0
   m_Name: Lab Cell
   m_TagString: Untagged
@@ -9183,18 +9183,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 25.375, y: -22.258, z: 4.869}
---- !u!114 &5357802401347357639
+--- !u!114 &-1873127075928811941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5087894625432101616}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f88214b9218354fb19d78dc488fcd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d0e82988da53ba409f28d88b629f625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeed: 0.5
 --- !u!1 &5237608227828439132
 GameObject:
   m_ObjectHideFlags: 0
