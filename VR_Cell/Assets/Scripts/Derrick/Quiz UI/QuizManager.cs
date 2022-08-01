@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,10 @@ public class QuizManager : MonoBehaviour
     public TMP_Text questionNumber;
 
     public TMP_Text questionPrompt;
+
+    public GameObject scorePanel;
+
+    public GameObject uiPanel;
 
     public TMP_Text
 
@@ -35,6 +40,8 @@ public class QuizManager : MonoBehaviour
 
     private int score;
 
+    private Stopwatch stopWatch;
+
     private Question currentQuestion;
 
     void Start()
@@ -48,7 +55,12 @@ public class QuizManager : MonoBehaviour
     {
         // If selected button is correct, add to score and mark the button green.
         if (
-            selectedButton.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+            selectedButton
+                .gameObject
+                .transform
+                .GetChild(0)
+                .GetComponent<TMPro.TextMeshProUGUI>()
+                .text ==
             currentQuestion.questionAnswer
         )
         {
@@ -59,28 +71,48 @@ public class QuizManager : MonoBehaviour
         // Otherwise, find the correct button, mark that green, then mark selected button red.
         {
             if (
-                buttonA.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                buttonA
+                    .gameObject
+                    .transform
+                    .GetChild(0)
+                    .GetComponent<TMPro.TextMeshProUGUI>()
+                    .text ==
                 currentQuestion.questionAnswer
             )
             {
                 turnButtonGreen (buttonA);
             }
             else if (
-                buttonB.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                buttonB
+                    .gameObject
+                    .transform
+                    .GetChild(0)
+                    .GetComponent<TMPro.TextMeshProUGUI>()
+                    .text ==
                 currentQuestion.questionAnswer
             )
             {
                 turnButtonGreen (buttonB);
             }
             else if (
-                buttonC.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                buttonC
+                    .gameObject
+                    .transform
+                    .GetChild(0)
+                    .GetComponent<TMPro.TextMeshProUGUI>()
+                    .text ==
                 currentQuestion.questionAnswer
             )
             {
                 turnButtonGreen (buttonC);
             }
             else if (
-                buttonD.gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text ==
+                buttonD
+                    .gameObject
+                    .transform
+                    .GetChild(0)
+                    .GetComponent<TMPro.TextMeshProUGUI>()
+                    .text ==
                 currentQuestion.questionAnswer
             )
             {
@@ -113,6 +145,7 @@ public class QuizManager : MonoBehaviour
         questionCounter = 0;
         score = 0;
         numOfQuestions = 12;
+        stopWatch = System.Diagnostics.Stopwatch.StartNew();
 
         foreach (Question q in questions)
         {
@@ -123,7 +156,7 @@ public class QuizManager : MonoBehaviour
         {
             Question tempQuestion = questionStackBin.Pop();
             questionStack.Push (tempQuestion);
-            Debug.Log(tempQuestion.questionPrompt);
+            UnityEngine.Debug.Log(tempQuestion.questionPrompt);
         }
 
         DisplayNextQuestion();
@@ -224,9 +257,51 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    void EndQuiz()
+    // Calculate final score, show results panel.
+    public void EndQuiz()
     {
-        Debug.Log("End of Quiz.");
-        Debug.Log("Quiz score: " + score + "/" + numOfQuestions + " = " + (float)score / numOfQuestions * 100 + "%");
+        UnityEngine.Debug.Log("Ending quiz");
+        stopWatch.Stop();
+        var elapsedSeconds = stopWatch.Elapsed.TotalSeconds;
+
+        // Calculate final score percentage
+        float scorePercentage = (float)score / (float)numOfQuestions * 100;
+        UnityEngine.Debug.Log("Score: " + scorePercentage + "%");
+
+        // Show results panel, hide quiz panel
+        uiPanel.SetActive(false);
+        scorePanel.SetActive(true);
+
+        // Get references to panel info
+        GameObject uiCanvas = scorePanel.transform.GetChild(0).gameObject;
+        TMP_Text postQuizResponse = uiCanvas.transform.Find("Post-Quiz Response").gameObject.GetComponent<TMP_Text>();
+        TMP_Text numQuestionsCorrect = uiCanvas.transform.Find("Num Questions Correct").gameObject.GetComponent<TMP_Text>();
+        TMP_Text overallScore = uiCanvas.transform.Find("Overall Score").gameObject.GetComponent<TMP_Text>();
+        TMP_Text timeSpent = uiCanvas.transform.Find("Time Spent").gameObject.GetComponent<TMP_Text>();
+
+        // Set Post Quiz Response based on score percentage
+        if (scorePercentage < 70)
+        {
+            postQuizResponse.text = "You're not quite there yet! Would you like to try again?";
+        }
+        else if (scorePercentage < 80)
+        {
+            postQuizResponse.text = "You're pretty good!";
+        }
+        else if (scorePercentage < 90)
+        {
+            postQuizResponse.text = "You're pretty great!";
+        }
+        else
+        {
+            postQuizResponse.text = "You're a master! Great job.";
+        }
+
+        // Set Num Questions Correct
+        numQuestionsCorrect.text = "You got " + score.ToString() + " out of " + numOfQuestions.ToString() + " questions correct!";
+        // Set Overall Score
+        overallScore.text = "Your overall score is " + scorePercentage.ToString("F2") + "%";
+        // Set Time Spent
+        timeSpent.text = "You spent " + elapsedSeconds.ToString("F2") + " seconds on the quiz!";
     }
 }
