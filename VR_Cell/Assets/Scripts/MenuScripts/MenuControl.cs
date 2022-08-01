@@ -42,7 +42,7 @@ public class MenuControl : MonoBehaviour
         _cell.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
 
         // highlight the cell a little
-        _cellMembrane.GetComponent<Renderer>().material.color = new Color(255,255,0);
+        _cellMembrane.GetComponent<Renderer>().material.color = new Color(0, 255, 236);
 
         // immersive title shows up
         _immersiveText.SetActive(true);
@@ -73,7 +73,7 @@ public class MenuControl : MonoBehaviour
         //scale the board up a little
         _labBoard.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
         //highlight the board a little
-        _labBoard.GetComponent<Renderer>().material.color = new Color(255,255,0);
+        _labBoard.GetComponent<Renderer>().material.color = new Color(0, 255, 236);
         //lab title shows up
         _labText.SetActive(true);
     }
