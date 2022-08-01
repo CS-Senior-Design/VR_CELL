@@ -70,6 +70,9 @@ TagManager:
   - Peroxisome
   - Microfilaments
   - Vesicles
+  - leftObject
+  - rightObject
+  - middleObject
   layers:
   - Default
   - TransparentFX

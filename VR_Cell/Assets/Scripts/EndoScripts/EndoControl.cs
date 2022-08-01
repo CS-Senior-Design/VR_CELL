@@ -201,14 +201,22 @@ public class EndoControl : MonoBehaviour
     private string _startQuizText = "Quiz";
 
     // make the spawn locations global in case we need to change them
-    private Vector3 _spawnLeft = new Vector3(1.5f, 1.2f, -2f);
+    private Vector3 _spawnLeft;
 
-    private Vector3 _spawnMiddle = new Vector3(0.0f, 1.2f, -2f);
+    private Vector3 _spawnMiddle;
 
-    private Vector3 _spawnRight = new Vector3(-1.5f, 1.2f, -2f);
+    private Vector3 _spawnRight;
 
     void Awake()
     {
+        // get the spawn locations
+        _spawnLeft = GameObject.FindGameObjectWithTag("leftObject").transform.position;
+        _spawnMiddle = GameObject.FindGameObjectWithTag("middleObject").transform.position;
+        _spawnRight = GameObject.FindGameObjectWithTag("rightObject").transform.position;
+
+        // set the title text
+        _title.GetComponent<TextMeshProUGUI>().text = "";
+
         // put welcome text on the panel 0
         _textArea.GetComponent<TextMeshProUGUI>().text = endoUIStrings[0];
 
@@ -425,7 +433,7 @@ public class EndoControl : MonoBehaviour
 
                 //spawn nucleolus for player to give protein
                 _nucleolusSpawned =
-                    Instantiate(_nucleolus, _spawnMiddle, Quaternion.identity);
+                    Instantiate(_nucleolus, _spawnMiddle + new Vector3(0, 0.15f, 0), Quaternion.identity);
                 // add the EndoProcess tag
                 _nucleolusSpawned.tag = "EndoProcess";
 
