@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MenuControl : MonoBehaviour
 {
@@ -50,6 +51,19 @@ public class MenuControl : MonoBehaviour
 
         // immersive title shows up
         _immersiveText.SetActive(true);
+    }
+
+    public void onCellSelect()
+    {
+        // go to immersive scene
+        SceneManager.LoadSceneAsync(2);   // LoadScene() could be swapped for LoadSceneAsync() to avoid pausing while loading
+    }
+
+    public void onBoardSelect()
+    {
+        // go to lab scene
+        SceneManager.LoadSceneAsync(1);   // LoadScene() could be swapped for LoadSceneAsync() to avoid pausing while loading
+
     }
 
     public void cellHoverExit()

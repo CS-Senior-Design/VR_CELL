@@ -7,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 /* 
 Script for getting input from the VR controller. 
@@ -167,6 +168,11 @@ public class InputHandling : MonoBehaviour
         // ensure that the objects in the sockets are right in the center at all times
         centerItemsInSockets();
     }
+
+    public void goToMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }   
 
     public void showMembraneStation()
     {
