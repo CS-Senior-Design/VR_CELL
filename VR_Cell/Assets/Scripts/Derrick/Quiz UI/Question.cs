@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Question
-{
+public class Question {
     [TextArea(3, 10)]
     public string questionPrompt;
 
