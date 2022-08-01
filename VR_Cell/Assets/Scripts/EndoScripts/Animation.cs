@@ -71,11 +71,15 @@ public class Animation : MonoBehaviour
         _enterInProgress = false;
         _exitInProgress = false;
     }
+    public bool canStart()
+    {
+        return (_enterInProgress == false && _exitInProgress == false);
+    }
 
     public void StartAnimation()
     {
         // only trigger the animation if neither of the animations are in progress
-        if (_enterInProgress == false && _exitInProgress == false)
+        if (canStart())
         {
             Debug.Log("entered");
             // make the _enter object active

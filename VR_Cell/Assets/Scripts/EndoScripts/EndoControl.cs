@@ -8,13 +8,17 @@ using UnityEngine.XR.Interaction.Toolkit;
 class ObjectMaterial
 {
     public GameObject item;
+    public Renderer renderer;
     public Material mat;
 }
     
 
 public class EndoControl : MonoBehaviour
 {
+    // list to be able to convert object that are highlighted back to their original material if we press next while it is highlighed
     private List<ObjectMaterial> _highlightedObjects = new List<ObjectMaterial>();
+    // Dictionary to get the tags of the objects that need to be highlighted
+    private Dictionary<string, List<string>> _allTags = new Dictionary<string, List<string>>();
     // steo 0 is the welcome screen and empty table
     [Header("Organelles To Spawn")]
     public int _step = 0;
@@ -58,7 +62,7 @@ public class EndoControl : MonoBehaviour
     // variable to track if the animation should play
     private bool _playAnimation;
     private bool _shouldBlink;
-    private List<IEnumerator> currHighlight = new List<IEnumerator>();
+    private IEnumerator _curCoroutine;
 
     // UI global variables
     [Header("UI Variables")]
@@ -203,7 +207,7 @@ public class EndoControl : MonoBehaviour
 
     private Vector3 _spawnRight = new Vector3(-1.5f, 1.2f, -2f);
 
-    void Start()
+    void Awake()
     {
         // put welcome text on the panel 0
         _textArea.GetComponent<TextMeshProUGUI>().text = endoUIStrings[0];
@@ -213,6 +217,41 @@ public class EndoControl : MonoBehaviour
 
         // make the next button visible
         _nextButton.SetActive(true);
+
+        // create a dictionary that tells you what tags need to be highlighted based on a key
+        createTagDictionary();
+    }
+
+    private void createTagDictionary()
+    {
+        // add the tags to the dictionary    
+        addTag("Cytoplasm", new string[]{"Cytoplasm"});
+        addTag("Nucleus", new string[]{"Nucleus"});
+        addTag("Chromatin", new string[]{"Chromatin"});
+        addTag("Nucleolus", new string[]{"Nucleolus"});
+        addTag("ER", new string[]{"RER", "SER"});
+        addTag("RER", new string[]{"RER"});
+        addTag("SER", new string[]{"SER"});
+        addTag("Ribosomes", new string[]{"Ribosomes"});
+        addTag("Vesicles", new string[]{"Vesicles"});
+        addTag("Cytoskeleton", new string[]{"Centrosome", "Microtubules", "Microfilaments", "IntermediateFilaments"});
+        addTag("Centrosome", new string[]{"Centrosome"});
+        addTag("Microtubules", new string[]{"Microtubules"});
+        addTag("Microfilaments", new string[]{"Microfilaments"});
+        addTag("IntermediateFilaments", new string[]{"IntermediateFilaments"});
+        addTag("GolgiApparatus", new string[]{"GolgiApparatus"});
+        addTag("Vacuoles", new string[]{"Vacuole"});
+        addTag("Lysosome", new string[]{"Lysosome"});
+    }
+
+    public void addTag(string key, string[] tags)
+    {
+        List<string> temp = new List<string>();
+        foreach (string tag in tags)
+        {
+            temp.Add(tag);
+        }
+        _allTags.Add(key, temp);
     }
 
     void Update()
@@ -224,6 +263,11 @@ public class EndoControl : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             nextStep();
+        }
+        // if the player is on the animation screen
+        if (_playAnimation == true && _golgiSpawned.GetComponent<Animation>().canStart())
+        {
+            _golgiSpawned.GetComponent<Animation>().StartAnimation();
         }
     }
 
@@ -241,34 +285,63 @@ public class EndoControl : MonoBehaviour
         Debug.Log("ello");
     }
 
-    public void StartHighLightCoroutines(string tag) {
-        int i = 0;
+    IEnumerator HighlightAnimation()
+    {
+        _shouldBlink = true;
+        float duration = 2.0f;
 
-        foreach(GameObject item in GameObject.FindGameObjectsWithTag(tag)) {
-            Material ogMaterial = item.GetComponent<Renderer>().material;
-            ObjectMaterial temp = new ObjectMaterial();
-            temp.item = item;
-            temp.mat = ogMaterial;
-            _highlightedObjects.Add(temp);
-            currHighlight.Add(HighlightAnimation(item));
-            StartCoroutine(currHighlight[i]);
-            i++;
+        while (_shouldBlink == true)
+        {
+            // line to change to material one
+            // float lerp = Mathf.PingPong(Time.time, duration) / duration;
+            // objectRend.material.Lerp(ogMaterial, _highlightMaterial, lerp);
+            // highlight all the objects
+            foreach (ObjectMaterial item in _highlightedObjects)
+            {
+                item.renderer.material = _highlightMaterial;
+            }
+            // wait 1 second
+            yield return new WaitForSeconds(1.0f);
+            // make them normal again
+            foreach (ObjectMaterial item in _highlightedObjects)
+            {
+                item.renderer.material = item.mat;
+            }
+            // wait 1 second
+            yield return new WaitForSeconds(1.0f);
+
+            yield return null;
         }
+        
+    }
+
+    public void StartHighLightCoroutines(List<string> tags) {
+        // for every tag in the list of tags
+        foreach(string tag in tags)
+        {
+            // get eeach gameobject with that tag
+            foreach(GameObject item in GameObject.FindGameObjectsWithTag(tag)) 
+            {
+                Material ogMaterial = item.GetComponent<Renderer>().material;
+                ObjectMaterial temp = new ObjectMaterial();
+                temp.item = item;
+                temp.renderer = item.GetComponent<Renderer>();
+                temp.mat = ogMaterial;
+                _highlightedObjects.Add(temp);
+            }
+        }
+        _curCoroutine = HighlightAnimation();
+        StartCoroutine(_curCoroutine);
     }
 
     public void StopHighLightCoroutines() {
-        int i = 0;
-        foreach(IEnumerator item in currHighlight) {
-            StopCoroutine(item);
-            i++;
-        }
+        StopCoroutine(_curCoroutine);
         // put all objects back to original material
         foreach(ObjectMaterial item in _highlightedObjects)
         {
-            item.item.GetComponent<Renderer>().material = item.mat;
+            item.renderer.material = item.mat;
         }
         _highlightedObjects.Clear();
-        currHighlight.Clear();
     } 
 
 
@@ -299,7 +372,7 @@ public class EndoControl : MonoBehaviour
 
             case 1: //highlight cytoplasm
 
-                StartHighLightCoroutines("Cytoplasm");
+                StartHighLightCoroutines(_allTags["Cytoplasm"]);
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -309,7 +382,7 @@ public class EndoControl : MonoBehaviour
             case 2: //highlight nucleus
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("Nucleus");
+                StartHighLightCoroutines(_allTags["Nucleus"]);
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -332,7 +405,7 @@ public class EndoControl : MonoBehaviour
             case 4: //Highlight chromatin
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("Chromatin");
+                StartHighLightCoroutines(_allTags["Chromatin"]);
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -348,7 +421,7 @@ public class EndoControl : MonoBehaviour
                 }
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("Nucleolus");
+                StartHighLightCoroutines(_allTags["Nucleolus"]);
 
                 //spawn nucleolus for player to give protein
                 _nucleolusSpawned =
@@ -368,8 +441,7 @@ public class EndoControl : MonoBehaviour
                 }
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("RER");
-                StartHighLightCoroutines("SER");
+                StartHighLightCoroutines(_allTags["ER"]);
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -379,7 +451,7 @@ public class EndoControl : MonoBehaviour
             case 7: //highlight RER
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("RER");
+                StartHighLightCoroutines(_allTags["RER"]);
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -398,7 +470,7 @@ public class EndoControl : MonoBehaviour
                     Instantiate(_ribosome60, _spawnRight, Quaternion.identity);
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("SER");
+                StartHighLightCoroutines(_allTags["SER"]);
 
                 //wait for player to combine ribosome subunits
                 _nextButton.SetActive(false);
@@ -409,7 +481,7 @@ public class EndoControl : MonoBehaviour
                 ClearEndoProcessObjects();
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("Ribosomes");
+                StartHighLightCoroutines(_allTags["Ribosomes"]);
 
                 //spawn ribosome for player
                 _ribosomefullSpawned = 
@@ -431,8 +503,8 @@ public class EndoControl : MonoBehaviour
 
                 ClearEndoProcessObjects();
 
-                StopHighLightCoroutines();
-                StartHighLightCoroutines("Ribosomes");
+                // StopHighLightCoroutines();
+                // StartHighLightCoroutines("Ribosomes");
 
                 _glycoproteinSpawned =
                     Instantiate(_glycoprotein, _spawnRight, Quaternion.identity);
@@ -452,7 +524,7 @@ public class EndoControl : MonoBehaviour
                 }
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("Vesicles");
+                StartHighLightCoroutines(_allTags["Vesicles"]);
 
                 _vesicleEmptySpawned =
                     Instantiate(_vesicleEmpty, _spawnMiddle, Quaternion.identity);
@@ -471,10 +543,7 @@ public class EndoControl : MonoBehaviour
                 }
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("Centrosome");
-                StartHighLightCoroutines("Microtubules");
-                StartHighLightCoroutines("Microfilaments");
-                StartHighLightCoroutines("IntermediateFilaments");
+                StartHighLightCoroutines(_allTags["Cytoskeleton"]);
 
                 _nextButton.SetActive(true);
                 _backButton.SetActive(true);
@@ -484,7 +553,7 @@ public class EndoControl : MonoBehaviour
             case 13: //highlight microtubules
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("Microtubules");
+                StartHighLightCoroutines(_allTags["Microtubules"]);
 
                 _nextButton.SetActive(true);
                 _backButton.SetActive(true);
@@ -494,7 +563,7 @@ public class EndoControl : MonoBehaviour
             case 14: //highlight filaments
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("IntermediateFilaments");
+                StartHighLightCoroutines(_allTags["IntermediateFilaments"]);
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -514,7 +583,7 @@ public class EndoControl : MonoBehaviour
                 _vesiclegpSpawned.tag = "EndoProcess";
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("GolgiApparatus");
+                StartHighLightCoroutines(_allTags["GolgiApparatus"]);
 
                 _golgiSpawned = Instantiate(_golgi, _spawnMiddle, Quaternion.identity);
 
@@ -529,8 +598,8 @@ public class EndoControl : MonoBehaviour
             
             case 16: //play animation
 
-                StopHighLightCoroutines();
-                StartHighLightCoroutines("GolgiApparatus");
+                // StopHighLightCoroutines();
+                // StartHighLightCoroutines("GolgiApparatus");
 
                 if (isForward)
                     // destroy the vesicle glycoprotein
@@ -539,9 +608,8 @@ public class EndoControl : MonoBehaviour
                 // show the next button
                 _nextButton.SetActive(true);
                 _golgiSpawned.GetComponent<Animation>().setAnimation();
-                _golgiSpawned.GetComponent<Animation>().StartAnimation();
-                // _playAnimation = true;
-                // StartCoroutine(AnimationLoop());
+                _playAnimation = true;
+                StartCoroutine(AnimationLoop());
 
                 //wait for player to collect vesicle
                 _nextButton.SetActive(true);
@@ -549,10 +617,10 @@ public class EndoControl : MonoBehaviour
                 break;
 
             case 17: //highlight vacuoles
-
+                _playAnimation = false;
                 //highlight vacuoles
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("Vacuole");
+                StartHighLightCoroutines(_allTags["Vacuoles"]);
 
                 // destroy golgi and shit
                 ClearEndoProcessObjects();
@@ -589,7 +657,7 @@ public class EndoControl : MonoBehaviour
                 _damagedMitochondriaSpawn.tag = "EndoProcess";
 
                 StopHighLightCoroutines();
-                StartHighLightCoroutines("Lysosome");
+                StartHighLightCoroutines(_allTags["Lysosome"]);
 
                 _nextButton.SetActive(false);
                 _backButton.SetActive(true);
@@ -621,29 +689,6 @@ public class EndoControl : MonoBehaviour
             _golgiSpawned.GetComponent<Animation>().StartAnimation();
             yield return null;
         }
-    }
-
-    IEnumerator HighlightAnimation(GameObject itemToBlink)
-    {
-        _shouldBlink = true;
-        // store default material for passed gameobject
-        Renderer objectRend = itemToBlink.GetComponent<Renderer>();
-        Material ogMaterial = objectRend.material;
-        float duration = 2.0f;
-
-        while (_shouldBlink == true)
-        {
-            // line to change to material one
-            // float lerp = Mathf.PingPong(Time.time, duration) / duration;
-            // objectRend.material.Lerp(ogMaterial, _highlightMaterial, lerp);
-            objectRend.material = _highlightMaterial;
-            yield return new WaitForSeconds(1.0f);
-            objectRend.material = ogMaterial;
-            yield return new WaitForSeconds(1.0f);
-
-            yield return null;
-        }
-        
     }
 
     public void nextStep()
