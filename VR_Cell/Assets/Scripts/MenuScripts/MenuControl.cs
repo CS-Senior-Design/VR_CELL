@@ -27,7 +27,7 @@ public class MenuControl : MonoBehaviour
 
         // highlight the cell a little
         _cellMembraneMaterial = _cellMembrane.GetComponent<Renderer>().material.color;
-        _cell.GetComponent<Renderer>().material.color = new Color(224f, 215f, 61f);
+        _cellMembrane.GetComponent<Renderer>().material.color = new Color(224f, 215f, 61f);
 
         // immersive title shows up
         _immersiveText.SetActive(true);
@@ -39,7 +39,7 @@ public class MenuControl : MonoBehaviour
         _cell.transform.localScale = new Vector3(1f, 1f, 1f);
 
         // unhighlight the cell
-        _cell.GetComponent<Renderer>().material.color = _cellMembraneMaterial;
+        _cellMembrane.GetComponent<Renderer>().material.color = _cellMembraneMaterial;
 
         // immersive title disappears
         _immersiveText.SetActive(false);
