@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3181965299166544322
+--- !u!1 &3821315395411980093
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,13 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9031261192128201879}
-  - component: {fileID: 328618283406447721}
-  - component: {fileID: 4137296356842058563}
-  - component: {fileID: 887057258640821346}
-  - component: {fileID: 2627665129662266675}
-  - component: {fileID: -5732554051850247074}
-  - component: {fileID: 8143382046896978891}
+  - component: {fileID: 7238950068984785512}
+  - component: {fileID: 2139185744861854358}
+  - component: {fileID: 2326733259542928828}
+  - component: {fileID: 1544703266624234141}
+  - component: {fileID: 4420213820262257612}
+  - component: {fileID: 2977291644741569185}
   m_Layer: 0
   m_Name: Free_Ribosome
   m_TagString: generatedRibosomes
@@ -22,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9031261192128201879
+--- !u!4 &7238950068984785512
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181965299166544322}
+  m_GameObject: {fileID: 3821315395411980093}
   m_LocalRotation: {x: 0.58856356, y: 0.46776205, z: -0.6115291, w: 0.24662474}
   m_LocalPosition: {x: 8.7, y: 32.061226, z: 39.626633}
   m_LocalScale: {x: 500, y: 500, z: 500}
@@ -37,21 +36,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &328618283406447721
+--- !u!33 &2139185744861854358
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181965299166544322}
+  m_GameObject: {fileID: 3821315395411980093}
   m_Mesh: {fileID: 6963509134961148822, guid: b9323f0ba5bc9f74c8974538837ba597, type: 3}
---- !u!23 &4137296356842058563
+--- !u!23 &2326733259542928828
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181965299166544322}
+  m_GameObject: {fileID: 3821315395411980093}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -88,13 +87,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &887057258640821346
+--- !u!54 &1544703266624234141
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181965299166544322}
+  m_GameObject: {fileID: 3821315395411980093}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -104,13 +103,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &2627665129662266675
+--- !u!114 &4420213820262257612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181965299166544322}
+  m_GameObject: {fileID: 3821315395411980093}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
@@ -122,7 +121,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -145,31 +144,7 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8143382046896978891}
-        m_TargetAssemblyTypeName: RibosomeState, Assembly-CSharp
-        m_MethodName: setRibosomeScale
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8143382046896978891}
-        m_TargetAssemblyTypeName: RibosomeState, Assembly-CSharp
-        m_MethodName: setGrabbed
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -243,13 +218,13 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!64 &-5732554051850247074
+--- !u!64 &2977291644741569185
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181965299166544322}
+  m_GameObject: {fileID: 3821315395411980093}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -257,15 +232,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6963509134961148822, guid: b9323f0ba5bc9f74c8974538837ba597, type: 3}
---- !u!114 &8143382046896978891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181965299166544322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebdab4c76d9e8454883aa4a5231b1bcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

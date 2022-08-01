@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Toggle toggle;
+    public GameObject toggleObject;
+    private Toggle toggle;
     public GameObject _inventory;
     public GameObject socket1;
     public GameObject socket2;
@@ -15,19 +16,17 @@ public class InventoryManager : MonoBehaviour
 
     void Awake() 
     {
-        _inventory.SetActive(false);
-        toggle = GetComponent<Toggle>();
+        toggle = toggleObject.GetComponent<Toggle>();
         toggle.onValueChanged.AddListener(ToggleInventory);
 
         if (toggle.isOn)
             ToggleInventory(true);
-
     }
 
     public void ToggleInventory(bool on)
     {
-
-        if (on)
+        Debug.Log("inventory button clicked");
+        if (_inventory.activeSelf == false)
         {
             Debug.Log("Inventory on");
             _inventory.SetActive(true);
@@ -51,6 +50,7 @@ public class InventoryManager : MonoBehaviour
             socket3.GetComponent<SocketEvents>().hide();
             socket4.GetComponent<SocketEvents>().hide();
             
+            
             // make all objects in the sockets visible again
             // for (int i = 0; i < organelles.Count; i++)
             // {
@@ -62,6 +62,7 @@ public class InventoryManager : MonoBehaviour
 
     void OnDestroy()
     {
-        toggle.onValueChanged.RemoveListener(ToggleInventory);
+        if (toggle != null)
+            toggle.onValueChanged.RemoveListener(ToggleInventory);
     }
 }

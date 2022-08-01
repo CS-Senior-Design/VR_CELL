@@ -19,6 +19,60 @@ TagManager:
   - golgiUI
   - generatedRibosomes
   - ERUI
+  - teleportArea
+  - CameraOffset
+  - WristUI
+  - fastTravelUI
+  - inventoryPanel
+  - inventorySocket
+  - inventoryUI
+  - slotNumberText
+  - organelleNameTextSocket
+  - rightHand
+  - teleportTube
+  - teleportTubePoint
+  - rightRayInteractor
+  - rightRayInteractorTeleport
+  - settingsPanel
+  - movementToggle
+  - movementToggleIndicator
+  - movementSensitivitySlider
+  - teleportTubeSensitivitySlider
+  - movementText
+  - continuousText
+  - teleportText
+  - organelleAnchor
+  - socketImage
+  - snapToggle
+  - snapToggleIndicator
+  - snapDropdown
+  - playerParent
+  - controlPanel
+  - mainMenuButton
+  - cellMembraneStation
+  - membraneFastTravelButton
+  - Cytoplasm
+  - Cytoskeleton
+  - EndoplasmicReticulum
+  - RER
+  - SER
+  - GolgiApparatus
+  - Lysosome
+  - Centrosome
+  - Microtubules
+  - Vacuole
+  - IntermediateFilaments
+  - Nucleus
+  - Nucleolus
+  - Chromatin
+  - Ribosomes
+  - Mitochondria
+  - Peroxisome
+  - Microfilaments
+  - Vesicles
+  - leftObject
+  - rightObject
+  - middleObject
   layers:
   - Default
   - TransparentFX
@@ -28,7 +82,7 @@ TagManager:
   - UI
   - Interactable
   - Ribosome
-  - 
+  - LabCell
   - 
   - 
   - 

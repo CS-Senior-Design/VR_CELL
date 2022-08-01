@@ -13,11 +13,15 @@ public class WristUI : MonoBehaviour
         _menu = inputActions.FindActionMap("XRI LeftHand").FindAction("Menu");
         _menu.Enable();
         _menu.performed += ToggleMenu;
+
+        // turn off the inventory to start
+        GameObject.FindGameObjectWithTag("inventoryUI").SetActive(false);
     }
 
     private void OnDestroy()
     {
-        _menu.performed -= ToggleMenu;
+        if (_menu != null)
+            _menu.performed -= ToggleMenu;
     }
 
     public void ToggleMenu(InputAction.CallbackContext context)

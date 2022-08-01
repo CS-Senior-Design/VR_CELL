@@ -1,0 +1,145 @@
+Input Mappings:
+
+primary2DAxis:
+    Feature Type: 2D Axis
+    - Oculus: Joystick
+    - Vive: Trackpad
+    - WMR: Touchpad
+
+secondary2DAxis:
+    Feature Type: 2D Axis
+    - Oculus: None
+    - Vive: None
+    - WMR: Joystick
+
+primary2DAxisClick:
+    Feature Type: Button
+    - Oculus: Thumbstick - Press
+    - Vive: Trackpad - Press
+    - WMR: Touchpad - Click
+
+primary2DAxisTouch:
+    Feature Type: Button
+    - Oculus: Thumbstick - Touch
+    - Vive: Trackpad - Touch
+    - WMR: Touchpad - Touch
+
+trigger:
+    Feature Type: Axis
+    - Oculus: Trigger
+    - Vive: Trigger
+    - WMR: Trigger
+
+triggerButton:
+    Feature Type: Button
+    - Oculus: Trigger - Press
+    - Vive: Trigger - Press
+    - WMR: Trigger - Press
+
+grip:
+    Feature Type: Axis
+    - Oculus: grip
+    - Vive: grip
+    - WMR: grip
+
+gripButton:
+    Feature Type: Button
+    - Oculus: grip - Press
+    - Vive: grip - Press
+    - WMR: grip - Press
+
+primaryButton:
+    Feature Type: Button
+    - Oculus: (X/A) - Press
+    - Vive: Sandwich button
+    - WMR: None
+
+Vector2:
+    - down: Vector2(0, -1)
+    - left: Vector2(-1, 0)
+    - right: Vector(1, 0)
+    - up: Vector(0, 1)
+
+How to get the current connected device:
+    var inputDevices = new List<UnityEngine.XR.InputDevice>();
+    UnityEngine.XR.InputDevices.GetDevices(inputDevices);
+
+    // you can get the name of each device
+    // you can also print the manufacturer of each device
+    foreach (var device in inputDevices)
+    {
+        Debug.Log(device.name);
+        Debug.Log(device.manufacturer);
+    }
+
+    // you can get the role of each device
+    foreach (var device in inputDevices)
+    {
+        Debug.Log(device.role.ToString());
+    }
+
+    // you can determine if it is still connected at any point with
+    device.IsValid()
+
+    // get a list of all input available for a specific device
+    // create the list of InputFeatureUsage
+    var featureUsages = new List<InputFeatureUsage>();
+    // the TryGetFeatureUsages method returns true if the device can be queried otherwise it returns false
+    bool isValid = device.TryGetFeatureUsages(featureUsages)
+    // now the list has all of the feature usages available for this devica, like "trigger", or "device position"
+
+    // get a value of the state of the button, or joystick or trigger or whatever
+    // this line gets the triggerButton state and it outputs it to a new variable called 'value'
+    device.TryGetFeatureValue(CommonUsages.triggerButton, out bool value)    
+    // This line gets the trigge state and it outputs it as a float to see how much it has been pressed
+    device.TryGetFeatureValue(CommonUsages.trigger, out float value)
+    
+    // You can get a specific device using characteristics
+    // Available characteristics: HeadMounted, Camera, HeldInHand, HandTracking, EyeTracking, TrackedDevice, Controller, TrackingReference, Left, Right
+    // make a list to hold your left hand controller devices
+    var leftHandedControllers = new List<UnityEngine.XR.InputDevice>();
+    // make a variable holding the desired characteristics
+    var desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Left | UnityEngine.XR.InputDeviceCharacteristics.Controller;
+    // get the devices with the desired characteristics into the list you created
+    UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+    // now loop through the devices which fit your desiredCharacteristics
+    foreach (var device in leftHandedControllers)
+    {
+        Debug.Log(device.name);
+    }
+
+    // get a specific device using the Node
+    var leftHandDevices = new List<UnityEngine.XR.InputDevice>();
+    UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.LeftHand, leftHandDevices);
+
+    if(leftHandDevices.Count == 1)
+    {
+        UnityEngine.XR.InputDevice device = leftHandDevices[0];
+        Debug.Log(string.Format("Device name '{0}' with role '{1}'", device.name, device.role.ToString()));
+    }
+    else if(leftHandDevices.Count > 1)
+    {
+        Debug.Log("Found more than one left hand!");
+    }
+
+    // you can set up a signal to notify you when a device connects or disconnects
+    // this can be used to store the device when it connects
+    InputDevices.deviceConnected ** not too sure how this one works
+
+// accessing input features on an input device
+once you have the device stored (ex. leftHandController, rightHandController) using one of the above methods, you can get the state of the buttons and triggers etc
+
+// check if the trigger button is pressed
+bool triggerValue;
+if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
+{
+    Debug.Log("Trigger button is pressed.");
+}
+
+// all of the names of relevant CommonUsages are in the top of this page (trigger, triggerButton, primary2DAxis, etc)
+
+
+
+    
+
+    
