@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -149,7 +149,6 @@ GameObject:
   - component: {fileID: 2113584455682816249}
   - component: {fileID: 1132038146627602265}
   - component: {fileID: 1132038146627602266}
-  - component: {fileID: 2365968127515095831}
   m_Layer: 5
   m_Name: EndoProcessUI
   m_TagString: EndoController
@@ -228,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76826f7c576f961499427518a04729fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _step: 1
+  _step: 8
   _quizPanel: {fileID: 0}
   _protein: {fileID: 2608432938099297987, guid: 41e38f6125fbd4f4eb414173556ea811,
     type: 3}
@@ -373,18 +372,6 @@ MonoBehaviour:
     - tRNA
     - DNA
     questionAnswer: mRNA
---- !u!114 &2365968127515095831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113584455682816250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14a11fb0ee927c64c9db86b32a91563b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2283226701632313658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,12 +1390,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: We begin our tour in the cytoplasm, the space in-between the nucleus and
-    the cell membrane. All of the cell's components that are not in the nucleus reside
-    here, suspended in fluid called cytosol. The endomembrane system consists of
-    all the cell's components that are divided by membranes into specialized functional
-    units called organelles. Over the course of the tour, we will be creating proteins
-    that will be shipped outside of the cell.
+  m_text: "The smooth ER's surface lacks ribosomes, and houses enzymes used in the
+    production of lipids vital for organism function, as well as in detoxification
+    of drugs and poisons. \nCombine the two subunits together to form a ribosome."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1622,7 +1606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7683977306928213320
 RectTransform:
   m_ObjectHideFlags: 0

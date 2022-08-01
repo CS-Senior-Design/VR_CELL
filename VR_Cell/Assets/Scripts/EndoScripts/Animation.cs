@@ -66,6 +66,12 @@ public class Animation : MonoBehaviour
         return _exit;
     }
 
+    public void setAnimation()
+    {
+        _enterInProgress = false;
+        _exitInProgress = false;
+    }
+
     public void StartAnimation()
     {
         // only trigger the animation if neither of the animations are in progress

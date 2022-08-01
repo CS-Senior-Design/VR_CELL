@@ -35,6 +35,7 @@ public class EndoControl : MonoBehaviour
     public GameObject _golgi;
     public GameObject _endosome;
     public GameObject _lysosome;
+    public GameObject _golgiVesicle;
     public GameObject _damagedMitochondria;
 
     // store the spawned objects in global variables
@@ -52,6 +53,7 @@ public class EndoControl : MonoBehaviour
     private GameObject _endosomeSpawned;
     private GameObject _lysosomeSpawned;
     private GameObject _damagedMitochondriaSpawn;
+    private GameObject _golgiVesicleSpawned;
 
     // variable to track if the animation should play
     private bool _playAnimation;
@@ -169,8 +171,7 @@ public class EndoControl : MonoBehaviour
         "destination. If the cell is in charge of insulin production, for instance, the completed insulin will be carried " +
         "from the golgi to the cell membrane where the insulin will be released outside of the cell. Otherwise, various " +
         "markers placed on the vesicle and around the cell components allow the vesicle to be carried to the appropriate " +
-        "cell component, such as a lysosome.\n" +
-        "Collect the final product!",
+        "cell component, such as a lysosome.\n",
 
         //17 > highlight vacuoles > spawn endosome > player fuses endosome and vesiclegp
         "The final two membraned organelles are the vacuoles and lysosomes. Vacuoles are membraned organelles that carry " +
@@ -352,6 +353,8 @@ public class EndoControl : MonoBehaviour
                 //spawn nucleolus for player to give protein
                 _nucleolusSpawned =
                     Instantiate(_nucleolus, _spawnMiddle, Quaternion.identity);
+                // add the EndoProcess tag
+                _nucleolusSpawned.tag = "EndoProcess";
 
                 //wait for player to combine nucleolus and protein
                 _nextButton.SetActive(false);
@@ -359,6 +362,10 @@ public class EndoControl : MonoBehaviour
                 break;
 
             case 6: //highlight ER
+                if (isForward)
+                {
+                    ClearEndoProcessObjects();
+                }
 
                 StopHighLightCoroutines();
                 StartHighLightCoroutines("RER");
@@ -386,6 +393,7 @@ public class EndoControl : MonoBehaviour
                 //spawn ribosome subunits in case player does not have them
                 _ribosome40Spawned =
                     Instantiate(_ribosome40, _spawnLeft, Quaternion.identity);
+                _ribosome40Spawned.tag = "EndoProcess";
                 _ribosome60Spawned =
                     Instantiate(_ribosome60, _spawnRight, Quaternion.identity);
 
@@ -398,19 +406,21 @@ public class EndoControl : MonoBehaviour
                 break;
                
             case 9: //highlight ribosomes > spawn mRNA > player feeds mrna to ribosome
-
-                if (!isForward) {
-                    ClearEndoProcessObjects();
-                    //spawn ribosome for player
-                    _ribosomefullSpawned = 
-                        Instantiate(_ribosomefull, _spawnRight, Quaternion.identity);
-                }
+                ClearEndoProcessObjects();
 
                 StopHighLightCoroutines();
                 StartHighLightCoroutines("Ribosomes");
+
+                //spawn ribosome for player
+                _ribosomefullSpawned = 
+                    Instantiate(_ribosomefull, _spawnRight, Quaternion.identity);
+                // add the EndoProcess tag
+                _ribosomefullSpawned.tag = "EndoProcess";
                 
                 _mrnaSpawned =
                     Instantiate(_mrna, _spawnLeft, Quaternion.identity);
+                // add the EndoProcess tag
+                _mrnaSpawned.tag = "EndoProcess";
 
                 //wait for player to combine mRNA and ribosome
                 _nextButton.SetActive(false);
@@ -419,15 +429,15 @@ public class EndoControl : MonoBehaviour
 
             case 10: //spawn protein variant
 
-                if (!isForward) {
-                    ClearEndoProcessObjects();
-                }
+                ClearEndoProcessObjects();
 
                 StopHighLightCoroutines();
                 StartHighLightCoroutines("Ribosomes");
 
                 _glycoproteinSpawned =
                     Instantiate(_glycoprotein, _spawnRight, Quaternion.identity);
+                // add the EndoProcess tag
+                _glycoproteinSpawned.tag = "EndoProcess";
 
                 _nextButton.SetActive(true);
 
@@ -446,6 +456,8 @@ public class EndoControl : MonoBehaviour
 
                 _vesicleEmptySpawned =
                     Instantiate(_vesicleEmpty, _spawnMiddle, Quaternion.identity);
+                // add the EndoProcess tag
+                _vesicleEmptySpawned.tag = "EndoProcess";
 
                 //wait for player to place protein in vesicle
                 _nextButton.SetActive(false);
@@ -453,6 +465,10 @@ public class EndoControl : MonoBehaviour
                 break;
 
             case 12: //highlight cytoskeleton
+                if (isForward)
+                {
+                    ClearEndoProcessObjects();
+                }
 
                 StopHighLightCoroutines();
                 StartHighLightCoroutines("Centrosome");
@@ -486,16 +502,16 @@ public class EndoControl : MonoBehaviour
                 break;
             
             case 15: //highlight golgi > spawn golgi > player places vesicle in golgi
-
                 if (!isForward) {
                     ClearEndoProcessObjects();
 
                     _playAnimation = false;
-
-                    // spawn the vesicle glycoprotein
-                    _vesiclegpSpawned =
-                        Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
                 }
+                // spawn the vesicle glycoprotein
+                _vesiclegpSpawned =
+                    Instantiate(_vesiclegp, _spawnRight, Quaternion.identity);
+                // add the tag
+                _vesiclegpSpawned.tag = "EndoProcess";
 
                 StopHighLightCoroutines();
                 StartHighLightCoroutines("GolgiApparatus");
@@ -504,8 +520,10 @@ public class EndoControl : MonoBehaviour
 
                 // Rotate the golgi
                 _golgiSpawned.transform.Rotate(90.0f, 0.0f, 90.0f, Space.Self);
+                // add the EndoProcess tag
+                _golgiSpawned.tag = "EndoProcess";
 
-                _nextButton.SetActive(true);
+                _nextButton.SetActive(false);
  
                 break;
             
@@ -514,12 +532,19 @@ public class EndoControl : MonoBehaviour
                 StopHighLightCoroutines();
                 StartHighLightCoroutines("GolgiApparatus");
 
+                if (isForward)
+                    // destroy the vesicle glycoprotein
+                    Destroy(_vesiclegpSpawned);
+
+                // show the next button
+                _nextButton.SetActive(true);
+                _golgiSpawned.GetComponent<Animation>().setAnimation();
                 _golgiSpawned.GetComponent<Animation>().StartAnimation();
                 // _playAnimation = true;
                 // StartCoroutine(AnimationLoop());
 
                 //wait for player to collect vesicle
-                _nextButton.SetActive(false);
+                _nextButton.SetActive(true);
 
                 break;
 
@@ -529,10 +554,18 @@ public class EndoControl : MonoBehaviour
                 StopHighLightCoroutines();
                 StartHighLightCoroutines("Vacuole");
 
+                // destroy golgi and shit
+                ClearEndoProcessObjects();
+
                 _endosomeSpawned = 
                     Instantiate(_endosome, _spawnMiddle, Quaternion.identity);
+                // add the EndoProcess tag
+                _endosomeSpawned.tag = "EndoProcess";
+                _golgiVesicleSpawned =
+                    Instantiate(_golgiVesicle, _spawnRight, Quaternion.identity);
+                // add the tag
 
-                _nextButton.SetActive(true);
+                _nextButton.SetActive(false);
                 _backButton.SetActive(true);
                 break;
             
@@ -541,21 +574,35 @@ public class EndoControl : MonoBehaviour
                     //change next button back to next
                     _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Next";
                 } 
+                else
+                {
+                    ClearEndoProcessObjects();
+                }
+
+                // spawn lysosome
+                _lysosomeSpawned =
+                    Instantiate(_lysosome, _spawnRight, Quaternion.identity);
+                // spawn damaged mitocdondria
+                _damagedMitochondriaSpawn =
+                    Instantiate(_damagedMitochondria, _spawnLeft, Quaternion.identity);
+                // add the EndoProcess tag
+                _damagedMitochondriaSpawn.tag = "EndoProcess";
 
                 StopHighLightCoroutines();
                 StartHighLightCoroutines("Lysosome");
 
-                _nextButton.SetActive(true);
+                _nextButton.SetActive(false);
                 _backButton.SetActive(true);
                 break;
 
             case 19: //end tour
-
+                ClearEndoProcessObjects();
                 StopHighLightCoroutines();
 
                 // set next button text
                 _nextButtonText.GetComponent<TMPro.TextMeshProUGUI>().text =
                     _startQuizText;
+                _nextButton.SetActive(true);
 
                 break;
 
