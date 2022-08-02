@@ -2447,6 +2447,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 512802014}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &512802018 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2776003207444748117, guid: 957b333f0c9e62b458e7482d6e60bf47,
+    type: 3}
+  m_PrefabInstance: {fileID: 512802014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76826f7c576f961499427518a04729fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &549305693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19670,7 +19682,6 @@ GameObject:
   - component: {fileID: 5903702322522979580}
   - component: {fileID: 5903702322522979587}
   - component: {fileID: 5903702322522979589}
-  - component: {fileID: 5903702322522979588}
   m_Layer: 5
   m_Name: Endomembrane Tour Button
   m_TagString: Untagged
@@ -19743,10 +19754,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5903702322522979588}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+      - m_Target: {fileID: 512802018}
+        m_TargetAssemblyTypeName: EndoControl, Assembly-CSharp
+        m_MethodName: goToStepZero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19779,46 +19790,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5903702322522979588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5903702322522979585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76826f7c576f961499427518a04729fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _step: 0
-  _quizPanel: {fileID: 1596972421}
-  _protein: {fileID: 2608432938099297987, guid: 41e38f6125fbd4f4eb414173556ea811,
-    type: 3}
-  _nucleolus: {fileID: 3443082391720685917, guid: 0019de5ffe3581046ba953b7676b8ce7,
-    type: 3}
-  _ribosome40: {fileID: 0}
-  _ribosome60: {fileID: 0}
-  _ribosomefull: {fileID: 8423993282524603747, guid: 8a32280c470de4c4aa75c6111e8fbae7,
-    type: 3}
-  _mrna: {fileID: 7527382036972342164, guid: e4eb69a3c0cf0264c8a6a66410a06fa4, type: 3}
-  _glycoprotein: {fileID: 3513717309258133845, guid: d99efb8f9751bb243aabdf49f9e6d309,
-    type: 3}
-  _rER: {fileID: 0}
-  _vesicleEmpty: {fileID: 0}
-  _vesiclegp: {fileID: 821907710552206249, guid: 82e5096c3070d3945870e54e5d7e7649,
-    type: 3}
-  _golgi: {fileID: 4332863031200193577, guid: 4528d052f425de74f8b7b5a3663c6996, type: 3}
-  _endosome: {fileID: 0}
-  _lysosome: {fileID: 0}
-  _golgiVesicle: {fileID: 0}
-  _damagedMitochondria: {fileID: 0}
-  _textArea: {fileID: 0}
-  _backButton: {fileID: 0}
-  _nextButton: {fileID: 0}
-  _nextButtonText: {fileID: 0}
-  _title: {fileID: 0}
-  _highlightMaterial: {fileID: 0}
 --- !u!114 &5903702322522979589
 MonoBehaviour:
   m_ObjectHideFlags: 0

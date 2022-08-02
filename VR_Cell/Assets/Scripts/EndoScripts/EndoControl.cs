@@ -273,6 +273,12 @@ public class EndoControl : MonoBehaviour
         }
     }
 
+    public void goToStepZero()
+    {
+        _step = 0;
+        gameObject.SetActive(false);
+    }
+
     void ClearEndoProcessObjects()
     {
         foreach (GameObject item in GameObject.FindGameObjectsWithTag("EndoProcess"))
