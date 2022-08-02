@@ -2327,6 +2327,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7023144199701122183}
     m_Modifications:
+    - target: {fileID: 2776003207444748117, guid: 957b333f0c9e62b458e7482d6e60bf47,
+        type: 3}
+      propertyPath: _mrna
+      value: 
+      objectReference: {fileID: 4999321699042503408, guid: b2a4ef34bbf6e234abf3bd7a9029fd21,
+        type: 3}
+    - target: {fileID: 2776003207444748117, guid: 957b333f0c9e62b458e7482d6e60bf47,
+        type: 3}
+      propertyPath: _endosome
+      value: 
+      objectReference: {fileID: 981379708882044629, guid: 95d2bc7aa0ba77143810e04ee261240e,
+        type: 3}
     - target: {fileID: 3741886730002625065, guid: 957b333f0c9e62b458e7482d6e60bf47,
         type: 3}
       propertyPath: m_RootOrder

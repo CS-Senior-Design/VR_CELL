@@ -82,13 +82,17 @@ public class EndoControl : MonoBehaviour
         "Welcome to the Cell Tour!\n\nPress 'next' to begin.",
 
         //1 > Highlight cytoplasm
-        "We begin in the cytoplasm, which is the gelatinous fluid-filled space in-between the nucleus and the cell membrane. All of the non-nuclear cell components reside here.\n\n",
-        // "The endomembrane system consists of all the cell's components that are " +
-        // "divided by membranes into specialized functional units called organelles. " +
-        // "Over the course of the tour, we will be creating proteins that will be shipped outside of the cell.",
+        "We begin our tour in the cytoplasm, the space in-between the nucleus and the cell membrane. " +
+        "All of the cell's components that are not in the nucleus reside here, suspended in fluid " +
+        "called cytosol. The endomembrane system consists of all the cell's components that are " +
+        "divided by membranes into specialized functional units called organelles. ",
 
         //2 > Highlight Nucleus
-        "The first organelle we will look at is the nucleus. It contains almost all of the genetic material in the cell in the form of DNA.",
+        "Our first stop on the tour of these organelles is the nucleus. It contains almost all " +
+        "of the cell's DNA, with which it can create ribosomes and proteins needed for cell function. " +
+        "It is enclosed within the nuclear envelope, a double membrane, with each membrane composed of " +
+        "a lipid bilayer. Scattered along the surface of the nucleus are nuclear pores, complexes of " +
+        "proteins that regulate what can go in and out of the nucleus.",
 
         //3 > Highlight chromatin
         "Within the nucleus, DNA is wrapped into discrete units called chromosomes. " +
@@ -98,13 +102,12 @@ public class EndoControl : MonoBehaviour
 
         //4 > Highlight nucleolus > spawn nucleolus > player gives nucleolus protein
         "Additionally within the nucleus resides a large structure called the nucleolus, where rRNA " +
-        "and some proteins are put together to form the two ribosome subunits." +
-        "\nPress 'next' to begin the process of creating a ribosome!",
+        "and a bunch of proteins are arranged to form two different sizes of subunits that make up a ribosome.\n",
 
-        //5 > Spawn protein
-        "A ribosome is the component responsible for turning " +
-        "genetic information in the form of mRNA into a protein!\n" +
-        "Feed the protein to the nucleolus to create the ribosome subunits!",
+        //5 > Spawn protein 
+        "A ribosome is the component responsible for reading genetic information in the form of mRNA and piecing " +
+        "together the protein for which it codes. Your first task is to create one.\n" +
+        "Collect the rRNA and combine it with the nucleolus to create the ribosomal subunits!",
 
         //6 > Highlight endoplasmic reticulum
         "As we make our way outside of the nucleus, notice the largest network of membranes in the cell, the endoplasmic reticulum. " +
