@@ -296,7 +296,7 @@ public class EndoControl : MonoBehaviour
     IEnumerator HighlightAnimation()
     {
         _shouldBlink = true;
-        float duration = 2.0f;
+        // float duration = 2.0f;
 
         while (_shouldBlink == true)
         {
@@ -397,27 +397,6 @@ public class EndoControl : MonoBehaviour
 
                 break;
 
-            case 5: //spawn protein
-                if (!isForward)
-                {
-                    ClearEndoProcessObjects();
-                    //spawn nucleolus for player to give protein
-                    _nucleolusSpawned =
-                        Instantiate(_nucleolus, _spawnRight + new Vector3(0, 0.15f, 0), Quaternion.identity);
-                    // add the EndoProcess tag
-                    _nucleolusSpawned.tag = "EndoProcess";
-                }
-                
-                StopHighLightCoroutines();
-
-                _proteinSpawned =
-                    Instantiate(_protein, _spawnLeft, Quaternion.identity);
-
-                _backButton.SetActive(true);
-                _nextButton.SetActive(false);
-
-                break;
-
             case 3: //Highlight chromatin
 
                 StopHighLightCoroutines();
@@ -450,6 +429,27 @@ public class EndoControl : MonoBehaviour
 
                 break;
 
+            case 5: //spawn protein
+                if (!isForward)
+                {
+                    ClearEndoProcessObjects();
+                    //spawn nucleolus for player to give protein
+                    _nucleolusSpawned =
+                        Instantiate(_nucleolus, _spawnRight + new Vector3(0, 0.15f, 0), Quaternion.identity);
+                    // add the EndoProcess tag
+                    _nucleolusSpawned.tag = "EndoProcess";
+                }
+                
+                StopHighLightCoroutines();
+
+                _proteinSpawned =
+                    Instantiate(_protein, _spawnLeft, Quaternion.identity);
+
+                _backButton.SetActive(true);
+                _nextButton.SetActive(false);
+
+                break;
+
             case 6: //highlight ER
                 if (isForward)
                 {
@@ -458,6 +458,13 @@ public class EndoControl : MonoBehaviour
 
                 StopHighLightCoroutines();
                 StartHighLightCoroutines(_allTags["ER"]);
+
+                //spawn ribosome subunits as result of last step
+                _ribosome40Spawned =
+                    Instantiate(_ribosome40, _spawnLeft, Quaternion.identity);
+                _ribosome40Spawned.tag = "EndoProcess";
+                _ribosome60Spawned =
+                    Instantiate(_ribosome60, _spawnRight, Quaternion.identity);
 
                 _backButton.SetActive(true);
                 _nextButton.SetActive(true);
@@ -475,15 +482,16 @@ public class EndoControl : MonoBehaviour
                 break;
 
             case 8: //highlight SER > player combines subunits
-                ClearEndoProcessObjects();
+                if(!isForward) {
+                    ClearEndoProcessObjects();
 
-                
-                //spawn ribosome subunits in case player does not have them
-                _ribosome40Spawned =
-                    Instantiate(_ribosome40, _spawnLeft, Quaternion.identity);
-                _ribosome40Spawned.tag = "EndoProcess";
-                _ribosome60Spawned =
-                    Instantiate(_ribosome60, _spawnRight, Quaternion.identity);
+                    //spawn ribosome subunits in case player does not have them
+                    _ribosome40Spawned =
+                        Instantiate(_ribosome40, _spawnLeft, Quaternion.identity);
+                    _ribosome40Spawned.tag = "EndoProcess";
+                    _ribosome60Spawned =
+                        Instantiate(_ribosome60, _spawnRight, Quaternion.identity);
+                }
 
                 StopHighLightCoroutines();
                 StartHighLightCoroutines(_allTags["SER"]);
