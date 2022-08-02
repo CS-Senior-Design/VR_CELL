@@ -738,8 +738,10 @@ public class InputHandling : MonoBehaviour
             if (_immersive)
             {
                 _fastTravelPanel.SetActive(false);
-                _controlsUI.SetActive(false);
+                // _controlsUI.SetActive(false);
             }
+
+            _controlsUI.SetActive(false);
                 
             // hide settings panel
             _settingsPanel.SetActive(false);
