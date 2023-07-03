@@ -212,13 +212,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Nucleolus
 
-    The **nucleolus** is the largest structure within the
-    nucleus, and its main function is to create **ribosomes**. The nucleolus responds
-    to changes in the cell, signaled by chemical tags, and alters the rate at which
-    it produces ribosomes to react to the metabolic activity and growth rate of the
-    cell. Apart from ribosome creation, the nucleolus is also responsible for the
-    formation of certain **signal recognition particles** and has a role in the **stress
-    response** of the cell.'
+    The **nucleolus** is the largest structure within the nucleus,
+    and its main function is to create **ribosomes**. The nucleolus responds to changes
+    in the cell, signaled by chemical tags, and alters the rate at which it produces
+    ribosomes to react to the metabolic activity and growth rate of the cell. Apart
+    from ribosome creation, the nucleolus is also responsible for the formation of
+    certain **signal recognition particles** and has a role in the **stress response**
+    of the cell.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -345,7 +345,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -447,7 +449,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -625,7 +629,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1228,7 +1234,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1626,7 +1634,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1850,7 +1860,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2095,7 +2107,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2207,8 +2221,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Endoplasmic Reticulum (Rough)
 
-    The **rough endoplasmic reticulum
-    (ER)** is named as such because the surface of the organelle is covered in ribosomes,
+    The **rough endoplasmic reticulum (ER)**
+    is named as such because the surface of the organelle is covered in ribosomes,
     which make proteins and feed them into the hollow space inside the ER, called
     the lumen, where they are **folded and made into longer protein chains** to be
     incorporated into cellular membranes or secreted from the cell to be used elsewhere.
@@ -2865,8 +2879,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Vesicle
 
-    The **vesicle** is a simple structure defined by having
-    a **lipid bilayer**. They form naturally during typical cell processes and perform
+    The **vesicle** is a simple structure defined by having a
+    **lipid bilayer**. They form naturally during typical cell processes and perform
     a variety of functions. They are involved in the cell''s metabolism, transport,
     and storage mechanisms. Vesicles have the ability to fuse with the membranes
     of other cells and organelles to assist in carrying out the roles of the cell.
@@ -3002,7 +3016,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3180,7 +3196,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3505,7 +3523,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3832,7 +3852,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4098,14 +4120,14 @@ MonoBehaviour:
 
     Size: 5 micrometers
 
-    The **nucleus** of the cell is
-    where our journey begins. The most prominent organelle in the cell, the nucleus
-    contains all the genetic information for the organism inside DNA packed inside
-    its nuclear envelope. It comprises of two main parts: the nuclear envelope (or
-    nuclear membrane), a bilipid membrane which surrounds the nucleus and separates
-    its contents from the rest of the cell, and the **nuclear lamina** which supports
-    it structurally. Along the nuclear membrane are nuclear pores, responsible for
-    regulating the entry and exit of cell materials into and out of the nucleus.'
+    The **nucleus** of the cell is where
+    our journey begins. The most prominent organelle in the cell, the nucleus contains
+    all the genetic information for the organism inside DNA packed inside its nuclear
+    envelope. It comprises of two main parts: the nuclear envelope (or nuclear membrane),
+    a bilipid membrane which surrounds the nucleus and separates its contents from
+    the rest of the cell, and the **nuclear lamina** which supports it structurally.
+    Along the nuclear membrane are nuclear pores, responsible for regulating the
+    entry and exit of cell materials into and out of the nucleus.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4308,7 +4330,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4486,7 +4510,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4588,7 +4614,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4690,7 +4718,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
